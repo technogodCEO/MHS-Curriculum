@@ -373,7 +373,7 @@ const programOfStudies = [
       },
       {
         id: "hs-calc-ab", name: "AP Calculus AB", tier: "AP", weight: 5,
-        gradeLevel: "Grades 11–12", credits: "5",
+        gradeLevel: "Grades 10–12", credits: "5",
         prereqs: [
           { course: "PreCalculus Honors (full year)", minGrade: 85, note: null },
           { course: "PreCalculus (full year)", minGrade: 95, note: null },
@@ -388,6 +388,13 @@ const programOfStudies = [
         prereqs: [{ course: "AP Calculus AB (full year)", minGrade: 80, note: null }],
         description: "Taught as a continuation of Calculus AB. Covers additional techniques of integration, polar coordinates, series, applications of integrals, parametric graphing, and differential equations. Emphasis is on theory and problem-solving techniques. Strong background in AP Calculus AB required; students must transfer concepts to novel applications. Equivalent to a 2nd semester college calculus course. Graphing calculators are required.",
         topics: ["Advanced integration techniques: by parts, partial fractions", "Polar coordinates and parametric graphing", "Infinite sequences and series", "Convergence tests", "Applications of integrals in polar and parametric settings", "Differential equations (extended)", "AP exam preparation"]
+      },
+      {
+        id: "hs-calc-bc", name: "AP Calculus BC", tier: "AP", weight: 5,
+        gradeLevel: "Grades 11-12", credits: "5", 
+        prereqs: [{ course: "PreCalculus Honors", minGrade: 95, note: "teacher's recommendation required"}, { course: "Calculus CP", minGrade: 95, note: "teacher's recommendation required"}],
+        description: "This course is essentially the College Board Calculus BC Curriculum. Students will master material covering two semesters of a college calculus program. Students selected to take this course may elect to take an AP test in math with the possibility of earning one or two semesters’ credit at colleges and universities that participate in the College Board program. The course outline is the combination of the Calculus AB description and Calculus C listed above. Students will be expected to understand the concepts taught in class as well as transfer them to novel application and problem solving situations. Graphing calculators are required.",
+        topics: ["Limits and continuity", "Derivatives: all rules, implicit, related rates", "Derivatives of trig, exponential, and log functions", "Applications: optimization, curve sketching, L'Hôpital's rule", "Definite integrals and Fundamental Theorem of Calculus", "u-substitution", "Applications of integration: area, accumulation, average value", "Differential equations: slope fields, separation of variables", "AP AB exam preparation", "Advanced integration techniques: by parts, partial fractions", "Polar coordinates and parametric graphing", "Infinite sequences and series", "Convergence tests", "Applications of integrals in polar and parametric settings", "Differential equations (extended)", "AP BC exam preparation"]
       },
       {
         id: "hs-stats-cp", name: "Statistics", tier: "CP", weight: 0,
