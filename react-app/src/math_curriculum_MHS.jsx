@@ -4,241 +4,6 @@ const curriculum = {
   tracks: ["Accelerated", "Advanced", "Enriched", "Standard"],
   grades: [
     {
-      grade: 1,
-      label: "1st Grade",
-      courses: {
-        Accelerated: {
-          name: "Foundations of Mathematical Reasoning",
-          topics: ["Place value to 1000", "Addition/subtraction fluency to 100", "Early multiplication concepts", "Geometric patterns", "Logical reasoning puzzles", "Introduction to unknowns (□ + 3 = 7)"],
-          color: "#4ade80"
-        },
-        Advanced: {
-          name: "Advanced 1st Grade Math",
-          topics: ["Place value to 100", "Addition/subtraction to 20", "Shape attributes", "Measurement basics", "Counting patterns"],
-          color: "#60a5fa"
-        },
-        Enriched: {
-          name: "Enriched 1st Grade Math",
-          topics: ["Standard 1st grade content", "Math games and puzzles", "Number sense extensions"],
-          color: "#c084fc"
-        },
-        Standard: {
-          name: "1st Grade Math",
-          topics: ["Counting and cardinality to 120", "Addition and subtraction within 20", "Place value: tens and ones", "Measuring lengths with non-standard units", "Telling time to the hour and half-hour", "Organizing and interpreting data"],
-          color: "#94a3b8"
-        }
-      }
-    },
-    {
-      grade: 2,
-      label: "2nd Grade",
-      courses: {
-        Accelerated: {
-          name: "Early Algebraic Thinking",
-          topics: ["Multiplication tables (1–10)", "Division as sharing", "Place value to 10,000", "Introduction to fractions", "Bar graph & data analysis", "Word problem strategies"],
-          color: "#4ade80"
-        },
-        Advanced: {
-          name: "Advanced 2nd Grade Math",
-          topics: ["Place value to 1000", "Addition/subtraction to 1000", "Early multiplication", "Fractions of shapes", "Measurement & data"],
-          color: "#60a5fa"
-        },
-        Enriched: {
-          name: "Enriched 2nd Grade Math",
-          topics: ["Standard 2nd grade content", "Number puzzles", "Spatial reasoning"],
-          color: "#c084fc"
-        },
-        Standard: {
-          name: "2nd Grade Math",
-          topics: ["Addition and subtraction within 1000", "Place value to 1000", "Measurement: rulers, number lines", "Telling time to the nearest 5 minutes", "Money: counting coins and bills", "Introduction to multiplication as repeated addition"],
-          color: "#94a3b8"
-        }
-      }
-    },
-    {
-      grade: 3,
-      label: "3rd Grade",
-      courses: {
-        Accelerated: {
-          name: "Multiplication, Division & Fractions",
-          topics: ["Multiplication/division fluency", "Fraction equivalence and ordering", "Area and perimeter", "Multi-step word problems", "Introduction to negative numbers", "Patterns and functions"],
-          color: "#4ade80"
-        },
-        Advanced: {
-          name: "Advanced 3rd Grade Math",
-          topics: ["Multiplication/division facts", "Fractions on number line", "Measurement", "Area concepts", "Data and graphs"],
-          color: "#60a5fa"
-        },
-        Enriched: {
-          name: "Enriched 3rd Grade Math",
-          topics: ["Standard 3rd grade content", "Multiplication strategies", "Problem solving"],
-          color: "#c084fc"
-        },
-        Standard: {
-          name: "3rd Grade Math",
-          topics: ["Multiplication and division facts (1–10)", "Fractions as parts of a whole and on a number line", "Area and perimeter of rectangles", "Telling time and elapsed time", "Measuring mass and liquid volume", "Bar graphs and pictographs"],
-          color: "#94a3b8"
-        }
-      }
-    },
-    {
-      grade: 4,
-      label: "4th Grade",
-      courses: {
-        Accelerated: {
-          name: "Pre-Algebra Foundations",
-          topics: ["Multi-digit multiplication & division", "Fraction operations", "Decimal concepts", "Coordinate plane introduction", "Variables and expressions", "Ratio introduction"],
-          color: "#4ade80"
-        },
-        Advanced: {
-          name: "Advanced 4th Grade Math",
-          topics: ["Multi-digit arithmetic", "Fraction equivalence", "Angle measurement", "Factors and multiples", "Place value to millions"],
-          color: "#60a5fa"
-        },
-        Enriched: {
-          name: "Enriched 4th Grade Math",
-          topics: ["Standard 4th grade content", "Problem solving strategies", "Math competitions prep"],
-          color: "#c084fc"
-        },
-        Standard: {
-          name: "4th Grade Math",
-          topics: ["Multi-digit multiplication and division", "Fraction equivalence and ordering", "Decimal notation for fractions", "Angle measurement and classification", "Area and perimeter of complex shapes", "Line plots and data interpretation"],
-          color: "#94a3b8"
-        }
-      }
-    },
-    {
-      grade: 5,
-      label: "5th Grade",
-      courses: {
-        Accelerated: {
-          name: "Algebra Readiness",
-          topics: ["Order of operations", "Fraction/decimal/percent conversions", "Proportional reasoning", "Equations with one variable", "Graphing in four quadrants", "Volume and surface area"],
-          color: "#4ade80"
-        },
-        Advanced: {
-          name: "Advanced 5th Grade Math",
-          topics: ["Fraction operations", "Decimal operations", "Coordinate graphing", "Volume", "Numerical expressions"],
-          color: "#60a5fa"
-        },
-        Enriched: {
-          name: "Enriched 5th Grade Math",
-          topics: ["Standard 5th grade content", "Enrichment projects", "Competition math intro"],
-          color: "#c084fc"
-        },
-        Standard: {
-          name: "5th Grade Math",
-          topics: ["Multi-digit multiplication and division fluency", "Fraction addition, subtraction, multiplication, division", "Decimal operations to thousandths", "Volume of rectangular prisms", "Coordinate graphing (first quadrant)", "Classifying 2D shapes by properties"],
-          color: "#94a3b8"
-        }
-      }
-    },
-    {
-      grade: 6,
-      label: "6th Grade",
-      courses: {
-        Accelerated: {
-          name: "Algebra I",
-          topics: ["Linear equations and inequalities in one and two variables", "Graphing lines and slope-intercept/point-slope forms", "Systems of linear equations (substitution, elimination, graphing)", "Integer and rational exponent rules", "Introduction to polynomials: adding, subtracting, multiplying", "Factoring: GCF, trinomials, difference of squares", "Introduction to quadratic equations (factoring & square roots)", "Functions: domain, range, function notation, linear vs. nonlinear", "Ratios, proportions, and percent applications", "Descriptive statistics: mean, median, spread, data displays"],
-          color: "#4ade80"
-        },
-        Advanced: {
-          name: "Pre-Algebra",
-          topics: ["Ratios and rates", "Integers", "Expressions and equations", "Geometry basics", "Statistics and probability"],
-          color: "#60a5fa"
-        },
-        Enriched: {
-          name: "Enriched 6th Grade Math",
-          topics: ["Standard 6th grade content", "AMC 8 preparation", "Enrichment topics"],
-          color: "#c084fc"
-        },
-        Standard: {
-          name: "6th Grade Math",
-          topics: ["Ratios and unit rates", "Dividing fractions by fractions", "Negative numbers and absolute value", "Writing and evaluating expressions", "One-variable equations and inequalities", "Area of triangles, quadrilaterals, polygons", "Statistics: mean, median, mode, range, distributions"],
-          color: "#94a3b8"
-        }
-      }
-    },
-    {
-      grade: 7,
-      label: "7th Grade",
-      courses: {
-        Accelerated: {
-          name: "Geometry & Algebra II",
-          topics: [
-            "GEOMETRY: Euclidean proofs (two-column and paragraph), congruence (SSS, SAS, ASA, AHL), similarity and proportionality theorems",
-            "GEOMETRY: Coordinate geometry — distance, midpoint, equations of circles; transformations (reflections, rotations, dilations)",
-            "GEOMETRY: Triangle centers, midsegments, special right triangles (30-60-90, 45-45-90)",
-            "GEOMETRY: Circle theorems — inscribed angles, arc length, sector area, power of a point",
-            "ALGEBRA II: Polynomial long division and synthetic division; remainder and factor theorems; polynomial graphing and end behavior",
-            "ALGEBRA II: Rational expressions and equations; solving and graphing rational functions; asymptotes and holes",
-            "ALGEBRA II: Radical expressions and equations; rational exponents",
-            "ALGEBRA II: Complex numbers — arithmetic, the complex plane, conjugates",
-            "ALGEBRA II: Exponential and logarithmic functions; log rules; solving exponential/log equations; natural base e",
-            "ALGEBRA II: Conic sections — parabola, ellipse, hyperbola (standard forms, graphing, applications)",
-            "ALGEBRA II: Systems of equations and inequalities (linear-quadratic, nonlinear); systems in three variables",
-            "ALGEBRA II: Sequences and series — arithmetic, geometric, summation notation; introduction to infinite series"
-          ],
-          color: "#4ade80"
-        },
-        Advanced: {
-          name: "Algebra I",
-          topics: ["Linear equations", "Inequalities", "Functions", "Systems of equations", "Exponents", "Polynomials"],
-          color: "#60a5fa"
-        },
-        Enriched: {
-          name: "Pre-Algebra",
-          topics: ["Proportional relationships", "Expressions and equations", "Geometry", "Statistics"],
-          color: "#c084fc"
-        },
-        Standard: {
-          name: "7th Grade Math",
-          topics: ["Proportional relationships and percent", "Operations with rational numbers", "Expressions and linear equations", "Inequalities and their graphs", "Scale drawings and geometry", "Probability and compound events", "Statistics: comparing populations"],
-          color: "#94a3b8"
-        }
-      }
-    },
-    {
-      grade: 8,
-      label: "8th Grade",
-      courses: {
-        Accelerated: {
-          name: "Precalculus & Trigonometry",
-          topics: [
-            "FUNCTIONS: Transformations of functions (shifts, reflections, stretches); composition; inverse functions; piecewise and absolute value functions",
-            "FUNCTIONS: Polynomial and rational function analysis — zeros, multiplicity, end behavior, asymptotes, sign charts",
-            "FUNCTIONS: Exponential and logistic models; logarithmic scales (dB, Richter, pH); regression and curve fitting",
-            "TRIGONOMETRY: Unit circle mastery — radian measure, all six trig functions at key angles",
-            "TRIGONOMETRY: Graphs of sin, cos, tan, sec, csc, cot — amplitude, period, phase shift, vertical shift",
-            "TRIGONOMETRY: Inverse trig functions; solving trig equations on restricted and general domains",
-            "TRIGONOMETRY: Trig identities — Pythagorean, sum/difference, double-angle, half-angle; proving identities",
-            "TRIGONOMETRY: Law of Sines, Law of Cosines; area of triangles; ambiguous case (SSA)",
-            "TRIGONOMETRY: Vectors in the plane — components, magnitude, dot product, angle between vectors",
-            "ANALYTIC GEOMETRY: Polar coordinates; converting between polar and rectangular; graphing polar curves (roses, limaçons, spirals)",
-            "ANALYTIC GEOMETRY: Parametric equations; eliminating the parameter; parametric motion problems",
-            "LIMITS PREVIEW: Intuitive concept of a limit; one-sided limits; limits at infinity; recognizing continuity and discontinuity",
-            "SEQUENCES & SERIES: Binomial theorem and Pascal's triangle; partial fraction decomposition; intro to convergence"
-          ],
-          color: "#4ade80"
-        },
-        Advanced: {
-          name: "Geometry",
-          topics: ["Congruence and similarity", "Proofs", "Coordinate geometry", "Circles", "Solid geometry"],
-          color: "#60a5fa"
-        },
-        Enriched: {
-          name: "Algebra I",
-          topics: ["Linear equations", "Functions", "Systems", "Polynomials", "Quadratics intro"],
-          color: "#c084fc"
-        },
-        Standard: {
-          name: "Pre-Algebra / 8th Grade Math",
-          topics: ["Linear equations in one and two variables", "Systems of linear equations", "Functions and function notation", "Transformations and congruence", "Pythagorean theorem and applications", "Exponents and scientific notation", "Bivariate data and scatter plots"],
-          color: "#94a3b8"
-        }
-      }
-    },
-    {
       grade: 9,
       label: "9th Grade",
       courses: {
@@ -433,8 +198,9 @@ const curriculum = {
             "Prerequisite: 85% in AP Calculus C or 85% in AP Calculus BC — Summer assignment required"
           ],
           color: "#06b6d4",
-          highlight: true
+          highlight: false
         },
+
         Advanced: {
           name: "AP Calculus C",
           topics: [
@@ -485,47 +251,6 @@ const trackColors = {
 // ─── PROGRAM OF STUDIES DATA ───────────────────────────────────────────────
 
 const programOfStudies = [
-  {
-    category: "Elementary Foundation",
-    color: "#4ade80",
-    grades: "Grades 1–4",
-    courses: [
-      { id: "elem-std", name: "1st–4th Grade Math", track: "Standard", gradeLevel: "Grades 1–4", credits: "N/A", prereq: "None", description: "A rigorous implementation of Common Core standards across all four elementary years. Students build number sense, computational fluency, and foundational geometry. Each year's content is carefully scaffolded to prepare students for the transition to lower middle school mathematics.", topics: ["Number sense and place value", "Operations with whole numbers", "Fractions and decimals", "Measurement and data", "Introductory geometry"] },
-      { id: "elem-enr", name: "1st–4th Grade Math (Enriched)", track: "Enriched", gradeLevel: "Grades 1–4", credits: "N/A", prereq: "Teacher recommendation", description: "Standard content taught at a faster pace with enrichment extensions. Students explore math puzzles, competition problem-solving strategies, and deepen conceptual understanding beyond the standard curriculum. Emphasis on mathematical reasoning and communication.", topics: ["All standard content", "Logic puzzles and mathematical games", "AMC 8 foundational skills", "Enrichment projects", "Mathematical communication"] },
-      { id: "elem-adv", name: "1st–4th Grade Math (Advanced)", track: "Advanced", gradeLevel: "Grades 1–4", credits: "N/A", prereq: "Strong performance and teacher recommendation", description: "Accelerated content that moves approximately one year ahead of grade level. Students encounter multiplication and division earlier, develop fraction fluency sooner, and are introduced to pre-algebraic thinking by 4th grade. Designed for students who consistently demonstrate mastery before their peers.", topics: ["Above-grade-level arithmetic", "Early fraction and decimal work", "Introduction to variables", "Proportional reasoning foundations", "Data analysis and graphing"] },
-      { id: "elem-acc", name: "1st–4th Grade Math (Accelerated)", track: "Accelerated", gradeLevel: "Grades 1–4", credits: "N/A", prereq: "Exceptional performance and department approval", description: "The most intensive elementary offering, moving roughly two years ahead of grade level. Students in this track are introduced to algebraic thinking, multiplicative reasoning, and logical proof structures well before middle school. By 4th grade, students are engaging with material typical of 6th grade. This track is the entry point for the pathway to Calculus BC in 9th grade.", topics: ["Early algebra and unknown quantities", "Multiplicative reasoning and early division", "Fraction operations and equivalence", "Coordinate plane introduction", "Logic, patterns, and mathematical argument"] }
-    ]
-  },
-  {
-    category: "Lower Middle School",
-    color: "#facc15",
-    grades: "Grades 5–6",
-    courses: [
-      { id: "lms-std-5", name: "5th Grade Math", track: "Standard", gradeLevel: "Grade 5", credits: "N/A", prereq: "4th Grade Math", description: "Completes the elementary arithmetic sequence with a focus on fraction operations, decimal fluency, and introductory geometry. Students develop proficiency with multi-digit operations and begin working in all four coordinate quadrants.", topics: ["Fraction and decimal operations", "Volume of prisms", "Coordinate graphing", "Classifying polygons", "Order of operations"] },
-      { id: "lms-std-6", name: "6th Grade Math", track: "Standard", gradeLevel: "Grade 6", credits: "N/A", prereq: "5th Grade Math", description: "Bridges arithmetic and algebra. Students work with ratios, negative numbers, and one-variable equations for the first time. Geometry expands to include area of non-rectangular figures, and statistics introduces measures of center and variability.", topics: ["Ratios and unit rates", "Negative numbers and absolute value", "Expressions and one-step equations", "Area of triangles and polygons", "Statistics: center and spread"] },
-      { id: "lms-enr-5", name: "5th Grade Math (Enriched)", track: "Enriched", gradeLevel: "Grade 5", credits: "N/A", prereq: "4th Grade Math (Enriched) or recommendation", description: "Enriched 5th grade content with additional depth in proportional reasoning, early algebraic thinking, and problem-solving strategies. Competition math topics are introduced to develop creative mathematical thinking.", topics: ["All standard 5th grade content", "Proportional reasoning extensions", "Introduction to competition math", "Enrichment projects"] },
-      { id: "lms-enr-6", name: "6th Grade Math (Enriched)", track: "Enriched", gradeLevel: "Grade 6", credits: "N/A", prereq: "5th Grade Math (Enriched) or recommendation", description: "Enriched 6th grade content with AMC 8 preparation woven throughout. Students solve non-routine problems and explore mathematical topics not covered in the standard curriculum, including number theory foundations and combinatorial thinking.", topics: ["All standard 6th grade content", "AMC 8 preparation", "Number theory introduction", "Combinatorics basics"] },
-      { id: "lms-adv-5", name: "Algebra Readiness", track: "Advanced", gradeLevel: "Grade 5", credits: "N/A", prereq: "4th Grade Math (Advanced) or department placement", description: "A bridge course that accelerates students through the final arithmetic concepts while introducing formal algebraic thinking. Students gain fluency with variables, expressions, and linear equations, setting the stage for full Algebra I in 6th grade.", topics: ["Order of operations and expressions", "One-variable equations", "Proportional reasoning", "Coordinate graphing (all quadrants)", "Fraction/decimal/percent fluency"] },
-      { id: "lms-adv-6", name: "Pre-Algebra", track: "Advanced", gradeLevel: "Grade 6", credits: "N/A", prereq: "Algebra Readiness", description: "A rigorous pre-algebra course that covers ratios, integers, expressions, and linear equations with greater depth and formalism than the standard course. Prepares students directly for Algebra I in 7th grade.", topics: ["Rational number operations", "Proportional relationships", "Linear expressions and equations", "Geometry: angle relationships", "Statistics and probability"] },
-      { id: "lms-acc-5", name: "Algebra Readiness (Accelerated)", track: "Accelerated", gradeLevel: "Grade 5", credits: "N/A", prereq: "4th Grade Math (Accelerated)", description: "Rapidly consolidates arithmetic mastery and transitions fully into algebraic reasoning. By the end of the year, students are solving multi-step equations, working with linear functions, and beginning polynomial concepts — material typically not encountered until late middle school.", topics: ["Algebraic expressions and equations", "Proportional reasoning and rates", "Coordinate graphing and linear functions", "Introduction to polynomials", "Mathematical proof and argument basics"] },
-      { id: "lms-acc-6", name: "Algebra I", track: "Accelerated", gradeLevel: "Grade 6", credits: "1.0 (High School Credit)", prereq: "Algebra Readiness (Accelerated)", description: "A full, rigorous Algebra I course completed in 6th grade. Students master the entire standard Algebra I curriculum including linear functions, systems of equations, polynomial arithmetic, factoring, and an introduction to quadratic equations. This course earns high school credit and is the cornerstone of the Accelerated track's pathway to Calculus BC by 9th grade.", topics: ["Linear equations and inequalities", "Systems of equations", "Exponent rules and polynomials", "Factoring: GCF, trinomials, difference of squares", "Introduction to quadratic equations", "Functions: domain, range, notation", "Descriptive statistics"] }
-    ]
-  },
-  {
-    category: "Upper Middle School",
-    color: "#fb923c",
-    grades: "Grades 7–8",
-    courses: [
-      { id: "ums-std-7", name: "7th Grade Math", track: "Standard", gradeLevel: "Grade 7", credits: "N/A", prereq: "6th Grade Math", description: "Deepens understanding of ratios, proportional reasoning, and rational number arithmetic. Students solve multi-step real-world problems and are introduced to probability and basic statistics. Linear equations and inequalities are formalized.", topics: ["Proportional relationships and percent", "Rational number operations", "Linear equations and inequalities", "Probability and compound events", "Statistics: comparing distributions"] },
-      { id: "ums-std-8", name: "Pre-Algebra / 8th Grade Math", track: "Standard", gradeLevel: "Grade 8", credits: "N/A", prereq: "7th Grade Math", description: "Transitions students from arithmetic to algebraic and geometric thinking. Functions are introduced formally, the Pythagorean theorem is proved and applied, and scatter plots introduce bivariate data analysis. Students are prepared for Algebra I in 9th grade.", topics: ["Linear equations and systems", "Functions and function notation", "Transformations and congruence", "Pythagorean theorem", "Exponents and scientific notation", "Scatter plots and bivariate data"] },
-      { id: "ums-enr-7", name: "Pre-Algebra (Enriched)", track: "Enriched", gradeLevel: "Grade 7", credits: "N/A", prereq: "6th Grade Math (Enriched) or recommendation", description: "An enriched pre-algebra course that emphasizes mathematical reasoning alongside procedural fluency. Students explore non-routine problems and are introduced to competition math strategies.", topics: ["Proportional relationships", "Expressions and equations with depth", "Geometry with reasoning", "Statistics and probability"] },
-      { id: "ums-enr-8", name: "Algebra I (Enriched)", track: "Enriched", gradeLevel: "Grade 8", credits: "1.0 (High School Credit)", prereq: "Pre-Algebra (Enriched)", description: "A complete Algebra I course taken in 8th grade with enrichment extensions. Students develop strong algebraic intuition alongside procedural fluency. Earns high school credit.", topics: ["Linear equations and functions", "Systems of equations", "Polynomials and factoring", "Quadratic equations", "Introduction to statistics"] },
-      { id: "ums-adv-7", name: "Algebra I", track: "Advanced", gradeLevel: "Grade 7", credits: "1.0 (High School Credit)", prereq: "Pre-Algebra (Advanced)", description: "Full Algebra I course taken in 7th grade, earning high school credit. Students develop mastery of linear functions, systems, polynomials, factoring, and quadratics. This is the gateway course for the Advanced track's progression toward AP Calculus BC in 11th grade.", topics: ["Linear equations, inequalities, systems", "Exponent rules", "Polynomial arithmetic and factoring", "Quadratic equations", "Functions and their graphs", "Introduction to statistics"] },
-      { id: "ums-adv-8", name: "Geometry", track: "Advanced", gradeLevel: "Grade 8", credits: "1.0 (High School Credit)", prereq: "Algebra I", description: "Full Euclidean geometry course taken in 8th grade, earning high school credit. Students write formal proofs, work extensively with congruence and similarity, and apply algebra to coordinate geometry. Trigonometry is introduced in the final unit.", topics: ["Congruence and similarity with proofs", "Parallel lines and angle relationships", "Triangle centers and theorems", "Coordinate geometry", "Circles: arcs, chords, tangents, sectors", "Surface area and volume", "Introduction to right triangle trigonometry"] },
-      { id: "ums-acc-7", name: "Geometry & Algebra II", track: "Accelerated", gradeLevel: "Grade 7", credits: "2.0 (High School Credit)", prereq: "Algebra I (Accelerated, Grade 6)", description: "A demanding double-credit course that covers both Euclidean Geometry and Algebra II in a single year. This is the most intensive course in the lower school mathematics program. Students who succeed here have demonstrated the mathematical maturity necessary to handle Precalculus in 8th grade and Calculus BC in 9th. Geometry content emphasizes formal proof; Algebra II content goes deep into polynomial theory, logarithms, and complex numbers.", topics: ["Euclidean proofs (two-column and paragraph)", "Congruence and similarity theorems", "Coordinate geometry and transformations", "Circle theorems and arcs", "Polynomial division, remainder theorem, graphing", "Rational functions and asymptotes", "Complex numbers and the complex plane", "Exponential and logarithmic functions", "Conic sections", "Systems of nonlinear equations", "Sequences and series"] },
-      { id: "ums-acc-8", name: "Precalculus & Trigonometry", track: "Accelerated", gradeLevel: "Grade 8", credits: "1.0 (High School Credit)", prereq: "Geometry & Algebra II (Accelerated)", description: "A comprehensive precalculus course that serves as the direct bridge to AP Calculus BC. Students develop deep mastery of the unit circle, all six trigonometric functions, identities and proofs, polar and parametric representations, and vectors. The year concludes with a formal introduction to limits — giving students the conceptual foundation to begin differentiation from day one of 9th grade.", topics: ["Function transformations, composition, inverses", "Polynomial and rational analysis", "Exponential and logistic modeling", "Unit circle and all six trig functions", "Trig graphs, identities, and equation solving", "Law of Sines, Law of Cosines", "Vectors: components, dot product", "Polar coordinates and curves", "Parametric equations", "Limits: intuitive introduction", "Binomial theorem and series preview"] }
-    ]
-  },
   {
     category: "High School — Mathematics",
     color: "#60a5fa",
@@ -1054,11 +779,7 @@ export default function MathCurriculum() {
           box-shadow: 0 0 30px rgba(245, 158, 11, 0.1);
         }
         
-        .grade-card.big3-card {
-          border-color: rgba(244, 63, 94, 0.4);
-          background: rgba(244, 63, 94, 0.05);
-          box-shadow: 0 0 40px rgba(244, 63, 94, 0.15);
-        }
+        
         
         .card-header {
           padding: 16px 20px;
@@ -1169,16 +890,7 @@ export default function MathCurriculum() {
           transform: rotate(90deg);
         }
         
-        .big3-header {
-          text-align: center;
-          padding: 10px 20px 0;
-          font-family: 'DM Mono', monospace;
-          font-size: 0.65rem;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #f43f5e;
-          opacity: 0.8;
-        }
+        
 
         .phase-label {
           font-family: 'DM Mono', monospace;
@@ -1226,12 +938,12 @@ export default function MathCurriculum() {
       {/* Header */}
       <div className="curriculum-header">
         <div className="header-grid" />
-        <p className="subtitle">Montgomery High School · Mathematics Department</p>
+        <p className="subtitle">Montgomery High School</p>
         <h1 className="main-title">
           <span>Mathematics</span> Curriculum
         </h1>
         <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#666", fontSize: "0.9rem", maxWidth: 540, margin: "0 auto 0" }}>
-          A comprehensive, multi-track program designed for high-achieving students. 
+          A comprehensive, multi-track program designed for students at Montgomery High School to be able to more easily explore their math progression. 
           Pathways are advisory — high school course enrollment is based on prerequisites, not pathway assignment.
         </p>
       </div>
@@ -1266,165 +978,17 @@ export default function MathCurriculum() {
         ))}
       </div>
 
-      {/* Legend */}
-      <div className="legend-bar">
-        <div className="legend-item">
-          <div className="legend-dot" style={{ background: "#f59e0b" }} />
-          AP Calculus BC milestone
-        </div>
-        <div className="legend-item">
-          <div className="legend-dot" style={{ background: "#f43f5e" }} />
-          The Big Three (MVC + ODE + LA)
-        </div>
-        <div className="legend-item">
-          <div className="legend-dot" style={{ background: "#06b6d4" }} />
-          Post-calculus electives
-        </div>
-      </div>
+
 
       {/* Timeline */}
       <div className="timeline">
-        {/* Elementary */}
-        <div className="section-divider"><span>Elementary School · Grades 1–4</span></div>
-        
-        {curriculum.grades.filter(g => g.grade <= 4).map(gradeData => {
-          const course = gradeData.courses[selectedTrack];
-          const isExpanded = expandedGrade === gradeData.grade;
-          return (
-            <div key={gradeData.grade} className="grade-row">
-              <div className="grade-label">G{gradeData.grade}</div>
-              <div className="timeline-dot" style={{
-                background: course.color + "33",
-                borderColor: course.color,
-                boxShadow: isExpanded ? `0 0 12px ${course.color}66` : "none"
-              }} />
-              <div
-                className={`grade-card${isExpanded ? " expanded" : ""}`}
-                onClick={() => setExpandedGrade(isExpanded ? null : gradeData.grade)}
-              >
-                <div className="card-header">
-                  <div className="course-name">{course.name}</div>
-                  <span className={`chevron${isExpanded ? " open" : ""}`} style={{ color: course.color + "aa" }}>▶</span>
-                </div>
-                {isExpanded && (
-                  <div className="topics-panel">
-                    <ul className="topics-list">
-                      {course.topics.map((t, i) => (
-                        <li key={i} className="topic-item">{t}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
-          );
-        })}
-
-        {/* Intermediate */}
-        <div className="section-divider" style={{ marginTop: 20 }}><span>Lower Middle School · Grades 5–6</span></div>
-        
-        {curriculum.grades.filter(g => g.grade >= 5 && g.grade <= 6).map(gradeData => {
-          const course = gradeData.courses[selectedTrack];
-          const isExpanded = expandedGrade === gradeData.grade;
-          return (
-            <div key={gradeData.grade} className="grade-row">
-              <div className="grade-label">G{gradeData.grade}</div>
-              <div className="timeline-dot" style={{
-                background: course.color + "33",
-                borderColor: course.color,
-                boxShadow: isExpanded ? `0 0 12px ${course.color}66` : "none"
-              }} />
-              <div
-                className={`grade-card${isExpanded ? " expanded" : ""}`}
-                onClick={() => setExpandedGrade(isExpanded ? null : gradeData.grade)}
-              >
-                <div className="card-header">
-                  <div className="course-name">{course.name}</div>
-                  <span style={{ color: course.color + "aa" }} className={`chevron${isExpanded ? " open" : ""}`}>▶</span>
-                </div>
-                {isExpanded && (
-                  <div className="topics-panel">
-                    <ul className="topics-list">
-                      {course.topics.map((t, i) => {
-                        const colonIdx = t.indexOf(": ");
-                        const prefix = colonIdx > 0 ? t.slice(0, colonIdx) : null;
-                        const isSectionHeader = prefix && prefix === prefix.toUpperCase() && prefix.length < 30;
-                        if (isSectionHeader) {
-                          const rest = t.slice(colonIdx + 2);
-                          return (
-                            <li key={i}>
-                              <div className="phase-label">{prefix}</div>
-                              <div className="topic-item" style={{ marginTop: 4 }}>— {rest}</div>
-                            </li>
-                          );
-                        }
-                        return <li key={i} className="topic-item">{t}</li>;
-                      })}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
-          );
-        })}
-
-        {/* Upper Middle */}
-        <div className="section-divider" style={{ marginTop: 20 }}><span>Upper Middle School · Grades 7–8</span></div>
-        
-        {curriculum.grades.filter(g => g.grade >= 7 && g.grade <= 8).map(gradeData => {
-          const course = gradeData.courses[selectedTrack];
-          const isExpanded = expandedGrade === gradeData.grade;
-          return (
-            <div key={gradeData.grade} className="grade-row">
-              <div className="grade-label">G{gradeData.grade}</div>
-              <div className="timeline-dot" style={{
-                background: course.color + "33",
-                borderColor: course.color,
-                boxShadow: isExpanded ? `0 0 12px ${course.color}66` : "none"
-              }} />
-              <div
-                className={`grade-card${isExpanded ? " expanded" : ""}`}
-                onClick={() => setExpandedGrade(isExpanded ? null : gradeData.grade)}
-              >
-                <div className="card-header">
-                  <div className="course-name">{course.name}</div>
-                  <span style={{ color: course.color + "aa" }} className={`chevron${isExpanded ? " open" : ""}`}>▶</span>
-                </div>
-                {isExpanded && (
-                  <div className="topics-panel">
-                    <ul className="topics-list">
-                      {course.topics.map((t, i) => {
-                        const colonIdx = t.indexOf(": ");
-                        const prefix = colonIdx > 0 ? t.slice(0, colonIdx) : null;
-                        const isSectionHeader = prefix && prefix === prefix.toUpperCase() && prefix.length < 30;
-                        if (isSectionHeader) {
-                          const rest = t.slice(colonIdx + 2);
-                          return (
-                            <li key={i}>
-                              <div className="phase-label">{prefix}</div>
-                              <div className="topic-item" style={{ marginTop: 4 }}>— {rest}</div>
-                            </li>
-                          );
-                        }
-                        return <li key={i} className="topic-item">{t}</li>;
-                      })}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
-          );
-        })}
-
         {/* High School */}
-
         <div className="section-divider" style={{ marginTop: 20 }}><span>High School · Grades 9–12</span></div>
         
         {curriculum.grades.filter(g => g.grade >= 9).map(gradeData => {
           const course = gradeData.courses[selectedTrack];
           const isExpanded = expandedGrade === gradeData.grade;
           const isHighlight = course.highlight;
-          const isBig3 = course.isBig3;
           
           return (
             <div key={gradeData.grade} className="grade-row">
@@ -1438,20 +1002,14 @@ export default function MathCurriculum() {
                 marginTop: isHighlight ? 18 : 20
               }} />
               <div
-                className={`grade-card${isExpanded ? " expanded" : ""}${isHighlight && !isBig3 ? " highlight-card" : ""}${isBig3 ? " big3-card" : ""}`}
+                className={`grade-card${isExpanded ? " expanded" : ""}${isHighlight ? " highlight-card" : ""}`}
                 onClick={() => setExpandedGrade(isExpanded ? null : gradeData.grade)}
               >
-                {isBig3 && <div className="big3-header">◆ The Big Three ◆</div>}
                 <div className="card-header">
                   <div className="course-name" style={{ color: isHighlight ? "#fff" : "#f0f0f8" }}>{course.name}</div>
-                  {isHighlight && !isBig3 && (
+                  {isHighlight && (
                     <span className="badge" style={{ background: "#f59e0b22", color: "#f59e0b", border: "1px solid #f59e0b44" }}>
                       AP
-                    </span>
-                  )}
-                  {isBig3 && (
-                    <span className="badge" style={{ background: "#f43f5e22", color: "#f43f5e", border: "1px solid #f43f5e44" }}>
-                      COLLEGE+
                     </span>
                   )}
                   <span style={{ color: course.color + "aa" }} className={`chevron${isExpanded ? " open" : ""}`}>▶</span>
