@@ -361,6 +361,7 @@ const programOfStudies = [
           { course: "Algebra II Honors", minGrade: 85, note: null },
           { course: "Algebra II", minGrade: 95, note: "Summer assignment required" }
         ],
+        authors_note: "This class is pretty hard, even for Honors level classes, beware.",
         description: "An in-depth examination of analytic trigonometry, trigonometric functions, exponential and logarithmic functions, polynomial and rational functions, and introduction to limits. Additionally, conics, polar, vectors, and parametric may be explored. The intent is to study and apply advanced mathematical topics while developing abstract and critical thinking skills. Strong background in Honors Algebra II required. Scientific and graphing calculators are required.",
         topics: ["Analytic trigonometry and identities (in-depth)", "Exponential and logarithmic functions (in-depth)", "Polynomial and rational function analysis", "Introduction to limits", "Conic sections", "Polar coordinates and curves", "Parametric equations", "Vectors: components and dot product"]
       },
@@ -1079,7 +1080,7 @@ export default function MathCurriculum() {
 
       {/* persistent footer */}
       <footer style={{ textAlign: "center", padding: "20px 0" }}>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#555", fontSize: "0.85rem", lineHeight: 1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 — Beta 1.0</p>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#555", fontSize: "0.85rem", lineHeight: 1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 — Beta 1 (Build 3)</p>
       </footer>
     </div>
   );
