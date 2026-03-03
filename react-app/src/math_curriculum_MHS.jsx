@@ -1,4 +1,15 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+
+// ─── SUBJECT DEFINITIONS ────────────────────────────────────────────────────
+
+const subjects = [
+  { id: "math",     label: "Mathematics",            accent: "#f59e0b", gridColor: "245, 158, 11",  emoji: "∑",  available: true  },
+  { id: "english",  label: "English / Language Arts", accent: "#e8d5a3", gridColor: "232, 213, 163", emoji: "✦",  available: false },
+  { id: "science",  label: "Science",                 accent: "#2dd4bf", gridColor: "45, 212, 191",  emoji: "⚗",  available: false },
+  { id: "history",  label: "History / Social Studies",accent: "#f97316", gridColor: "249, 115, 22",  emoji: "⊕",  available: false },
+  { id: "language", label: "World Language",          accent: "#86efac", gridColor: "134, 239, 172", emoji: "◈",  available: false },
+  { id: "electives",label: "Electives",               accent: "#d4d4d8", gridColor: "212, 212, 216", emoji: "✦",  available: false },
+];
 
 const curriculum = {
   tracks: ["Accelerated", "Advanced", "Enriched", "Standard"],
@@ -200,7 +211,6 @@ const curriculum = {
           color: "#06b6d4",
           highlight: false
         },
-
         Advanced: {
           name: "AP Calculus C",
           topics: [
@@ -248,7 +258,7 @@ const trackColors = {
   Standard:    { bg: "#94a3b8", text: "#000", label: "📘 Pathway D (Standard)" }
 };
 
-// ─── PROGRAM OF STUDIES DATA ───────────────────────────────────────────────
+// ─── PROGRAM OF STUDIES DATA ────────────────────────────────────────────────
 
 const programOfStudies = [
   {
@@ -309,14 +319,14 @@ const programOfStudies = [
         id: "hs-app-alg", name: "Applied Algebraic Extensions", tier: "CP", weight: 0,
         gradeLevel: "Grade 12", credits: "5",
         prereqs: [{ course: "Successful completion of Algebraic Functions & Analysis", minGrade: null, note: null }],
-        description: "The sequential course to Algebraic Functions & Analysis for seniors. Continues developing algebraic concepts, skills, and applications with a focus on sequences, series, permutations, combinations, probability, statistics, non-linear functions, and an introduction to Trigonometry. Units: Exponential and Logarithmic Functions, Data Analysis and Statistics, Counting through Sequences and Series, Trigonometric Functions. Technology is used as a tool throughout.",
+        description: "The sequential course to Algebraic Functions & Analysis for seniors. Continues developing algebraic concepts, skills, and applications with a focus on sequences, series, permutations, combinations, probability, statistics, non-linear functions, and an introduction to Trigonometry.",
         topics: ["Exponential and logarithmic functions", "Data analysis and statistics", "Sequences and series", "Counting: permutations and combinations", "Probability", "Introduction to trigonometric functions"]
       },
       {
         id: "hs-alg2-cp", name: "Algebra II", tier: "CP", weight: 0,
         gradeLevel: "Grade 11 (typical)", credits: "5",
         prereqs: [{ course: "Algebra I", minGrade: 70, note: null }, { course: "Geometry", minGrade: 70, note: "Summer assignment required" }],
-        description: "The third course in the regular college preparatory mathematics program. Reviews Algebra I terminology, concepts, and skills through a critical examination of the real number system. Major topics include rational expressions and equations, nonlinear functions, powers, roots, radicals, sequences, series, probability/statistics, and introduction to trigonometry. Scientific and graphing calculators are required.",
+        description: "The third course in the regular college preparatory mathematics program. Reviews Algebra I terminology, concepts, and skills through a critical examination of the real number system. Major topics include rational expressions and equations, nonlinear functions, powers, roots, radicals, sequences, series, probability/statistics, and introduction to trigonometry.",
         topics: ["Algebra I review and real number system", "Polynomial and rational functions", "Exponential and logarithmic functions", "Powers, roots, and radicals", "Sequences, series, probability, and statistics", "Introduction to trigonometry", "Graphing and problem solving"]
       },
       {
@@ -326,21 +336,21 @@ const programOfStudies = [
           { course: "Geometry Honors / UMS Geometry", minGrade: 85, note: null },
           { course: "Geometry", minGrade: 95, note: "AND 95% in Algebra I — Summer assignment required" }
         ],
-        description: "Designed for students who want a more challenging approach to Algebra II and plan to take additional honors mathematics. Topics include real and complex number systems, systems of equations in two and three variables, determinants, polynomial equations and functions, rational expressions, sequences and series, probability/statistics, exponential equations, logarithms, and trigonometry. Scientific and graphing calculators are required.",
+        description: "Designed for students who want a more challenging approach to Algebra II and plan to take additional honors mathematics. Topics include real and complex number systems, systems of equations in two and three variables, determinants, polynomial equations and functions, rational expressions, sequences and series, probability/statistics, exponential equations, logarithms, and trigonometry.",
         topics: ["Real and complex number systems", "Systems of equations in two and three variables", "Determinants", "Polynomial equations and functions", "Rational expressions", "Sequences, series, probability, and statistics", "Exponential equations and logarithms", "Trigonometry: unit circle and identities"]
       },
       {
         id: "hs-alg3", name: "Algebra III", tier: "CP", weight: 0,
         gradeLevel: "Grade 12", credits: "5",
         prereqs: [{ course: "Successful completion of Algebra II", minGrade: null, note: "Ineligible for Advanced Algebra and Trigonometry" }],
-        description: "The fourth-year course in a four-year sequence providing a modified version of the traditional math curriculum. Strengthens Algebra skills and concepts with emphasis on equation solving and problem solving. Functions studied include polynomial, rational, logarithmic, and exponential. Additionally, students begin exploring Trigonometry and the Unit Circle. A graphing calculator is required.",
+        description: "The fourth-year course in a four-year sequence providing a modified version of the traditional math curriculum. Strengthens Algebra skills and concepts with emphasis on equation solving and problem solving. Functions studied include polynomial, rational, logarithmic, and exponential. Additionally, students begin exploring Trigonometry and the Unit Circle.",
         topics: ["Algebra skills review and problem solving", "Polynomial functions", "Rational functions", "Logarithmic functions", "Exponential functions", "Introduction to trigonometry and the Unit Circle"]
       },
       {
         id: "hs-adv-alg-trig", name: "Advanced Algebra and Trigonometry", tier: "CP", weight: 0,
         gradeLevel: "Grades 11–12", credits: "5",
         prereqs: [{ course: "Algebra II", minGrade: null, note: "70%–84% in Algebra II" }],
-        description: "Designed for students pursuing a four-year college program who need additional development in Algebra mechanics. The first part further develops Algebra II skills and concepts with emphasis on problem solving; functions studied include polynomial, rational, exponential, and logarithmic. The second half includes a complete course in Trigonometry. Scientific and graphing calculators are required.",
+        description: "Designed for students pursuing a four-year college program who need additional development in Algebra mechanics. The first part further develops Algebra II skills and concepts with emphasis on problem solving; the second half includes a complete course in Trigonometry.",
         topics: ["Polynomial functions (extended)", "Rational functions (extended)", "Exponential functions", "Logarithmic functions", "Problem solving emphasis", "Full Trigonometry: functions, identities, equations", "Unit circle and applications"]
       },
       {
@@ -351,7 +361,7 @@ const programOfStudies = [
           { course: "Advanced Algebra and Trigonometry", minGrade: 75, note: null },
           { course: "Algebra II Honors", minGrade: 65, note: "Summer assignment required" }
         ],
-        description: "Covers all fundamental topics that prepare students for calculus. Emphasis on problem solving and the study of relations, functions, equation solving, and graphing. Functions studied include polynomial, rational, exponential, logarithmic, trigonometric, and inverse. Additionally, conics, polar, vectors, and parametric may be explored. Students must have strong Algebra II mechanics and grasp the theoretical foundations of calculus. Scientific and graphing calculators are required.",
+        description: "Covers all fundamental topics that prepare students for calculus. Emphasis on problem solving and the study of relations, functions, equation solving, and graphing. Functions studied include polynomial, rational, exponential, logarithmic, trigonometric, and inverse.",
         topics: ["Relations and functions: notation, transformations, inverses", "Polynomial and rational functions", "Exponential and logarithmic functions", "Trigonometric functions and equations", "Conic sections", "Polar coordinates and parametric equations (intro)", "Vectors (intro)"]
       },
       {
@@ -361,15 +371,14 @@ const programOfStudies = [
           { course: "Algebra II Honors", minGrade: 85, note: null },
           { course: "Algebra II", minGrade: 95, note: "Summer assignment required" }
         ],
-        authors_note: "This class is pretty hard, even for Honors level classes, beware.",
-        description: "An in-depth examination of analytic trigonometry, trigonometric functions, exponential and logarithmic functions, polynomial and rational functions, and introduction to limits. Additionally, conics, polar, vectors, and parametric may be explored. The intent is to study and apply advanced mathematical topics while developing abstract and critical thinking skills. Strong background in Honors Algebra II required. Scientific and graphing calculators are required.",
+        description: "An in-depth examination of analytic trigonometry, trigonometric functions, exponential and logarithmic functions, polynomial and rational functions, and introduction to limits. Additionally, conics, polar, vectors, and parametric may be explored.",
         topics: ["Analytic trigonometry and identities (in-depth)", "Exponential and logarithmic functions (in-depth)", "Polynomial and rational function analysis", "Introduction to limits", "Conic sections", "Polar coordinates and curves", "Parametric equations", "Vectors: components and dot product"]
       },
       {
         id: "hs-calc-cp", name: "Calculus", tier: "CP", weight: 0,
         gradeLevel: "Grade 12", credits: "5",
         prereqs: [{ course: "PreCalculus", minGrade: 80, note: "Or completion of PreCalculus Honors" }],
-        description: "Provides students with an opportunity to develop a conceptual understanding of calculus and its applications. Emphasizes a multi-representational approach — concepts, results, and problems are expressed geometrically, analytically, verbally, and numerically. Unifying themes are limits, differentiation, integration, and real-world applications. Graphing calculators and technology are used to reinforce concepts. Strong background in PreCalculus required.",
+        description: "Provides students with an opportunity to develop a conceptual understanding of calculus and its applications. Emphasizes a multi-representational approach — concepts, results, and problems are expressed geometrically, analytically, verbally, and numerically.",
         topics: ["Limits and continuity", "Definition of the derivative", "Basic differentiation rules", "Applications of derivatives: optimization, curve sketching", "Definite and indefinite integrals", "Fundamental Theorem of Calculus", "Real-world applications of calculus"]
       },
       {
@@ -380,28 +389,28 @@ const programOfStudies = [
           { course: "PreCalculus (full year)", minGrade: 95, note: null },
           { course: "Calculus (full year)", minGrade: 80, note: null }
         ],
-        description: "Covers limits, derivatives, and applications of both algebraic and transcendental functions as well as methods and applications of integration. Combines the essentials of theory with practical applications. Strong background in Honors PreCalculus is required; students are expected to transfer concepts to novel applications. Equivalent to a 1st semester college calculus course. Graphing calculators are required.",
+        description: "Covers limits, derivatives, and applications of both algebraic and transcendental functions as well as methods and applications of integration. Equivalent to a 1st semester college calculus course.",
         topics: ["Limits and continuity", "Derivatives: all rules, implicit, related rates", "Derivatives of trig, exponential, and log functions", "Applications: optimization, curve sketching, L'Hôpital's rule", "Definite integrals and Fundamental Theorem of Calculus", "u-substitution", "Applications of integration: area, accumulation, average value", "Differential equations: slope fields, separation of variables", "AP exam preparation"]
       },
       {
         id: "hs-calc-c", name: "AP Calculus C", tier: "AP", weight: 5,
         gradeLevel: "Grades 11–12", credits: "5",
         prereqs: [{ course: "AP Calculus AB (full year)", minGrade: 80, note: null }],
-        description: "Taught as a continuation of Calculus AB. Covers additional techniques of integration, polar coordinates, series, applications of integrals, parametric graphing, and differential equations. Emphasis is on theory and problem-solving techniques. Strong background in AP Calculus AB required; students must transfer concepts to novel applications. Equivalent to a 2nd semester college calculus course. Graphing calculators are required.",
+        description: "Taught as a continuation of Calculus AB. Covers additional techniques of integration, polar coordinates, series, applications of integrals, parametric graphing, and differential equations. Equivalent to a 2nd semester college calculus course.",
         topics: ["Advanced integration techniques: by parts, partial fractions", "Polar coordinates and parametric graphing", "Infinite sequences and series", "Convergence tests", "Applications of integrals in polar and parametric settings", "Differential equations (extended)", "AP exam preparation"]
       },
       {
         id: "hs-calc-bc", name: "AP Calculus BC", tier: "AP", weight: 5,
-        gradeLevel: "Grades 11-12", credits: "5", 
-        prereqs: [{ course: "PreCalculus Honors", minGrade: 95, note: "teacher's recommendation required"}, { course: "Calculus CP", minGrade: 95, note: "teacher's recommendation required"}],
-        description: "This course is essentially the College Board Calculus BC Curriculum. Students will master material covering two semesters of a college calculus program. Students selected to take this course may elect to take an AP test in math with the possibility of earning one or two semesters’ credit at colleges and universities that participate in the College Board program. The course outline is the combination of the Calculus AB description and Calculus C listed above. Students will be expected to understand the concepts taught in class as well as transfer them to novel application and problem solving situations. Graphing calculators are required.",
-        topics: ["Limits and continuity", "Derivatives: all rules, implicit, related rates", "Derivatives of trig, exponential, and log functions", "Applications: optimization, curve sketching, L'Hôpital's rule", "Definite integrals and Fundamental Theorem of Calculus", "u-substitution", "Applications of integration: area, accumulation, average value", "Differential equations: slope fields, separation of variables", "AP AB exam preparation", "Advanced integration techniques: by parts, partial fractions", "Polar coordinates and parametric graphing", "Infinite sequences and series", "Convergence tests", "Applications of integrals in polar and parametric settings", "Differential equations (extended)", "AP BC exam preparation"]
+        gradeLevel: "Grades 11-12", credits: "5",
+        prereqs: [{ course: "PreCalculus Honors", minGrade: 95, note: "Teacher's recommendation required" }, { course: "Calculus CP", minGrade: 95, note: "Teacher's recommendation required" }],
+        description: "Essentially the College Board Calculus BC Curriculum. Students master material covering two semesters of a college calculus program. The course outline combines the Calculus AB and Calculus C descriptions. Students are expected to understand concepts and transfer them to novel applications.",
+        topics: ["Limits and continuity", "Derivatives: all rules, implicit, related rates", "Applications: optimization, curve sketching, L'Hôpital's rule", "Definite integrals and Fundamental Theorem of Calculus", "Applications of integration: area, accumulation, average value", "Differential equations: slope fields, separation of variables", "Advanced integration techniques: by parts, partial fractions", "Polar coordinates and parametric graphing", "Infinite sequences and series", "Convergence tests", "AP BC exam preparation"]
       },
       {
         id: "hs-stats-cp", name: "Statistics", tier: "CP", weight: 0,
         gradeLevel: "Grades 11–12", credits: "5",
         prereqs: [{ course: "Algebra II", minGrade: 70, note: "Elective for Juniors and Seniors only" }],
-        description: "An introductory, non-calculus based study of statistics designed as an elective for Juniors and Seniors. Students are introduced to major concepts and tools for collecting, analyzing, and drawing conclusions from data. Four broad conceptual themes: Exploring Data, Planning a Study, Anticipating Patterns, and Statistical Inferences. Prepares students for AP Statistics or the college course equivalent. Graphing calculators are required.",
+        description: "An introductory, non-calculus based study of statistics designed as an elective for Juniors and Seniors. Students are introduced to major concepts and tools for collecting, analyzing, and drawing conclusions from data.",
         topics: ["Exploring data: distributions and displays", "Planning a study: sampling and experimental design", "Anticipating patterns: probability and random variables", "Statistical inference: confidence intervals and significance tests", "Graphing calculator applications", "Preparation for AP Statistics"]
       },
       {
@@ -413,7 +422,7 @@ const programOfStudies = [
           { course: "Algebra II Honors", minGrade: 80, note: null },
           { course: "Algebra II", minGrade: 90, note: "Elective for Juniors and Seniors only" }
         ],
-        description: "An Advanced Placement course equivalent to a one-semester introductory, non-calculus based college course in statistics. An elective for Juniors and Seniors. Introduces major concepts and tools for collecting, analyzing, and drawing conclusions from data. Four broad themes: Exploring Data, Planning a Study, Anticipating Patterns, and Statistical Inferences. Students will evaluate, synthesize, and apply concepts to new problem-solving situations in preparation for the CollegeBoard AP exam. Scientific and graphing calculators are required.",
+        description: "An Advanced Placement course equivalent to a one-semester introductory, non-calculus based college course in statistics. An elective for Juniors and Seniors. Introduces major concepts and tools for collecting, analyzing, and drawing conclusions from data.",
         topics: ["Exploring data: distributions, outliers, transformations", "Comparing distributions", "Bivariate data: regression and residuals", "Study design: sampling methods and experimental design", "Probability: rules, conditional, independence", "Random variables and probability distributions", "Sampling distributions and Central Limit Theorem", "Confidence intervals for means and proportions", "Significance tests: z-tests, t-tests, chi-square", "AP exam preparation"]
       },
       {
@@ -423,7 +432,7 @@ const programOfStudies = [
           { course: "AP Calculus C", minGrade: 85, note: null },
           { course: "AP Calculus BC", minGrade: 85, note: "Summer assignment required — STEM designation" }
         ],
-        description: "Designed for the student interested in pursuing mathematics at the college level. Surveys topics covered in four different college courses with emphasis on applications. Topics: Linear Algebra (coordinate systems, graphs in 3D, vectors, matrices, diagonalization, eigenvectors, basis sets), Multivariable Calculus (partial derivatives, vector operators, gradients, double integrals), Differential Equations (methods, survey physics equations, functions as basis sets, calculus of variations), and Vector Calculus (formal proof writing, vector fields, line and surface integrals). Fourier Analysis may also be included.",
+        description: "Designed for the student interested in pursuing mathematics at the college level. Surveys topics covered in four different college courses with emphasis on applications.",
         topics: ["LINEAR ALGEBRA: Vectors, matrices, diagonalization, eigenvectors, basis sets", "MULTIVARIABLE CALCULUS: Partial derivatives, vector operators, gradients, double integrals", "DIFFERENTIAL EQUATIONS: Methods, physics equations, functions as basis sets", "VECTOR CALCULUS: Formal proofs, vector fields, line and surface integrals", "FOURIER ANALYSIS (if covered): Frequency analysis, Fourier Series and Transforms, signal processing"]
       },
       {
@@ -434,12 +443,139 @@ const programOfStudies = [
           { course: "Algebra II", minGrade: 80, note: null },
           { course: "Advanced Algebra/Trigonometry", minGrade: 80, note: "Prior programming recommended but not required" }
         ],
-        description: "An in-depth exploration of data science concepts and visualization techniques, incorporating hands-on learning with Python and industry tools. Covers computational and inferential thinking, network analysis, database management, and natural language processing to solve real-world problems. Students gain proficiency in Python programming and are introduced to machine learning fundamentals including K-Nearest Neighbors (KNN) and Decision Trees. Strong prior math skills are expected.",
+        description: "An in-depth exploration of data science concepts and visualization techniques, incorporating hands-on learning with Python and industry tools. Covers computational and inferential thinking, network analysis, database management, and natural language processing.",
         topics: ["Computational and inferential thinking", "Python programming for data science", "Data visualization and analysis", "Network analysis and database management", "Natural language processing", "Machine learning fundamentals: KNN and Decision Trees", "Real-world data problem solving"]
       }
     ]
   }
 ];
+
+// ─── SUBJECT DROPDOWN TITLE ONLY───────────────────────────────────────────────────────
+function SubjectTitle({ currentSubject, accentColor, open, setOpen, btnRef }) {
+  return (
+    <button ref={btnRef} onClick={() => setOpen(o => !o)}
+      style={{ background:"transparent", border:"none", cursor:"pointer", padding:0, display:"inline-flex", alignItems:"center", gap:"10px" }}
+    >
+      <span style={{
+        background: `linear-gradient(90deg, ${accentColor}, ${accentColor}cc, ${accentColor})`,
+        WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+        fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 3.5rem)",
+        fontWeight: 900, letterSpacing: "-1px",
+      }}>{currentSubject.label}</span>
+      <span style={{
+        fontFamily: "'DM Mono', monospace", fontSize: "0.65rem",
+        color: accentColor + "99", border: `1px solid ${accentColor}44`,
+        borderRadius: "4px", padding: "2px 6px", marginTop: "6px",
+        display: "inline-block", transform: open ? "rotate(180deg)" : "none",
+      }}>▾</span>
+    </button>
+  );
+}
+
+
+// ─── SUBJECT DROPDOWN MENU ───────────────────────────────────────
+function SubjectDropdownMenu({ activeSubject, onSelect, onClose, anchorRef }) {
+  const menuRef = useRef(null);  // to detect clicks outside the menu
+  const [pos, setPos] = useState({ top: 0, left: 0 });
+
+  // runs once on mount: reads the button's position and sets top/left
+  useEffect(() => {
+    if (anchorRef.current) {
+      const rect = anchorRef.current.getBoundingClientRect();
+      setPos({ top: rect.bottom + window.scrollY + 8, left: rect.left + rect.width / 2 });
+    }
+  }, []);
+
+  // closes menu when you click anywhere outside it
+  useEffect(() => {
+    function handleClick(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target) &&
+          anchorRef.current && !anchorRef.current.contains(e.target)) {
+        onClose();
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div ref={menuRef} style={{ position:"absolute", top:pos.top, left:pos.left, transform:"translateX(-50%)", zIndex:200,
+  background:"#0f0f1a", border:"1px solid rgba(255,255,255,0.1)", borderRadius:"12px",
+  padding:"8px", minWidth:"260px", boxShadow:"0 20px 60px rgba(0,0,0,0.6)" }}>
+      {/* Dropdown */}
+      {subjects.map(subj => {
+        const isActive = subj.id === activeSubject.id;
+        const isDisabled = !subj.available;
+        return (
+          <button
+            key={subj.id}
+            disabled={isDisabled}
+            onClick={() => { if (!isDisabled) { onSelect(subj); onClose(); } }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              width: "100%",
+              padding: "10px 14px",
+              borderRadius: "8px",
+              border: "none",
+              background: isActive ? `${subj.accent}15` : "transparent",
+              cursor: isDisabled ? "default" : "pointer",
+              textAlign: "left",
+              transition: "background 0.15s",
+            }}
+            onMouseEnter={e => { if (!isDisabled && !isActive) e.currentTarget.style.background = "rgba(255,255,255,0.04)"; }}
+            onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = "transparent"; }}
+          >
+            {/* Color dot */}
+            <div style={{
+              width: 8, height: 8, borderRadius: "50%", flexShrink: 0,
+              background: isDisabled ? "#333" : subj.accent,
+              boxShadow: isActive ? `0 0 8px ${subj.accent}88` : "none",
+            }} />
+            {/* Label */}
+            <span style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "0.88rem",
+              fontWeight: isActive ? 500 : 400,
+              color: isDisabled ? "#3a3a4a" : isActive ? subj.accent : "#aaa",
+              flex: 1,
+            }}>
+              {subj.label}
+            </span>
+            {/* Status */}
+            {isDisabled && (
+              <span style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: "0.55rem",
+                color: "#333",
+                letterSpacing: "0.08em",
+                border: "1px solid #2a2a3a",
+                borderRadius: "100px",
+                padding: "2px 7px",
+              }}>
+                SOON
+              </span>
+            )}
+            {isActive && (
+              <span style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: "0.55rem",
+                color: subj.accent,
+                letterSpacing: "0.08em",
+                border: `1px solid ${subj.accent}44`,
+                borderRadius: "100px",
+                padding: "2px 7px",
+              }}>
+                ACTIVE
+              </span>
+            )}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 // ─── PROGRAM OF STUDIES COMPONENT ──────────────────────────────────────────
 
@@ -449,10 +585,9 @@ function ProgramOfStudies() {
 
   const allTiers = ["All", "CP", "Honors", "AP"];
   const tierStyles = {
-    CP:         { bg: "#94a3b822", color: "#94a3b8", border: "#94a3b844" },
-    Honors:     { bg: "#c084fc22", color: "#c084fc", border: "#c084fc44" },
-    AP:         { bg: "#60a5fa22", color: "#60a5fa", border: "#60a5fa44" },
-    "College+": { bg: "#f43f5e22", color: "#f43f5e", border: "#f43f5e44" },
+    CP:     { bg: "#94a3b822", color: "#94a3b8", border: "#94a3b844" },
+    Honors: { bg: "#c084fc22", color: "#c084fc", border: "#c084fc44" },
+    AP:     { bg: "#a5adb822", color: "#60a5fa", border: "#60a5fa44" },
   };
 
   return (
@@ -465,7 +600,6 @@ function ProgramOfStudies() {
         .pos-filter-btn.f-active-CP      { border-color:#94a3b8; color:#94a3b8; background:#94a3b811; }
         .pos-filter-btn.f-active-Honors  { border-color:#c084fc; color:#c084fc; background:#c084fc11; }
         .pos-filter-btn.f-active-AP      { border-color:#60a5fa; color:#60a5fa; background:#60a5fa11; }
-        .pos-filter-btn.f-active-College { border-color:#f43f5e; color:#f43f5e; background:#f43f5e11; }
         .pos-category { margin-bottom:40px; }
         .pos-cat-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.07); }
         .pos-cat-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
@@ -494,17 +628,15 @@ function ProgramOfStudies() {
         .pos-prereq-note { color:#555; font-size:0.75rem; font-style:italic; }
         .pos-chips { display:flex; flex-wrap:wrap; gap:6px; }
         .pos-chip { font-family:'DM Sans',sans-serif; font-size:0.72rem; padding:4px 10px; border-radius:6px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); color:#888; }
-        .pos-college-note { font-family:'DM Sans',sans-serif; font-size:0.75rem; color:#555; font-style:italic; padding:8px 12px; background:rgba(244,63,94,0.04); border-radius:6px; border:1px solid rgba(244,63,94,0.1); margin-top:12px; }
         .pos-weight-legend { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; font-family:'DM Sans',sans-serif; font-size:0.75rem; color:#555; }
         .pos-weight-legend-item { display:flex; align-items:center; gap:6px; }
         .pos-weight-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
       `}</style>
 
-      {/* Tier Filter */}
       <div className="pos-filter-bar">
         {allTiers.map(t => {
           const isActive = filterTier === t;
-          const cls = isActive ? (t === "All" ? "f-active-all" : t === "College+" ? "f-active-College" : `f-active-${t}`) : "";
+          const cls = isActive ? (t === "All" ? "f-active-all" : `f-active-${t}`) : "";
           return (
             <button key={t} onClick={() => setFilterTier(t)} className={`pos-filter-btn ${cls}`}>
               {t === "All" ? "All Courses" : t}
@@ -513,7 +645,6 @@ function ProgramOfStudies() {
         })}
       </div>
 
-      {/* Weight Legend */}
       <div className="pos-weight-legend">
         {[["CP","Unweighted (0)","#94a3b8"],["Honors","+5 Weight","#c084fc"],["AP","+5 Weight","#60a5fa"]].map(([tier,wt,clr])=>(
           <div key={tier} className="pos-weight-legend-item">
@@ -525,11 +656,8 @@ function ProgramOfStudies() {
       </div>
 
       {programOfStudies.map(cat => {
-        const visibleAll = filterTier === "All"
-          ? cat.courses
-          : cat.courses.filter(c => c.tier === filterTier);
-        if (!visibleAll.length) return null;
-
+        const visible = filterTier === "All" ? cat.courses : cat.courses.filter(c => c.tier === filterTier);
+        if (!visible.length) return null;
         return (
           <div key={cat.category} className="pos-category">
             <div className="pos-cat-header">
@@ -537,7 +665,7 @@ function ProgramOfStudies() {
               <div className="pos-cat-title">{cat.category}</div>
               <div className="pos-cat-grades">{cat.grades}</div>
             </div>
-            {visibleAll.map(course => {
+            {visible.map(course => {
               const isOpen = expandedCourse === course.id;
               const ts = course.tier ? tierStyles[course.tier] : { bg:"#94a3b822", color:"#94a3b8", border:"#94a3b844" };
               return (
@@ -574,11 +702,6 @@ function ProgramOfStudies() {
                       </div>
                       <div className="pos-lbl">Topics Covered</div>
                       <div className="pos-chips">{course.topics.map((t, i) => <span key={i} className="pos-chip">{t}</span>)}</div>
-                      {course.tier === "College+" && (
-                        <div className="pos-college-note">
-                          College+ courses are taught at university level and may qualify for dual enrollment credit. Contact the department for details.
-                        </div>
-                      )}
                     </div>
                   )}
                 </div>
@@ -591,12 +714,18 @@ function ProgramOfStudies() {
   );
 }
 
-// ─── MAIN APP WITH PAGE NAVIGATION ─────────────────────────────────────────
+// ─── MAIN APP ───────────────────────────────────────────────────────────────
 
 export default function MathCurriculum() {
   const [page, setPage] = useState("map");
   const [selectedTrack, setSelectedTrack] = useState("Accelerated");
   const [expandedGrade, setExpandedGrade] = useState(null);
+  const [activeSubject, setActiveSubject] = useState(subjects[0]); // Mathematics
+  const [dropOpen, setDropOpen] = useState(false)
+  const btnRef = useRef(null)
+
+  const accent = activeSubject.accent;
+  const gridRgb = activeSubject.gridColor;
 
   return (
     <div style={{
@@ -604,353 +733,90 @@ export default function MathCurriculum() {
       background: "linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 50%, #0a0f0a 100%)",
       minHeight: "100vh",
       color: "#e8e8f0",
-      padding: "0"
+      position: "relative",
     }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-        
         * { box-sizing: border-box; }
-        
+
         .curriculum-header {
-          background: linear-gradient(180deg, #0a0a0f 0%, transparent 100%);
           padding: 60px 40px 40px;
           text-align: center;
           position: relative;
-          overflow: hidden;
         }
-        
         .header-grid {
-          position: absolute;
-          inset: 0;
-          background-image: 
-            linear-gradient(rgba(245, 158, 11, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(245, 158, 11, 0.05) 1px, transparent 1px);
+          position: absolute; inset: 0;
+          background-image:
+            linear-gradient(rgba(${gridRgb}, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(${gridRgb}, 0.05) 1px, transparent 1px);
           background-size: 40px 40px;
           pointer-events: none;
+          transition: background-image 0.4s;
         }
-        
-        .main-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2rem, 5vw, 3.5rem);
-          font-weight: 900;
-          letter-spacing: -1px;
-          color: #fff;
-          margin: 0 0 8px;
-          position: relative;
-        }
-        
-        .main-title span {
-          background: linear-gradient(90deg, #f59e0b, #fde68a, #f59e0b);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        
-        .subtitle {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 1rem;
-          color: #888;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          margin: 0 0 40px;
-        }
-        
-        .track-tabs {
-          display: flex;
-          gap: 8px;
-          justify-content: center;
-          flex-wrap: wrap;
-          margin-bottom: 0;
-          padding: 0 20px 40px;
-        }
-        
-        .track-tab {
-          padding: 10px 24px;
-          border-radius: 100px;
-          font-family: 'DM Sans', sans-serif;
-          font-weight: 500;
-          font-size: 0.875rem;
-          cursor: pointer;
-          border: 1.5px solid transparent;
-          transition: all 0.2s;
-          letter-spacing: 0.05em;
-        }
-        
-        .track-tab.active-accel {
-          background: #f59e0b;
-          color: #000;
-          border-color: #f59e0b;
-          box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
-        }
-        .track-tab.active-adv {
-          background: #60a5fa;
-          color: #000;
-          border-color: #60a5fa;
-          box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
-        }
-        .track-tab.active-enr {
-          background: #c084fc;
-          color: #000;
-          border-color: #c084fc;
-          box-shadow: 0 0 20px rgba(192, 132, 252, 0.4);
-        }
-        .track-tab.active-std {
-          background: #94a3b8;
-          color: #000;
-          border-color: #94a3b8;
-          box-shadow: 0 0 20px rgba(148, 163, 184, 0.4);
-        }
-        
-        .track-tab.inactive {
-          background: transparent;
-          color: #666;
-          border-color: #333;
-        }
-        .track-tab.inactive:hover {
-          border-color: #555;
-          color: #999;
-        }
-        
-        .timeline {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 0 24px 80px;
-          position: relative;
-        }
-        
-        .timeline::before {
-          content: '';
-          position: absolute;
-          left: 50px;
-          top: 0;
-          bottom: 0;
-          width: 2px;
-          background: linear-gradient(180deg, 
-            transparent,
-            rgba(245, 158, 11, 0.3) 10%,
-            rgba(245, 158, 11, 0.3) 90%,
-            transparent
-          );
-        }
-        
-        .grade-row {
-          display: flex;
-          gap: 20px;
-          margin-bottom: 12px;
-          align-items: flex-start;
-          position: relative;
-        }
-        
-        .grade-label {
-          font-family: 'DM Mono', monospace;
-          font-size: 0.7rem;
-          color: #555;
-          width: 44px;
-          flex-shrink: 0;
-          padding-top: 18px;
-          text-align: right;
-          letter-spacing: 0.05em;
-        }
-        
-        .timeline-dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          flex-shrink: 0;
-          margin-top: 20px;
-          border: 2px solid;
-          position: relative;
-          z-index: 1;
-          transition: all 0.2s;
-        }
-        
-        .grade-card {
-          flex: 1;
-          background: rgba(255,255,255,0.03);
-          border: 1px solid rgba(255,255,255,0.07);
-          border-radius: 12px;
-          overflow: hidden;
-          cursor: pointer;
-          transition: all 0.25s;
-        }
-        
-        .grade-card:hover, .grade-card.expanded {
-          background: rgba(255,255,255,0.06);
-          border-color: rgba(255,255,255,0.12);
-          transform: translateX(4px);
-        }
-        
-        .grade-card.highlight-card {
-          border-color: rgba(245, 158, 11, 0.3);
-          background: rgba(245, 158, 11, 0.05);
-          box-shadow: 0 0 30px rgba(245, 158, 11, 0.1);
-        }
-        
-        
-        
-        .card-header {
-          padding: 16px 20px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 12px;
-        }
-        
-        .course-name {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.1rem;
-          font-weight: 600;
-          color: #f0f0f8;
-          flex: 1;
-          line-height: 1.3;
-        }
-        
-        .badge {
-          font-family: 'DM Mono', monospace;
-          font-size: 0.65rem;
-          padding: 4px 10px;
-          border-radius: 100px;
-          letter-spacing: 0.08em;
-          white-space: nowrap;
-          flex-shrink: 0;
-        }
-        
-        .topics-panel {
-          padding: 0 20px 16px;
-          border-top: 1px solid rgba(255,255,255,0.06);
-          margin-top: 0;
-        }
-        
-        .topics-list {
-          list-style: none;
-          padding: 12px 0 0;
-          margin: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-        
-        .topic-item {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.83rem;
-          color: #999;
-          line-height: 1.4;
-          display: flex;
-          gap: 8px;
-          align-items: flex-start;
-        }
-        
-        .topic-item::before {
-          content: '—';
-          color: #444;
-          flex-shrink: 0;
-        }
-        
-        .section-divider {
-          text-align: center;
-          margin: 20px 0 8px;
-          position: relative;
-        }
-        
-        .section-divider span {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.7rem;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #555;
-          background: #0a0a0f;
-          padding: 0 12px;
-          position: relative;
-          z-index: 1;
-        }
-        
-        .legend-bar {
-          display: flex;
-          gap: 24px;
-          justify-content: center;
-          flex-wrap: wrap;
-          padding: 20px;
-          margin-bottom: 8px;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.78rem;
-          color: #666;
-        }
-        
-        .legend-item {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-        
-        .legend-dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-        }
-        
-        .chevron {
-          font-size: 0.7rem;
-          color: #444;
-          transition: transform 0.2s;
-        }
-        .chevron.open {
-          transform: rotate(90deg);
-        }
-        
-        
-
-        .phase-label {
-          font-family: 'DM Mono', monospace;
-          font-size: 0.6rem;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          padding: 16px 0 4px;
-          color: #555;
-          border-top: 1px solid rgba(255,255,255,0.04);
-          margin-top: 8px;
-        }
-        
-        @media (max-width: 600px) {
-          .timeline::before { left: 36px; }
-          .grade-label { width: 30px; font-size: 0.6rem; }
-        }
-
-        .page-nav {
-          display: flex;
-          justify-content: center;
-          gap: 4px;
-          padding: 0 20px 0;
-          margin-bottom: 32px;
-        }
-        .page-nav-btn {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.82rem;
-          font-weight: 500;
-          letter-spacing: 0.04em;
-          padding: 10px 28px;
-          cursor: pointer;
-          background: transparent;
-          border: none;
-          color: #555;
-          border-bottom: 2px solid transparent;
-          transition: all 0.2s;
-        }
-        .page-nav-btn:hover { color: #999; }
-        .page-nav-btn.pn-active {
-          color: #f0f0f8;
-          border-bottom-color: #f59e0b;
-        }
+        .main-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; letter-spacing:-1px; color:#fff; margin:0 0 8px; position:relative; }
+        .subtitle { font-family:'DM Sans',sans-serif; font-size:1rem; color:#888; letter-spacing:0.2em; text-transform:uppercase; margin:0 0 16px; }
+        .track-tabs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:0; padding:0 20px 40px; }
+        .track-tab { padding:10px 24px; border-radius:100px; font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.875rem; cursor:pointer; border:1.5px solid transparent; transition:all 0.2s; letter-spacing:0.05em; }
+        .track-tab.active-accel { background:#f59e0b; color:#000; border-color:#f59e0b; box-shadow:0 0 20px rgba(245,158,11,0.4); }
+        .track-tab.active-adv   { background:#60a5fa; color:#000; border-color:#60a5fa; box-shadow:0 0 20px rgba(96,165,250,0.4); }
+        .track-tab.active-enr   { background:#c084fc; color:#000; border-color:#c084fc; box-shadow:0 0 20px rgba(192,132,252,0.4); }
+        .track-tab.active-std   { background:#94a3b8; color:#000; border-color:#94a3b8; box-shadow:0 0 20px rgba(148,163,184,0.4); }
+        .track-tab.inactive { background:transparent; color:#666; border-color:#333; }
+        .track-tab.inactive:hover { border-color:#555; color:#999; }
+        .timeline { max-width:900px; margin:0 auto; padding:0 24px 80px; position:relative; }
+        .timeline::before { content:''; position:absolute; left:50px; top:0; bottom:0; width:2px; background:linear-gradient(180deg,transparent,rgba(${gridRgb},0.3) 10%,rgba(${gridRgb},0.3) 90%,transparent); }
+        .grade-row { display:flex; gap:20px; margin-bottom:12px; align-items:flex-start; position:relative; }
+        .grade-label { font-family:'DM Mono',monospace; font-size:0.7rem; color:#555; width:44px; flex-shrink:0; padding-top:18px; text-align:right; letter-spacing:0.05em; }
+        .timeline-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; margin-top:20px; border:2px solid; position:relative; z-index:1; transition:all 0.2s; }
+        .grade-card { flex:1; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:12px; overflow:hidden; cursor:pointer; transition:all 0.25s; }
+        .grade-card:hover, .grade-card.expanded { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.12); transform:translateX(4px); }
+        .grade-card.highlight-card { border-color:rgba(${gridRgb},0.3); background:rgba(${gridRgb},0.05); box-shadow:0 0 30px rgba(${gridRgb},0.1); }
+        .card-header { padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+        .course-name { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:600; color:#f0f0f8; flex:1; line-height:1.3; }
+        .badge { font-family:'DM Mono',monospace; font-size:0.65rem; padding:4px 10px; border-radius:100px; letter-spacing:0.08em; white-space:nowrap; flex-shrink:0; }
+        .topics-panel { padding:0 20px 16px; border-top:1px solid rgba(255,255,255,0.06); }
+        .topics-list { list-style:none; padding:12px 0 0; margin:0; display:flex; flex-direction:column; gap:6px; }
+        .topic-item { font-family:'DM Sans',sans-serif; font-size:0.83rem; color:#999; line-height:1.4; display:flex; gap:8px; align-items:flex-start; }
+        .topic-item::before { content:'—'; color:#444; flex-shrink:0; }
+        .section-divider { text-align:center; margin:20px 0 8px; position:relative; }
+        .section-divider span { font-family:'DM Sans',sans-serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:#555; background:#0a0a0f; padding:0 12px; position:relative; z-index:1; }
+        .legend-bar { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; padding:20px; margin-bottom:8px; font-family:'DM Sans',sans-serif; font-size:0.78rem; color:#666; }
+        .chevron { font-size:0.7rem; color:#444; transition:transform 0.2s; }
+        .chevron.open { transform:rotate(90deg); }
+        .phase-label { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; padding:16px 0 4px; color:#555; border-top:1px solid rgba(255,255,255,0.04); margin-top:8px; }
+        .page-nav { display:flex; justify-content:center; gap:4px; padding:0 20px 0; margin-bottom:32px; }
+        .page-nav-btn { font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:500; letter-spacing:0.04em; padding:10px 28px; cursor:pointer; background:transparent; border:none; color:#555; border-bottom:2px solid transparent; transition:all 0.2s; }
+        .page-nav-btn:hover { color:#999; }
+        .page-nav-btn.pn-active { color:#f0f0f8; border-bottom-color:${accent}; }
+        @media (max-width:600px) { .timeline::before { left:36px; } .grade-label { width:30px; font-size:0.6rem; } }
       `}</style>
+
+      {/* Subject Dropdown */}
+      {dropOpen && (
+        <SubjectDropdownMenu
+          activeSubject={activeSubject}
+          onSelect={setActiveSubject}
+          onClose={() => setDropOpen(false)}
+          anchorRef={btnRef}
+        />
+      )}
 
       {/* Header */}
       <div className="curriculum-header">
         <div className="header-grid" />
         <p className="subtitle">Montgomery High School</p>
         <h1 className="main-title">
-          <span>Mathematics</span> Curriculum
+          <SubjectTitle
+            currentSubject={activeSubject}
+            accentColor={accent}
+            open={dropOpen}
+            setOpen={setDropOpen}
+            btnRef={btnRef}
+          />
+          {" "}Curriculum
         </h1>
         <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#666", fontSize: "0.9rem", maxWidth: 540, margin: "0 auto 0" }}>
-          A comprehensive, multi-track program designed for students at Montgomery High School to be able to more easily explore their math progression. 
+          A comprehensive, multi-track program designed for students at Montgomery High School to be able to more easily explore their math progression.
           Pathways are advisory — high school course enrollment is based on prerequisites, not pathway assignment.
         </p>
       </div>
@@ -966,110 +832,91 @@ export default function MathCurriculum() {
       </div>
 
       {page === "map" && (<>
+        <div className="track-tabs">
+          {curriculum.tracks.map(track => (
+            <button
+              key={track}
+              className={`track-tab ${selectedTrack === track
+                ? track === "Accelerated" ? "active-accel"
+                : track === "Advanced" ? "active-adv"
+                : track === "Enriched" ? "active-enr"
+                : "active-std"
+                : "inactive"}`}
+              onClick={() => setSelectedTrack(track)}
+            >
+              {trackColors[track].label}
+            </button>
+          ))}
+        </div>
 
-      {/* Track Selector */}
-      <div className="track-tabs">
-        {curriculum.tracks.map(track => (
-          <button
-            key={track}
-            className={`track-tab ${selectedTrack === track
-              ? track === "Accelerated" ? "active-accel"
-              : track === "Advanced" ? "active-adv"
-              : track === "Enriched" ? "active-enr"
-              : "active-std"
-              : "inactive"}`}
-            onClick={() => setSelectedTrack(track)}
-          >
-            {trackColors[track].label}
-          </button>
-        ))}
-      </div>
-
-
-
-      {/* Timeline */}
-      <div className="timeline">
-        {/* High School */}
-        <div className="section-divider" style={{ marginTop: 20 }}><span>High School · Grades 9–12</span></div>
-        
-        {curriculum.grades.filter(g => g.grade >= 9).map(gradeData => {
-          const course = gradeData.courses[selectedTrack];
-          const isExpanded = expandedGrade === gradeData.grade;
-          const isHighlight = course.highlight;
-          
-          return (
-            <div key={gradeData.grade} className="grade-row">
-              <div className="grade-label">G{gradeData.grade}</div>
-              <div className="timeline-dot" style={{
-                background: course.color + "33",
-                borderColor: course.color,
-                width: isHighlight ? 16 : 12,
-                height: isHighlight ? 16 : 12,
-                boxShadow: isHighlight ? `0 0 20px ${course.color}88` : "none",
-                marginTop: isHighlight ? 18 : 20
-              }} />
-              <div
-                className={`grade-card${isExpanded ? " expanded" : ""}${isHighlight ? " highlight-card" : ""}`}
-                onClick={() => setExpandedGrade(isExpanded ? null : gradeData.grade)}
-              >
-                <div className="card-header">
-                  <div className="course-name" style={{ color: isHighlight ? "#fff" : "#f0f0f8" }}>{course.name}</div>
-                  {isHighlight && (
-                    <span className="badge" style={{ background: "#f59e0b22", color: "#f59e0b", border: "1px solid #f59e0b44" }}>
-                      AP
-                    </span>
-                  )}
-                  <span style={{ color: course.color + "aa" }} className={`chevron${isExpanded ? " open" : ""}`}>▶</span>
-                </div>
-                {isExpanded && (
-                  <div className="topics-panel">
-                    <ul className="topics-list">
-                      {course.topics.map((t, i) => {
-                        const colonIdx = t.indexOf(": ");
-                        const prefix = colonIdx > 0 ? t.slice(0, colonIdx) : null;
-                        const isSectionHeader = prefix && prefix === prefix.toUpperCase() && prefix.length < 30;
-                        if (isSectionHeader) {
-                          const rest = t.slice(colonIdx + 2);
-                          return (
-                            <li key={i}>
-                              <div className="phase-label">{prefix}</div>
-                              <div className="topic-item" style={{ marginTop: 4 }}>— {rest}</div>
-                            </li>
-                          );
-                        }
-                        return <li key={i} className="topic-item">{t}</li>;
-                      })}
-                    </ul>
+        <div className="timeline">
+          <div className="section-divider" style={{ marginTop: 20 }}><span>High School · Grades 9–12</span></div>
+          {curriculum.grades.filter(g => g.grade >= 9).map(gradeData => {
+            const course = gradeData.courses[selectedTrack];
+            const isExpanded = expandedGrade === gradeData.grade;
+            const isHighlight = course.highlight;
+            return (
+              <div key={gradeData.grade} className="grade-row">
+                <div className="grade-label">G{gradeData.grade}</div>
+                <div className="timeline-dot" style={{
+                  background: course.color + "33",
+                  borderColor: course.color,
+                  width: isHighlight ? 16 : 12,
+                  height: isHighlight ? 16 : 12,
+                  boxShadow: isHighlight ? `0 0 20px ${course.color}88` : "none",
+                  marginTop: isHighlight ? 18 : 20
+                }} />
+                <div
+                  className={`grade-card${isExpanded ? " expanded" : ""}${isHighlight ? " highlight-card" : ""}`}
+                  onClick={() => setExpandedGrade(isExpanded ? null : gradeData.grade)}
+                >
+                  <div className="card-header">
+                    <div className="course-name" style={{ color: isHighlight ? "#fff" : "#f0f0f8" }}>{course.name}</div>
+                    {isHighlight && (
+                      <span className="badge" style={{ background: `${accent}22`, color: accent, border: `1px solid ${accent}44` }}>
+                        AP
+                      </span>
+                    )}
+                    <span style={{ color: course.color + "aa" }} className={`chevron${isExpanded ? " open" : ""}`}>▶</span>
                   </div>
-                )}
+                  {isExpanded && (
+                    <div className="topics-panel">
+                      <ul className="topics-list">
+                        {course.topics.map((t, i) => {
+                          const colonIdx = t.indexOf(": ");
+                          const prefix = colonIdx > 0 ? t.slice(0, colonIdx) : null;
+                          const isSectionHeader = prefix && prefix === prefix.toUpperCase() && prefix.length < 30;
+                          if (isSectionHeader) {
+                            return (
+                              <li key={i}>
+                                <div className="phase-label">{prefix}</div>
+                                <div className="topic-item" style={{ marginTop: 4 }}>— {t.slice(colonIdx + 2)}</div>
+                              </li>
+                            );
+                          }
+                          return <li key={i} className="topic-item">{t}</li>;
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
 
-      {/* Footer note */}
-      <div style={{
-        fontFamily: "'DM Sans', sans-serif",
-        textAlign: "center",
-        padding: "0 20px 60px",
-        color: "#444",
-        fontSize: "0.78rem",
-        maxWidth: 600,
-        margin: "0 auto",
-        lineHeight: 1.7
-      }}>
-        Track placement is reviewed annually. Students may move between tracks based on performance and teacher recommendation. 
-        Prerequisites are firmly based on proficiency demonstrated over the entire year of work in the preceding course. 
-        All tracks are designed to support students in reaching the mathematics level appropriate for their college and career goals. Students requiring a waiver to enroll above recommendation must submit an application through the Mathematics Department Supervisor.
-      </div>
+        <div style={{ fontFamily:"'DM Sans',sans-serif", textAlign:"center", padding:"0 20px 60px", color:"#444", fontSize:"0.78rem", maxWidth:600, margin:"0 auto", lineHeight:1.7 }}>
+          Track placement is reviewed annually. Students may move between tracks based on performance and teacher recommendation.
+          Prerequisites are firmly based on proficiency demonstrated over the entire year of work in the preceding course.
+          All tracks are designed to support students in reaching the mathematics level appropriate for their college and career goals. Students requiring a waiver to enroll above recommendation must submit an application through the Mathematics Department Supervisor.
+        </div>
       </>)}
 
       {page === "pos" && (
         <div style={{ paddingTop: 8 }}>
-          <div style={{ textAlign: "center", padding: "0 20px 32px", maxWidth: 600, margin: "0 auto" }}>
-            <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#555", fontSize: "0.85rem", lineHeight: 1.7 }}>
-              Full course descriptions, prerequisites, and credit information for all mathematics courses at Montgomery High School. 
+          <div style={{ textAlign:"center", padding:"0 20px 32px", maxWidth:600, margin:"0 auto" }}>
+            <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>
+              Full course descriptions, prerequisites, and credit information for all mathematics courses at Montgomery High School.
               Filter by course level to view a specific tier. Honors and AP courses each carry a +5 grade point weight.
               A graphing calculator is required for most courses. Prerequisites are strictly enforced; waiver applications are available through the Mathematics Supervisor.
             </p>
@@ -1078,9 +925,8 @@ export default function MathCurriculum() {
         </div>
       )}
 
-      {/* persistent footer */}
-      <footer style={{ textAlign: "center", padding: "20px 0" }}>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#555", fontSize: "0.85rem", lineHeight: 1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 — Beta 1 (Build 3)</p>
+      <footer style={{ textAlign:"center", padding:"20px 0" }}>
+        <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 1 (Build 4) </p>
       </footer>
     </div>
   );
