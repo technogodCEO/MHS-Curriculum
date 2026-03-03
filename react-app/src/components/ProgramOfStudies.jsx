@@ -1,8 +1,30 @@
+import { useState } from "react";
+import { mathProgramOfStudies } from "../data/math";
+
+/*
+ * ProgramOfStudies
+ *
+ * Renders the "Program of Studies" tab — the full course catalog for mathematics.
+ * Shows every individual course offered (not just the 4-track pathway view), grouped
+ * by category (e.g. "High School — Mathematics") with expandable detail cards.
+ *
+ * Each card shows: course name, grade level, tier (CP / Honors / AP), credit weight,
+ * and credits. Clicking a card expands it to reveal the full description, prerequisites,
+ * and topic chips.
+ *
+ * A filter bar at the top lets users narrow by tier (All / CP / Honors / AP).
+ *
+ * State (local — nothing outside this component needs to know):
+ *   expandedCourse  — the id of the currently open course card (null = all closed)
+ *   filterTier      — the currently selected tier filter ("All", "CP", "Honors", or "AP")
+ */
 export function ProgramOfStudies() {
   const [expandedCourse, setExpandedCourse] = useState(null);
   const [filterTier, setFilterTier] = useState("All");
 
   const allTiers = ["All", "CP", "Honors", "AP"];
+
+  // Color scheme for each tier badge
   const tierStyles = {
     CP:     { bg: "#94a3b822", color: "#94a3b8", border: "#94a3b844" },
     Honors: { bg: "#c084fc22", color: "#c084fc", border: "#c084fc44" },
@@ -52,6 +74,7 @@ export function ProgramOfStudies() {
         .pos-weight-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
       `}</style>
 
+      {/* ── Tier filter buttons (All / CP / Honors / AP) ── */}
       <div className="pos-filter-bar">
         {allTiers.map(t => {
           const isActive = filterTier === t;
@@ -64,6 +87,7 @@ export function ProgramOfStudies() {
         })}
       </div>
 
+      {/* ── Grade weight legend ── */}
       <div className="pos-weight-legend">
         {[["CP","Unweighted (0)","#94a3b8"],["Honors","+5 Weight","#c084fc"],["AP","+5 Weight","#60a5fa"]].map(([tier,wt,clr])=>(
           <div key={tier} className="pos-weight-legend-item">
@@ -74,20 +98,28 @@ export function ProgramOfStudies() {
         ))}
       </div>
 
-      {programOfStudies.map(cat => {
+      {/* ── Course categories (currently just one: High School — Mathematics) ── */}
+      {mathProgramOfStudies.map(cat => {
+        // Filter courses by selected tier; if "All" selected, show everything
         const visible = filterTier === "All" ? cat.courses : cat.courses.filter(c => c.tier === filterTier);
         if (!visible.length) return null;
+
         return (
           <div key={cat.category} className="pos-category">
+            {/* Category header with color dot, title, and grade range */}
             <div className="pos-cat-header">
               <div className="pos-cat-dot" style={{ background: cat.color }} />
               <div className="pos-cat-title">{cat.category}</div>
               <div className="pos-cat-grades">{cat.grades}</div>
             </div>
+
+            {/* ── Individual course cards ── */}
             {visible.map(course => {
               const isOpen = expandedCourse === course.id;
               const ts = course.tier ? tierStyles[course.tier] : { bg:"#94a3b822", color:"#94a3b8", border:"#94a3b844" };
+
               return (
+                // Clicking the card toggles it open/closed
                 <div key={course.id} className={`pos-card${isOpen ? " open" : ""}`} onClick={() => setExpandedCourse(isOpen ? null : course.id)}>
                   <div className="pos-card-header">
                     <div className="pos-card-name">{course.name}</div>
@@ -96,12 +128,17 @@ export function ProgramOfStudies() {
                       {course.tier && <span className="pos-badge" style={{ background: ts.bg, color: ts.color, borderColor: ts.border }}>{course.tier}</span>}
                       {course.weight !== undefined && <span className="pos-weight-badge">{course.weight === 0 ? "Unweighted" : `+${course.weight}`}</span>}
                       <span className="pos-credit">{course.credits} cr</span>
+                      {/* Chevron rotates 90° when card is open */}
                       <span className="pos-chevron" style={{ transform: isOpen ? "rotate(90deg)" : "none" }}>▶</span>
                     </div>
                   </div>
+
+                  {/* ── Expanded body: description, prerequisites, topic chips ── */}
                   {isOpen && (
                     <div className="pos-body">
                       <p className="pos-desc">{course.description}</p>
+
+                      {/* Prerequisites section — uses prereqs array if present, falls back to prereq string */}
                       <div className="pos-prereq-section">
                         <div className="pos-lbl">Prerequisites</div>
                         {course.prereqs ? (
@@ -119,8 +156,12 @@ export function ProgramOfStudies() {
                           <div style={{fontFamily:"'DM Sans',sans-serif",fontSize:"0.8rem",color:"#777"}}>{course.prereq || "None"}</div>
                         )}
                       </div>
+
+                      {/* Topic chips — each topic rendered as a small pill */}
                       <div className="pos-lbl">Topics Covered</div>
-                      <div className="pos-chips">{course.topics.map((t, i) => <span key={i} className="pos-chip">{t}</span>)}</div>
+                      <div className="pos-chips">
+                        {course.topics.map((t, i) => <span key={i} className="pos-chip">{t}</span>)}
+                      </div>
                     </div>
                   )}
                 </div>

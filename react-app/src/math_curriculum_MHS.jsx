@@ -1,30 +1,66 @@
-// ——— Package Imports ────────────────────────────────────────────────────
-import { useState, useRef, useEffect } from "react";
+// ── Package Imports ───────────────────────────────────────────────────────────
+import { useState, useRef } from "react";
 
-// ─── Data Imports (from other files) ────────────────────────────────────────────────────
+// ── Data Imports ──────────────────────────────────────────────────────────────
+// subjects.js — the list of all six subjects (Math, English, Science, etc.)
+//   with their accent colors, grid colors, and availability flags
 import { subjects } from "./data/subjects.js";
+
+// math.js — the math-specific data: track/grade course map, pathway colors, and
+//   the full program of studies course catalog. When other subjects are built out,
+//   their data will be imported here and swapped in based on activeSubject.
 import { mathTracks, mathTrackColors, mathProgramOfStudies } from "./data/math";
 
-// ─── React Component Imports (from other files) ────────────────────────────────────────────────────
+// ── Component Imports ─────────────────────────────────────────────────────────
+// SubjectTitle        — the clickable subject name in the header ("Mathematics ▾")
+// SubjectDropdownMenu — the floating subject switcher panel (rendered at root level)
+// CurriculumMap       — the "Curriculum Map" tab (grade timeline + track selector)
+// ProgramOfStudies    — the "Program of Studies" tab (full filterable course catalog)
 import { SubjectTitle } from "./components/SubjectTitle.jsx";
 import { SubjectDropdownMenu } from "./components/SubjectDropdownMenu.jsx";
 import { ProgramOfStudies } from "./components/ProgramOfStudies.jsx";
 import { CurriculumMap } from "./components/CurriculumMap.jsx";
 
-// ─── MAIN APP ───────────────────────────────────────────────────────────────
-
+/*
+ * MathCurriculum  (default export — rendered by App.js)
+ *
+ * Root component of the MHS Curriculum site. Owns all shared state and wires
+ * together the header, navigation, and page content.
+ *
+ * State:
+ *   page           — which tab is active: "map" (Curriculum Map) or "pos" (Program of Studies)
+ *   activeSubject  — the currently selected subject object from subjects.js; defaults to Math
+ *   dropOpen       — whether the subject switcher dropdown is open
+ *   btnRef         — ref attached to the SubjectTitle button, shared with SubjectDropdownMenu
+ *                    so the menu knows where to position itself on the page
+ *
+ * Derived values (recalculated whenever activeSubject changes):
+ *   accent         — hex color string used to tint interactive elements (badges, nav underline)
+ *   gridRgb        — "R, G, B" string injected into the CSS <style> block for the header grid
+ *                    and timeline line colors (CSS template literals require this format)
+ *
+ * Layout structure:
+ *   <div root (position: relative)>        ← anchor for absolute-positioned dropdown
+ *     <SubjectDropdownMenu />              ← floating menu, sibling of header (not inside it)
+ *     <header>                             ← grid background, subtitle, title, description
+ *       <SubjectTitle />                   ← clickable subject name button
+ *     <nav>                                ← Curriculum Map / Program of Studies tabs
+ *     <CurriculumMap />   or               ← rendered based on active page
+ *     <ProgramOfStudies />
+ *     <footer />
+ */
 export default function MathCurriculum() {
   const [page, setPage] = useState("map");
-  const [selectedTrack, setSelectedTrack] = useState("Accelerated");
-  const [expandedGrade, setExpandedGrade] = useState(null);
-  const [activeSubject, setActiveSubject] = useState(subjects[0]); // Mathematics
-  const [dropOpen, setDropOpen] = useState(false)
-  const btnRef = useRef(null)
+  const [activeSubject, setActiveSubject] = useState(subjects[0]); // defaults to Mathematics
+  const [dropOpen, setDropOpen] = useState(false);
+  const btnRef = useRef(null); // attached to SubjectTitle button, read by SubjectDropdownMenu
 
+  // Derived from activeSubject — passed into style blocks and child components
   const accent = activeSubject.accent;
   const gridRgb = activeSubject.gridColor;
 
   return (
+    // position: relative makes this the anchor for the absolute-positioned dropdown menu
     <div style={{
       fontFamily: "'Georgia', 'Times New Roman', serif",
       background: "linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 50%, #0a0f0a 100%)",
@@ -32,6 +68,9 @@ export default function MathCurriculum() {
       color: "#e8e8f0",
       position: "relative",
     }}>
+      {/* ── Global styles ─────────────────────────────────────────────────────
+          Injected as a <style> tag so they can use JS variables (accent, gridRgb).
+          These classes are used by CurriculumMap and ProgramOfStudies child components. */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; }
@@ -77,7 +116,6 @@ export default function MathCurriculum() {
         .topic-item::before { content:'—'; color:#444; flex-shrink:0; }
         .section-divider { text-align:center; margin:20px 0 8px; position:relative; }
         .section-divider span { font-family:'DM Sans',sans-serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:#555; background:#0a0a0f; padding:0 12px; position:relative; z-index:1; }
-        .legend-bar { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; padding:20px; margin-bottom:8px; font-family:'DM Sans',sans-serif; font-size:0.78rem; color:#666; }
         .chevron { font-size:0.7rem; color:#444; transition:transform 0.2s; }
         .chevron.open { transform:rotate(90deg); }
         .phase-label { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; padding:16px 0 4px; color:#555; border-top:1px solid rgba(255,255,255,0.04); margin-top:8px; }
@@ -88,7 +126,9 @@ export default function MathCurriculum() {
         @media (max-width:600px) { .timeline::before { left:36px; } .grade-label { width:30px; font-size:0.6rem; } }
       `}</style>
 
-      {/* Subject Dropdown */}
+      {/* ── Subject dropdown menu ──────────────────────────────────────────────
+          Rendered here at root level (not inside the header) so it isn't clipped
+          by the header's overflow. Only mounted when dropOpen is true. */}
       {dropOpen && (
         <SubjectDropdownMenu
           activeSubject={activeSubject}
@@ -98,11 +138,14 @@ export default function MathCurriculum() {
         />
       )}
 
-      {/* Header */}
+      {/* ── Header ────────────────────────────────────────────────────────────
+          Contains the animated grid background, school name, subject title button,
+          and the short description paragraph. */}
       <div className="curriculum-header">
-        <div className="header-grid" />
+        <div className="header-grid" /> {/* decorative dot-grid, color changes with subject */}
         <p className="subtitle">Montgomery High School</p>
         <h1 className="main-title">
+          {/* SubjectTitle is the clickable "Mathematics ▾" button */}
           <SubjectTitle
             currentSubject={activeSubject}
             accentColor={accent}
@@ -118,7 +161,9 @@ export default function MathCurriculum() {
         </p>
       </div>
 
-      {/* Page Navigation */}
+      {/* ── Page navigation tabs ──────────────────────────────────────────────
+          Switches between the Curriculum Map and Program of Studies views.
+          The active tab gets an underline in the subject's accent color. */}
       <div className="page-nav">
         <button className={`page-nav-btn${page === "map" ? " pn-active" : ""}`} onClick={() => setPage("map")}>
           Curriculum Map
@@ -128,8 +173,13 @@ export default function MathCurriculum() {
         </button>
       </div>
 
-      {page === "map" && <CurriculumMap/>}
+      {/* ── Page content ─────────────────────────────────────────────────────
+          Only one page renders at a time based on the `page` state value. */}
 
+      {/* Curriculum Map — grade timeline with pathway selector */}
+      {page === "map" && <CurriculumMap accent={accent} gridRgb={gridRgb} />}
+
+      {/* Program of Studies — full filterable course catalog */}
       {page === "pos" && (
         <div style={{ paddingTop: 8 }}>
           <div style={{ textAlign:"center", padding:"0 20px 32px", maxWidth:600, margin:"0 auto" }}>
@@ -143,8 +193,11 @@ export default function MathCurriculum() {
         </div>
       )}
 
+      {/* ── Footer ── */}
       <footer style={{ textAlign:"center", padding:"20px 0" }}>
-        <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 1 (Build 6) </p>
+        <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>
+          2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 1 (Build 6)
+        </p>
       </footer>
     </div>
   );
