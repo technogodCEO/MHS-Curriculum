@@ -484,7 +484,7 @@ function SubjectDropdownMenu({ activeSubject, onSelect, onClose, anchorRef }) {
       const rect = anchorRef.current.getBoundingClientRect();
       setPos({ top: rect.bottom + window.scrollY + 8, left: rect.left + rect.width / 2 });
     }
-  }, []);
+  }, [anchorRef]);
 
   // closes menu when you click anywhere outside it
   useEffect(() => {
@@ -496,7 +496,7 @@ function SubjectDropdownMenu({ activeSubject, onSelect, onClose, anchorRef }) {
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
+  }, [anchorRef, onClose]);
 
   return (
     <div ref={menuRef} style={{ position:"absolute", top:pos.top, left:pos.left, transform:"translateX(-50%)", zIndex:200,
@@ -926,7 +926,7 @@ export default function MathCurriculum() {
       )}
 
       <footer style={{ textAlign:"center", padding:"20px 0" }}>
-        <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 1 (Build 4) </p>
+        <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 1 (Build 5) </p>
       </footer>
     </div>
   );
