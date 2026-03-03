@@ -208,7 +208,7 @@ const curriculum = {
             "FOURIER ANALYSIS: Frequency analysis, Fourier Series, Transforms, signal processing",
             "Prerequisite: 85% in AP Calculus C or 85% in AP Calculus BC — Summer assignment required"
           ],
-          color: "#06b6d4",
+          color: "#f59e0b",
           highlight: false
         },
         Advanced: {
