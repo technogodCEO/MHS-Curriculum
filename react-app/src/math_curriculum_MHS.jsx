@@ -148,7 +148,7 @@ const curriculum = {
             "Applications of integrals in polar/parametric settings",
             "Differential equations review and extension",
             "Prerequisite: 80% in AP Calculus AB",
-            "This course is equivalent to a 2nd semester college calculus course"
+            "This course is equivalent to a 2nd semester college calculus course or the second half of AP Calculus BC"
           ],
           color: "#f59e0b",
           highlight: true
@@ -926,7 +926,7 @@ export default function MathCurriculum() {
       )}
 
       <footer style={{ textAlign:"center", padding:"20px 0" }}>
-        <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 1 (Build 5) </p>
+        <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 1 (Build 6) </p>
       </footer>
     </div>
   );
