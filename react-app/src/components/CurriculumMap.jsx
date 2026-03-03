@@ -1,19 +1,4 @@
-// ——— Package Imports ────────────────────────────────────────────────────
-import { useState, useRef, useEffect } from "react";
-
-// ─── Data Imports (from other files) ────────────────────────────────────────────────────
-import { subjects } from "./data/subjects.js";
-import { mathTracks, mathTrackColors, mathProgramOfStudies } from "./data/math";
-
-// ─── React Component Imports (from other files) ────────────────────────────────────────────────────
-import { SubjectTitle } from "./components/SubjectTitle.jsx";
-import { SubjectDropdownMenu } from "./components/SubjectDropdownMenu.jsx";
-import { ProgramOfStudies } from "./components/ProgramOfStudies.jsx";
-import { CurriculumMap } from "./components/CurriculumMap.jsx";
-
-// ─── MAIN APP ───────────────────────────────────────────────────────────────
-
-export default function MathCurriculum() {
+export function CurriculumMap() {
   const [page, setPage] = useState("map");
   const [selectedTrack, setSelectedTrack] = useState("Accelerated");
   const [expandedGrade, setExpandedGrade] = useState(null);
@@ -88,64 +73,86 @@ export default function MathCurriculum() {
         @media (max-width:600px) { .timeline::before { left:36px; } .grade-label { width:30px; font-size:0.6rem; } }
       `}</style>
 
-      {/* Subject Dropdown */}
-      {dropOpen && (
-        <SubjectDropdownMenu
-          activeSubject={activeSubject}
-          onSelect={setActiveSubject}
-          onClose={() => setDropOpen(false)}
-          anchorRef={btnRef}
-        />
-      )}
-
-      {/* Header */}
-      <div className="curriculum-header">
-        <div className="header-grid" />
-        <p className="subtitle">Montgomery High School</p>
-        <h1 className="main-title">
-          <SubjectTitle
-            currentSubject={activeSubject}
-            accentColor={accent}
-            open={dropOpen}
-            setOpen={setDropOpen}
-            btnRef={btnRef}
-          />
-          {" "}Curriculum
-        </h1>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#666", fontSize: "0.9rem", maxWidth: 540, margin: "0 auto 0" }}>
-          A comprehensive, multi-track program designed for students at Montgomery High School to be able to more easily explore their math progression.
-          Pathways are advisory — high school course enrollment is based on prerequisites, not pathway assignment.
-        </p>
-      </div>
-
-      {/* Page Navigation */}
-      <div className="page-nav">
-        <button className={`page-nav-btn${page === "map" ? " pn-active" : ""}`} onClick={() => setPage("map")}>
-          Curriculum Map
-        </button>
-        <button className={`page-nav-btn${page === "pos" ? " pn-active" : ""}`} onClick={() => setPage("pos")}>
-          Program of Studies
-        </button>
-      </div>
-
-      {page === "map" && <CurriculumMap/>}
-
-      {page === "pos" && (
-        <div style={{ paddingTop: 8 }}>
-          <div style={{ textAlign:"center", padding:"0 20px 32px", maxWidth:600, margin:"0 auto" }}>
-            <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>
-              Full course descriptions, prerequisites, and credit information for all mathematics courses at Montgomery High School.
-              Filter by course level to view a specific tier. Honors and AP courses each carry a +5 grade point weight.
-              A graphing calculator is required for most courses. Prerequisites are strictly enforced; waiver applications are available through the Mathematics Supervisor.
-            </p>
-          </div>
-          <ProgramOfStudies />
+      {page === "map" && (<>
+        <div className="track-tabs">
+          {curriculum.tracks.map(track => (
+            <button
+              key={track}
+              className={`track-tab ${selectedTrack === track
+                ? track === "Accelerated" ? "active-accel"
+                : track === "Advanced" ? "active-adv"
+                : track === "Enriched" ? "active-enr"
+                : "active-std"
+                : "inactive"}`}
+              onClick={() => setSelectedTrack(track)}
+            >
+              {trackColors[track].label}
+            </button>
+          ))}
         </div>
-      )}
 
-      <footer style={{ textAlign:"center", padding:"20px 0" }}>
-        <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 1 (Build 6) </p>
-      </footer>
+        <div className="timeline">
+          <div className="section-divider" style={{ marginTop: 20 }}><span>High School · Grades 9–12</span></div>
+          {curriculum.grades.filter(g => g.grade >= 9).map(gradeData => {
+            const course = gradeData.courses[selectedTrack];
+            const isExpanded = expandedGrade === gradeData.grade;
+            const isHighlight = course.highlight;
+            return (
+              <div key={gradeData.grade} className="grade-row">
+                <div className="grade-label">G{gradeData.grade}</div>
+                <div className="timeline-dot" style={{
+                  background: course.color + "33",
+                  borderColor: course.color,
+                  width: isHighlight ? 16 : 12,
+                  height: isHighlight ? 16 : 12,
+                  boxShadow: isHighlight ? `0 0 20px ${course.color}88` : "none",
+                  marginTop: isHighlight ? 18 : 20
+                }} />
+                <div
+                  className={`grade-card${isExpanded ? " expanded" : ""}${isHighlight ? " highlight-card" : ""}`}
+                  onClick={() => setExpandedGrade(isExpanded ? null : gradeData.grade)}
+                >
+                  <div className="card-header">
+                    <div className="course-name" style={{ color: isHighlight ? "#fff" : "#f0f0f8" }}>{course.name}</div>
+                    {isHighlight && (
+                      <span className="badge" style={{ background: `${accent}22`, color: accent, border: `1px solid ${accent}44` }}>
+                        AP
+                      </span>
+                    )}
+                    <span style={{ color: course.color + "aa" }} className={`chevron${isExpanded ? " open" : ""}`}>▶</span>
+                  </div>
+                  {isExpanded && (
+                    <div className="topics-panel">
+                      <ul className="topics-list">
+                        {course.topics.map((t, i) => {
+                          const colonIdx = t.indexOf(": ");
+                          const prefix = colonIdx > 0 ? t.slice(0, colonIdx) : null;
+                          const isSectionHeader = prefix && prefix === prefix.toUpperCase() && prefix.length < 30;
+                          if (isSectionHeader) {
+                            return (
+                              <li key={i}>
+                                <div className="phase-label">{prefix}</div>
+                                <div className="topic-item" style={{ marginTop: 4 }}>— {t.slice(colonIdx + 2)}</div>
+                              </li>
+                            );
+                          }
+                          return <li key={i} className="topic-item">{t}</li>;
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div style={{ fontFamily:"'DM Sans',sans-serif", textAlign:"center", padding:"0 20px 60px", color:"#444", fontSize:"0.78rem", maxWidth:600, margin:"0 auto", lineHeight:1.7 }}>
+          Track placement is reviewed annually. Students may move between tracks based on performance and teacher recommendation.
+          Prerequisites are firmly based on proficiency demonstrated over the entire year of work in the preceding course.
+          All tracks are designed to support students in reaching the mathematics level appropriate for their college and career goals. Students requiring a waiver to enroll above recommendation must submit an application through the Mathematics Department Supervisor.
+        </div>
+      </>)}
     </div>
   );
 }
