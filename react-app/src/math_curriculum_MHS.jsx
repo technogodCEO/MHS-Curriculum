@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 
 // ── Data Imports ──────────────────────────────────────────────────────────────
+
 // subjects.js — the list of all six subjects (Math, English, Science, etc.)
 //   with their accent colors, grid colors, and availability flags
 import { subjects } from "./data/subjects.js";
@@ -9,9 +10,10 @@ import { subjects } from "./data/subjects.js";
 // math.js — the math-specific data: track/grade course map, pathway colors, and
 //   the full program of studies course catalog. When other subjects are built out,
 //   their data will be imported here and swapped in based on activeSubject.
-import { mathTracks, mathTrackColors, mathProgramOfStudies } from "./data/math";
+//import { mathTracks, mathTrackColors, mathProgramOfStudies } from "./data/math"; -> the import is unused and thus should be commented
 
 // ── Component Imports ─────────────────────────────────────────────────────────
+
 // SubjectTitle        — the clickable subject name in the header ("Mathematics ▾")
 // SubjectDropdownMenu — the floating subject switcher panel (rendered at root level)
 // CurriculumMap       — the "Curriculum Map" tab (grade timeline + track selector)
