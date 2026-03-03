@@ -596,7 +596,6 @@ export default function MathCurriculum() {
   const [page, setPage] = useState("map");
   const [selectedTrack, setSelectedTrack] = useState("Accelerated");
   const [expandedGrade, setExpandedGrade] = useState(null);
-  const [hoveredGrade, setHoveredGrade] = useState(null);
 
   return (
     <div style={{
@@ -1078,6 +1077,10 @@ export default function MathCurriculum() {
         </div>
       )}
 
+      {/* persistent footer */}
+      <footer style={{ textAlign: "center", padding: "20px 0" }}>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#555", fontSize: "0.85rem", lineHeight: 1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0</p>
+      </footer>
     </div>
   );
 }
