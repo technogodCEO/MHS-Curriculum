@@ -1079,7 +1079,7 @@ export default function MathCurriculum() {
 
       {/* persistent footer */}
       <footer style={{ textAlign: "center", padding: "20px 0" }}>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#555", fontSize: "0.85rem", lineHeight: 1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0</p>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#555", fontSize: "0.85rem", lineHeight: 1.7 }}>2026 © Roshan Kareer, GNU General Public License 3.0 — Beta 1.0</p>
       </footer>
     </div>
   );
