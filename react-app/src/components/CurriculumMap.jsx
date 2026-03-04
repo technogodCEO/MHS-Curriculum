@@ -34,12 +34,14 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
         case 'language': return { trackSubject: languageTracks, trackColorsSubject: languageTrackColors };
         case 'history':  return { trackSubject: historyTracks,  trackColorsSubject: historyTrackColors };
         case 'english':  return { trackSubject: englishTracks,  trackColorsSubject: englishTrackColors };
-        default: return { trackSubject: 'Error/not implemented', trackColorsSubject: 'Error/not implemented'};
+        default:
+          console.warn(`CurriculumMap: unknown subject "${type}", falling back to math`);
+          return { trackSubject: mathTracks, trackColorsSubject: mathTrackColors };
     }
-	};
+  };
 
-	//declaring the subjects in use based on this function
-	const { trackSubject, trackColorsSubject } = subject(activeSubject.id)
+  //declaring the subjects in use based on this function
+  const { trackSubject, trackColorsSubject } = subject(activeSubject.id)
 
   const effectiveTrack = trackSubject.tracks.includes(selectedTrack)
     ? selectedTrack

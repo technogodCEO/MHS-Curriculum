@@ -83,7 +83,7 @@ export const scienceTracks = {
             "Prerequisite: Successful completion of HIPELS; concurrent or completed Algebra II",
             "AP exam preparation"
           ],
-          color: "#0d9488",
+          color: "#0f766e",
           highlight: true
         }
       }
@@ -165,7 +165,7 @@ export const scienceTracks = {
             "Summer assignment required — assessed in first 2 weeks",
             "AP exam preparation"
           ],
-          color: "#0d9488",
+          color: "#0f766e",
           highlight: true
         }
       }
@@ -248,7 +248,7 @@ export const scienceTracks = {
             "AP exam preparation",
             "Summer assignments required"
           ],
-          color: "#0d9488",
+          color: "#0f766e",
           highlight: true
         }
       }
@@ -325,7 +325,7 @@ export const scienceTracks = {
             "AP exam preparation",
             "Summer assignments required"
           ],
-          color: "#0d9488",
+          color: "#0f766e",
           highlight: true
         }
       }
