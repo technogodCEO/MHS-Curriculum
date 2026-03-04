@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { mathTracks, mathTrackColors } from "../data/math";
+import { scienceTracks, scienceTrackColors } from "../data/science";
+import { languageTracks, languageTrackColors } from "../data/language";
+import { historyTracks, historyTrackColors } from "../data/history";
+import { englishTracks, englishTrackColors } from "../data/english";
 
 /*
  * CurriculumMap
@@ -25,13 +29,22 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
   //subject selection function
   const subject = (type) => {
     switch (type) {
-        case 'math': return { trackSubject: mathTracks, trackColorsSubject: mathTrackColors };
+        case 'math':     return { trackSubject: mathTracks,     trackColorsSubject: mathTrackColors };
+        case 'science':  return { trackSubject: scienceTracks,  trackColorsSubject: scienceTrackColors };
+        case 'language': return { trackSubject: languageTracks, trackColorsSubject: languageTrackColors };
+        case 'history':  return { trackSubject: historyTracks,  trackColorsSubject: historyTrackColors };
+        case 'english':  return { trackSubject: englishTracks,  trackColorsSubject: englishTrackColors };
         default: return { trackSubject: 'Error/not implemented', trackColorsSubject: 'Error/not implemented'};
     }
 	};
 
 	//declaring the subjects in use based on this function
 	const { trackSubject, trackColorsSubject } = subject(activeSubject.id)
+
+  const effectiveTrack = trackSubject.tracks.includes(selectedTrack)
+    ? selectedTrack
+    : trackSubject.tracks[0];
+
 
   return (
     <>
@@ -40,7 +53,13 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
         {trackSubject.tracks.map(track => (
           <button
             key={track}
-            className={`track-tab ${selectedTrack === track ? trackColorsSubject[track].activeClass : "inactive"}`}
+            className={`track-tab ${effectiveTrack === track ? "" : "inactive"}`}
+            style={effectiveTrack === track ? {
+              background: trackColorsSubject[track].bg,
+              color: trackColorsSubject[track].text,
+              borderColor: trackColorsSubject[track].bg,
+              boxShadow: `0 0 20px ${trackColorsSubject[track].bg}66`
+            } : {}}
             onClick={() => setSelectedTrack(track)}
           >
             {trackColorsSubject[track].label}
@@ -56,7 +75,7 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
 
         {/* One row per grade — filters to grades 9+ in case middle school grades are added later */}
         {trackSubject.grades.filter(g => g.grade >= 9).map(gradeData => {
-          const course = gradeData.courses[selectedTrack]; // pick the course for the active pathway
+          const course = gradeData.courses[effectiveTrack]; // pick the course for the active pathway
           const isExpanded = expandedGrade === gradeData.grade;
           const isHighlight = course.highlight; // AP courses get a larger dot and glowing border
 

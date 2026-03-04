@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { mathProgramOfStudies } from "../data/math";
+import { scienceProgramOfStudies } from "../data/science";
+import { languageProgramOfStudies } from "../data/language";
+import { historyProgramOfStudies } from "../data/history";
+import { englishProgramOfStudies } from "../data/english";
 
 /*
  * ProgramOfStudies
@@ -34,13 +38,22 @@ export function ProgramOfStudies({ activeSubject }) {
   //subject selection function
   const subject = (type) => {
     switch (type) {
-      case 'math': return { posSubject: mathProgramOfStudies};
+      case 'math':     return { posSubject: mathProgramOfStudies };
+      case 'science':  return { posSubject: scienceProgramOfStudies };
+      case 'language': return { posSubject: languageProgramOfStudies };
+      case 'history':  return { posSubject: historyProgramOfStudies };
+      case 'english':  return { posSubject: englishProgramOfStudies };
       default: return { posSubject: 'Error/not implemented' };
     }
   };
 
   //declaring the subjects in use based on this function
   const { posSubject } = subject(activeSubject.id)
+
+  useEffect(() => {
+    setExpandedCourse(null);
+    setFilterTier("All");
+  }, [activeSubject]);
   
 
   return (
