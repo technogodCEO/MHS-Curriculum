@@ -35,7 +35,9 @@ export function ProgramOfStudies({ activeSubject }) {
     AP:     { bg: "#a5adb822", color: "#60a5fa", border: "#60a5fa44" },
   };
 
-  //subject selection function
+  // Maps a subject ID string to the correct Program of Studies data array for that subject.
+  // Returns an object with:
+  //   posSubject — the *ProgramOfStudies array (categories → courses) for the active subject
   const subject = (type) => {
     switch (type) {
       case 'math':     return { posSubject: mathProgramOfStudies };
@@ -47,9 +49,12 @@ export function ProgramOfStudies({ activeSubject }) {
     }
   };
 
-  //declaring the subjects in use based on this function
+  // Destructure the correct Program of Studies data for the active subject
   const { posSubject } = subject(activeSubject.id)
 
+  // Reset expanded card and tier filter whenever the user switches subjects.
+  // Without this, switching from Math → Science could leave a Math course card
+  // open (invalid id) or a stale tier filter hiding all Science courses.
   useEffect(() => {
     setExpandedCourse(null);
     setFilterTier("All");

@@ -1,3 +1,44 @@
+/*
+ * math.js
+ *
+ * All data for the Mathematics subject. Three named exports are used by the app:
+ *
+ *   mathTracks  — grade-by-grade course map for the Curriculum Map tab.
+ *     .tracks          — ordered array of pathway names (used as tab labels and object keys)
+ *     .grades[]        — one entry per grade (9–12), each containing:
+ *       .grade           — numeric grade level
+ *       .courses         — object keyed by pathway name; each value is a course object:
+ *         .name            — course title string
+ *         .topics[]        — topic strings shown when the card is expanded;
+ *                            ALL-CAPS prefix before ": " renders as a section header
+ *         .color           — hex color for the timeline dot and card accents
+ *         .highlight       — true for AP courses; adds a glow effect and AP badge
+ *
+ *   mathTrackColors  — display metadata for each pathway tab button.
+ *     Keyed by pathway name (matching mathTracks.tracks[]). Each value has:
+ *       .bg          — button background color when the tab is active
+ *       .text        — button text color when active
+ *       .label       — full label shown on the tab button (includes emoji)
+ *       .activeClass — CSS class name (legacy class-based styling, see math_curriculum_MHS.jsx)
+ *
+ *   mathProgramOfStudies  — full course catalog for the Program of Studies tab.
+ *     Array of category objects, each with:
+ *       .category   — section heading (e.g. "High School — Mathematics")
+ *       .color      — accent dot color next to the heading
+ *       .grades     — grade range string (e.g. "Grades 9–12")
+ *       .courses[]  — individual course objects:
+ *           .id          — unique string id used for React keys and expansion state
+ *           .name        — course title
+ *           .tier        — "CP" | "Honors" | "AP" — controls badge color and filter
+ *           .weight      — grade point weight added (0 for CP, 5 for Honors/AP)
+ *           .gradeLevel  — display string for typical grade(s) (e.g. "Grade 10 (typical)")
+ *           .credits     — credit value string (e.g. "5")
+ *           .description — full paragraph shown when the card is expanded
+ *           .prereqs[]   — structured prerequisites: [{ course, minGrade, note }]
+ *                          (preferred over .prereq string)
+ *           .prereq      — plain string fallback if no structured prereqs array
+ *           .topics[]    — short topic chips shown at the bottom of the expanded card
+ */
 export const mathTracks = {
   tracks: ["Accelerated", "Advanced", "Enriched", "Standard"],
   grades: [

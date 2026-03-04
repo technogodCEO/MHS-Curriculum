@@ -26,7 +26,10 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
   const [selectedTrack, setSelectedTrack] = useState("Accelerated");
   const [expandedGrade, setExpandedGrade] = useState(null);
 
-  //subject selection function
+  // Maps a subject ID string to the correct track data and color config for that subject.
+  // Returns an object with:
+  //   trackSubject       — the *Tracks data object (grades array + tracks array)
+  //   trackColorsSubject — the *TrackColors map (tab button colors and labels)
   const subject = (type) => {
     switch (type) {
         case 'math':     return { trackSubject: mathTracks,     trackColorsSubject: mathTrackColors };
@@ -40,9 +43,12 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
     }
   };
 
-  //declaring the subjects in use based on this function
+  // Destructure the correct track data and colors for the active subject
   const { trackSubject, trackColorsSubject } = subject(activeSubject.id)
 
+  // Guard: if the previously selected track (e.g. "Accelerated") doesn't exist in
+  // the new subject's track list (e.g. History only has "CP" and "AP/Honors"),
+  // fall back to the first available track so the UI never shows a broken state.
   const effectiveTrack = trackSubject.tracks.includes(selectedTrack)
     ? selectedTrack
     : trackSubject.tracks[0];
