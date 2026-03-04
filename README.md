@@ -1,6 +1,6 @@
 # MHS-Curriculum
 
-A curriculum visualizer for MHS students - currently only has math, but I am working on all other subjects, which are accessible via a dropdown menu on the current subject title. [Link.](https://mhscurriculum.vercel.app/)
+A curriculum visualizer for MHS students - currently has all but "elective" subjects, which are accessible via a dropdown menu on the current subject title. I am currently working on the elective subject. [Link.](https://mhscurriculum.vercel.app/)
 
 # Version History 
 

@@ -246,6 +246,7 @@ export const mathTrackColors = {
 };
 
 export const mathProgramOfStudies = [
+  // ── Main Courses ───────────────────────────────────────────────────
   {
     category: "High School — Mathematics",
     color: "#60a5fa",
@@ -392,6 +393,25 @@ export const mathProgramOfStudies = [
         topics: ["Limits and continuity", "Derivatives: all rules, implicit, related rates", "Applications: optimization, curve sketching, L'Hôpital's rule", "Definite integrals and Fundamental Theorem of Calculus", "Applications of integration: area, accumulation, average value", "Differential equations: slope fields, separation of variables", "Advanced integration techniques: by parts, partial fractions", "Polar coordinates and parametric graphing", "Infinite sequences and series", "Convergence tests", "AP BC exam preparation"]
       },
       {
+        id: "hs-math-methods", name: "Honors Math Methods in Engineering and the Sciences", tier: "Honors", weight: 5,
+        gradeLevel: "Grade 12", credits: "5",
+        prereqs: [
+          { course: "AP Calculus C", minGrade: 85, note: null },
+          { course: "AP Calculus BC", minGrade: 85, note: "Summer assignment required — STEM designation" }
+        ],
+        description: "Designed for the student interested in pursuing mathematics at the college level. Surveys topics covered in four different college courses with emphasis on applications.",
+        topics: ["LINEAR ALGEBRA: Vectors, matrices, diagonalization, eigenvectors, basis sets", "MULTIVARIABLE CALCULUS: Partial derivatives, vector operators, gradients, double integrals", "DIFFERENTIAL EQUATIONS: Methods, physics equations, functions as basis sets", "VECTOR CALCULUS: Formal proofs, vector fields, line and surface integrals", "FOURIER ANALYSIS (if covered): Frequency analysis, Fourier Series and Transforms, signal processing"]
+      }
+    ]
+  },
+
+  // ── Electives ──────────────────────────────────────────────────────
+  {
+    category: "Math Electives",
+    color: "#34d399",
+    grades: "Grades 11–12",
+    courses: [
+      {
         id: "hs-stats-cp", name: "Statistics", tier: "CP", weight: 0,
         gradeLevel: "Grades 11–12", credits: "5",
         prereqs: [{ course: "Algebra II", minGrade: 70, note: "Elective for Juniors and Seniors only" }],
@@ -411,16 +431,6 @@ export const mathProgramOfStudies = [
         topics: ["Exploring data: distributions, outliers, transformations", "Comparing distributions", "Bivariate data: regression and residuals", "Study design: sampling methods and experimental design", "Probability: rules, conditional, independence", "Random variables and probability distributions", "Sampling distributions and Central Limit Theorem", "Confidence intervals for means and proportions", "Significance tests: z-tests, t-tests, chi-square", "AP exam preparation"]
       },
       {
-        id: "hs-math-methods", name: "Honors Math Methods in Engineering and the Sciences", tier: "Honors", weight: 5,
-        gradeLevel: "Grade 12", credits: "5",
-        prereqs: [
-          { course: "AP Calculus C", minGrade: 85, note: null },
-          { course: "AP Calculus BC", minGrade: 85, note: "Summer assignment required — STEM designation" }
-        ],
-        description: "Designed for the student interested in pursuing mathematics at the college level. Surveys topics covered in four different college courses with emphasis on applications.",
-        topics: ["LINEAR ALGEBRA: Vectors, matrices, diagonalization, eigenvectors, basis sets", "MULTIVARIABLE CALCULUS: Partial derivatives, vector operators, gradients, double integrals", "DIFFERENTIAL EQUATIONS: Methods, physics equations, functions as basis sets", "VECTOR CALCULUS: Formal proofs, vector fields, line and surface integrals", "FOURIER ANALYSIS (if covered): Frequency analysis, Fourier Series and Transforms, signal processing"]
-      },
-      {
         id: "hs-data-science", name: "Data Science, Analytics, and Visualization (w/ Python)", tier: "CP", weight: 0,
         gradeLevel: "Grades 10–12", credits: "5",
         prereqs: [
@@ -430,7 +440,21 @@ export const mathProgramOfStudies = [
         ],
         description: "An in-depth exploration of data science concepts and visualization techniques, incorporating hands-on learning with Python and industry tools. Covers computational and inferential thinking, network analysis, database management, and natural language processing.",
         topics: ["Computational and inferential thinking", "Python programming for data science", "Data visualization and analysis", "Network analysis and database management", "Natural language processing", "Machine learning fundamentals: KNN and Decision Trees", "Real-world data problem solving"]
-      }
+      },
+      {
+      id: "hs-discrete", name: "Discrete Mathematics", tier: "CP", weight: 0,
+      gradeLevel: "Grades 11–12", credits: "5",
+      prereqs: [{ course: "Algebra II", minGrade: null, note: "Successful completion" }],
+      description: "Addresses topics not covered in traditional math courses with a step-by-step rather than continuous nature. Stresses the connection between contemporary math and modern society. Effective preparation for applied combinatorics and graph theory at the college level.",
+      topics: [
+        "Election theory and decision-making in a democracy",
+        "Graphs and graph theory (networking)",
+        "Coding information",
+        "Logic and probability",
+        "Game theory",
+        "Mathematical induction"
+      ]
+    }
     ]
   }
 ];
