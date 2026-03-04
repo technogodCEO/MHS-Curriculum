@@ -28,8 +28,7 @@ export function SubjectTitle({ currentSubject, accentColor, open, setOpen, btnRe
     >
       {/* Subject name with gradient text in the subject's accent color */}
       <span style={{
-        background: `linear-gradient(90deg, ${accentColor}, ${accentColor}cc, ${accentColor})`,
-        WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+        color: accentColor,
         fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 3.5rem)",
         fontWeight: 900, letterSpacing: "-1px",
       }}>
