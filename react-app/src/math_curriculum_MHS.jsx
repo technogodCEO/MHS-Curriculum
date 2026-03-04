@@ -10,7 +10,7 @@ import { subjects } from "./data/subjects.js";
 // math.js — the math-specific data: track/grade course map, pathway colors, and
 //   the full program of studies course catalog. When other subjects are built out,
 //   their data will be imported here and swapped in based on activeSubject.
-//import { mathTracks, mathTrackColors, mathProgramOfStudies } from "./data/math"; -> the import is unused and thus should be commented
+//import { mathTracks, mathTrackColors, mathProgramOfStudies } from "./data/math"; -> the import is unused and thus should not be included
 
 // ── Component Imports ─────────────────────────────────────────────────────────
 
@@ -180,7 +180,7 @@ export default function MathCurriculum() {
           Only one page renders at a time based on the `page` state value. */}
 
       {/* Curriculum Map — grade timeline with pathway selector */}
-      {page === "map" && <CurriculumMap accent={accent} gridRgb={gridRgb} />}
+      {page === "map" && <CurriculumMap accent={accent} gridRgb={gridRgb} activeSubject={activeSubject}/>}
 
       {/* Program of Studies — full filterable course catalog */}
       {page === "pos" && (

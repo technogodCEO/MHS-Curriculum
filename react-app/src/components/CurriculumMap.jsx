@@ -55,7 +55,7 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
         </div>
 
         {/* One row per grade — filters to grades 9+ in case middle school grades are added later */}
-        {mathTracks.grades.filter(g => g.grade >= 9).map(gradeData => {
+        {trackSubject.grades.filter(g => g.grade >= 9).map(gradeData => {
           const course = gradeData.courses[selectedTrack]; // pick the course for the active pathway
           const isExpanded = expandedGrade === gradeData.grade;
           const isHighlight = course.highlight; // AP courses get a larger dot and glowing border

@@ -18,7 +18,7 @@ import { mathProgramOfStudies } from "../data/math";
  *   expandedCourse  — the id of the currently open course card (null = all closed)
  *   filterTier      — the currently selected tier filter ("All", "CP", "Honors", or "AP")
  */
-export function ProgramOfStudies(activeSubject) {
+export function ProgramOfStudies({ activeSubject }) {
   const [expandedCourse, setExpandedCourse] = useState(null);
   const [filterTier, setFilterTier] = useState("All");
 
