@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { mathTracks, mathTrackColors } from "../data/math";
+import { scienceTracks, scienceTrackColors } from "../data/science";
+import { languageTracks, languageTrackColors } from "../data/language";
+import { historyTracks, historyTrackColors } from "../data/history";
+import { englishTracks, englishTrackColors } from "../data/english";
 
 /*
  * CurriculumMap
@@ -18,26 +22,49 @@ import { mathTracks, mathTrackColors } from "../data/math";
  *   selectedTrack  — which of the four pathways is active (tab buttons)
  *   expandedGrade  — which grade card is currently open to show topics (null = all closed)
  */
-export function CurriculumMap({ accent, gridRgb }) {
+export function CurriculumMap({ accent, gridRgb, activeSubject }) {
   const [selectedTrack, setSelectedTrack] = useState("Accelerated");
   const [expandedGrade, setExpandedGrade] = useState(null);
+
+  //subject selection function
+  const subject = (type) => {
+    switch (type) {
+        case 'math':     return { trackSubject: mathTracks,     trackColorsSubject: mathTrackColors };
+        case 'science':  return { trackSubject: scienceTracks,  trackColorsSubject: scienceTrackColors };
+        case 'language': return { trackSubject: languageTracks, trackColorsSubject: languageTrackColors };
+        case 'history':  return { trackSubject: historyTracks,  trackColorsSubject: historyTrackColors };
+        case 'english':  return { trackSubject: englishTracks,  trackColorsSubject: englishTrackColors };
+        default:
+          console.warn(`CurriculumMap: unknown subject "${type}", falling back to math`);
+          return { trackSubject: mathTracks, trackColorsSubject: mathTrackColors };
+    }
+  };
+
+  //declaring the subjects in use based on this function
+  const { trackSubject, trackColorsSubject } = subject(activeSubject.id)
+
+  const effectiveTrack = trackSubject.tracks.includes(selectedTrack)
+    ? selectedTrack
+    : trackSubject.tracks[0];
+
 
   return (
     <>
       {/* ── Pathway selector tabs ── */}
       <div className="track-tabs">
-        {mathTracks.tracks.map(track => (
+        {trackSubject.tracks.map(track => (
           <button
             key={track}
-            className={`track-tab ${selectedTrack === track
-              ? track === "Accelerated" ? "active-accel"
-              : track === "Advanced" ? "active-adv"
-              : track === "Enriched" ? "active-enr"
-              : "active-std"
-              : "inactive"}`}
+            className={`track-tab ${effectiveTrack === track ? "" : "inactive"}`}
+            style={effectiveTrack === track ? {
+              background: trackColorsSubject[track].bg,
+              color: trackColorsSubject[track].text,
+              borderColor: trackColorsSubject[track].bg,
+              boxShadow: `0 0 20px ${trackColorsSubject[track].bg}66`
+            } : {}}
             onClick={() => setSelectedTrack(track)}
           >
-            {mathTrackColors[track].label}
+            {trackColorsSubject[track].label}
           </button>
         ))}
       </div>
@@ -49,8 +76,8 @@ export function CurriculumMap({ accent, gridRgb }) {
         </div>
 
         {/* One row per grade — filters to grades 9+ in case middle school grades are added later */}
-        {mathTracks.grades.filter(g => g.grade >= 9).map(gradeData => {
-          const course = gradeData.courses[selectedTrack]; // pick the course for the active pathway
+        {trackSubject.grades.filter(g => g.grade >= 9).map(gradeData => {
+          const course = gradeData.courses[effectiveTrack]; // pick the course for the active pathway
           const isExpanded = expandedGrade === gradeData.grade;
           const isHighlight = course.highlight; // AP courses get a larger dot and glowing border
 

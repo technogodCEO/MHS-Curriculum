@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { mathProgramOfStudies } from "../data/math";
+import { scienceProgramOfStudies } from "../data/science";
+import { languageProgramOfStudies } from "../data/language";
+import { historyProgramOfStudies } from "../data/history";
+import { englishProgramOfStudies } from "../data/english";
 
 /*
  * ProgramOfStudies
@@ -18,7 +22,7 @@ import { mathProgramOfStudies } from "../data/math";
  *   expandedCourse  — the id of the currently open course card (null = all closed)
  *   filterTier      — the currently selected tier filter ("All", "CP", "Honors", or "AP")
  */
-export function ProgramOfStudies() {
+export function ProgramOfStudies({ activeSubject }) {
   const [expandedCourse, setExpandedCourse] = useState(null);
   const [filterTier, setFilterTier] = useState("All");
 
@@ -30,6 +34,27 @@ export function ProgramOfStudies() {
     Honors: { bg: "#c084fc22", color: "#c084fc", border: "#c084fc44" },
     AP:     { bg: "#a5adb822", color: "#60a5fa", border: "#60a5fa44" },
   };
+
+  //subject selection function
+  const subject = (type) => {
+    switch (type) {
+      case 'math':     return { posSubject: mathProgramOfStudies };
+      case 'science':  return { posSubject: scienceProgramOfStudies };
+      case 'language': return { posSubject: languageProgramOfStudies };
+      case 'history':  return { posSubject: historyProgramOfStudies };
+      case 'english':  return { posSubject: englishProgramOfStudies };
+      default: return { posSubject: 'Error/not implemented' };
+    }
+  };
+
+  //declaring the subjects in use based on this function
+  const { posSubject } = subject(activeSubject.id)
+
+  useEffect(() => {
+    setExpandedCourse(null);
+    setFilterTier("All");
+  }, [activeSubject]);
+  
 
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px 80px" }}>
@@ -99,7 +124,7 @@ export function ProgramOfStudies() {
       </div>
 
       {/* ── Course categories (currently just one: High School — Mathematics) ── */}
-      {mathProgramOfStudies.map(cat => {
+      {posSubject.map(cat => {
         // Filter courses by selected tier; if "All" selected, show everything
         const visible = filterTier === "All" ? cat.courses : cat.courses.filter(c => c.tier === filterTier);
         if (!visible.length) return null;
