@@ -4,6 +4,14 @@ A curriculum visualizer for MHS students - currently only has math, but I am wor
 
 # Version History 
 
+## Beta 3
+1. Added the following subjects -> provided unique tracks and program of studies categories for each.
+     1. English
+     2. World Language
+     3. History
+     4. Science
+2. Refactored infrastructure and removed hardcodes to make this happen.
+
 ## Beta 2
 1. Backend update
 2. Restructured the program architecture into a helper file system
