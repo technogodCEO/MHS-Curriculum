@@ -207,6 +207,7 @@ export const englishTrackColors = {
 
 // ─── Full Program of Studies (course catalog) ────────────────────────
 export const englishProgramOfStudies = [
+  // ── Main Courses ───────────────────────────────────────────────────
   {
     category: "High School — English",
     color: "#e8d5a3",
@@ -354,9 +355,16 @@ export const englishProgramOfStudies = [
         ],
         description: "Engages students in becoming skilled readers of prose written in a variety of periods, disciplines, and rhetorical contexts and skilled writers who compose for a variety of purposes. Selections from American Literature are also studied. AP exam in May.",
         topics: ["Rhetorical analysis across periods and disciplines", "Argument and synthesis writing", "American Literature selections", "Skilled reading of nonfiction prose", "AP exam preparation", "Summer reading requirements"]
-      },
+      }
+    ]
+  },
 
-      // ── Electives ──────────────────────────────────────────────────
+  // ── Electives ──────────────────────────────────────────────────────
+  {
+    category: "English Electives",
+    color: "#a78bfa",
+    grades: "Grades 9–12",
+    courses: [
       {
         id: "hs-journalism-1", name: "Journalism I", tier: "CP", weight: 0,
         gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
