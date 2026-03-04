@@ -16,4 +16,4 @@ A curriculum visualizer for MHS students - currently only has math, but I am wor
 2. Has math data from the MHS Program of Studies
 3. Has two pages
      1. Curriculum Map -> A track placement visualizer
-     2. 2. Program of Studies -> A visualizer of all math courses the school offers
+     2. Program of Studies -> A visualizer of all math courses the school offers
