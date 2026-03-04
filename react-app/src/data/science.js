@@ -48,16 +48,17 @@ export const scienceTracks = {
           highlight: false
         },
         "AP (Standard)": {
-          name: "HIPELS (Honors)",
+          name: "AP Physics 1",
           topics: [
-            "Honors-level Integrated Physical, Environmental & Life Sciences",
-            "Energy in mechanical systems, global climate science, forces and interactions",
-            "Sophisticated lab investigations and scientific writing",
-            "Advanced mathematical and scientific reasoning required",
-            "Foundation for AP Chemistry in 10th grade"
+            "Algebra-based introductory college-level physics",
+            "Systems, dynamics, conservation, fields, and waves",
+            "Inquiry-based laboratory work with advanced math",
+            "Summer assignments required",
+            "Prerequisite: Successful completion of HIPELS; concurrent or completed Algebra II",
+            "AP exam preparation"
           ],
           color: "#14b8a6",
-          highlight: false
+          highlight: true
         },
         "Bio Kid": {
           name: "AP Physics 1",
@@ -237,17 +238,18 @@ export const scienceTracks = {
           highlight: true
         },
         "Physics Kid": {
-          name: "Biology Honors",
+          name: "AP Physics C: Mechanics & E&M",
           topics: [
-            "Advanced biology with probability and mathematical modeling",
-            "Extensive analytical lab, reading, and writing assignments",
-            "Continues energy themes from AP Chemistry and AP Physics 1",
-            "Recommended: strong chemistry background",
-            "Frees senior year for AP Physics C",
-            "Honors-weighted credit"
+            "Calculus-based college physics for physical science and engineering majors",
+            "Mechanics: kinematics, Newton's laws, energy, momentum, rotation",
+            "Electricity & Magnetism: electrostatics, circuits, magnetism, induction",
+            "Methods of calculus used throughout — requires concurrent/completed calculus",
+            "Prepares for both AP Physics C exams",
+            "AP exam preparation",
+            "Summer assignments required"
           ],
           color: "#0d9488",
-          highlight: false
+          highlight: true
         }
       }
     },
@@ -314,13 +316,13 @@ export const scienceTracks = {
           highlight: true
         },
         "Physics Kid": {
-          name: "AP Physics C: Mechanics & E&M",
+          name: "AP Biology",
           topics: [
-            "Calculus-based college physics for physical science and engineering majors",
-            "Mechanics: kinematics, Newton's laws, energy, momentum, rotation",
-            "Electricity & Magnetism: electrostatics, circuits, magnetism, induction",
-            "Methods of calculus used throughout — requires concurrent/completed calculus",
-            "Prepares for both AP Physics C exams",
+            "College-level first-year biology for science majors",
+            "Biochemistry, cellular biology, molecular genetics, biotechnology",
+            "Diversity, structure/function of organisms, ecology, evolution",
+            "Builds on AP Chemistry and AP Physics C foundations",
+            "AP exam preparation",
             "Summer assignments required"
           ],
           color: "#0d9488",
