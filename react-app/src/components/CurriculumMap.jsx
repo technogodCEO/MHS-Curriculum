@@ -18,26 +18,32 @@ import { mathTracks, mathTrackColors } from "../data/math";
  *   selectedTrack  — which of the four pathways is active (tab buttons)
  *   expandedGrade  — which grade card is currently open to show topics (null = all closed)
  */
-export function CurriculumMap({ accent, gridRgb }) {
+export function CurriculumMap({ accent, gridRgb, activeSubject }) {
   const [selectedTrack, setSelectedTrack] = useState("Accelerated");
   const [expandedGrade, setExpandedGrade] = useState(null);
+
+  //subject selection function
+  const subject = (type) => {
+    switch (type) {
+        case 'math': return { trackSubject: mathTracks, trackColorsSubject: mathTrackColors };
+        default: return { trackSubject: 'Error/not implemented', trackColorsSubject: 'Error/not implemented'};
+    }
+	};
+
+	//declaring the subjects in use based on this function
+	const { trackSubject, trackColorsSubject } = subject(activeSubject.id)
 
   return (
     <>
       {/* ── Pathway selector tabs ── */}
       <div className="track-tabs">
-        {mathTracks.tracks.map(track => (
+        {trackSubject.tracks.map(track => (
           <button
             key={track}
-            className={`track-tab ${selectedTrack === track
-              ? track === "Accelerated" ? "active-accel"
-              : track === "Advanced" ? "active-adv"
-              : track === "Enriched" ? "active-enr"
-              : "active-std"
-              : "inactive"}`}
+            className={`track-tab ${selectedTrack === track ? trackColorsSubject[track].activeClass : "inactive"}`}
             onClick={() => setSelectedTrack(track)}
           >
-            {mathTrackColors[track].label}
+            {trackColorsSubject[track].label}
           </button>
         ))}
       </div>

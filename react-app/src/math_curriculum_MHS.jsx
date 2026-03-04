@@ -154,6 +154,7 @@ export default function MathCurriculum() {
             open={dropOpen}
             setOpen={setDropOpen}
             btnRef={btnRef}
+            activeSubject={activeSubject}
           />
           {" "}Curriculum
         </h1>
@@ -191,14 +192,14 @@ export default function MathCurriculum() {
               A graphing calculator is required for most courses. Prerequisites are strictly enforced; waiver applications are available through the Mathematics Supervisor.
             </p>
           </div>
-          <ProgramOfStudies />
+          <ProgramOfStudies activeSubject={activeSubject}/>
         </div>
       )}
 
       {/* ── Footer ── */}
       <footer style={{ textAlign:"center", padding:"20px 0" }}>
         <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>
-          2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 1 (Build 6)
+          2026 © Roshan Kareer, GNU General Public License 3.0 - Beta 2.1
         </p>
       </footer>
     </div>
