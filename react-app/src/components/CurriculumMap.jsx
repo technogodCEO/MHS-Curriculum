@@ -17,6 +17,7 @@ import { englishTracks, englishTrackColors } from "../data/english";
  *   gridRgb  — the active subject's color as "R, G, B" string, used in CSS template literals
  *              for the timeline line and highlight card glow (passed in from the main app
  *              because these are injected into a <style> block via template literals)
+ *   activeSubject - The currently selected Subject, will feed into the switch statement to select the correct subject data files
  *
  * State (local — nothing outside this component needs to know):
  *   selectedTrack  — which of the four pathways is active (tab buttons)

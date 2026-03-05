@@ -17,11 +17,13 @@ import { subjects } from "./data/subjects.js";
 // SubjectTitle        — the clickable subject name in the header ("Mathematics ▾")
 // SubjectDropdownMenu — the floating subject switcher panel (rendered at root level)
 // CurriculumMap       — the "Curriculum Map" tab (grade timeline + track selector)
+// CurriculumMapVariableTrackLengths       — the "Curriculum Map" tab for electives, where each track has a different # of courses
 // ProgramOfStudies    — the "Program of Studies" tab (full filterable course catalog)
 import { SubjectTitle } from "./components/SubjectTitle.jsx";
 import { SubjectDropdownMenu } from "./components/SubjectDropdownMenu.jsx";
 import { ProgramOfStudies } from "./components/ProgramOfStudies.jsx";
 import { CurriculumMap } from "./components/CurriculumMap.jsx";
+import { CurriculumMapVariableTrackLengths } from "./components/CurriculumMapVariableTrackLengths.jsx";
 
 /*
  * MathCurriculum  (default export — rendered by App.js)
@@ -180,7 +182,7 @@ export default function MathCurriculum() {
           Only one page renders at a time based on the `page` state value. */}
 
       {/* Curriculum Map — grade timeline with pathway selector */}
-      {page === "map" && <CurriculumMap accent={accent} gridRgb={gridRgb} activeSubject={activeSubject}/>}
+      {page === "map" && (activeSubject.id === "electives" ? <CurriculumMapVariableTrackLengths accent={accent} gridRgb={gridRgb} activeSubject={activeSubject}/> : <CurriculumMap accent={accent} gridRgb={gridRgb} activeSubject={activeSubject}/>)}
 
       {/* Program of Studies — full filterable course catalog */}
       {page === "pos" && (
