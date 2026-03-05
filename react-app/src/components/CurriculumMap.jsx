@@ -154,8 +154,8 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
       <div style={{ fontFamily:"'DM Sans',sans-serif", textAlign:"center", padding:"0 20px 60px", color:"#444", fontSize:"0.78rem", maxWidth:600, margin:"0 auto", lineHeight:1.7 }}>
         Track placement is reviewed annually. Students may move between tracks based on performance and teacher recommendation.
         Prerequisites are firmly based on proficiency demonstrated over the entire year of work in the preceding course.
-        All tracks are designed to support students in reaching the mathematics level appropriate for their college and career goals.
-        Students requiring a waiver to enroll above recommendation must submit an application through the {activeSubject.id} Department Supervisor.
+        All tracks are designed to support students in reaching the level appropriate for their college and career goals.
+        Students requiring a waiver to enroll above recommendation must submit an application through the {activeSubject.label} Department Supervisor.
       </div>
     </>
   );
