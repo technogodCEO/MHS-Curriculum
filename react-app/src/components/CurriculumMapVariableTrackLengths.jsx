@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { electiveTracks, electiveTrackColors } from "../data/electives";
+import { electiveCategories, electiveTracks, electiveTrackColors } from "../data/electives";
 
 /*
  * CurriculumMap
@@ -21,8 +21,8 @@ import { electiveTracks, electiveTrackColors } from "../data/electives";
  *   expandedGrade  — which grade card is currently open to show topics (null = all closed)
  */
 export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubject }) {
-  const [selectedTrack, setSelectedTrack] = useState("Accelerated");
-  const [expandedGrade, setExpandedGrade] = useState(null);
+  const [selectedTrack, setSelectedTrack] = useState("AP Capstone Program");
+  const [expandedCourse, setExpandedCourse] = useState(null);
 
   // Maps a subject ID string to the correct track data and color config for that subject.
   // Returns an object with:
@@ -39,7 +39,7 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
   // Define the correct track data and colors for the active subject using the switch function
   const { trackSubject, trackColorsSubject } = subject(activeSubject.id)
 
-  // Guard: if the previously selected track (e.g. "Accelerated") doesn't exist in
+  // Guard: if the previously selected track (e.g. "AP Capstone Program") doesn't exist in
   // the new subject's track list (e.g. History only has "CP" and "AP/Honors"),
   // fall back to the first available track so the UI never shows a broken state.
   const effectiveTrack = trackSubject.tracks.includes(selectedTrack) ? selectedTrack : trackSubject.tracks[0];
