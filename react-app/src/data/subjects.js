@@ -23,5 +23,5 @@ export const subjects = [
   { id: "science",  label: "Science",                 accent: "#2dd4bf", gridColor: "45, 212, 191",  emoji: "⚗",  available: true },
   { id: "history",  label: "History / Social Studies",accent: "#f97316", gridColor: "249, 115, 22",  emoji: "⊕",  available: true },
   { id: "language", label: "World Language",          accent: "#86efac", gridColor: "134, 239, 172", emoji: "◈",  available: true },
-  { id: "electives",label: "Electives",               accent: "#d4d4d8", gridColor: "212, 212, 216", emoji: "✦",  available: false },
+  { id: "electives",label: "Electives",               accent: "#d4d4d8", gridColor: "212, 212, 216", emoji: "✦",  available: true },
 ];

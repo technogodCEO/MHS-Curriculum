@@ -17,11 +17,13 @@ import { subjects } from "./data/subjects.js";
 // SubjectTitle        — the clickable subject name in the header ("Mathematics ▾")
 // SubjectDropdownMenu — the floating subject switcher panel (rendered at root level)
 // CurriculumMap       — the "Curriculum Map" tab (grade timeline + track selector)
+// CurriculumMapVariableTrackLengths       — the "Curriculum Map" tab for electives, where each track has a different # of courses
 // ProgramOfStudies    — the "Program of Studies" tab (full filterable course catalog)
 import { SubjectTitle } from "./components/SubjectTitle.jsx";
 import { SubjectDropdownMenu } from "./components/SubjectDropdownMenu.jsx";
 import { ProgramOfStudies } from "./components/ProgramOfStudies.jsx";
 import { CurriculumMap } from "./components/CurriculumMap.jsx";
+import { CurriculumMapVariableTrackLengths } from "./components/CurriculumMapVariableTrackLengths.jsx";
 
 /*
  * MathCurriculum  (default export — rendered by App.js)
@@ -125,7 +127,26 @@ export default function MathCurriculum() {
         .page-nav-btn { font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:500; letter-spacing:0.04em; padding:10px 28px; cursor:pointer; background:transparent; border:none; color:#555; border-bottom:2px solid transparent; transition:all 0.2s; }
         .page-nav-btn:hover { color:#999; }
         .page-nav-btn.pn-active { color:#f0f0f8; border-bottom-color:${accent}; }
-        @media (max-width:600px) { .timeline::before { left:36px; } .grade-label { width:30px; font-size:0.6rem; } }
+        .track-layout { display:flex; align-items:flex-start; }
+        .track-sidebar { width:420px; flex-shrink:0; border-right:1px solid rgba(255,255,255,0.08); padding-top:8px; padding-left:120px; }
+        .track-btn { width:100%; text-align:left; padding:8px 12px; background:none; border:none; border-left:3px solid transparent; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#666; font-weight:400; transition:all 0.2s; }
+        .track-btn:hover { color:#999; }
+        .track-content { flex:1; padding:16px 120px 16px 24px; }
+        .track-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#f0f0f8; margin:0 0 4px; }
+        .track-description { font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#555; margin-bottom:20px; line-height:1.6; }
+        .dot-col { display:flex; flex-direction:column; align-items:center; padding-top:6px; }
+        .dot-connector { width:2px; flex:1; margin-top:4px; }
+        @media (max-width:600px) {
+          .timeline::before { left:36px; }
+          .grade-label { width:30px; font-size:0.6rem; }
+          .grade-card:hover { transform:none; }
+          .track-tabs { padding:0 12px 24px; }
+          .track-tab { padding:8px 16px; font-size:0.8rem; }
+          .track-layout { flex-direction:column; }
+          .track-sidebar { width:100%; border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); padding-left:0; padding-bottom:4px; display:flex; flex-direction:row; overflow-x:auto; gap:4px; }
+          .track-btn { width:auto; white-space:nowrap; border-left:none; padding:6px 14px; }
+          .track-content { padding:16px; }
+        }
       `}</style>
 
       {/* ── Subject dropdown menu ──────────────────────────────────────────────
@@ -180,14 +201,14 @@ export default function MathCurriculum() {
           Only one page renders at a time based on the `page` state value. */}
 
       {/* Curriculum Map — grade timeline with pathway selector */}
-      {page === "map" && <CurriculumMap accent={accent} gridRgb={gridRgb} activeSubject={activeSubject}/>}
+      {page === "map" && (activeSubject.id === "electives" ? <CurriculumMapVariableTrackLengths accent={accent} gridRgb={gridRgb} activeSubject={activeSubject}/> : <CurriculumMap accent={accent} gridRgb={gridRgb} activeSubject={activeSubject}/>)}
 
       {/* Program of Studies — full filterable course catalog */}
       {page === "pos" && (
         <div style={{ paddingTop: 8 }}>
           <div style={{ textAlign:"center", padding:"0 20px 32px", maxWidth:600, margin:"0 auto" }}>
             <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>
-              Full course descriptions, prerequisites, and credit information for all mathematics courses at Montgomery High School.
+              Full course descriptions, prerequisites, and credit information for all {activeSubject.label} courses at Montgomery High School.
               Filter by course level to view a specific tier. Honors and AP courses each carry a +5 grade point weight.
               A graphing calculator is required for most courses. Prerequisites are strictly enforced; waiver applications are available through the {activeSubject.label} Supervisor.
             </p>
