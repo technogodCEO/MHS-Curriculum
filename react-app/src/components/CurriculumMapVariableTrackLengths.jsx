@@ -33,7 +33,8 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
     switch (type) {
         case 'electives':     return { trackSubject: electiveTracks,     trackColorsSubject: electiveTrackColors };
         default:
-          console.warn(`CurriculumMap: unknown subject "${type}", falling back to math`);
+          console.warn(`CurriculumMap: unknown subject "${type}", falling back to electives`);
+          return { trackSubject: electiveTracks, trackColorsSubject: electiveTrackColors };
     }
   };
 

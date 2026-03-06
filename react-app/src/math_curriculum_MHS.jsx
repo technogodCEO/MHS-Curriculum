@@ -208,7 +208,7 @@ export default function MathCurriculum() {
         <div style={{ paddingTop: 8 }}>
           <div style={{ textAlign:"center", padding:"0 20px 32px", maxWidth:600, margin:"0 auto" }}>
             <p style={{ fontFamily:"'DM Sans',sans-serif", color:"#555", fontSize:"0.85rem", lineHeight:1.7 }}>
-              Full course descriptions, prerequisites, and credit information for all mathematics courses at Montgomery High School.
+              Full course descriptions, prerequisites, and credit information for all {activeSubject.label} courses at Montgomery High School.
               Filter by course level to view a specific tier. Honors and AP courses each carry a +5 grade point weight.
               A graphing calculator is required for most courses. Prerequisites are strictly enforced; waiver applications are available through the {activeSubject.label} Supervisor.
             </p>
