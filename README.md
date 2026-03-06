@@ -4,6 +4,10 @@ A curriculum visualizer for MHS students - currently has all but "elective" subj
 
 # Version History 
 
+### Beta 3.1
+1. Added CurriculumMapVariableTrackLengths.jsx, for elective subjects with variable length tracks.
+2. Added the Electives subject with a Program of Studies and the new Curriculum Map.
+
 ## Beta 3
 1. Added the following subjects -> provided unique tracks and program of studies categories for each.
      1. English
