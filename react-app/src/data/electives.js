@@ -5,12 +5,12 @@
 
 export const electiveCategories = {
   "AP Capstone":              ["AP Capstone Program"],
-  "Computer Science":         ["Foundations of Java → AP CS A", "Game Design & App Dev", "Webpage Design & Development"],
+  "Computer Science":         ["Foundations of Java → AP CS A", "Game Design & App Dev", "Webpage Design & Development", "Introduction to Computer Languages"],
   "Business":                 ["Online Financial Literacy", "Business and Personal Law", "Introduction to Entrepreneurship", "Sports and Entertainment Marketing"],
   "Communication Tech":       ["Television Production", "Radio Broadcasting"],
   "Industrial Arts":          ["Engineering", "Architectural Design", "Engineering Design & Material Fabrication", "Media & Graphic Communication", "Power, Energy & Transportation", "CAD & Design Portfolio"],
   "Family & Consumer Sci":    ["Culinary Arts", "The Art of Baking", "Life Skills"],
-  "Visual Art":               ["Studio Art", "Ceramics", "Photography", "AP Studio Art / 2D Portfolio"],
+  "Visual Art":               ["Studio Art", "Ceramics", "Photography"],
   "Performing Arts":          ["Band", "Orchestra", "Choir", "Introduction to Guitar", "Dance", "Children's Theater", "Theater Arts", "Art of Speech and Presentation", "Theater Design & Stage Management"],
   "Tomorrow's Teachers":      ["Tomorrow's Teachers"],
 };
@@ -89,6 +89,21 @@ export const electiveTracks = {
           prereqs: [],
           description: "Introduction to the design, creation, and maintenance of web pages and websites. Students create professional-looking sites using Adobe Creative Suite with Dreamweaver and Flash, plus a review of HTML code.",
           topics: ["Web page design and creation", "Adobe Creative Suite", "HTML fundamentals", "Project-based environment"]
+        }
+      ]
+    },
+
+    "Introduction to Computer Languages": {
+      color: "#7c3aed",
+      description: "Introductory programming course exploring multiple languages.",
+      courses: [
+        {
+          id: "el-intro-comp-lang", name: "Introduction to Computer Languages", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          note: "Not running in 2026-2027",
+          description: "For students who want to explore computer programming or have no previous experience. Students explore three programming languages: Scratch, Visual Basic.Net, and C++. Problem-solving skills developed through real-world/business-related programs.",
+          topics: ["Scratch programming", "Visual Basic.Net", "C++ fundamentals", "Problem solving with real-world applications"]
         }
       ]
     },
@@ -390,7 +405,7 @@ export const electiveTracks = {
     // ══════════════════════════════════════════════════════════════════
     "Studio Art": {
       color: "#c084fc",
-      description: "Progressive four-course visual arts track from foundations to honors portfolio.",
+      description: "Progressive five-course visual arts track from foundations through honors portfolio to AP Studio Art.",
       courses: [
         {
           id: "el-intro-art", name: "Introduction to Studio Art", tier: "CP", weight: 0,
@@ -419,6 +434,13 @@ export const electiveTracks = {
           prereqs: [{ course: "Studio II", minGrade: null, note: "Successful completion" }],
           description: "Year-long course developing a college portfolio showcasing technical and conceptual achievements at levels synonymous with college art majors. Students participate in the Visual Arts Extravaganza. Prepares for AP Studio.",
           topics: ["College portfolio development", "Advanced technical and conceptual work", "Visual Arts Extravaganza participation", "Independent growth with peer feedback", "Preparation for AP Studio"]
+        },
+        {
+          id: "el-ap-studio", name: "AP Studio Art or 2D Portfolio", tier: "AP", weight: 5,
+          gradeLevel: "Grades 11–12", credits: "5",
+          prereqs: [{ course: "Honors Portfolio OR both Advanced Digital and Advanced Darkroom Photography", minGrade: null, note: "Interview with art faculty for concentration placement" }],
+          description: "Year-long development of a consistent theme-based body of 12 pieces displayed gallery-style at Art Extravaganza. Students produce a portfolio for college applications and optional College Board evaluation. High commitment and self-discipline required.",
+          topics: ["Theme-based body of 12 works", "Gallery-style Art Extravaganza exhibit", "College portfolio production", "Optional College Board evaluation", "Independent artistic direction"]
         }
       ]
     },
@@ -428,7 +450,7 @@ export const electiveTracks = {
     // ══════════════════════════════════════════════════════════════════
     "Photography": {
       color: "#a855f7",
-      description: "Progressive photography track from analog foundations to advanced digital and darkroom techniques.",
+      description: "Progressive photography track from analog foundations to advanced techniques and AP Photo / 2D Portfolio.",
       courses: [
         {
           id: "el-photo1", name: "Photography I", tier: "CP", weight: 0,
@@ -457,23 +479,6 @@ export const electiveTracks = {
           prereqs: [{ course: "Photography I", minGrade: null, note: "Successful completion; Photo II and Adv Digital recommended" }],
           description: "Advanced analog alternative processes including cyanotypes, photo transfers, and advanced darkroom techniques. Student-centered conceptual projects with solo exhibit at Art Extravaganza. Sets up for AP Studio 2D.",
           topics: ["Cyanotypes and photo transfers", "Advanced darkroom techniques", "Alternative analog processes", "Conceptual projects and solo exhibit"]
-        }
-      ]
-    },
-
-    // ══════════════════════════════════════════════════════════════════
-    // AP ART STUDIO
-    // ══════════════════════════════════════════════════════════════════
-    "AP Studio Art / 2D Portfolio": {
-      color: "#9333ea",
-      description: "Capstone AP art course — painting/mixed media or photography concentration.",
-      courses: [
-        {
-          id: "el-ap-studio", name: "AP Studio Art or 2D Portfolio", tier: "AP", weight: 5,
-          gradeLevel: "Grades 11–12", credits: "5",
-          prereqs: [{ course: "Honors Portfolio OR both Advanced Digital and Advanced Darkroom Photography", minGrade: null, note: "Interview with art faculty for concentration placement" }],
-          description: "Year-long development of a consistent theme-based body of 12 pieces displayed gallery-style at Art Extravaganza. Students produce a portfolio for college applications and optional College Board evaluation. High commitment and self-discipline required.",
-          topics: ["Theme-based body of 12 works", "Gallery-style Art Extravaganza exhibit", "College portfolio production", "Optional College Board evaluation", "Independent artistic direction"]
         },
         {
           id: "el-ap-photo", name: "AP Photo / 2D Portfolio", tier: "AP", weight: 5,
