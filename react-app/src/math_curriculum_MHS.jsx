@@ -127,7 +127,26 @@ export default function MathCurriculum() {
         .page-nav-btn { font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:500; letter-spacing:0.04em; padding:10px 28px; cursor:pointer; background:transparent; border:none; color:#555; border-bottom:2px solid transparent; transition:all 0.2s; }
         .page-nav-btn:hover { color:#999; }
         .page-nav-btn.pn-active { color:#f0f0f8; border-bottom-color:${accent}; }
-        @media (max-width:600px) { .timeline::before { left:36px; } .grade-label { width:30px; font-size:0.6rem; } }
+        .track-layout { display:flex; align-items:flex-start; }
+        .track-sidebar { width:420px; flex-shrink:0; border-right:1px solid rgba(255,255,255,0.08); padding-top:8px; padding-left:120px; }
+        .track-btn { width:100%; text-align:left; padding:8px 12px; background:none; border:none; border-left:3px solid transparent; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#666; font-weight:400; transition:all 0.2s; }
+        .track-btn:hover { color:#999; }
+        .track-content { flex:1; padding:16px 120px 16px 24px; }
+        .track-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#f0f0f8; margin:0 0 4px; }
+        .track-description { font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#555; margin-bottom:20px; line-height:1.6; }
+        .dot-col { display:flex; flex-direction:column; align-items:center; padding-top:6px; }
+        .dot-connector { width:2px; flex:1; margin-top:4px; }
+        @media (max-width:600px) {
+          .timeline::before { left:36px; }
+          .grade-label { width:30px; font-size:0.6rem; }
+          .grade-card:hover { transform:none; }
+          .track-tabs { padding:0 12px 24px; }
+          .track-tab { padding:8px 16px; font-size:0.8rem; }
+          .track-layout { flex-direction:column; }
+          .track-sidebar { width:100%; border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); padding-left:0; padding-bottom:4px; display:flex; flex-direction:row; overflow-x:auto; gap:4px; }
+          .track-btn { width:auto; white-space:nowrap; border-left:none; padding:6px 14px; }
+          .track-content { padding:16px; }
+        }
       `}</style>
 
       {/* ── Subject dropdown menu ──────────────────────────────────────────────

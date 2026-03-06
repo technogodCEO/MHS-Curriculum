@@ -2,23 +2,23 @@ import { useState } from "react";
 import { electiveCategories, electiveTracks, electiveTrackColors } from "../data/electives";
 
 /*
- * CurriculumMap
+ * CurriculumMapVariableTrackLengths
  *
- * Renders the "Curriculum Map" tab — the main visual overview of the math program.
- * Shows a vertical timeline of each track, but in this file does not show grade levels.
- * As these tracks are not grade affiliated, they can have as many courses as necessary per track.
- * Shows the currently selected pathway i.e. (Accelerated / Advanced / Enriched / Standard) for math.
+ * Renders the "Curriculum Map" tab for subjects whose tracks have variable numbers of courses
+ * (i.e. not locked to grade levels). Currently used for Electives.
+ *
+ * Layout: category tab bar → track sidebar → sequential course timeline.
+ * Each course card expands to show description, prerequisites, and topics.
  *
  * Props:
- *   accent   — the active subject's hex color, used to tint AP badges
- *   gridRgb  — the active subject's color as "R, G, B" string, used in CSS template literals
- *              for the timeline line and highlight card glow (passed in from the main app
- *              because these are injected into a <style> block via template literals)
- *  activeSubject - The currently selected Subject, will feed into the switch statement to select the correct subject data files
+ *   accent       — the active subject's hex color, used to tint AP badges
+ *   gridRgb      — the active subject's color as "R, G, B" string (CSS template literals)
+ *   activeSubject — the currently selected Subject; feeds the subject() switch
  *
- * State (local — nothing outside this component needs to know):
- *   selectedTrack  — which of the four pathways is active (tab buttons)
- *   expandedGrade  — which grade card is currently open to show topics (null = all closed)
+ * State (local):
+ *   selectedCategory — which category tab is active (controls the sidebar track list)
+ *   selectedTrack    — which track within the category is active
+ *   expandedCourse   — course.id of the currently open course card (null = all closed)
  */
 export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubject }) {
   const [selectedCategory, setSelectedCategory] = useState("AP Capstone");
@@ -44,7 +44,7 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
   // the new subject's track list (e.g. History only has "CP" and "AP/Honors"),
   // fall back to the first available track so the UI never shows a broken state.
   const trackKeys = Object.keys(trackSubject.tracks); // creates trackKeys -> an array of all the tracks in the given subject's data file
-  const effectiveTrack = trackKeys.includes(selectedTrack) ? selectedTrack : trackKeys[0]; //uses the new trackKeys variable to do the guard check 
+  const effectiveTrack = trackKeys.includes(selectedTrack) ? selectedTrack : trackKeys[0]; //uses the new trackKeys variable to do the guard check
 
 
   return (
@@ -73,26 +73,23 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
       </div>
 
       {/* ── Two-column layout: track sidebar + course timeline ── */}
-      <div style={{ display:"flex", alignItems:"flex-start" }}>
-				{/* Left: track list for selected category */}
-        <div style={{ width:220, flexShrink:0, borderRight:"1px solid #e5e7eb", paddingTop:8 }}>
+      <div className="track-layout">
+        {/* Left: track list for selected category */}
+        <div className="track-sidebar">
           {electiveCategories[selectedCategory].map(track => {
             const colors = trackColorsSubject[track];
             const active = effectiveTrack === track;
             return (
               <button
                 key={track}
+                className="track-btn"
                 onClick={() => { setSelectedTrack(track); setExpandedCourse(null); }}
-                style={{
-                  width:"100%", textAlign:"left",
-                  padding:"8px 12px",
-                  background: active ? colors?.bg ?? "#f3f4f6" : "none",
-                  color: active ? colors?.text ?? "#111" : "#4b5563",
-                  border:"none", cursor:"pointer",
-                  fontFamily:"'DM Sans',sans-serif", fontSize:"0.82rem",
-                  borderLeft: active ? `3px solid ${colors?.bg ?? "#6b7280"}` : "3px solid transparent",
-                  fontWeight: active ? 600 : 400,
-                }}
+                style={active ? {
+                  background: colors?.bg,
+                  color: colors?.text ?? "#f0f0f8",
+                  borderLeft: `3px solid ${colors?.bg ?? "#6b7280"}`,
+                  fontWeight: 600,
+                } : {}}
               >
                 {track}
               </button>
@@ -101,92 +98,83 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
         </div>
 
         {/* Right: course timeline */}
-        <div style={{ flex:1, padding:"16px 24px" }}>
-          <h2 style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"1.1rem", fontWeight:700, color:"#111", marginBottom:4 }}>
-            {effectiveTrack}
-          </h2>
-          <p style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"0.82rem", color:"#555", marginBottom:20, lineHeight:1.6 }}>
-            {trackSubject.tracks[effectiveTrack].description}
-          </p>
+        <div className="track-content">
+          <h2 className="track-title">{effectiveTrack}</h2>
+          <p className="track-description">{trackSubject.tracks[effectiveTrack].description}</p>
 
-          {/* Course Cards*/}
+          {/* Course Cards */}
           {trackSubject.tracks[effectiveTrack].courses.map((course, idx) => {
             const isExpanded = expandedCourse === course.id;
             const isAP = course.tier === "AP";
             const trackColor = trackColorsSubject[effectiveTrack].bg;
             const courses = trackSubject.tracks[effectiveTrack].courses;
             return (
-              <div key={course.id} style={{ display:"flex", gap:16, marginBottom:16 }}>
+              <div key={course.id} className="grade-row">
 
                 {/* Timeline dot + connector line */}
-                <div style={{ display:"flex", flexDirection:"column", alignItems:"center", paddingTop:6 }}>
-                  <div style={{
-                    width:12, height:12, borderRadius:"50%", flexShrink:0,
-                    background: trackColor,
-                    boxShadow: isAP ? `0 0 8px ${trackColor}` : "none"
+                <div className="dot-col">
+                  <div className="timeline-dot" style={{
+                    background: trackColor + "33",
+                    borderColor: trackColor,
+                    boxShadow: isAP ? `0 0 20px ${trackColor}88` : "none",
+                    width: isAP ? 16 : 12,
+                    height: isAP ? 16 : 12,
+                    marginTop: isAP ? 18 : 20,
                   }}/>
                   {idx < courses.length - 1 && (
-                    <div style={{ width:2, flex:1, background:`${trackColor}44`, marginTop:4 }}/>
+                    <div className="dot-connector" style={{ background:`${trackColor}44` }}/>
                   )}
                 </div>
 
                 {/* Card */}
                 <div
+                  className={`grade-card${isExpanded ? " expanded" : ""}${isAP ? " highlight-card" : ""}`}
                   onClick={() => setExpandedCourse(isExpanded ? null : course.id)}
-                  style={{
-                    flex:1, borderRadius:8, 
-                    padding:"12px 16px", cursor:"pointer",
-                    background: isExpanded ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-                    border: isExpanded ? "1px solid rgba(255,255,255,0.12)" : "1px solid rgba(255,255,255,0.07)",
-                    boxShadow: isExpanded ? `0 0 12px ${trackColor}33` : "none",
-                  }}
                 >
-                  <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                    <span style={{ fontFamily:"'DM Sans',sans-serif", fontWeight:600, fontSize:"0.9rem", color:"#e5e7eb" }}>
+                  <div className="card-header">
+                    <div className="course-name" style={{ color: isAP ? "#fff" : "#f0f0f8" }}>
                       {course.name}
-                    </span>
+                    </div>
                     {course.tier !== "CP" && (
-                      <span style={{ fontSize:"0.7rem", fontWeight:700, padding:"2px 6px", borderRadius:4,
-                        background: isAP ? accent : "#6366f1", color:"#fff" }}>
+                      <span className="badge" style={{
+                        background: isAP ? `${accent}22` : "#6366f122",
+                        color: isAP ? accent : "#6366f1",
+                        border: `1px solid ${isAP ? accent + "44" : "#6366f144"}`,
+                      }}>
                         {course.tier}
                       </span>
                     )}
-                    <span style={{ marginLeft:"auto", fontSize:"0.75rem", color:"#9ca3af" }}>
+                    <span style={{ fontSize:"0.75rem", color:"#9ca3af" }}>
                       {course.gradeLevel} · {course.credits} cr
                     </span>
+                    <span style={{ color: trackColor + "aa" }} className={`chevron${isExpanded ? " open" : ""}`}>▶</span>
                   </div>
-                  
-                  {/* Expanded Pannel */}
+
+                  {/* Expanded Panel */}
                   {isExpanded && (
-                    <div style={{ marginTop:12 }}>
-                      <p style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"0.82rem", color:"#ccc", lineHeight:1.6, marginBottom:10 }}>
+                    <div className="topics-panel">
+                      <p style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"0.83rem", color:"#999", lineHeight:1.6, marginBottom:10 }}>
                         {course.description}
                       </p>
                       {course.prereqs.length > 0 && (
                         <div style={{ marginBottom:10 }}>
-                          <div style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"0.72rem", fontWeight:700,
-                            color:"#9ca3af", letterSpacing:"0.06em", textTransform:"uppercase", marginBottom:4 }}>
-                            Prerequisites
-                          </div>
-                          {course.prereqs.map((p, i) => (
-                            <div key={i} style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"0.8rem", color:"#ccc" }}>
-                              {p.course ? `${p.course}${p.minGrade ? ` (min ${p.minGrade})` : ""}` : ""}
-                              {p.note ? (p.course ? ` — ${p.note}` : p.note) : ""}
-                            </div>
-                          ))}
+                          <div className="phase-label">Prerequisites</div>
+                          <ul className="topics-list">
+                            {course.prereqs.map((p, i) => (
+                              <li key={i} className="topic-item">
+                                {p.course ? `${p.course}${p.minGrade ? ` (min ${p.minGrade})` : ""}` : ""}
+                                {p.note ? (p.course ? ` — ${p.note}` : p.note) : ""}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )}
                       {course.topics.length > 0 && (
                         <div>
-                          <div style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"0.72rem", fontWeight:700,
-                            color:"#9ca3af", letterSpacing:"0.06em", textTransform:"uppercase", marginBottom:4 }}>
-                            Topics
-                          </div>
-                          <ul style={{ margin:0, paddingLeft:16 }}>
+                          <div className="phase-label">Topics</div>
+                          <ul className="topics-list">
                             {course.topics.map((t, i) => (
-                              <li key={i} style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"0.8rem", color:"#ccc", marginBottom:2 }}>
-                                {t}
-                              </li>
+                              <li key={i} className="topic-item">{t}</li>
                             ))}
                           </ul>
                         </div>

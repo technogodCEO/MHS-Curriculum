@@ -4,6 +4,7 @@ import { scienceProgramOfStudies } from "../data/science";
 import { languageProgramOfStudies } from "../data/language";
 import { historyProgramOfStudies } from "../data/history";
 import { englishProgramOfStudies } from "../data/english";
+import { electivesProgramOfStudies } from "../data/electives";
 
 /*
  * ProgramOfStudies
@@ -45,6 +46,7 @@ export function ProgramOfStudies({ activeSubject }) {
       case 'language': return { posSubject: languageProgramOfStudies };
       case 'history':  return { posSubject: historyProgramOfStudies };
       case 'english':  return { posSubject: englishProgramOfStudies };
+      case 'electives': return { posSubject: electivesProgramOfStudies};
       default: return { posSubject: 'Error/not implemented' };
     }
   };
