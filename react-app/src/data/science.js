@@ -54,7 +54,7 @@ export const scienceTracks = {
             "Systems, dynamics, conservation, fields, and waves",
             "Inquiry-based laboratory work with advanced math",
             "Summer assignments required",
-            "Prerequisite: Successful completion of HIPELS; concurrent or completed Algebra II",
+            "Prerequisite: Completion of HIPELS (or a recommendation from UMS); concurrent or completed Algebra II",
             "AP exam preparation"
           ],
           color: "#14b8a6",
@@ -67,7 +67,7 @@ export const scienceTracks = {
             "Systems, dynamics, conservation, fields, and waves",
             "Inquiry-based laboratory work with advanced math",
             "Summer assignments required",
-            "Prerequisite: Successful completion of HIPELS; concurrent or completed Algebra II",
+            "Prerequisite: Completion of HIPELS (or UMS recommendation); concurrent or completed Algebra II",
             "AP exam preparation"
           ],
           color: "#0d9488",
@@ -80,7 +80,7 @@ export const scienceTracks = {
             "Systems, dynamics, conservation, fields, and waves",
             "Inquiry-based laboratory work with advanced math",
             "Summer assignments required",
-            "Prerequisite: Successful completion of HIPELS; concurrent or completed Algebra II",
+            "Prerequisite: Completion of HIPELS (or UMS recommendation); concurrent or completed Algebra II",
             "AP exam preparation"
           ],
           color: "#0f766e",
@@ -370,7 +370,8 @@ export const scienceProgramOfStudies = [
         gradeLevel: "Grade 9+", credits: "5",
         prereqs: [
           { course: "HIPELS", minGrade: null, note: "Successful completion" },
-          { course: "Algebra II", minGrade: null, note: "Concurrent or completed; new students must pass entrance assessments" }
+          { course: "Algebra II", minGrade: null, note: "Concurrent or completed; new students must pass entrance assessments" },
+          { course: "", minGrade: null, note: "Both prerequisites are required, some students may take in Freshman year via UMS recommendation"}
         ],
         description: "Algebra-based introductory college-level physics. Students explore systems, dynamics, conservation, fields, and waves through hands-on inquiry-based lab work. Designed to prepare students for the AP Physics 1 exam.",
         topics: ["Kinematics and dynamics", "Conservation of energy and momentum", "Rotational motion", "Waves and sound", "Electrostatics (intro)", "AP exam preparation", "Summer assignments required"]
@@ -495,51 +496,84 @@ export const scienceProgramOfStudies = [
       {
         id: "hs-anatomy", name: "Anatomy & Physiology", tier: "CP", weight: 0,
         gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [{ course: "Biology", minGrade: null, note: "Or instructor/supervisor approval" }],
+        prereqs: [
+          { course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" },
+          { course: "Biology", minGrade: null, note: "Or instructor/supervisor approval" }
+        ],
         description: "Examines how systems and body parts work together to sustain life. Involves real-life and online dissections. Prior biological science knowledge is necessary.",
         topics: ["Human body systems", "Structure and function", "Real-life and online dissections", "Organ interaction and homeostasis"]
       },
       {
         id: "hs-env-sci", name: "Environmental Science (iSTEM)", tier: "CP", weight: 0,
         gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
+        prereqs: [{ course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" }],
         description: "Explores current environmental science topics with an engineering mindset. Lab activities build understanding of Earth's environmental systems. Examines challenges facing humans in preserving our living environment.",
         topics: ["Earth's environmental systems", "Current environmental issues", "Engineering mindset", "Collaborative problem solving"]
       },
       {
         id: "hs-weather", name: "Weather and Meteorology", tier: "CP", weight: 0,
         gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
+        prereqs: [{ course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" }],
         description: "Builds a global weather model. Explores the science behind weather forecasting and how agencies gather, analyze, and predict weather events. Examines common weather apps and the factors influencing weather models.",
         topics: ["Global weather modeling", "Weather forecasting science", "Weather data collection and analysis", "Weather apps and data sources"]
       },
       {
         id: "hs-biotech", name: "Biotechnology Honors", tier: "Honors", weight: 5,
         gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [{ course: "Biology", minGrade: null, note: "Or instructor/supervisor approval" }],
+        prereqs: [
+          { course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" },
+          { course: "Biology", minGrade: null, note: "Or instructor/supervisor approval" }
+        ],
         description: "Application of biological concepts to DNA fingerprinting, RNA vaccines, CRISPR, and more. Students learn techniques and their real-world applications as well as ethical implications of biotechnology.",
         topics: ["DNA fingerprinting", "RNA vaccines", "CRISPR gene editing", "Ethical implications of biotechnology"]
       },
       {
         id: "hs-orgchem", name: "Organic Chemistry Honors", tier: "Honors", weight: 5,
         gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [{ course: null, minGrade: null, note: "Prior chemistry knowledge required" }],
+        prereqs: [
+          { course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" },
+          { course: null, minGrade: null, note: "Prior chemistry knowledge required" }
+        ],
         description: "Introductory organic chemistry labs building a coherent model for an end-of-module synthesis project. Primarily laboratory-based with content delivered in a flipped classroom format.",
         topics: ["Introductory organic chemistry", "Laboratory investigations", "Synthesis project", "Flipped classroom content delivery"]
       },
       {
         id: "hs-hort", name: "Horticultural and Agricultural Science", tier: "CP", weight: 0,
         gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
+        prereqs: [{ course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" }],
         description: "Inquiry-driven introduction to plant growth and production using the MHS student garden, hoop-house, and greenhouse. Covers organic vegetable, flower, and herb production from propagation to harvest.",
         topics: ["Plant biology and propagation", "Organic production methods", "Nutrition and food systems", "Environmental stewardship and food justice"]
       },
       {
         id: "hs-forensics", name: "Forensic Science", tier: "CP", weight: 0,
         gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
+        prereqs: [{ course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" }],
         description: "Introduction to crime scene investigation. Students observe, collect, analyze, and evaluate evidence using physics, chemistry, and biology principles. Considers ethical and social justice aspects of forensic science.",
         topics: ["Crime scene investigation methods", "Evidence collection and analysis", "Physics, chemistry, and biology in forensics", "Ethical and social justice considerations"]
+      },
+      {
+        id: "hs-astronomy", name: "Astronomy", tier: "CP", weight: 0,
+        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
+        prereqs: [{ course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" }],
+        note: "Not running in 2026-2027",
+        description: "Explores the origins of science through observations and considers a philosophical viewpoint about how we do science. Covers how modern scientists make observations and measurements in space, how objects interact in space, and how discoveries are made from both Eurocentric and global viewpoints.",
+        topics: ["Origins of scientific observation", "Modern space measurements", "Object interactions in space", "Eurocentric and global perspectives on astronomy"]
+      },
+      {
+        id: "hs-microelectronics", name: "Microelectronics Honors", tier: "Honors", weight: 5,
+        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
+        prereqs: [{ course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" }],
+        note: "Not running in 2026-2027",
+        description: "Explores various electronic circuits and uses puzzles to uncover mysteries and possibilities within microchips. Examines common DIY microelectronics including Arduino, Raspberry Pi, and other microcontrollers. Some programming involved; no prior coding required.",
+        topics: ["Electronic circuits and microchips", "Arduino and Raspberry Pi", "DIY microelectronics", "Introductory programming"]
+      },
+      {
+        id: "hs-nutrition", name: "Nutrition and Food Science", tier: "CP", weight: 0,
+        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
+        prereqs: [{ course: null, minGrade: null, note: "One IPELS/physics, chemistry and biology (biology may be taken concurrently) course or permission of the MHS Science Supervisor" }],
+        note: "Not running in 2026-2027",
+        description: "Explores the biochemistry of foods and nutrients with consideration of physiological effects of specialized diets. Topics include cultural, religious, and economic factors influencing food acceptance and availability, as well as nutrient requirements of various life stages.",
+        topics: ["Biochemistry of foods and nutrients", "Specialized diets and physiological effects", "Cultural and economic factors in nutrition", "Nutrient requirements across life stages"]
       }
     ]
   }

@@ -5,13 +5,13 @@
 
 export const electiveCategories = {
   "AP Capstone":              ["AP Capstone Program"],
-  "Computer Science":         ["Foundations of Java → AP CS A", "Game Design & App Dev", "Webpage Design & Development", "Introduction to Computer Languages"],
+  "Computer Science":         ["Computer Science"],
   "Business":                 ["Online Financial Literacy", "Business and Personal Law", "Introduction to Entrepreneurship", "Sports and Entertainment Marketing"],
-  "Communication Tech":       ["Television Production", "Radio Broadcasting"],
-  "Industrial Arts":          ["Engineering", "Architectural Design", "Engineering Design & Material Fabrication", "Media & Graphic Communication", "Power, Energy & Transportation", "CAD & Design Portfolio"],
-  "Family & Consumer Sci":    ["Culinary Arts", "The Art of Baking", "Life Skills"],
+  "Communication Tech":       ["Television Production"],
+  "Industrial Arts":          ["Engineering", "Architectural Design", "Engineering Design & Material Fabrication", "Media & Graphic Communication", "Power, Energy & Transportation"],
+  "Family & Consumer Sci":    ["Culinary Arts", "Life Skills"],
   "Visual Art":               ["Studio Art", "Ceramics", "Photography"],
-  "Performing Arts":          ["Band", "Orchestra", "Choir", "Introduction to Guitar", "Dance", "Children's Theater", "Theater Arts", "Art of Speech and Presentation", "Theater Design & Stage Management"],
+  "Performing Arts":          ["Band", "Orchestra", "Choir", "Introduction to Guitar", "Dance", "Theater Arts"],
   "Tomorrow's Teachers":      ["Tomorrow's Teachers"],
 };
 
@@ -44,10 +44,32 @@ export const electiveTracks = {
     // ══════════════════════════════════════════════════════════════════
     // COMPUTER APPLICATIONS / COMPUTER SCIENCE
     // ══════════════════════════════════════════════════════════════════
-    "Foundations of Java → AP CS A": {
+    "Computer Science": {
       color: "#60a5fa",
-      description: "Progressive programming track from introductory Java to college-level AP Computer Science A.",
+      description: "Computer science and digital technology courses ranging from introductory programming to AP-level Java. Courses may be taken independently or as a progression.",
       courses: [
+        {
+          id: "el-intro-comp-lang", name: "Introduction to Computer Languages", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          note: "Not running in 2026-2027",
+          description: "For students who want to explore computer programming or have no previous experience. Students explore three programming languages: Scratch, Visual Basic.Net, and C++. Problem-solving skills developed through real-world/business-related programs.",
+          topics: ["Scratch programming", "Visual Basic.Net", "C++ fundamentals", "Problem solving with real-world applications"]
+        },
+        {
+          id: "el-webdev", name: "Webpage Design & Development", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Introduction to the design, creation, and maintenance of web pages and websites. Students create professional-looking sites using Adobe Creative Suite with Dreamweaver and Flash, plus a review of HTML code.",
+          topics: ["Web page design and creation", "Adobe Creative Suite", "HTML fundamentals", "Project-based environment"]
+        },
+        {
+          id: "el-game-design", name: "Game Design & Application Development", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [{ course: null, minGrade: null, note: "Prior programming experience recommended" }],
+          description: "Project-based curriculum teaching the game design and application development process. Students create action, adventure, and puzzle games using game design and creation software.",
+          topics: ["Game design process", "Application development", "Action, adventure, and puzzle game creation", "Game creation software"]
+        },
         {
           id: "el-java", name: "Foundations of JAVA", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
@@ -61,49 +83,6 @@ export const electiveTracks = {
           prereqs: [{ course: "Foundations of JAVA", minGrade: null, note: "Successful completion" }],
           description: "Full-year course emphasizing object-oriented programming in Java. Students learn programming methodology with focus on problem solving, algorithm development, and data structures. Follows rigorous College Board curriculum.",
           topics: ["Object-oriented programming in Java", "Problem solving and algorithm development", "Data structures", "Programming projects and case studies", "AP exam preparation"]
-        }
-      ]
-    },
-
-    "Game Design & App Dev": {
-      color: "#818cf8",
-      description: "Standalone semester course in game and application development.",
-      courses: [
-        {
-          id: "el-game-design", name: "Game Design & Application Development", tier: "CP", weight: 0,
-          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
-          prereqs: [{ course: null, minGrade: null, note: "Prior programming experience recommended" }],
-          description: "Project-based curriculum teaching the game design and application development process. Students create action, adventure, and puzzle games using game design and creation software.",
-          topics: ["Game design process", "Application development", "Action, adventure, and puzzle game creation", "Game creation software"]
-        }
-      ]
-    },
-
-    "Webpage Design & Development": {
-      color: "#a78bfa",
-      description: "Standalone semester course in web design.",
-      courses: [
-        {
-          id: "el-webdev", name: "Webpage Design & Development", tier: "CP", weight: 0,
-          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
-          prereqs: [],
-          description: "Introduction to the design, creation, and maintenance of web pages and websites. Students create professional-looking sites using Adobe Creative Suite with Dreamweaver and Flash, plus a review of HTML code.",
-          topics: ["Web page design and creation", "Adobe Creative Suite", "HTML fundamentals", "Project-based environment"]
-        }
-      ]
-    },
-
-    "Introduction to Computer Languages": {
-      color: "#7c3aed",
-      description: "Introductory programming course exploring multiple languages.",
-      courses: [
-        {
-          id: "el-intro-comp-lang", name: "Introduction to Computer Languages", tier: "CP", weight: 0,
-          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
-          prereqs: [],
-          note: "Not running in 2026-2027",
-          description: "For students who want to explore computer programming or have no previous experience. Students explore three programming languages: Scratch, Visual Basic.Net, and C++. Problem-solving skills developed through real-world/business-related programs.",
-          topics: ["Scratch programming", "Visual Basic.Net", "C++ fundamentals", "Problem solving with real-world applications"]
         }
       ]
     },
@@ -172,7 +151,7 @@ export const electiveTracks = {
     // ══════════════════════════════════════════════════════════════════
     "Television Production": {
       color: "#f472b6",
-      description: "Progressive three-course track from intro production to executive producer level.",
+      description: "Broadcast media track spanning TV production from intro to executive producer level, plus internet radio broadcasting.",
       courses: [
         {
           id: "el-tv1", name: "Television Production I", tier: "CP", weight: 0,
@@ -194,14 +173,7 @@ export const electiveTracks = {
           prereqs: [{ course: "TV Production II", minGrade: null, note: "Successful completion" }],
           description: "Independent study for producing various video products. Students serve as executive producers and produce special segments, applying knowledge from TV Production I and II.",
           topics: ["Executive producer role", "Independent video production", "Special segments", "Applied production skills"]
-        }
-      ]
-    },
-
-    "Radio Broadcasting": {
-      color: "#ec4899",
-      description: "Standalone semester course in internet radio broadcasting.",
-      courses: [
+        },
         {
           id: "el-radio", name: "Radio Broadcasting", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
@@ -217,7 +189,7 @@ export const electiveTracks = {
     // ══════════════════════════════════════════════════════════════════
     "Engineering": {
       color: "#fb923c",
-      description: "Two-course engineering design track with CAD, 3D printing, and precision measurement.",
+      description: "Three-course engineering design track with CAD, 3D printing, and a senior portfolio capstone.",
       courses: [
         {
           id: "el-eng1", name: "Engineering I", tier: "CP", weight: 0,
@@ -232,6 +204,13 @@ export const electiveTracks = {
           prereqs: [{ course: "Engineering I", minGrade: null, note: "Successful completion" }],
           description: "Continues from Engineering I with 3D CAD assemblies using materials, bearings, bushings, and gears. Covers advanced engineering drawing, material science, and the design process. Students learn to use a 3D printer.",
           topics: ["3D CAD assemblies", "Advanced engineering drawing", "Basic material science", "3D printing", "Engineering career exploration"]
+        },
+        {
+          id: "el-cad-portfolio", name: "Portfolio Project — Computer Aided Drafting & Design", tier: "CP", weight: 0,
+          gradeLevel: "Grade 12", credits: "5",
+          prereqs: [{ course: "Level I + Level II Technology Education course", minGrade: null, note: "Senior year only" }],
+          description: "Professional portfolio development with concentration in CAD, robotic systems, power & energy, or graphic information systems. Can be used to investigate careers or prepare for college.",
+          topics: ["Professional portfolio development", "CAD and design concentration", "Career and college preparation"]
         }
       ]
     },
@@ -334,26 +313,12 @@ export const electiveTracks = {
       ]
     },
 
-    "CAD & Design Portfolio": {
-      color: "#92400e",
-      description: "Senior portfolio option for students with pre-engineering background.",
-      courses: [
-        {
-          id: "el-cad-portfolio", name: "Portfolio Project — Computer Aided Drafting & Design", tier: "CP", weight: 0,
-          gradeLevel: "Grade 12", credits: "5",
-          prereqs: [{ course: "Level I + Level II Technology Education course", minGrade: null, note: "Senior year only" }],
-          description: "Professional portfolio development with concentration in CAD, robotic systems, power & energy, or graphic information systems. Can be used to investigate careers or prepare for college.",
-          topics: ["Professional portfolio development", "CAD and design concentration", "Career and college preparation"]
-        }
-      ]
-    },
-
     // ══════════════════════════════════════════════════════════════════
     // FAMILY & CONSUMER SCIENCES / CULINARY ARTS
     // ══════════════════════════════════════════════════════════════════
     "Culinary Arts": {
       color: "#f87171",
-      description: "Two-course culinary track from basic food preparation to international cuisine.",
+      description: "Culinary track covering food preparation, international cuisine, and baking.",
       courses: [
         {
           id: "el-culinary1", name: "Introduction to Culinary Arts", tier: "CP", weight: 0,
@@ -368,14 +333,7 @@ export const electiveTracks = {
           prereqs: [{ course: "Introduction to Culinary Arts", minGrade: null, note: "Successful completion" }],
           description: "International and ethnic cuisine as cultural identity. Students analyze the interrelationship between cuisine and culture for countries such as France, Japan, Italy, China, and Mexico. Covers garnishing and plate presentation.",
           topics: ["International and ethnic cuisine", "Cuisine and culture interrelationship", "Garnishing and plate presentation", "Nutrition, safety, and food-borne illness"]
-        }
-      ]
-    },
-
-    "The Art of Baking": {
-      color: "#fb7185",
-      description: "Standalone semester course in baking and cake decorating.",
-      courses: [
+        },
         {
           id: "el-baking", name: "The Art of Baking", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
@@ -679,23 +637,9 @@ export const electiveTracks = {
     // ══════════════════════════════════════════════════════════════════
     // PERFORMING ARTS — THEATER
     // ══════════════════════════════════════════════════════════════════
-    "Children's Theater": {
-      color: "#fb923c",
-      description: "Standalone semester course in children's theater play production.",
-      courses: [
-        {
-          id: "el-children-theater", name: "Children's Theater Play Production", tier: "CP", weight: 0,
-          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
-          prereqs: [],
-          description: "Full process of play production — choosing, casting, rehearsing, building, and performing a children's theater show. Students tour the school district performing for younger audiences.",
-          topics: ["Play production from start to finish", "Casting, rehearsing, and building", "Performing for younger audiences", "School district tour"]
-        }
-      ]
-    },
-
     "Theater Arts": {
-      color: "#fdba74",
-      description: "Standalone semester course in theater fundamentals.",
+      color: "#fb923c",
+      description: "Theater courses covering performance, production, public speaking, and technical theater — any may be taken independently.",
       courses: [
         {
           id: "el-theater-arts", name: "Theater Arts", tier: "CP", weight: 0,
@@ -703,28 +647,21 @@ export const electiveTracks = {
           prereqs: [],
           description: "Fundamentals of theater through improv games, monologues, and scene study. Students learn theater history, voice and movement, improvisation, character development, and script analysis across time periods and cultures.",
           topics: ["Improv games and monologues", "Scene study and script analysis", "Theater history", "Voice, movement, and character development"]
-        }
-      ]
-    },
-
-    "Art of Speech and Presentation": {
-      color: "#fed7aa",
-      description: "Standalone semester course in public speaking and presentation skills.",
-      courses: [
+        },
+        {
+          id: "el-children-theater", name: "Children's Theater Play Production", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Full process of play production — choosing, casting, rehearsing, building, and performing a children's theater show. Students tour the school district performing for younger audiences.",
+          topics: ["Play production from start to finish", "Casting, rehearsing, and building", "Performing for younger audiences", "School district tour"]
+        },
         {
           id: "el-speech", name: "The Art of Speech and Presentation", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Teaches effective presentation delivery using theater techniques — pacing, inflection, body language, annunciation, and audience awareness. Includes storytelling, interpretive reading, and persuasive performance.",
           topics: ["Presentation preparation and delivery", "Pacing, inflection, and body language", "Storytelling and interpretive reading", "Persuasive performance"]
-        }
-      ]
-    },
-
-    "Theater Design & Stage Management": {
-      color: "#fde68a",
-      description: "Standalone semester course in technical theater.",
-      courses: [
+        },
         {
           id: "el-theater-design", name: "Theater Design, Technology and Stage Management", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
