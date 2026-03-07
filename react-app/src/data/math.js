@@ -71,7 +71,8 @@ export const mathTracks = {
             "Prerequisite: 85% in Geometry Honors/UMS Geometry or 95% in Geometry AND 95% in Algebra I",
             "Summer assignment required"
           ],
-          color: "#60a5fa"
+          color: "#60a5fa",
+          highlight: false
         },
         Enriched: {
           name: "Geometry Honors",
@@ -84,7 +85,8 @@ export const mathTracks = {
             "Prerequisite: 95% in Algebra I",
             "Summer assignment required"
           ],
-          color: "#c084fc"
+          color: "#c084fc",
+          highlight: false
         },
         Standard: {
           name: "Algebra I",
@@ -97,7 +99,8 @@ export const mathTracks = {
             "Functions: domain, range, notation",
             "Prerequisite: Successful completion of Math 8"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         }
       }
     },
@@ -131,7 +134,8 @@ export const mathTracks = {
             "Prerequisite: 85% in Algebra II Honors or 95% in Algebra II",
             "Summer assignment required"
           ],
-          color: "#60a5fa"
+          color: "#60a5fa",
+          highlight: false
         },
         Enriched: {
           name: "Algebra II Honors",
@@ -144,7 +148,8 @@ export const mathTracks = {
             "Prerequisite: 85% in Geometry Honors or 95% in Geometry AND 95% in Algebra I",
             "Summer assignment required"
           ],
-          color: "#c084fc"
+          color: "#c084fc",
+          highlight: false
         },
         Standard: {
           name: "Geometry",
@@ -158,7 +163,8 @@ export const mathTracks = {
             "Introduction to trigonometry (SOH-CAH-TOA)",
             "Prerequisite: Successful completion of Algebra I — Summer assignment required"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         }
       }
     },
@@ -205,7 +211,8 @@ export const mathTracks = {
             "Prerequisite: 85% in Algebra II Honors or 95% in Algebra II",
             "Summer assignment required"
           ],
-          color: "#c084fc"
+          color: "#c084fc",
+          highlight: false
         },
         Standard: {
           name: "Algebra II",
@@ -218,7 +225,8 @@ export const mathTracks = {
             "Prerequisite: 70% in Algebra I and 70% in Geometry",
             "Summer assignment required"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         }
       }
     },
@@ -272,7 +280,8 @@ export const mathTracks = {
             "ADVANCED ALGEBRA & TRIG: Extended Algebra II skills, problem solving, polynomial/rational/exp/log functions, full trigonometry (Prereq: 70–84% in Algebra II)",
             "Students select the path best aligned with their college and career interests"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         }
       }
     }

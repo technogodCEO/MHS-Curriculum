@@ -23,7 +23,8 @@ export const englishTracks = {
             "Summer reading requirements",
             "Prerequisite: Successful completion of 8th Grade Language Arts"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         Honors: {
           name: "English 9 Literature & Composition Honors",
@@ -71,7 +72,8 @@ export const englishTracks = {
             "Summer reading requirements",
             "Prerequisite: Successful completion of English 9"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         Honors: {
           name: "English 10 Literature & Composition Honors",
@@ -117,7 +119,8 @@ export const englishTracks = {
             "Both options emphasize critical thinking, open dialogue, and literary analysis",
             "Prerequisite: Successful completion of English 10"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         Honors: {
           // Two thematic options — students choose one
@@ -164,7 +167,8 @@ export const englishTracks = {
             "Both options build skills for college readiness and the outside world",
             "Prerequisite: Successful completion of a grade 11 English course"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         Honors: {
           // Two thematic options — students choose one

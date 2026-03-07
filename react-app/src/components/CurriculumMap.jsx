@@ -8,9 +8,9 @@ import { englishTracks, englishTrackColors } from "../data/english";
 /*
  * CurriculumMap
  *
- * Renders the "Curriculum Map" tab — the main visual overview of the math program.
+ * Renders the "Curriculum Map" tab — the main visual overview of the active subject's program.
  * Shows a vertical timeline of grades 9–12, with one course card per grade for the
- * currently selected pathway (Accelerated / Advanced / Enriched / Standard).
+ * currently selected pathway (track names vary by subject).
  *
  * Props:
  *   accent   — the active subject's hex color, used to tint AP badges

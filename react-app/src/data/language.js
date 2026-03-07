@@ -28,7 +28,8 @@ export const languageTracks = {
             "Themes: Getting Started, Family & Home, School, Food & Dining",
             "Prerequisite: None"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         // Honors tracks — Level 1 completed in middle school, start at Level 2
         "Spanish (Honors)": {
@@ -39,7 +40,8 @@ export const languageTracks = {
             "Themes: City & Country, Travel, Celebrations, Technology",
             "Prerequisite: Completion of Spanish 1 or 75% in UMS Spanish 1B"
           ],
-          color: "#86efac"
+          color: "#86efac",
+          highlight: false
         },
         French: {
           name: "French 1",
@@ -50,7 +52,8 @@ export const languageTracks = {
             "Cultural focus: Francophone World, Paris",
             "Prerequisite: None"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "French (Honors)": {
           name: "French 2",
@@ -60,7 +63,8 @@ export const languageTracks = {
             "Themes: Daily Routine, Family Relationships, Health, Childhood",
             "Prerequisite: Completion of French 1 or UMS French 1B with 75%+"
           ],
-          color: "#86efac"
+          color: "#86efac",
+          highlight: false
         },
         German: {
           name: "German 1",
@@ -70,7 +74,8 @@ export const languageTracks = {
             "Themes: Getting to Know One Another, My School, A Party!, On the Weekend",
             "Prerequisite: None"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "German (Honors)": {
           name: "German 2",
@@ -80,7 +85,8 @@ export const languageTracks = {
             "Themes: Holidays & Celebrations, Travel Adventures, A Look Back, Technology & Media",
             "Prerequisite: Completion of German 1 or UMS German 1B with 75%+"
           ],
-          color: "#86efac"
+          color: "#86efac",
+          highlight: false
         },
         Latin: {
           name: "Latin 1",
@@ -91,7 +97,8 @@ export const languageTracks = {
             "History, culture, and literature of the Romans",
             "Prerequisite: None"
           ],
-          color: "#d4d4d8"
+          color: "#d4d4d8",
+          highlight: false
         }
       }
     },
@@ -109,7 +116,8 @@ export const languageTracks = {
             "Themes: City & Country, Travel, Celebrations, Technology",
             "Prerequisite: Completion of Spanish 1 or 75% in UMS Spanish 1B"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "Spanish (Honors)": {
           name: "Spanish 3 Honors",
@@ -131,7 +139,8 @@ export const languageTracks = {
             "Themes: Daily Routine, Family Relationships, Health, Childhood",
             "Prerequisite: Completion of French 1 or UMS French 1B with 75%+"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "French (Honors)": {
           name: "French 3",
@@ -141,7 +150,8 @@ export const languageTracks = {
             "Themes: Fairy Tales, Wars, My Future, The Environment",
             "Prerequisite: Successful completion of French 2"
           ],
-          color: "#86efac"
+          color: "#86efac",
+          highlight: false
         },
         German: {
           name: "German 2",
@@ -151,7 +161,8 @@ export const languageTracks = {
             "Themes: Holidays & Celebrations, Travel Adventures, A Look Back, Technology & Media",
             "Prerequisite: Completion of German 1 or UMS German 1B with 75%+"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "German (Honors)": {
           name: "German 3",
@@ -161,7 +172,8 @@ export const languageTracks = {
             "Themes: Health & Wellness, Life in a (Divided) City, My Future, Nature & Environment",
             "Prerequisite: Successful completion of German 2"
           ],
-          color: "#86efac"
+          color: "#86efac",
+          highlight: false
         },
         Latin: {
           name: "Latin 2",
@@ -171,7 +183,8 @@ export const languageTracks = {
             "Continued reading skills; conflicts of the late Roman Republic",
             "Prerequisite: Successful completion of Latin 1"
           ],
-          color: "#d4d4d8"
+          color: "#d4d4d8",
+          highlight: false
         }
       }
     },
@@ -189,7 +202,8 @@ export const languageTracks = {
             "Themes: Leisure Adventures, Nutrition & Wellness, Special Occasions, The Arts",
             "Prerequisite: Successful completion of Spanish 2"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "Spanish (Honors)": {
           name: "Spanish 4 Honors",
@@ -211,7 +225,8 @@ export const languageTracks = {
             "Themes: Fairy Tales, Wars, My Future, The Environment",
             "Prerequisite: Successful completion of French 2"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "French (Honors)": {
           name: "French 4 Honors",
@@ -232,7 +247,8 @@ export const languageTracks = {
             "Themes: Health & Wellness, Life in a (Divided) City, My Future, Nature & Environment",
             "Prerequisite: Successful completion of German 2"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "German (Honors)": {
           name: "German 4 Honors",
@@ -253,7 +269,8 @@ export const languageTracks = {
             "Reading extended narrative passages; intro to unaltered Latin prose and poetry",
             "Prerequisite: Successful completion of Latin 2"
           ],
-          color: "#d4d4d8"
+          color: "#d4d4d8",
+          highlight: false
         }
       }
     },
@@ -271,7 +288,8 @@ export const languageTracks = {
             "Students choose Spanish 4 or 5 based on prior course",
             "Prereq: Completion of Spanish 3 (for Sp 4) or Spanish 4 (for Sp 5)"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "Spanish (Honors)": {
           name: "AP Spanish",
@@ -292,7 +310,8 @@ export const languageTracks = {
             "POWER OF LANGUAGE: Sociolinguistics, culture, society, power, and language; Latin and Romance/Germanic connections (Prereq: None)",
             "Students choose based on interest and goals"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "French (Honors)": {
           name: "AP French",
@@ -312,7 +331,8 @@ export const languageTracks = {
             "POWER OF LANGUAGE: Sociolinguistics, culture, society, power, and language; Indo-European connections (Prereq: None)",
             "Students choose based on interest and goals"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "German (Honors)": {
           name: "AP German",

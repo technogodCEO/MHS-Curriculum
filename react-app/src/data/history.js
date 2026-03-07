@@ -19,7 +19,8 @@ export const historyTracks = {
             "Fulfills NJ graduation requirement for one-year World History study",
             "Prerequisite: None"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "AP/Honors": {
           name: "World Studies Honors",
@@ -52,7 +53,8 @@ export const historyTracks = {
             "The Progressive Era and World War I",
             "Prerequisite: Successful completion of World Studies"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "AP/Honors": {
           name: "U.S. History I Honors",
@@ -85,7 +87,8 @@ export const historyTracks = {
             "Social and political leadership connecting to present-day issues",
             "Prerequisite: Successful completion of U.S. History I"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "AP/Honors": {
           name: "AP U.S. History II",
@@ -118,7 +121,8 @@ export const historyTracks = {
             "A SHORT HISTORY OF EVERYTHING: Big History — from the Big Bang to the present (Grades 10–12)",
             "See electives for full list of options"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         "AP/Honors": {
           name: "AP American Government & Politics",

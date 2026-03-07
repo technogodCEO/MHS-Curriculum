@@ -175,12 +175,11 @@ export default function MathCurriculum() {
             open={dropOpen}
             setOpen={setDropOpen}
             btnRef={btnRef}
-            activeSubject={activeSubject}
           />
           {" "}Curriculum
         </h1>
         <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#666", fontSize: "0.9rem", maxWidth: 540, margin: "0 auto 0" }}>
-          A comprehensive, multi-track program designed for students at Montgomery High School to be able to more easily explore their math progression.
+          A comprehensive, multi-track program designed for students at Montgomery High School to be able to more easily explore their curriculum and course options.
           Pathways are advisory — high school course enrollment is based on prerequisites, not pathway assignment.
         </p>
       </div>

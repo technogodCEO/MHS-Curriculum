@@ -47,7 +47,9 @@ export function ProgramOfStudies({ activeSubject }) {
       case 'history':  return { posSubject: historyProgramOfStudies };
       case 'english':  return { posSubject: englishProgramOfStudies };
       case 'electives': return { posSubject: electivesProgramOfStudies};
-      default: return { posSubject: 'Error/not implemented' };
+      default:
+        console.warn(`ProgramOfStudies: unknown subject "${type}", rendering empty catalog`);
+        return { posSubject: [] };
     }
   };
 
@@ -101,6 +103,7 @@ export function ProgramOfStudies({ activeSubject }) {
         .pos-prereq-note { color:#555; font-size:0.75rem; font-style:italic; }
         .pos-chips { display:flex; flex-wrap:wrap; gap:6px; }
         .pos-chip { font-family:'DM Sans',sans-serif; font-size:0.72rem; padding:4px 10px; border-radius:6px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); color:#888; }
+        .pos-note { font-family:'DM Sans',sans-serif; font-size:0.78rem; color:#f59e0b; background:#f59e0b11; border:1px solid #f59e0b33; border-radius:6px; padding:6px 10px; margin:8px 0; }
         .pos-weight-legend { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; font-family:'DM Sans',sans-serif; font-size:0.75rem; color:#555; }
         .pos-weight-legend-item { display:flex; align-items:center; gap:6px; }
         .pos-weight-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }

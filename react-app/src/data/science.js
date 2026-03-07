@@ -21,7 +21,8 @@ export const scienceTracks = {
             "Claim, evidence, and reasoning (CER) statements",
             "Prerequisite: None — open to all students"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         CP: {
           name: "IPELS",
@@ -33,7 +34,8 @@ export const scienceTracks = {
             "Claim, evidence, and reasoning (CER) statements",
             "Prerequisite: None — open to all students"
           ],
-          color: "#6ee7b7"
+          color: "#6ee7b7",
+          highlight: false
         },
         Honors: {
           name: "HIPELS (Honors)",
@@ -103,7 +105,8 @@ export const scienceTracks = {
             "Builds on energy theme from IPELS",
             "Permission coordinated through counselor and Science Supervisor"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         CP: {
           name: "Chemistry",
@@ -114,7 +117,8 @@ export const scienceTracks = {
             "Algebraic equations, graphing, scientific notation, significant figures",
             "Builds on energy theme from IPELS"
           ],
-          color: "#6ee7b7"
+          color: "#6ee7b7",
+          highlight: false
         },
         Honors: {
           name: "Chemistry Honors",
@@ -185,7 +189,8 @@ export const scienceTracks = {
             "Builds on prior science coursework",
             "Permission coordinated through counselor and Science Supervisor"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         CP: {
           name: "Biology",
@@ -196,7 +201,8 @@ export const scienceTracks = {
             "Ecosystems, classification, and biotechnology",
             "Simulations, readings, and lab activities"
           ],
-          color: "#6ee7b7"
+          color: "#6ee7b7",
+          highlight: false
         },
         Honors: {
           name: "Biology Honors",
@@ -267,7 +273,8 @@ export const scienceTracks = {
             "Choose modules based on interest and availability",
             "See iSTEM section for full module list"
           ],
-          color: "#94a3b8"
+          color: "#94a3b8",
+          highlight: false
         },
         CP: {
           name: "AP Elective / iSTEM",
@@ -277,7 +284,8 @@ export const scienceTracks = {
             "iSTEMi: Full-year independent research project (Honors-weighted)",
             "Choose based on interest and college/career goals"
           ],
-          color: "#6ee7b7"
+          color: "#6ee7b7",
+          highlight: false
         },
         Honors: {
           name: "AP Elective / iSTEM Honors",
@@ -287,7 +295,8 @@ export const scienceTracks = {
             "iSTEM HONORS: Biotechnology, organic chemistry, or independent research",
             "Choose based on interest and college/career goals"
           ],
-          color: "#2dd4bf"
+          color: "#2dd4bf",
+          highlight: false
         },
         "AP (Standard)": {
           name: "APES / AP Physics C",
