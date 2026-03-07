@@ -58,7 +58,7 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
             className={`track-tab ${selectedCategory === category ? "" : "inactive"}`}
             style={selectedCategory === category ? {
               background: electiveCategories[category].color,
-              color: "#fff",
+              color: "#000",
               borderColor: electiveCategories[category].color,
               boxShadow: `0 0 20px ${electiveCategories[category].color}66`
             } : {}}
@@ -130,6 +130,11 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
                 {/* Card */}
                 <div
                   className={`grade-card${isExpanded ? " expanded" : ""}${isAP ? " highlight-card" : ""}`}
+                  style={isAP ? {
+                    borderColor: `${trackColor}4d`,
+                    background: `${trackColor}0d`,
+                    boxShadow: `0 0 30px ${trackColor}1a`,
+                  } : {}}
                   onClick={() => setExpandedCourse(isExpanded ? null : course.id)}
                 >
                   <div className="card-header">
@@ -138,9 +143,9 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
                     </div>
                     {course.tier !== "CP" && (
                       <span className="badge" style={{
-                        background: isAP ? `${accent}22` : "#6366f122",
-                        color: isAP ? accent : "#6366f1",
-                        border: `1px solid ${isAP ? accent + "44" : "#6366f144"}`,
+                        background: isAP ? `${trackColor}22` : "#6366f122",
+                        color: isAP ? trackColor : "#6366f1",
+                        border: `1px solid ${isAP ? trackColor + "44" : "#6366f144"}`,
                       }}>
                         {course.tier}
                       </span>

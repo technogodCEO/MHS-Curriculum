@@ -4,15 +4,15 @@
 // with 1–3 courses don't need empty grade slots.
 
 export const electiveCategories = {
-  "AP Capstone":              { color: "#b45309", tracks: ["AP Capstone Program"] },
-  "Computer Science":         { color: "#1d4ed8", tracks: ["Computer Science", "Computer Science (Express)", "Digital Creativity"] },
-  "Business":                 { color: "#15803d", tracks: ["Online Financial Literacy", "Business and Personal Law", "Introduction to Entrepreneurship", "Sports and Entertainment Marketing"] },
-  "Communication Tech":       { color: "#be185d", tracks: ["Television Production", "Television Production (Only)"] },
-  "Industrial Arts":          { color: "#c2410c", tracks: ["Engineering", "Architectural Design", "Engineering Design & Material Fabrication", "Media & Graphic Communication", "Power, Energy & Transportation"] },
-  "Family & Consumer Sci":    { color: "#be123c", tracks: ["Culinary Arts", "Culinary: Baking Focus", "Life Skills"] },
-  "Visual Art":               { color: "#6d28d9", tracks: ["Studio Art", "Ceramics", "Photography", "Photography Essentials"] },
-  "Performing Arts":          { color: "#0e7490", tracks: ["Band", "Orchestra", "Choir", "Introduction to Guitar", "Dance", "Theater Arts", "Technical Theater & Communication"] },
-  "Tomorrow's Teachers":      { color: "#4d7c0f", tracks: ["Tomorrow's Teachers"] },
+  "AP Capstone":              { color: "#fbbf24", tracks: ["AP Capstone Program"] },
+  "Computer Science":         { color: "#60a5fa", tracks: ["Computer Science", "Computer Science (Express)", "Digital Creativity"] },
+  "Business":                 { color: "#34d399", tracks: ["Online Financial Literacy", "Business and Personal Law", "Introduction to Entrepreneurship", "Sports and Entertainment Marketing"] },
+  "Communication Tech":       { color: "#f472b6", tracks: ["Television Production", "Television Production (Only)"] },
+  "Industrial Arts":          { color: "#fb923c", tracks: ["Engineering", "Architectural Design", "Engineering Design & Material Fabrication", "Media & Graphic Communication", "Power, Energy & Transportation"] },
+  "Family & Consumer Sci":    { color: "#f87171", tracks: ["Culinary Arts", "Culinary: Baking Focus", "Life Skills"] },
+  "Visual Art":               { color: "#a78bfa", tracks: ["Studio Art", "Ceramics", "Photography", "Photography Essentials"] },
+  "Performing Arts":          { color: "#22d3ee", tracks: ["Band", "Orchestra", "Choir", "Introduction to Guitar", "Dance", "Theater Arts", "Technical Theater & Communication"] },
+  "Tomorrow's Teachers":      { color: "#a3e635", tracks: ["Tomorrow's Teachers"] },
 };
 
 export const electiveTracks = {
@@ -21,7 +21,7 @@ export const electiveTracks = {
     // AP CAPSTONE PROGRAM
     // ══════════════════════════════════════════════════════════════════
     "AP Capstone Program": {
-      color: "#f59e0b",
+      color: "#fbbf24",
       description: "Two-course AP diploma program developing critical thinking, research, and presentation skills. Earn the AP Capstone Diploma with scores of 3+ on Seminar, Research, and four additional AP exams.",
       courses: [
         {
