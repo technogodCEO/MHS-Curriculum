@@ -37,7 +37,7 @@ export const languageTracks = {
             "ACTFL novice-high proficiency target",
             "Present, preterite, and imperfect tenses",
             "Themes: City & Country, Travel, Celebrations, Technology",
-            "Prerequisite: Completion of Spanish 1 (UMS) or 75% in UMS Spanish 1B"
+            "Prerequisite: Completion of Spanish 1 or 75% in UMS Spanish 1B"
           ],
           color: "#86efac"
         },
@@ -58,7 +58,7 @@ export const languageTracks = {
             "ACTFL novice-high proficiency target",
             "Present, passé composé, and imperfect tenses",
             "Themes: Daily Routine, Family Relationships, Health, Childhood",
-            "Prerequisite: Completion of French 1 (UMS) or UMS French 1B with 75%+"
+            "Prerequisite: Completion of French 1 or UMS French 1B with 75%+"
           ],
           color: "#86efac"
         },
@@ -78,7 +78,7 @@ export const languageTracks = {
             "ACTFL novice-high proficiency target",
             "Present perfect, preterite, future tenses; accusative/dative cases; modal verbs",
             "Themes: Holidays & Celebrations, Travel Adventures, A Look Back, Technology & Media",
-            "Prerequisite: Completion of German 1 (UMS) or UMS German 1B with 75%+"
+            "Prerequisite: Completion of German 1 or UMS German 1B with 75%+"
           ],
           color: "#86efac"
         },
@@ -360,7 +360,7 @@ export const languageProgramOfStudies = [
     category: "Spanish", color: "#86efac", grades: "Grades 9–12",
     courses: [
       { id: "hs-sp1", name: "Spanish 1", tier: "CP", weight: 0, gradeLevel: "Grade 9+", credits: "5", prereqs: [], description: "ACTFL novice-mid proficiency. Communicates at the word level, recognizing memorized words and phrases. Emphasizes present tense, reflexives, near future, and recent past tenses through thematic vocabulary.", topics: ["Let's Get Started!", "My Family — My Home", "In and After School", "What We Eat and Where?"] },
-      { id: "hs-sp2", name: "Spanish 2", tier: "CP", weight: 0, gradeLevel: "Grades 9–10+", credits: "5", prereqs: [{ course: "Spanish 1 or UMS Spanish 1B", minGrade: 75, note: null }], description: "ACTFL novice-high proficiency. Progresses to sentence-level communication. Covers present, preterite, and imperfect tenses.", topics: ["City and Country", "Planes, Trains and Automobiles", "Celebrations", "The World of Technology"] },
+      { id: "hs-sp2", name: "Spanish 2", tier: "CP", weight: 0, gradeLevel: "Grades 9–10+", credits: "5", prereqs: [{ course: "UMS Spanish 1B", minGrade: 75, note: null }, { course: "Spanish 1", minGrade: null, note: "Successful Completion"}], description: "ACTFL novice-high proficiency. Progresses to sentence-level communication. Covers present, preterite, and imperfect tenses.", topics: ["City and Country", "Planes, Trains and Automobiles", "Celebrations", "The World of Technology"] },
       { id: "hs-sp3", name: "Spanish 3", tier: "CP", weight: 0, gradeLevel: "Grades 10–12", credits: "5", prereqs: [{ course: "Spanish 2", minGrade: null, note: "Successful completion" }], description: "ACTFL intermediate-low proficiency. Uses simple sentences independently. Covers preterite, imperfect, and subjunctive tenses.", topics: ["Leisure Time Adventures", "Nutrition and Wellness", "Special Occasions", "The Arts"] },
       { id: "hs-sp3-h", name: "Spanish 3 Honors", tier: "Honors", weight: 5, gradeLevel: "Grades 10–12", credits: "5", prereqs: [{ course: "Spanish 2", minGrade: 90, note: "Summer assignments required" }], description: "ACTFL intermediate-mid proficiency. Uses strings of sentences independently. Covers preterite, imperfect, and subjunctive with advanced application.", topics: ["Adventures and Memories", "Nutrition and Wellness", "Special Occasions", "Art and Expression"] },
       { id: "hs-sp4", name: "Spanish 4", tier: "CP", weight: 0, gradeLevel: "Grades 11–12", credits: "5", prereqs: [{ course: "Spanish 3", minGrade: null, note: "Successful completion" }], description: "ACTFL intermediate-mid proficiency. Covers preterite, imperfect, future, and subjunctive mood.", topics: ["Trends and Fads", "Technology and Progress", "The World of Entertainment", "Human Diversity"] },
@@ -373,7 +373,7 @@ export const languageProgramOfStudies = [
     category: "French", color: "#60a5fa", grades: "Grades 9–12",
     courses: [
       { id: "hs-fr1", name: "French 1", tier: "CP", weight: 0, gradeLevel: "Grade 9+", credits: "5", prereqs: [], description: "ACTFL novice-mid proficiency. Word-level communication.", topics: ["Getting to Know One Another", "My Family and Home", "School and Leisure Time", "Around Town", "Cultural focus: Francophone World and Paris"] },
-      { id: "hs-fr2", name: "French 2", tier: "CP", weight: 0, gradeLevel: "Grades 9–10+", credits: "5", prereqs: [{ course: "French 1 or UMS French 1B", minGrade: 75, note: null }], description: "ACTFL novice-high proficiency. Sentence-level communication.", topics: ["My Daily Routine", "Family Relationships", "My Health", "My Childhood"] },
+      { id: "hs-fr2", name: "French 2", tier: "CP", weight: 0, gradeLevel: "Grades 9–10+", credits: "5", prereqs: [{ course: "UMS French 1B", minGrade: 75, note: null }, { course: "French 1", minGrade: null, note: "Successful Completion" }], description: "ACTFL novice-high proficiency. Sentence-level communication.", topics: ["My Daily Routine", "Family Relationships", "My Health", "My Childhood"] },
       { id: "hs-fr3", name: "French 3", tier: "CP", weight: 0, gradeLevel: "Grades 10–12", credits: "5", prereqs: [{ course: "French 2", minGrade: null, note: "Successful completion" }], description: "ACTFL intermediate-low proficiency. Covers imperfect, future, conditional, and subjunctive.", topics: ["Fairy Tales", "Wars", "My Future", "The Environment"] },
       { id: "hs-fr4-h", name: "French 4 Honors", tier: "Honors", weight: 5, gradeLevel: "Grades 11–12", credits: "5", prereqs: [{ course: "French 3", minGrade: null, note: "Successful completion" }], description: "ACTFL intermediate-high proficiency. Paragraph-level. Mandatory before AP French. Seton Hall concurrent enrollment eligible.", topics: ["Paragraph-level analysis and synthesis", "Inferring meaning in new contexts", "Author's intent and cultural perspectives", "Advanced thematic vocabulary"] },
       { id: "hs-ap-fr", name: "AP French", tier: "AP", weight: 5, gradeLevel: "Grade 12", credits: "5", prereqs: [{ course: "French 4 Honors", minGrade: 85, note: "Summer assignments required" }], description: "College Board thematic units. Total immersion at advanced-low proficiency.", topics: ["Six College Board thematic units", "Authentic resource analysis", "Total immersion in French", "AP exam preparation", "Summer assignments required"] }
@@ -383,7 +383,7 @@ export const languageProgramOfStudies = [
     category: "German", color: "#fbbf24", grades: "Grades 9–12",
     courses: [
       { id: "hs-de1", name: "German 1", tier: "CP", weight: 0, gradeLevel: "Grade 9+", credits: "5", prereqs: [], description: "ACTFL novice-mid proficiency. Word-level communication.", topics: ["Getting to Know One Another", "My School", "A Party!", "On the Weekend"] },
-      { id: "hs-de2", name: "German 2", tier: "CP", weight: 0, gradeLevel: "Grades 9–10+", credits: "5", prereqs: [{ course: "German 1 or UMS German 1B", minGrade: 75, note: null }], description: "ACTFL novice-high proficiency. Sentence-level communication.", topics: ["Holidays and Celebrations", "Travel Adventures", "A Look Back", "Technology and Media"] },
+      { id: "hs-de2", name: "German 2", tier: "CP", weight: 0, gradeLevel: "Grades 9–10+", credits: "5", prereqs: [{ course: "UMS German 1B", minGrade: 75, note: null }, { course: "German 1", minGrade: null, note: "Successful Completion" }], description: "ACTFL novice-high proficiency. Sentence-level communication.", topics: ["Holidays and Celebrations", "Travel Adventures", "A Look Back", "Technology and Media"] },
       { id: "hs-de3", name: "German 3", tier: "CP", weight: 0, gradeLevel: "Grades 10–12", credits: "5", prereqs: [{ course: "German 2", minGrade: null, note: "Successful completion" }], description: "ACTFL intermediate-low proficiency. Covers reflexives, relative pronouns, subjunctive, passive voice.", topics: ["Health and Wellness", "Life in a (Divided) City", "My Future", "Nature and the Environment"] },
       { id: "hs-de4-h", name: "German 4 Honors", tier: "Honors", weight: 5, gradeLevel: "Grades 11–12", credits: "5", prereqs: [{ course: "German 3", minGrade: null, note: "Successful completion" }], description: "ACTFL intermediate-high proficiency. Paragraph-level. Mandatory before AP German.", topics: ["Paragraph-level analysis and synthesis", "Inferring meaning in new contexts", "Author's intent and cultural perspectives", "Advanced thematic vocabulary"] },
       { id: "hs-ap-de", name: "AP German", tier: "AP", weight: 5, gradeLevel: "Grade 12", credits: "5", prereqs: [{ course: "German 4 Honors", minGrade: 85, note: "Summer assignments required" }, { course: null, minGrade: null, note: "Heritage speakers may waive with proficiency test" }], description: "College Board thematic units. Germany, Austria, Switzerland. Total immersion at advanced-low.", topics: ["Six College Board thematic units", "Germany, Austria, and Switzerland culture", "Total immersion", "AP exam preparation", "Summer assignments required"] }

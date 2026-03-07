@@ -57,14 +57,14 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
             key={category}
             className={`track-tab ${selectedCategory === category ? "" : "inactive"}`}
             style={selectedCategory === category ? {
-              background: accent,
+              background: electiveCategories[category].color,
               color: "#fff",
-              borderColor: accent,
-              boxShadow: `0 0 20px ${accent}66`
+              borderColor: electiveCategories[category].color,
+              boxShadow: `0 0 20px ${electiveCategories[category].color}66`
             } : {}}
             onClick={() => {
               setSelectedCategory(category);
-              setSelectedTrack(electiveCategories[category][0])
+              setSelectedTrack(electiveCategories[category].tracks[0])
               setExpandedCourse(null)
             }}
           >
@@ -77,7 +77,7 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
       <div className="track-layout">
         {/* Left: track list for selected category */}
         <div className="track-sidebar">
-          {electiveCategories[selectedCategory].map(track => {
+          {electiveCategories[selectedCategory].tracks.map(track => {
             const colors = trackColorsSubject[track];
             const active = effectiveTrack === track;
             return (

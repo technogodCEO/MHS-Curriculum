@@ -4,15 +4,15 @@
 // with 1–3 courses don't need empty grade slots.
 
 export const electiveCategories = {
-  "AP Capstone":              ["AP Capstone Program"],
-  "Computer Science":         ["Computer Science"],
-  "Business":                 ["Online Financial Literacy", "Business and Personal Law", "Introduction to Entrepreneurship", "Sports and Entertainment Marketing"],
-  "Communication Tech":       ["Television Production"],
-  "Industrial Arts":          ["Engineering", "Architectural Design", "Engineering Design & Material Fabrication", "Media & Graphic Communication", "Power, Energy & Transportation"],
-  "Family & Consumer Sci":    ["Culinary Arts", "Life Skills"],
-  "Visual Art":               ["Studio Art", "Ceramics", "Photography"],
-  "Performing Arts":          ["Band", "Orchestra", "Choir", "Introduction to Guitar", "Dance", "Theater Arts"],
-  "Tomorrow's Teachers":      ["Tomorrow's Teachers"],
+  "AP Capstone":              { color: "#b45309", tracks: ["AP Capstone Program"] },
+  "Computer Science":         { color: "#1d4ed8", tracks: ["Computer Science", "Computer Science (Express)", "Digital Creativity"] },
+  "Business":                 { color: "#15803d", tracks: ["Online Financial Literacy", "Business and Personal Law", "Introduction to Entrepreneurship", "Sports and Entertainment Marketing"] },
+  "Communication Tech":       { color: "#be185d", tracks: ["Television Production", "Television Production (Only)"] },
+  "Industrial Arts":          { color: "#c2410c", tracks: ["Engineering", "Architectural Design", "Engineering Design & Material Fabrication", "Media & Graphic Communication", "Power, Energy & Transportation"] },
+  "Family & Consumer Sci":    { color: "#be123c", tracks: ["Culinary Arts", "Culinary: Baking Focus", "Life Skills"] },
+  "Visual Art":               { color: "#6d28d9", tracks: ["Studio Art", "Ceramics", "Photography", "Photography Essentials"] },
+  "Performing Arts":          { color: "#0e7490", tracks: ["Band", "Orchestra", "Choir", "Introduction to Guitar", "Dance", "Theater Arts", "Technical Theater & Communication"] },
+  "Tomorrow's Teachers":      { color: "#4d7c0f", tracks: ["Tomorrow's Teachers"] },
 };
 
 export const electiveTracks = {
@@ -83,6 +83,48 @@ export const electiveTracks = {
           prereqs: [{ course: "Foundations of JAVA", minGrade: null, note: "Successful completion" }],
           description: "Full-year course emphasizing object-oriented programming in Java. Students learn programming methodology with focus on problem solving, algorithm development, and data structures. Follows rigorous College Board curriculum.",
           topics: ["Object-oriented programming in Java", "Problem solving and algorithm development", "Data structures", "Programming projects and case studies", "AP exam preparation"]
+        }
+      ]
+    },
+
+    "Computer Science (Express)": {
+      color: "#93c5fd",
+      description: "Streamlined two-course path for students ready to jump straight into Java. Skip the intro courses and move directly from Java fundamentals to AP-level object-oriented programming.",
+      courses: [
+        {
+          id: "el-java", name: "Foundations of JAVA", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Fundamental concepts of programming with algorithm design and code implementation in Java. Students write efficient programs including graphics, applets, and graphical shapes. Satisfies prerequisite for AP Computer Science A.",
+          topics: ["Algorithm design and code implementation", "Java programming fundamentals", "Graphics and applets", "Individual and group projects", "Real-world case studies"]
+        },
+        {
+          id: "el-ap-cs", name: "AP Computer Science A", tier: "AP", weight: 5,
+          gradeLevel: "Grades 10–12", credits: "5",
+          prereqs: [{ course: "Foundations of JAVA", minGrade: null, note: "Successful completion" }],
+          description: "Full-year course emphasizing object-oriented programming in Java. Students learn programming methodology with focus on problem solving, algorithm development, and data structures. Follows rigorous College Board curriculum.",
+          topics: ["Object-oriented programming in Java", "Problem solving and algorithm development", "Data structures", "Programming projects and case studies", "AP exam preparation"]
+        }
+      ]
+    },
+
+    "Digital Creativity": {
+      color: "#818cf8",
+      description: "Applied technology track for students interested in the creative side of computing. Build websites and design games without the full programming sequence.",
+      courses: [
+        {
+          id: "el-webdev", name: "Webpage Design & Development", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Introduction to the design, creation, and maintenance of web pages and websites. Students create professional-looking sites using Adobe Creative Suite with Dreamweaver and Flash, plus a review of HTML code.",
+          topics: ["Web page design and creation", "Adobe Creative Suite", "HTML fundamentals", "Project-based environment"]
+        },
+        {
+          id: "el-game-design", name: "Game Design & Application Development", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [{ course: null, minGrade: null, note: "Prior programming experience recommended" }],
+          description: "Project-based curriculum teaching the game design and application development process. Students create action, adventure, and puzzle games using game design and creation software.",
+          topics: ["Game design process", "Application development", "Action, adventure, and puzzle game creation", "Game creation software"]
         }
       ]
     },
@@ -180,6 +222,34 @@ export const electiveTracks = {
           prereqs: [],
           description: "Experience in internet-based radio broadcasting using live and pre-recorded formats. Students develop skills as on-air talent, producers, PR/marketing, and studio engineers. Includes music programming and live broadcast of MHS sports and events.",
           topics: ["Internet radio studio operation", "Live and pre-recorded formats", "Music programming and talk shows", "Live sports and events broadcasting"]
+        }
+      ]
+    },
+
+    "Television Production (Only)": {
+      color: "#f9a8d4",
+      description: "Three-course television production track without Radio Broadcasting. Focuses solely on TV production from intro techniques through executive producer level.",
+      courses: [
+        {
+          id: "el-tv1", name: "Television Production I", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Introduction to television techniques and mass communication. Students write, direct, and produce videos as part of a production team. Covers studio practice, camera direction, lighting, and editing with special effects.",
+          topics: ["Television production techniques", "Writing, directing, and producing videos", "Camera direction and lighting", "Editing and special effects"]
+        },
+        {
+          id: "el-tv2", name: "Television Production II", tier: "CP", weight: 0,
+          gradeLevel: "Grades 10–12", credits: "5",
+          prereqs: [{ course: "TV Production I", minGrade: null, note: "Successful completion" }],
+          description: "Advanced course building on TV Production I. Students act as producers and directors of the cable TV show, develop morning announcements, and manage various projects throughout the year.",
+          topics: ["Producer and director roles", "Cable TV show management", "Morning announcements", "Advanced production projects"]
+        },
+        {
+          id: "el-tv3", name: "Television Production III", tier: "CP", weight: 0,
+          gradeLevel: "Grades 11–12", credits: "5",
+          prereqs: [{ course: "TV Production II", minGrade: null, note: "Successful completion" }],
+          description: "Independent study for producing various video products. Students serve as executive producers and produce special segments, applying knowledge from TV Production I and II.",
+          topics: ["Executive producer role", "Independent video production", "Special segments", "Applied production skills"]
         }
       ]
     },
@@ -344,6 +414,27 @@ export const electiveTracks = {
       ]
     },
 
+    "Culinary: Baking Focus": {
+      color: "#fca5a5",
+      description: "Two-course path for students with a passion for baking and pastry. Begin with culinary fundamentals, then specialize in cakes, decorating, and baking to industry standards.",
+      courses: [
+        {
+          id: "el-culinary1", name: "Introduction to Culinary Arts", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Basic techniques of food preparation. Students prepare appetizers, entrees, side dishes, desserts, and snacks across all food groups. Covers nutrition, meal preparation, sanitation, and food service careers.",
+          topics: ["Basic food preparation techniques", "Appetizers, entrees, desserts, and snacks", "Nutrition and food selection", "Sanitation and food service"]
+        },
+        {
+          id: "el-baking", name: "The Art of Baking", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Baking and cake decorating experience. Students research, bake to industry standard, and decorate various types of cakes. Project-based, student-driven curriculum.",
+          topics: ["Cake making and decorating", "Baking to industry standard", "Research and technique development", "Transferable baking skills"]
+        }
+      ]
+    },
+
     "Life Skills": {
       color: "#e11d48",
       description: "Standalone semester course preparing students for self-sufficiency.",
@@ -444,6 +535,27 @@ export const electiveTracks = {
           prereqs: [{ course: "Honors Portfolio OR both Advanced Digital and Advanced Darkroom Photography", minGrade: null, note: "Interview with art faculty for concentration placement" }],
           description: "Intensive guided exploration of photography for art-making. Students experience a variety of concepts, techniques, and approaches, producing a college portfolio and solo exhibit at Art Extravaganza. Optional College Board evaluation.",
           topics: ["Intensive photography exploration", "Demonstrations and group critiques", "College portfolio production", "Solo exhibit at Art Extravaganza", "Optional College Board evaluation"]
+        }
+      ]
+    },
+
+    "Photography Essentials": {
+      color: "#c4b5fd",
+      description: "Self-contained two-course path covering analog foundations and digital technique. Ideal for students who want to explore photography without committing to the advanced or AP sequence.",
+      courses: [
+        {
+          id: "el-photo1", name: "Photography I", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Foundation in 35mm black and white analog photography with a strong visual arts base. Introduces the four areas of fine arts study: Themes and Forms, Core Concepts, Techniques and Tools, Culture and History. 35mm manual camera recommended.",
+          topics: ["35mm black and white analog photography", "Darkroom fundamentals", "Themes, forms, and core art concepts", "Culture and history of photography"]
+        },
+        {
+          id: "el-photo2", name: "Photography II", tier: "CP", weight: 0,
+          gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
+          prereqs: [{ course: "Photography I", minGrade: null, note: "Successful completion" }],
+          description: "Foundation in digital photography and post-processing with Adobe Lightroom. Independent problem solving for conceptual artworks. Digital camera recommended.",
+          topics: ["Digital photography", "Adobe Lightroom post-processing", "Conceptual artwork development", "Independent problem solving"]
         }
       ]
     },
@@ -668,6 +780,27 @@ export const electiveTracks = {
           prereqs: [],
           description: "Non-performance aspects of theatrical production including set design, lighting, properties, sound, costumes, hair/makeup, stage management, and production management. Hands-on experience in the MHS Performing Arts Center.",
           topics: ["Set design and lighting", "Sound, costumes, and properties", "Stage management and production management", "MHS Performing Arts Center experience"]
+        }
+      ]
+    },
+
+    "Technical Theater & Communication": {
+      color: "#fdba74",
+      description: "Behind-the-scenes theater track paired with public speaking skills. Ideal for students interested in production, design, and professional communication rather than on-stage performance.",
+      courses: [
+        {
+          id: "el-theater-design", name: "Theater Design, Technology and Stage Management", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Non-performance aspects of theatrical production including set design, lighting, properties, sound, costumes, hair/makeup, stage management, and production management. Hands-on experience in the MHS Performing Arts Center.",
+          topics: ["Set design and lighting", "Sound, costumes, and properties", "Stage management and production management", "MHS Performing Arts Center experience"]
+        },
+        {
+          id: "el-speech", name: "The Art of Speech and Presentation", tier: "CP", weight: 0,
+          gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
+          prereqs: [],
+          description: "Teaches effective presentation delivery using theater techniques — pacing, inflection, body language, annunciation, and audience awareness. Includes storytelling, interpretive reading, and persuasive performance.",
+          topics: ["Presentation preparation and delivery", "Pacing, inflection, and body language", "Storytelling and interpretive reading", "Persuasive performance"]
         }
       ]
     },
