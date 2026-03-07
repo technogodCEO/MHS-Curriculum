@@ -26,11 +26,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Opening Program of Studies for a subject with no catalog data shows a visible explanatory message rather than a blank page
   3. The Electives Curriculum Map loads with its first available category and track selected without any hardcoded string defaults in the component
   4. The `react-app/build/` directory is absent from the git repository and listed in `.gitignore`
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: Fix empty `pos-note` box (BUG-01) and add ProgramOfStudies empty-state message (BUG-02)
-- [ ] 01-02: Derive CurriculumMapVariableTrackLengths defaults from data (CLEAN-01) and remove build artifacts from git (CLEAN-02)
+- [ ] 01-01-PLAN.md — Fix empty pos-note box (BUG-01) and add ProgramOfStudies empty-state message (BUG-02)
+- [ ] 01-02-PLAN.md — Derive CurriculumMapVariableTrackLengths defaults from data (CLEAN-01) and verify build artifacts excluded from git (CLEAN-02)
 
 ### Phase 2: Visual Polish
 **Goal**: AP course highlights and track colors are visually consistent across all subjects so the app looks trustworthy to public users
