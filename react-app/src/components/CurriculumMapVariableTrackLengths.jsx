@@ -21,8 +21,9 @@ import { electiveCategories, electiveTracks, electiveTrackColors } from "../data
  *   expandedCourse   — course.id of the currently open course card (null = all closed)
  */
 export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubject }) {
-  const [selectedCategory, setSelectedCategory] = useState("AP Capstone");
-  const [selectedTrack, setSelectedTrack] = useState("AP Capstone Program");
+  const firstCategory = Object.keys(electiveCategories)[0];
+  const [selectedCategory, setSelectedCategory] = useState(firstCategory);
+  const [selectedTrack, setSelectedTrack] = useState(electiveCategories[firstCategory].tracks[0]);
   const [expandedCourse, setExpandedCourse] = useState(null);
 
   // Maps a subject ID string to the correct track data and color config for that subject.
@@ -57,14 +58,14 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
             key={category}
             className={`track-tab ${selectedCategory === category ? "" : "inactive"}`}
             style={selectedCategory === category ? {
-              background: accent,
-              color: "#fff",
-              borderColor: accent,
-              boxShadow: `0 0 20px ${accent}66`
+              background: electiveCategories[category].color,
+              color: "#000",
+              borderColor: electiveCategories[category].color,
+              boxShadow: `0 0 20px ${electiveCategories[category].color}66`
             } : {}}
             onClick={() => {
               setSelectedCategory(category);
-              setSelectedTrack(electiveCategories[category][0])
+              setSelectedTrack(electiveCategories[category].tracks[0])
               setExpandedCourse(null)
             }}
           >
@@ -77,7 +78,7 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
       <div className="track-layout">
         {/* Left: track list for selected category */}
         <div className="track-sidebar">
-          {electiveCategories[selectedCategory].map(track => {
+          {electiveCategories[selectedCategory].tracks.map(track => {
             const colors = trackColorsSubject[track];
             const active = effectiveTrack === track;
             return (
@@ -106,7 +107,7 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
           {/* Course Cards */}
           {trackSubject.tracks[effectiveTrack].courses.map((course, idx) => {
             const isExpanded = expandedCourse === course.id;
-            const isAP = course.tier === "AP";
+            const isAP = course.highlight;
             const trackColor = trackColorsSubject[effectiveTrack].bg;
             const courses = trackSubject.tracks[effectiveTrack].courses;
             return (
@@ -130,19 +131,24 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
                 {/* Card */}
                 <div
                   className={`grade-card${isExpanded ? " expanded" : ""}${isAP ? " highlight-card" : ""}`}
+                  style={isAP ? {
+                    borderColor: `${trackColor}4d`,
+                    background: `${trackColor}0d`,
+                    boxShadow: `0 0 30px ${trackColor}1a`,
+                  } : {}}
                   onClick={() => setExpandedCourse(isExpanded ? null : course.id)}
                 >
                   <div className="card-header">
                     <div className="course-name" style={{ color: isAP ? "#fff" : "#f0f0f8" }}>
                       {course.name}
                     </div>
-                    {course.tier !== "CP" && (
+                    {isAP && (
                       <span className="badge" style={{
-                        background: isAP ? `${accent}22` : "#6366f122",
-                        color: isAP ? accent : "#6366f1",
-                        border: `1px solid ${isAP ? accent + "44" : "#6366f144"}`,
+                        background: `${trackColor}22`,
+                        color: trackColor,
+                        border: `1px solid ${trackColor}44`,
                       }}>
-                        {course.tier}
+                        AP
                       </span>
                     )}
                     <span style={{ fontSize:"0.75rem", color:"#9ca3af" }}>

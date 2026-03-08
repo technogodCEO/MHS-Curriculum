@@ -8,9 +8,9 @@ import { englishTracks, englishTrackColors } from "../data/english";
 /*
  * CurriculumMap
  *
- * Renders the "Curriculum Map" tab — the main visual overview of the math program.
+ * Renders the "Curriculum Map" tab — the main visual overview of the active subject's program.
  * Shows a vertical timeline of grades 9–12, with one course card per grade for the
- * currently selected pathway (Accelerated / Advanced / Enriched / Standard).
+ * currently selected pathway (track names vary by subject).
  *
  * Props:
  *   accent   — the active subject's hex color, used to tint AP badges
@@ -106,6 +106,11 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
               {/* Course card — clicking toggles the topic list open/closed */}
               <div
                 className={`grade-card${isExpanded ? " expanded" : ""}${isHighlight ? " highlight-card" : ""}`}
+                style={isHighlight ? {
+                  borderColor: `${trackColorsSubject[effectiveTrack].bg}4d`,
+                  background: `${trackColorsSubject[effectiveTrack].bg}0d`,
+                  boxShadow: `0 0 30px ${trackColorsSubject[effectiveTrack].bg}1a`,
+                } : {}}
                 onClick={() => setExpandedGrade(isExpanded ? null : gradeData.grade)}
               >
                 <div className="card-header">
@@ -114,7 +119,11 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
                   </div>
                   {/* AP badge — only shown on highlight courses */}
                   {isHighlight && (
-                    <span className="badge" style={{ background: `${accent}22`, color: accent, border: `1px solid ${accent}44` }}>
+                    <span className="badge" style={{
+                      background: `${trackColorsSubject[effectiveTrack].bg}22`,
+                      color: trackColorsSubject[effectiveTrack].bg,
+                      border: `1px solid ${trackColorsSubject[effectiveTrack].bg}44`
+                    }}>
                       AP
                     </span>
                   )}

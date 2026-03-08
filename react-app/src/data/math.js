@@ -1,571 +1,510 @@
-// ─── Science ─────────────────────────────────────────────────────────
-// Normal sequence: IPELS → Chemistry → Biology
-// Tracks reflect six typical student pathways from general to most advanced.
-// Categories: Physics, IPELS, Chemistry, Biology, Environmental, iSTEM
-
-export const scienceTracks = {
-  tracks: ["General Science", "CP", "Honors", "AP (Standard)", "Bio Kid", "Physics Kid"],
+/*
+ * math.js
+ *
+ * All data for the Mathematics subject. Three named exports are used by the app:
+ *
+ *   mathTracks  — grade-by-grade course map for the Curriculum Map tab.
+ *     .tracks          — ordered array of pathway names (used as tab labels and object keys)
+ *     .grades[]        — one entry per grade (9–12), each containing:
+ *       .grade           — numeric grade level
+ *       .courses         — object keyed by pathway name; each value is a course object:
+ *         .name            — course title string
+ *         .topics[]        — topic strings shown when the card is expanded;
+ *                            ALL-CAPS prefix before ": " renders as a section header
+ *         .color           — hex color for the timeline dot and card accents
+ *         .highlight       — true for AP courses; adds a glow effect and AP badge
+ *
+ *   mathTrackColors  — display metadata for each pathway tab button.
+ *     Keyed by pathway name (matching mathTracks.tracks[]). Each value has:
+ *       .bg          — button background color when the tab is active
+ *       .text        — button text color when active
+ *       .label       — full label shown on the tab button (includes emoji)
+ *       .activeClass — CSS class name (legacy class-based styling, see math_curriculum_MHS.jsx)
+ *
+ *   mathProgramOfStudies  — full course catalog for the Program of Studies tab.
+ *     Array of category objects, each with:
+ *       .category   — section heading (e.g. "High School — Mathematics")
+ *       .color      — accent dot color next to the heading
+ *       .grades     — grade range string (e.g. "Grades 9–12")
+ *       .courses[]  — individual course objects:
+ *           .id          — unique string id used for React keys and expansion state
+ *           .name        — course title
+ *           .tier        — "CP" | "Honors" | "AP" — controls badge color and filter
+ *           .weight      — grade point weight added (0 for CP, 5 for Honors/AP)
+ *           .gradeLevel  — display string for typical grade(s) (e.g. "Grade 10 (typical)")
+ *           .credits     — credit value string (e.g. "5")
+ *           .description — full paragraph shown when the card is expanded
+ *           .prereqs[]   — structured prerequisites: [{ course, minGrade, note }]
+ *                          (preferred over .prereq string)
+ *           .prereq      — plain string fallback if no structured prereqs array
+ *           .topics[]    — short topic chips shown at the bottom of the expanded card
+ */
+export const mathTracks = {
+  tracks: ["Accelerated", "Advanced", "Enriched", "Standard"],
   grades: [
-    // ── 9th Grade ──────────────────────────────────────────────────────
     {
       grade: 9,
       label: "9th Grade",
       courses: {
-        "General Science": {
-          name: "IPELS",
+        Accelerated: {
+          name: "PreCalculus Honors",
           topics: [
-            "Integrated Physical, Environmental & Life Sciences",
-            "Phenomena exploration across science disciplines",
-            "Engineering design principles and scientific modeling",
-            "Lab investigations: cause/effect, energy storage, patterns",
-            "Claim, evidence, and reasoning (CER) statements",
-            "Prerequisite: None — open to all students"
+            "Analytic trigonometry, unit circle, all six functions, and identities",
+            "Exponential and logarithmic functions; natural base e and modeling",
+            "Polynomial and rational function analysis — zeros, asymptotes, sign charts",
+            "Inverse functions, composition, and function transformations",
+            "Conics, polar coordinates, parametric equations, and vectors",
+            "Introduction to limits and formal continuity",
+            "Summer assignment required"
           ],
-          color: "#94a3b8"
-        },
-        CP: {
-          name: "IPELS",
-          topics: [
-            "Integrated Physical, Environmental & Life Sciences",
-            "Phenomena exploration across science disciplines",
-            "Engineering design principles and scientific modeling",
-            "Lab investigations: cause/effect, energy storage, patterns",
-            "Claim, evidence, and reasoning (CER) statements",
-            "Prerequisite: None — open to all students"
-          ],
-          color: "#6ee7b7"
-        },
-        Honors: {
-          name: "HIPELS (Honors)",
-          topics: [
-            "Honors-level Integrated Physical, Environmental & Life Sciences",
-            "Energy in mechanical systems, global climate science, forces and interactions",
-            "Sophisticated lab investigations and scientific writing",
-            "Advanced mathematical and scientific reasoning required",
-            "Prerequisite: Demonstrated aptitude in proportional reasoning and advanced algebra proficiency"
-          ],
-          color: "#2dd4bf",
+          color: "#f59e0b",
           highlight: false
         },
-        "AP (Standard)": {
-          name: "AP Physics 1",
+        Advanced: {
+          name: "Algebra II Honors",
           topics: [
-            "Algebra-based introductory college-level physics",
-            "Systems, dynamics, conservation, fields, and waves",
-            "Inquiry-based laboratory work with advanced math",
-            "Summer assignments required",
-            "Prerequisite: Completion of HIPELS (or a recommendation from UMS); concurrent or completed Algebra II",
-            "AP exam preparation"
+            "Real and complex number systems; polynomial equations and functions",
+            "Systems of equations in two and three variables and determinants",
+            "Rational expressions, exponential equations, and logarithms",
+            "Sequences, series, probability, and statistics",
+            "Trigonometry: unit circle, identities, Law of Sines/Cosines",
+            "Prerequisite: 85% in Geometry Honors/UMS Geometry or 95% in Geometry AND 95% in Algebra I",
+            "Summer assignment required"
           ],
-          color: "#14b8a6",
-          highlight: true
+          color: "#60a5fa",
+          highlight: false
         },
-        "Bio Kid": {
-          name: "AP Physics 1",
+        Enriched: {
+          name: "Geometry Honors",
           topics: [
-            "Algebra-based introductory college-level physics",
-            "Systems, dynamics, conservation, fields, and waves",
-            "Inquiry-based laboratory work with advanced math",
-            "Summer assignments required",
-            "Prerequisite: Completion of HIPELS (or UMS recommendation); concurrent or completed Algebra II",
-            "AP exam preparation"
+            "Deductive reasoning and writing complex original proofs",
+            "Congruence, similarity, and advanced triangle theorems",
+            "Coordinate geometry, transformations, and constructions",
+            "Circle theorems, arcs, chords, tangents, and sectors",
+            "Surface area, volume, and introductory trigonometry",
+            "Prerequisite: 95% in Algebra I",
+            "Summer assignment required"
           ],
-          color: "#0d9488",
-          highlight: true
+          color: "#c084fc",
+          highlight: false
         },
-        "Physics Kid": {
-          name: "AP Physics 1",
+        Standard: {
+          name: "Algebra I",
           topics: [
-            "Algebra-based introductory college-level physics",
-            "Systems, dynamics, conservation, fields, and waves",
-            "Inquiry-based laboratory work with advanced math",
-            "Summer assignments required",
-            "Prerequisite: Completion of HIPELS (or UMS recommendation); concurrent or completed Algebra II",
-            "AP exam preparation"
+            "Real number system and structure of Algebra",
+            "Linear equations, inequalities, and graphing",
+            "Systems of equations and inequalities",
+            "Exponent rules, polynomial arithmetic, and factoring",
+            "Quadratic equations and functions",
+            "Functions: domain, range, notation",
+            "Prerequisite: Successful completion of Math 8"
           ],
-          color: "#0f766e",
-          highlight: true
+          color: "#94a3b8",
+          highlight: false
         }
       }
     },
-
-    // ── 10th Grade ─────────────────────────────────────────────────────
     {
       grade: 10,
       label: "10th Grade",
       courses: {
-        "General Science": {
-          name: "General Chemistry",
+        Accelerated: {
+          name: "AP Calculus AB",
           topics: [
-            "Basic physical chemistry concepts through student discourse and labs",
-            "States of matter, solutions, basic chemical reactions, role of energy",
-            "Problem solving and critical thinking skills",
-            "Builds on energy theme from IPELS",
-            "Permission coordinated through counselor and Science Supervisor"
+            "Limits and continuity — formal definitions and epsilon-delta intro",
+            "Definition of the derivative; all basic differentiation rules",
+            "Trig, exponential, and logarithmic derivatives; chain rule; implicit differentiation",
+            "Applications: related rates, optimization, curve sketching, L'Hôpital's rule",
+            "Definite and indefinite integrals; Riemann sums; Fundamental Theorem of Calculus",
+            "u-substitution; area between curves; accumulation; average value",
+            "Differential equations: slope fields and separation of variables",
+            "AP exam preparation — Prerequisite: 85% in PreCalculus Honors"
           ],
-          color: "#94a3b8"
+          color: "#f59e0b",
+          highlight: true
         },
-        CP: {
-          name: "Chemistry",
+        Advanced: {
+          name: "PreCalculus Honors",
           topics: [
-            "College prep laboratory science — matter at the particle level",
-            "Atomic structure, periodic law, bonding, chemical formulas and equations",
-            "States of matter, solutions, reactions, and energy in chemistry",
-            "Algebraic equations, graphing, scientific notation, significant figures",
-            "Builds on energy theme from IPELS"
+            "In-depth analytic trigonometry, unit circle, and all six functions",
+            "Exponential and logarithmic functions and modeling",
+            "Polynomial and rational function analysis",
+            "Conic sections, polar, parametric, and vectors",
+            "Introduction to limits and continuity",
+            "Prerequisite: 85% in Algebra II Honors or 95% in Algebra II",
+            "Summer assignment required"
           ],
-          color: "#6ee7b7"
-        },
-        Honors: {
-          name: "Chemistry Honors",
-          topics: [
-            "Conceptual understanding with 21st century skills training",
-            "Matter at the particle level — advanced critical thinking and articulation",
-            "Ratios, proportionality, scientific notation, metric conversions, graphing",
-            "Summer review packet and core competency assessment",
-            "Independent and collaborative work expected",
-            "Honors-weighted credit"
-          ],
-          color: "#2dd4bf",
+          color: "#60a5fa",
           highlight: false
         },
-        "AP (Standard)": {
-          name: "AP Chemistry",
+        Enriched: {
+          name: "Algebra II Honors",
           topics: [
-            "Rigorous college-level first-year chemistry for science majors",
-            "Structure and states of matter, reactions, kinetics, equilibrium",
-            "Thermodynamics, electrochemistry, descriptive and organic chemistry",
-            "Extensive lab work with data analysis and interpretation",
-            "Summer assignment: atomic models, stoichiometry — assessed in first 2 weeks",
-            "AP exam preparation"
+            "Real and complex number systems; polynomial equations and functions",
+            "Systems of equations; determinants; rational expressions",
+            "Exponential equations and logarithms",
+            "Sequences, series, probability, and statistics",
+            "Trigonometry: unit circle, identities, and Laws of Sines/Cosines",
+            "Prerequisite: 85% in Geometry Honors or 95% in Geometry AND 95% in Algebra I",
+            "Summer assignment required"
           ],
-          color: "#14b8a6",
-          highlight: true
+          color: "#c084fc",
+          highlight: false
         },
-        "Bio Kid": {
-          name: "AP Chemistry",
+        Standard: {
+          name: "Geometry",
           topics: [
-            "Rigorous college-level first-year chemistry for science majors",
-            "Structure and states of matter, reactions, kinetics, equilibrium",
-            "Thermodynamics, electrochemistry, descriptive and organic chemistry",
-            "Extensive lab work with data analysis and interpretation",
-            "Summer assignment required — assessed in first 2 weeks",
-            "AP exam preparation"
+            "Plane and solid geometry with deductive reasoning",
+            "Congruence, similarity, and formal proof writing",
+            "Pythagorean theorem and special right triangles",
+            "Coordinate geometry and transformations",
+            "Circles: arcs, chords, tangents, and sectors",
+            "Surface area and volume",
+            "Introduction to trigonometry (SOH-CAH-TOA)",
+            "Prerequisite: Successful completion of Algebra I — Summer assignment required"
           ],
-          color: "#0d9488",
-          highlight: true
-        },
-        "Physics Kid": {
-          name: "AP Chemistry",
-          topics: [
-            "Rigorous college-level first-year chemistry for science majors",
-            "Structure and states of matter, reactions, kinetics, equilibrium",
-            "Thermodynamics, electrochemistry, descriptive and organic chemistry",
-            "Extensive lab work with data analysis and interpretation",
-            "Summer assignment required — assessed in first 2 weeks",
-            "AP exam preparation"
-          ],
-          color: "#0f766e",
-          highlight: true
+          color: "#94a3b8",
+          highlight: false
         }
       }
     },
-
-    // ── 11th Grade ─────────────────────────────────────────────────────
     {
       grade: 11,
       label: "11th Grade",
       courses: {
-        "General Science": {
-          name: "General Biology",
+        Accelerated: {
+          name: "AP Calculus C",
           topics: [
-            "Conceptual understandings and skills in biology",
-            "Unity/diversity of life, biochemical processes, genetics, evolution",
-            "Ecosystems, classification, and biotechnology",
-            "Builds on prior science coursework",
-            "Permission coordinated through counselor and Science Supervisor"
+            "All AP Calculus AB topics (review and extension)",
+            "Additional techniques of integration: by parts, partial fractions",
+            "Polar coordinates and parametric graphing",
+            "Infinite sequences and series; convergence tests",
+            "Applications of integrals in polar/parametric settings",
+            "Differential equations review and extension",
+            "Prerequisite: 80% in AP Calculus AB",
+            "This course is equivalent to a 2nd semester college calculus course or the second half of AP Calculus BC"
           ],
-          color: "#94a3b8"
+          color: "#f59e0b",
+          highlight: true
         },
-        CP: {
-          name: "Biology",
+        Advanced: {
+          name: "AP Calculus AB",
           topics: [
-            "College prep laboratory biology building on chemistry concepts",
-            "Unity/diversity of life, form and function in organisms",
-            "Biochemical processes, genetics, evolution",
-            "Ecosystems, classification, and biotechnology",
-            "Simulations, readings, and lab activities"
+            "Limits, continuity, and formal definitions",
+            "Differentiation rules; trig, exponential, and log derivatives",
+            "Applications: optimization, related rates, curve sketching",
+            "Definite and indefinite integrals; Fundamental Theorem of Calculus",
+            "u-substitution; area and accumulation applications",
+            "Differential equations: slope fields and separation of variables",
+            "Prerequisite: 85% in PreCalculus Honors OR 95% in PreCalculus OR 80% in Calculus"
           ],
-          color: "#6ee7b7"
+          color: "#60a5fa",
+          highlight: true
         },
-        Honors: {
-          name: "Biology Honors",
+        Enriched: {
+          name: "PreCalculus Honors",
           topics: [
-            "Advanced biology continuing energy themes from chemistry and physics",
-            "Probability, mathematical modeling, and multiple representations",
-            "Extensive analytical lab, reading, and writing assignments",
-            "Sophisticated analysis and application of core ideas",
-            "Honors-weighted credit",
-            "Recommended: Advanced Chemistry Honors or superior understanding of CP Chemistry"
+            "In-depth analytic trigonometry and identities",
+            "Exponential, logarithmic, polynomial, and rational function analysis",
+            "Conics, polar coordinates, parametric equations, and vectors",
+            "Introduction to limits and continuity",
+            "Prerequisite: 85% in Algebra II Honors or 95% in Algebra II",
+            "Summer assignment required"
           ],
-          color: "#2dd4bf",
+          color: "#c084fc",
           highlight: false
         },
-        "AP (Standard)": {
-          name: "AP Biology",
+        Standard: {
+          name: "Algebra II",
           topics: [
-            "College-level first-year biology for science majors",
-            "Biochemistry, cellular biology, molecular genetics, biotechnology",
-            "Diversity, structure/function of organisms, ecology, evolution",
-            "Builds on chemistry and physics concepts",
-            "Summer assignments required",
-            "AP exam preparation"
+            "Review of Algebra I concepts and real number system",
+            "Polynomial, rational, exponential, and logarithmic functions",
+            "Solving and graphing nonlinear functions; powers, roots, radicals",
+            "Sequences, series, probability, and statistics",
+            "Introduction to trigonometry",
+            "Prerequisite: 70% in Algebra I and 70% in Geometry",
+            "Summer assignment required"
           ],
-          color: "#14b8a6",
-          highlight: true
-        },
-        "Bio Kid": {
-          name: "AP Biology",
-          topics: [
-            "College-level first-year biology for science majors",
-            "Biochemistry, cellular biology, molecular genetics, biotechnology",
-            "Diversity, structure/function of organisms, ecology, evolution",
-            "Builds on AP Chemistry and AP Physics 1 foundations",
-            "Summer assignments required",
-            "AP exam preparation"
-          ],
-          color: "#0d9488",
-          highlight: true
-        },
-        "Physics Kid": {
-          name: "AP Physics C: Mechanics & E&M",
-          topics: [
-            "Calculus-based college physics for physical science and engineering majors",
-            "Mechanics: kinematics, Newton's laws, energy, momentum, rotation",
-            "Electricity & Magnetism: electrostatics, circuits, magnetism, induction",
-            "Methods of calculus used throughout — requires concurrent/completed calculus",
-            "Prepares for both AP Physics C exams",
-            "AP exam preparation",
-            "Summer assignments required"
-          ],
-          color: "#0f766e",
-          highlight: true
+          color: "#94a3b8",
+          highlight: false
         }
       }
     },
-
-    // ── 12th Grade ─────────────────────────────────────────────────────
     {
       grade: 12,
       label: "12th Grade",
       courses: {
-        "General Science": {
-          name: "iSTEM Elective / Environmental Science",
+        Accelerated: {
+          name: "Honors Math Methods in Engineering & Sciences",
           topics: [
-            "iSTEM: Semester modules in topics like anatomy, forensics, weather, horticulture",
-            "ENVIRONMENTAL SCIENCE: Current topics and trends with engineering mindset",
-            "Choose modules based on interest and availability",
-            "See iSTEM section for full module list"
+            "LINEAR ALGEBRA: Coordinate systems, vectors, matrices, diagonalization, eigenvectors, basis sets",
+            "MULTIVARIABLE CALCULUS: Partial derivatives, vector operators, gradients, double integrals",
+            "DIFFERENTIAL EQUATIONS: Methods, physics equations, functions as basis sets, calculus of variations",
+            "VECTOR CALCULUS: Formal proof writing, vector fields, line integrals, surface integrals",
+            "FOURIER ANALYSIS: Frequency analysis, Fourier Series, Transforms, signal processing",
+            "Prerequisite: 85% in AP Calculus C or 85% in AP Calculus BC — Summer assignment required"
           ],
-          color: "#94a3b8"
+          color: "#f59e0b",
+          highlight: false
         },
-        CP: {
-          name: "AP Elective / iSTEM",
+        Advanced: {
+          name: "AP Calculus C",
           topics: [
-            "APES: Environmental science capstone — requires IPELS, chemistry, biology (AP-weighted)",
-            "iSTEM MODULES: Anatomy, forensics, weather, horticulture, environmental science",
-            "iSTEMi: Full-year independent research project (Honors-weighted)",
-            "Choose based on interest and college/career goals"
+            "All AP Calculus AB topics (continuation and extension)",
+            "Advanced integration techniques: by parts, partial fractions",
+            "Polar coordinates, parametric graphing, and differential equations",
+            "Infinite series and convergence tests",
+            "Prerequisite: 80% in AP Calculus AB taken over a full school year"
           ],
-          color: "#6ee7b7"
-        },
-        Honors: {
-          name: "AP Elective / iSTEM Honors",
-          topics: [
-            "APES: College-level environmental science capstone (AP-weighted)",
-            "AP BIOLOGY: If not yet taken — first-year college bio for science majors",
-            "iSTEM HONORS: Biotechnology, organic chemistry, or independent research",
-            "Choose based on interest and college/career goals"
-          ],
-          color: "#2dd4bf"
-        },
-        "AP (Standard)": {
-          name: "APES / AP Physics C",
-          topics: [
-            "APES: Environmental science capstone integrating bio, chem, and physics — AP exam in May",
-            "AP PHYSICS C: Calculus-based physics — Mechanics and E&M — requires concurrent or completed calculus",
-            "Both are AP-weighted capstone courses for STEM-focused students",
-            "Summer assignments required for both",
-            "Students choose one or both based on schedule and goals"
-          ],
-          color: "#14b8a6",
+          color: "#60a5fa",
           highlight: true
         },
-        "Bio Kid": {
-          name: "AP Environmental Science",
+        Enriched: {
+          name: "AP Calculus AB",
           topics: [
-            "College-level environmental science capstone",
-            "Integrates prior bio, chem, and physics knowledge",
-            "Social Ecological Systems and transdisciplinary analysis",
-            "Data analysis, lab and field experiments",
-            "Strong math skills recommended",
-            "AP exam preparation",
-            "Summer assignments required"
+            "Limits and continuity",
+            "Differentiation: all rules, implicit differentiation, related rates",
+            "Applications: optimization, curve sketching, L'Hôpital's rule",
+            "Definite integrals; Fundamental Theorem of Calculus; area and accumulation",
+            "Differential equations and slope fields",
+            "Prerequisite: 85% in PreCalculus Honors OR 95% in PreCalculus OR 80% in Calculus"
           ],
-          color: "#0d9488",
+          color: "#c084fc",
           highlight: true
         },
-        "Physics Kid": {
-          name: "AP Biology",
+        Standard: {
+          name: "PreCalculus / Statistics / Advanced Alg & Trig",
           topics: [
-            "College-level first-year biology for science majors",
-            "Biochemistry, cellular biology, molecular genetics, biotechnology",
-            "Diversity, structure/function of organisms, ecology, evolution",
-            "Builds on AP Chemistry and AP Physics C foundations",
-            "AP exam preparation",
-            "Summer assignments required"
+            "PRECALCULUS: Functions, polynomial/rational/trig/exponential/log; conics, polar, vectors (Prereq: 80% in Algebra II)",
+            "STATISTICS: Exploring data, planning a study, probability, statistical inference; prepares for AP Stats (Prereq: 70% in Algebra II)",
+            "ADVANCED ALGEBRA & TRIG: Extended Algebra II skills, problem solving, polynomial/rational/exp/log functions, full trigonometry (Prereq: 70–84% in Algebra II)",
+            "Students select the path best aligned with their college and career interests"
           ],
-          color: "#0f766e",
-          highlight: true
+          color: "#94a3b8",
+          highlight: false
         }
       }
     }
   ]
 };
 
-// ─── Track Colors ────────────────────────────────────────────────────
-export const scienceTrackColors = {
-  "General Science": { bg: "#94a3b8", text: "#000", label: "📘 General Science",          activeClass: "active-gen"  },
-  CP:                { bg: "#6ee7b7", text: "#000", label: "📗 College Prep (CP)",         activeClass: "active-cp"   },
-  Honors:            { bg: "#2dd4bf", text: "#000", label: "✨ Honors",                    activeClass: "active-hon"  },
-  "AP (Standard)":   { bg: "#14b8a6", text: "#000", label: "🚀 AP (Standard)",             activeClass: "active-ap"   },
-  "Bio Kid":         { bg: "#0d9488", text: "#000", label: "🧬 Bio Kid (AP → APES Sr.)",   activeClass: "active-bio"  },
-  "Physics Kid":     { bg: "#0f766e", text: "#fff", label: "⚛️ Physics Kid (AP → Phys C)", activeClass: "active-phys" },
+export const mathTrackColors = {
+  Accelerated: { bg: "#f59e0b", text: "#000", label: "🚀 Pathway A (Accelerated)", activeClass: "active-accel" },
+  Advanced:    { bg: "#60a5fa", text: "#000", label: "⭐ Pathway B (Advanced)",    activeClass: "active-adv"   },
+  Enriched:    { bg: "#c084fc", text: "#000", label: "✨ Pathway C (Enriched)",    activeClass: "active-enr"   },
+  Standard:    { bg: "#94a3b8", text: "#000", label: "📘 Pathway D (Standard)",    activeClass: "active-std"   },
 };
 
-// ─── Full Program of Studies (course catalog) ────────────────────────
-export const scienceProgramOfStudies = [
-  // ── IPELS / Physics ────────────────────────────────────────────────
+export const mathProgramOfStudies = [
+  // ── Main Courses ───────────────────────────────────────────────────
   {
-    category: "Physics / IPELS",
-    color: "#14b8a6",
-    grades: "Grades 9–10",
+    category: "High School — Mathematics",
+    color: "#60a5fa",
+    grades: "Grades 9–12",
     courses: [
       {
-        id: "hs-ipels", name: "Integrated Physical, Environmental & Life Sciences (IPELS)", tier: "CP", weight: 0,
-        gradeLevel: "Grade 9", credits: "5",
-        prereqs: [],
-        description: "A college preparatory laboratory science program designed for students taking their first MHS science course. Explores phenomena through a combination of science disciplines with engineering design principles. Develops scientific models, designs lab investigations, and builds CER skills.",
-        topics: ["Phenomena exploration across disciplines", "Engineering design principles", "Scientific modeling", "Cause and effect relationships", "Energy storage modes", "Claim, evidence, and reasoning"]
+        id: "hs-math-conn-1", name: "Math Connections I / II", tier: "CP", weight: 0,
+        gradeLevel: "Grades 9–10", credits: "2.5 (each, semester)",
+        prereq: "Placement by department",
+        description: "A targeted intervention course fulfilling the state requirement for mathematics support. Covers Ratios and Proportional Relationships, the Number System, Expressions and Equations, Geometry, Statistics and Probability. Skills and strategies for standardized test taking are developed. Problem solving with mathematical concepts is practiced and expanded upon in the area of Functions.",
+        topics: ["Ratios and proportional relationships", "The number system", "Expressions and equations", "Geometry", "Statistics and probability", "Functions and real-life applications"]
       },
       {
-        id: "hs-hipels", name: "HIPELS (Honors IPELS)", tier: "Honors", weight: 5,
-        gradeLevel: "Grade 9", credits: "5",
-        prereqs: [{ course: null, minGrade: null, note: "Demonstrated aptitude in proportional reasoning and advanced algebra proficiency recommended" }],
-        description: "Honors-level IPELS exploring energy in mechanical systems, global climate science, and forces/interactions. Requires advanced mathematical and scientific writing skills. Prepares students for AP-level science courses.",
-        topics: ["Energy in mechanical systems", "Global climate science", "Forces and interactions", "Sophisticated lab investigations", "Advanced mathematical reasoning", "Scientific writing"]
+        id: "hs-alg1-cp", name: "Algebra I", tier: "CP", weight: 0,
+        gradeLevel: "Grade 9 (typical)", credits: "5",
+        prereqs: [{ course: "Successful completion of Math 8", minGrade: null, note: null }],
+        description: "The first course in the college preparatory program in mathematics. Emphasis is placed upon the development and understanding of the real number system and the basic structure of Algebra. Students develop an appreciation for logical problem-solving and deductive reasoning as well as precision in the communication of mathematical ideas. A scientific calculator is required.",
+        topics: ["Real number system", "Linear equations and inequalities", "Systems of equations and graphing", "Exponent rules and polynomial arithmetic", "Factoring: GCF, trinomials, difference of squares", "Quadratic equations", "Functions: domain, range, notation"]
       },
       {
-        id: "hs-ap-phys1", name: "AP Physics 1", tier: "AP", weight: 5,
-        gradeLevel: "Grade 9+", credits: "5",
+        id: "hs-alg1-lab", name: "Algebra I with Lab", tier: "CP", weight: 0,
+        gradeLevel: "Grade 9", credits: "6",
+        prereqs: [{ course: "Successful completion of Math 8", minGrade: null, note: null }],
+        description: "Identical to Algebra I but with additional instructional time devoted to function comprehension, number properties, and linear equations. This version provides extended support for students who benefit from a deeper paced introduction to algebraic reasoning. A scientific calculator is required.",
+        topics: ["Real number system and number properties", "Function comprehension (extended)", "Linear equations and inequalities (extended)", "Systems of equations", "Polynomial arithmetic and factoring", "Quadratic equations", "Functions: domain, range, notation"]
+      },
+      {
+        id: "hs-geo-cp", name: "Geometry", tier: "CP", weight: 0,
+        gradeLevel: "Grade 10 (typical)", credits: "5",
+        prereqs: [{ course: "Successful completion of Algebra I", minGrade: null, note: "Summer assignment required" }],
+        description: "Combines the essential elements of plane and solid geometry with strong emphasis on deductive reasoning and writing original proofs. Students develop powers of spatial visualization, strengthen algebraic skills, and use precise mathematical language. A strong background in Algebra I is required. A scientific calculator is required.",
+        topics: ["Deductive reasoning and proof writing", "Plane geometry: congruence, similarity", "Triangle theorems and special right triangles", "Coordinate geometry", "Circles: arcs, chords, tangents, sectors", "Surface area and volume", "Introduction to trigonometry (SOH-CAH-TOA)"]
+      },
+      {
+        id: "hs-geo-lab", name: "Geometry with Lab", tier: "CP", weight: 0,
+        gradeLevel: "Grade 10", credits: "6",
+        prereqs: [{ course: "Successful completion of Algebra I", minGrade: null, note: "Priority given to Algebra I Lab students" }],
+        description: "Combines plane and solid geometry with an emphasis on deductive reasoning, logic in proof writing, and physical constructions. Students develop spatial visualization, precision in measurement, and language for geometric figures while strengthening algebraic skills. Priority placement for Algebra I Lab students.",
+        topics: ["Deductive reasoning, logic, and proof writing", "Physical constructions", "Congruence and similarity", "Measurement and geometric figures", "Coordinate geometry", "Circles and solid geometry"]
+      },
+      {
+        id: "hs-geo-h", name: "Geometry Honors", tier: "Honors", weight: 5,
+        gradeLevel: "Grades 9–10", credits: "5",
+        prereqs: [{ course: "Algebra I", minGrade: 95, note: "Summer assignment required" }],
+        description: "Designed for students who want a more challenging approach to geometry and plan on taking additional mathematics courses in college. Combines plane and solid geometry with strong emphasis on complex original proofs. Additional topics include introductory trigonometry, coordinate geometry, and transformations. Students are expected to transfer concepts to novel applications. A scientific calculator is required.",
+        topics: ["Complex original proofs (two-column, paragraph)", "Congruence and similarity — advanced", "Introductory trigonometry beyond right triangles", "Coordinate geometry and transformations", "Circles: arcs, sectors, advanced theorems", "Surface area and volume with applications"]
+      },
+      {
+        id: "hs-alg-func", name: "Algebraic Functions and Analysis", tier: "CP", weight: 0,
+        gradeLevel: "Grades 11–12", credits: "5",
+        prereqs: [{ course: "Successful completion of Algebra I and Geometry", minGrade: null, note: "Intended for students who will continue to Applied Algebraic Extensions" }],
+        description: "Offered as the third-year math course, this course reviews terminology, concepts, skills, and applications of Algebra I through a critical examination of the real number system. It furthers algebraic development with factoring, rational expressions, and functions. Units of study: Quadratic Functions, Polynomial Functions, Rational Exponents/Radical Functions, Rational Functions. Designed for juniors and seniors.",
+        topics: ["Real number system review", "Quadratic functions and graphs", "Polynomial functions", "Rational exponents and radical functions", "Rational functions and equations", "Algebraic problem solving"]
+      },
+      {
+        id: "hs-app-alg", name: "Applied Algebraic Extensions", tier: "CP", weight: 0,
+        gradeLevel: "Grade 12", credits: "5",
+        prereqs: [{ course: "Successful completion of Algebraic Functions & Analysis", minGrade: null, note: null }],
+        description: "The sequential course to Algebraic Functions & Analysis for seniors. Continues developing algebraic concepts, skills, and applications with a focus on sequences, series, permutations, combinations, probability, statistics, non-linear functions, and an introduction to Trigonometry.",
+        topics: ["Exponential and logarithmic functions", "Data analysis and statistics", "Sequences and series", "Counting: permutations and combinations", "Probability", "Introduction to trigonometric functions"]
+      },
+      {
+        id: "hs-alg2-cp", name: "Algebra II", tier: "CP", weight: 0,
+        gradeLevel: "Grade 11 (typical)", credits: "5",
+        prereqs: [{ course: "Algebra I", minGrade: 70, note: null }, { course: "Geometry", minGrade: 70, note: "Summer assignment required" }],
+        description: "The third course in the regular college preparatory mathematics program. Reviews Algebra I terminology, concepts, and skills through a critical examination of the real number system. Major topics include rational expressions and equations, nonlinear functions, powers, roots, radicals, sequences, series, probability/statistics, and introduction to trigonometry.",
+        topics: ["Algebra I review and real number system", "Polynomial and rational functions", "Exponential and logarithmic functions", "Powers, roots, and radicals", "Sequences, series, probability, and statistics", "Introduction to trigonometry", "Graphing and problem solving"]
+      },
+      {
+        id: "hs-alg2-h", name: "Algebra II Honors", tier: "Honors", weight: 5,
+        gradeLevel: "Grades 9–11", credits: "5",
         prereqs: [
-          { course: "HIPELS", minGrade: null, note: "Successful completion" },
-          { course: "Algebra II", minGrade: null, note: "Concurrent or completed; new students must pass entrance assessments" },
-          { course: "", minGrade: null, note: "Both prerequisites are required, some students may take in Freshman year via UMS recommendation"}
+          { course: "Geometry Honors / UMS Geometry", minGrade: 85, note: null },
+          { course: "Geometry", minGrade: 95, note: "AND 95% in Algebra I — Summer assignment required" }
         ],
-        description: "Algebra-based introductory college-level physics. Students explore systems, dynamics, conservation, fields, and waves through hands-on inquiry-based lab work. Designed to prepare students for the AP Physics 1 exam.",
-        topics: ["Kinematics and dynamics", "Conservation of energy and momentum", "Rotational motion", "Waves and sound", "Electrostatics (intro)", "AP exam preparation", "Summer assignments required"]
+        description: "Designed for students who want a more challenging approach to Algebra II and plan to take additional honors mathematics. Topics include real and complex number systems, systems of equations in two and three variables, determinants, polynomial equations and functions, rational expressions, sequences and series, probability/statistics, exponential equations, logarithms, and trigonometry.",
+        topics: ["Real and complex number systems", "Systems of equations in two and three variables", "Determinants", "Polynomial equations and functions", "Rational expressions", "Sequences, series, probability, and statistics", "Exponential equations and logarithms", "Trigonometry: unit circle and identities"]
       },
       {
-        id: "hs-ap-physc", name: "AP Physics C: Mechanics and Electricity & Magnetism", tier: "AP", weight: 5,
+        id: "hs-alg3", name: "Algebra III", tier: "CP", weight: 0,
+        gradeLevel: "Grade 12", credits: "5",
+        prereqs: [{ course: "Successful completion of Algebra II", minGrade: null, note: "Ineligible for Advanced Algebra and Trigonometry" }],
+        description: "The fourth-year course in a four-year sequence providing a modified version of the traditional math curriculum. Strengthens Algebra skills and concepts with emphasis on equation solving and problem solving. Functions studied include polynomial, rational, logarithmic, and exponential. Additionally, students begin exploring Trigonometry and the Unit Circle.",
+        topics: ["Algebra skills review and problem solving", "Polynomial functions", "Rational functions", "Logarithmic functions", "Exponential functions", "Introduction to trigonometry and the Unit Circle"]
+      },
+      {
+        id: "hs-adv-alg-trig", name: "Advanced Algebra and Trigonometry", tier: "CP", weight: 0,
+        gradeLevel: "Grades 11–12", credits: "5",
+        prereqs: [{ course: "Algebra II", minGrade: null, note: "70%–84% in Algebra II" }],
+        description: "Designed for students pursuing a four-year college program who need additional development in Algebra mechanics. The first part further develops Algebra II skills and concepts with emphasis on problem solving; the second half includes a complete course in Trigonometry.",
+        topics: ["Polynomial functions (extended)", "Rational functions (extended)", "Exponential functions", "Logarithmic functions", "Problem solving emphasis", "Full Trigonometry: functions, identities, equations", "Unit circle and applications"]
+      },
+      {
+        id: "hs-pre-cp", name: "PreCalculus", tier: "CP", weight: 0,
         gradeLevel: "Grades 11–12", credits: "5",
         prereqs: [
-          { course: "Calculus", minGrade: null, note: "Concurrent or completed; previous physics recommended" }
+          { course: "Algebra II", minGrade: 80, note: null },
+          { course: "Advanced Algebra and Trigonometry", minGrade: 75, note: null },
+          { course: "Algebra II Honors", minGrade: 65, note: "Summer assignment required" }
         ],
-        description: "Calculus-based college physics forming the foundation for physical science and engineering majors. Prepares students for both the AP Physics C: Mechanics and Electricity & Magnetism exams.",
-        topics: ["Mechanics: kinematics, Newton's laws, work, energy, momentum, rotation", "Electricity & Magnetism: electrostatics, circuits, magnetism, induction", "Calculus methods throughout", "Laboratory science with data analysis", "AP Physics C Mechanics exam", "AP Physics C E&M exam", "Summer assignments required"]
-      }
-    ]
-  },
-
-  // ── Chemistry ──────────────────────────────────────────────────────
-  {
-    category: "Chemistry",
-    color: "#2dd4bf",
-    grades: "Grades 10–12",
-    courses: [
-      {
-        id: "hs-genchem", name: "General Chemistry", tier: "CP", weight: 0,
-        gradeLevel: "Grade 10+", credits: "5",
-        prereqs: [{ course: null, minGrade: null, note: "Permission coordinated through counselor and Science Supervisor" }],
-        description: "College prep science cultivating basic physical chemistry concepts through student discourse and lab activities. Introduces states of matter, solutions, basic chemical reactions, and the role of energy in chemistry.",
-        topics: ["Basic physical chemistry concepts", "States of matter and solutions", "Basic chemical reactions", "Role of energy in chemistry", "Problem solving and critical thinking"]
+        description: "Covers all fundamental topics that prepare students for calculus. Emphasis on problem solving and the study of relations, functions, equation solving, and graphing. Functions studied include polynomial, rational, exponential, logarithmic, trigonometric, and inverse.",
+        topics: ["Relations and functions: notation, transformations, inverses", "Polynomial and rational functions", "Exponential and logarithmic functions", "Trigonometric functions and equations", "Conic sections", "Polar coordinates and parametric equations (intro)", "Vectors (intro)"]
       },
       {
-        id: "hs-chem-cp", name: "Chemistry", tier: "CP", weight: 0,
-        gradeLevel: "Grade 10", credits: "5",
-        prereqs: [],
-        description: "College preparatory laboratory science. Develops a coherent description of matter at the particle level based on observable evidence. Covers atomic structure, periodic law, bonding, chemical formulas, equations, and quantitative representations of reactions.",
-        topics: ["Atomic structure and periodic law", "Chemical bonding and formulas", "Chemical equations and reactions", "States of matter and solutions", "Algebraic equations and graphing in chemistry", "Energy in chemistry"]
-      },
-      {
-        id: "hs-chem-h", name: "Chemistry Honors", tier: "Honors", weight: 5,
-        gradeLevel: "Grade 10", credits: "5",
-        prereqs: [{ course: null, minGrade: null, note: "Summer review packet; core competency assessment with first unit" }],
-        description: "Rigorous college prep course seeking conceptual understanding with 21st century skills. Requires fundamental understanding of ratios, proportionality, scientific notation, exponents, metric conversions, and graphing. Higher level of critical thinking and articulation required.",
-        topics: ["Matter at the particle level (advanced)", "Ratios, proportionality, and mathematical analysis", "Advanced critical thinking and articulation", "Independent and collaborative work", "Summer review and competency assessment"]
-      },
-      {
-        id: "hs-ap-chem", name: "AP Chemistry", tier: "AP", weight: 5,
+        id: "hs-pre-h", name: "PreCalculus Honors", tier: "Honors", weight: 5,
         gradeLevel: "Grades 10–12", credits: "5",
-        prereqs: [{ course: null, minGrade: null, note: "Strong algebra skills required; previous chemistry recommended; summer assignment on atomic models, stoichiometry assessed in first 2 weeks" }],
-        description: "Rigorous and demanding college-level first-year chemistry for science majors. Covers structure/states of matter, reactions, kinetics, equilibrium, thermodynamics, electrochemistry, and descriptive chemistry. Extensive lab work with data analysis.",
-        topics: ["Structure and states of matter", "Chemical reactions and kinetics", "Equilibrium and thermodynamics", "Electrochemistry", "Descriptive and organic chemistry", "Laboratory data analysis and interpretation", "AP exam preparation", "Summer assignments required"]
-      }
-    ]
-  },
-
-  // ── Biology ────────────────────────────────────────────────────────
-  {
-    category: "Biology",
-    color: "#6ee7b7",
-    grades: "Grades 11–12",
-    courses: [
-      {
-        id: "hs-genbio", name: "General Biology", tier: "CP", weight: 0,
-        gradeLevel: "Grade 11", credits: "5",
-        prereqs: [{ course: null, minGrade: null, note: "Permission coordinated through counselor and Science Supervisor" }],
-        description: "College prep lab science for 11th graders to gain conceptual understandings in biology. Builds on prior science knowledge with connections to everyday life. Covers unity/diversity of life, biochemistry, genetics, evolution, ecosystems, classification, and biotechnology.",
-        topics: ["Unity and diversity of life", "Biochemical processes", "Genetics and evolution", "Ecosystems and classification", "Biotechnology"]
+        prereqs: [
+          { course: "Algebra II Honors", minGrade: 85, note: null },
+          { course: "Algebra II", minGrade: 95, note: "Summer assignment required" }
+        ],
+        description: "An in-depth examination of analytic trigonometry, trigonometric functions, exponential and logarithmic functions, polynomial and rational functions, and introduction to limits. Additionally, conics, polar, vectors, and parametric may be explored.",
+        topics: ["Analytic trigonometry and identities (in-depth)", "Exponential and logarithmic functions (in-depth)", "Polynomial and rational function analysis", "Introduction to limits", "Conic sections", "Polar coordinates and curves", "Parametric equations", "Vectors: components and dot product"]
       },
       {
-        id: "hs-bio-cp", name: "Biology", tier: "CP", weight: 0,
-        gradeLevel: "Grade 11", credits: "5",
-        prereqs: [],
-        description: "College prep laboratory biology building on chemistry and broader scientific concepts. Covers unity/diversity of life, form and function, biochemistry, genetics, evolution, ecosystems, classification, and biotechnology.",
-        topics: ["Unity and diversity of life", "Form and function in organisms", "Biochemical processes", "Genetics and evolution", "Ecosystems and classification", "Biotechnology"]
+        id: "hs-calc-cp", name: "Calculus", tier: "CP", weight: 0,
+        gradeLevel: "Grade 12", credits: "5",
+        prereqs: [{ course: "PreCalculus", minGrade: 80, note: "Or completion of PreCalculus Honors" }],
+        description: "Provides students with an opportunity to develop a conceptual understanding of calculus and its applications. Emphasizes a multi-representational approach — concepts, results, and problems are expressed geometrically, analytically, verbally, and numerically.",
+        topics: ["Limits and continuity", "Definition of the derivative", "Basic differentiation rules", "Applications of derivatives: optimization, curve sketching", "Definite and indefinite integrals", "Fundamental Theorem of Calculus", "Real-world applications of calculus"]
       },
       {
-        id: "hs-bio-h", name: "Biology Honors", tier: "Honors", weight: 5,
-        gradeLevel: "Grade 11", credits: "5",
-        prereqs: [{ course: null, minGrade: null, note: "Advanced Chemistry Honors or superior understanding of CP Chemistry strongly recommended" }],
-        description: "Advanced biology continuing energy themes from chemistry and physics. Incorporates probability, mathematical modeling, and multiple representations. Includes more extensive analytical lab, reading, and writing assignments than CP biology.",
-        topics: ["Energy transfer and transformation themes", "Probability and mathematical modeling", "Extensive analytical lab work", "Advanced reading and writing assignments", "Application-focused assessments"]
+        id: "hs-calc-ab", name: "AP Calculus AB", tier: "AP", weight: 5,
+        gradeLevel: "Grades 10–12", credits: "5",
+        prereqs: [
+          { course: "PreCalculus Honors (full year)", minGrade: 85, note: null },
+          { course: "PreCalculus (full year)", minGrade: 95, note: null },
+          { course: "Calculus (full year)", minGrade: 80, note: null }
+        ],
+        description: "Covers limits, derivatives, and applications of both algebraic and transcendental functions as well as methods and applications of integration. Equivalent to a 1st semester college calculus course.",
+        topics: ["Limits and continuity", "Derivatives: all rules, implicit, related rates", "Derivatives of trig, exponential, and log functions", "Applications: optimization, curve sketching, L'Hôpital's rule", "Definite integrals and Fundamental Theorem of Calculus", "u-substitution", "Applications of integration: area, accumulation, average value", "Differential equations: slope fields, separation of variables", "AP exam preparation"]
       },
       {
-        id: "hs-ap-bio", name: "AP Biology", tier: "AP", weight: 5,
+        id: "hs-calc-c", name: "AP Calculus C", tier: "AP", weight: 5,
         gradeLevel: "Grades 11–12", credits: "5",
-        prereqs: [{ course: null, minGrade: null, note: "Previous biology strongly recommended; students without biology should have AP Chemistry or Chemistry Honors" }],
-        description: "College-level first-year biology for science majors. Comprehensive survey covering biochemistry, cellular biology, molecular genetics, biotechnology, diversity, structure/function, ecology, and evolution. Builds on chemistry and physics concepts.",
-        topics: ["Biochemistry and cellular biology", "Molecular genetics and heredity", "Biotechnology applications", "Diversity and evolution", "Structure and function of organisms", "Ecology", "AP exam preparation", "Summer assignments required"]
+        prereqs: [{ course: "AP Calculus AB (full year)", minGrade: 80, note: null }],
+        description: "Taught as a continuation of Calculus AB. Covers additional techniques of integration, polar coordinates, series, applications of integrals, parametric graphing, and differential equations. Equivalent to a 2nd semester college calculus course.",
+        topics: ["Advanced integration techniques: by parts, partial fractions", "Polar coordinates and parametric graphing", "Infinite sequences and series", "Convergence tests", "Applications of integrals in polar and parametric settings", "Differential equations (extended)", "AP exam preparation"]
+      },
+      {
+        id: "hs-calc-bc", name: "AP Calculus BC", tier: "AP", weight: 5,
+        gradeLevel: "Grades 11-12", credits: "5",
+        prereqs: [{ course: "PreCalculus Honors", minGrade: 95, note: "Teacher's recommendation required" }, { course: "Calculus CP", minGrade: 95, note: "Teacher's recommendation required" }],
+        description: "Essentially the College Board Calculus BC Curriculum. Students master material covering two semesters of a college calculus program. The course outline combines the Calculus AB and Calculus C descriptions. Students are expected to understand concepts and transfer them to novel applications.",
+        topics: ["Limits and continuity", "Derivatives: all rules, implicit, related rates", "Applications: optimization, curve sketching, L'Hôpital's rule", "Definite integrals and Fundamental Theorem of Calculus", "Applications of integration: area, accumulation, average value", "Differential equations: slope fields, separation of variables", "Advanced integration techniques: by parts, partial fractions", "Polar coordinates and parametric graphing", "Infinite sequences and series", "Convergence tests", "AP BC exam preparation"]
+      },
+      {
+        id: "hs-math-methods", name: "Honors Math Methods in Engineering and the Sciences", tier: "Honors", weight: 5,
+        gradeLevel: "Grade 12", credits: "5",
+        prereqs: [
+          { course: "AP Calculus C", minGrade: 85, note: null },
+          { course: "AP Calculus BC", minGrade: 85, note: "Summer assignment required — STEM designation" }
+        ],
+        description: "Designed for the student interested in pursuing mathematics at the college level. Surveys topics covered in four different college courses with emphasis on applications.",
+        topics: ["LINEAR ALGEBRA: Vectors, matrices, diagonalization, eigenvectors, basis sets", "MULTIVARIABLE CALCULUS: Partial derivatives, vector operators, gradients, double integrals", "DIFFERENTIAL EQUATIONS: Methods, physics equations, functions as basis sets", "VECTOR CALCULUS: Formal proofs, vector fields, line and surface integrals", "FOURIER ANALYSIS (if covered): Frequency analysis, Fourier Series and Transforms, signal processing"]
       }
     ]
   },
 
-  // ── Environmental Science ──────────────────────────────────────────
+  // ── Electives ──────────────────────────────────────────────────────
   {
-    category: "Environmental Science",
+    category: "Math Electives",
     color: "#34d399",
     grades: "Grades 11–12",
     courses: [
       {
-        id: "hs-apes", name: "AP Environmental Science", tier: "AP", weight: 5,
+        id: "hs-stats-cp", name: "Statistics", tier: "CP", weight: 0,
+        gradeLevel: "Grades 11–12", credits: "5",
+        prereqs: [{ course: "Algebra II", minGrade: 70, note: "Elective for Juniors and Seniors only" }],
+        description: "An introductory, non-calculus based study of statistics designed as an elective for Juniors and Seniors. Students are introduced to major concepts and tools for collecting, analyzing, and drawing conclusions from data.",
+        topics: ["Exploring data: distributions and displays", "Planning a study: sampling and experimental design", "Anticipating patterns: probability and random variables", "Statistical inference: confidence intervals and significance tests", "Graphing calculator applications", "Preparation for AP Statistics"]
+      },
+      {
+        id: "hs-stats-ap", name: "AP Statistics", tier: "AP", weight: 5,
         gradeLevel: "Grades 11–12", credits: "5",
         prereqs: [
-          { course: "Freshman science, chemistry, and biology", minGrade: null, note: "Must have completed all three (biology may be concurrent)" }
+          { course: "Statistics", minGrade: 85, note: null },
+          { course: "PreCalculus", minGrade: 80, note: null },
+          { course: "Algebra II Honors", minGrade: 80, note: null },
+          { course: "Algebra II", minGrade: 90, note: "Elective for Juniors and Seniors only" }
         ],
-        description: "Full-year capstone lab science incorporating prior biology, chemistry, and physics knowledge as it relates to environmental studies. Explores Social Ecological Systems with transdisciplinary critical analysis. Strong math skills highly recommended.",
-        topics: ["Social Ecological Systems", "Transdisciplinary analysis", "Data analysis, lab, and field experiments", "Integration of bio, chem, and physics", "AP exam preparation", "Summer assignments required"]
-      }
-    ]
-  },
-
-  // ── iSTEM ──────────────────────────────────────────────────────────
-  {
-    category: "iSTEM",
-    color: "#a7f3d0",
-    grades: "Grades 10–12",
-    courses: [
+        description: "An Advanced Placement course equivalent to a one-semester introductory, non-calculus based college course in statistics. An elective for Juniors and Seniors. Introduces major concepts and tools for collecting, analyzing, and drawing conclusions from data.",
+        topics: ["Exploring data: distributions, outliers, transformations", "Comparing distributions", "Bivariate data: regression and residuals", "Study design: sampling methods and experimental design", "Probability: rules, conditional, independence", "Random variables and probability distributions", "Sampling distributions and Central Limit Theorem", "Confidence intervals for means and proportions", "Significance tests: z-tests, t-tests, chi-square", "AP exam preparation"]
+      },
       {
-        id: "hs-istemi", name: "iSTEMi — Advanced Independent Scientific Investigations Honors", tier: "Honors", weight: 5,
+        id: "hs-data-science", name: "Data Science, Analytics, and Visualization (w/ Python)", tier: "CP", weight: 0,
         gradeLevel: "Grades 10–12", credits: "5",
-        prereqs: [{ course: null, minGrade: null, note: "Follow-up to iSTEM or formal research proposal approved by Science Supervisor; draft proposal by Aug 15" }],
-        description: "Full-year independent science investigations. Students propose a project budget, maintain lab space, publish findings in Tau Magazine, and present a capstone poster. Encourages submission to student research conferences.",
-        topics: ["Independent research project", "Project proposal and budgeting", "Laboratory safety and IRB approval", "Publication in Tau Magazine", "Capstone poster presentation"]
+        prereqs: [
+          { course: "Algebra II Honors", minGrade: 65, note: null },
+          { course: "Algebra II", minGrade: 80, note: null },
+          { course: "Advanced Algebra/Trigonometry", minGrade: 80, note: "Prior programming recommended but not required" }
+        ],
+        description: "An in-depth exploration of data science concepts and visualization techniques, incorporating hands-on learning with Python and industry tools. Covers computational and inferential thinking, network analysis, database management, and natural language processing.",
+        topics: ["Computational and inferential thinking", "Python programming for data science", "Data visualization and analysis", "Network analysis and database management", "Natural language processing", "Machine learning fundamentals: KNN and Decision Trees", "Real-world data problem solving"]
       },
       {
-        id: "hs-anatomy", name: "Anatomy & Physiology", tier: "CP", weight: 0,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [{ course: "Biology", minGrade: null, note: "Or instructor/supervisor approval" }],
-        description: "Examines how systems and body parts work together to sustain life. Involves real-life and online dissections. Prior biological science knowledge is necessary.",
-        topics: ["Human body systems", "Structure and function", "Real-life and online dissections", "Organ interaction and homeostasis"]
-      },
-      {
-        id: "hs-env-sci", name: "Environmental Science (iSTEM)", tier: "CP", weight: 0,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
-        description: "Explores current environmental science topics with an engineering mindset. Lab activities build understanding of Earth's environmental systems. Examines challenges facing humans in preserving our living environment.",
-        topics: ["Earth's environmental systems", "Current environmental issues", "Engineering mindset", "Collaborative problem solving"]
-      },
-      {
-        id: "hs-weather", name: "Weather and Meteorology", tier: "CP", weight: 0,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
-        description: "Builds a global weather model. Explores the science behind weather forecasting and how agencies gather, analyze, and predict weather events. Examines common weather apps and the factors influencing weather models.",
-        topics: ["Global weather modeling", "Weather forecasting science", "Weather data collection and analysis", "Weather apps and data sources"]
-      },
-      {
-        id: "hs-biotech", name: "Biotechnology Honors", tier: "Honors", weight: 5,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [{ course: "Biology", minGrade: null, note: "Or instructor/supervisor approval" }],
-        description: "Application of biological concepts to DNA fingerprinting, RNA vaccines, CRISPR, and more. Students learn techniques and their real-world applications as well as ethical implications of biotechnology.",
-        topics: ["DNA fingerprinting", "RNA vaccines", "CRISPR gene editing", "Ethical implications of biotechnology"]
-      },
-      {
-        id: "hs-orgchem", name: "Organic Chemistry Honors", tier: "Honors", weight: 5,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [{ course: null, minGrade: null, note: "Prior chemistry knowledge required" }],
-        description: "Introductory organic chemistry labs building a coherent model for an end-of-module synthesis project. Primarily laboratory-based with content delivered in a flipped classroom format.",
-        topics: ["Introductory organic chemistry", "Laboratory investigations", "Synthesis project", "Flipped classroom content delivery"]
-      },
-      {
-        id: "hs-hort", name: "Horticultural and Agricultural Science", tier: "CP", weight: 0,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
-        description: "Inquiry-driven introduction to plant growth and production using the MHS student garden, hoop-house, and greenhouse. Covers organic vegetable, flower, and herb production from propagation to harvest.",
-        topics: ["Plant biology and propagation", "Organic production methods", "Nutrition and food systems", "Environmental stewardship and food justice"]
-      },
-      {
-        id: "hs-forensics", name: "Forensic Science", tier: "CP", weight: 0,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
-        description: "Introduction to crime scene investigation. Students observe, collect, analyze, and evaluate evidence using physics, chemistry, and biology principles. Considers ethical and social justice aspects of forensic science.",
-        topics: ["Crime scene investigation methods", "Evidence collection and analysis", "Physics, chemistry, and biology in forensics", "Ethical and social justice considerations"]
-      },
-      {
-        id: "hs-astronomy", name: "Astronomy", tier: "CP", weight: 0,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
-        note: "Not running in 2026-2027",
-        description: "Explores the origins of science through observations and considers a philosophical viewpoint about how we do science. Covers how modern scientists make observations and measurements in space, how objects interact in space, and how discoveries are made from both Eurocentric and global viewpoints.",
-        topics: ["Origins of scientific observation", "Modern space measurements", "Object interactions in space", "Eurocentric and global perspectives on astronomy"]
-      },
-      {
-        id: "hs-microelectronics", name: "Microelectronics Honors", tier: "Honors", weight: 5,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
-        note: "Not running in 2026-2027",
-        description: "Explores various electronic circuits and uses puzzles to uncover mysteries and possibilities within microchips. Examines common DIY microelectronics including Arduino, Raspberry Pi, and other microcontrollers. Some programming involved; no prior coding required.",
-        topics: ["Electronic circuits and microchips", "Arduino and Raspberry Pi", "DIY microelectronics", "Introductory programming"]
-      },
-      {
-        id: "hs-nutrition", name: "Nutrition and Food Science", tier: "CP", weight: 0,
-        gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
-        prereqs: [],
-        note: "Not running in 2026-2027",
-        description: "Explores the biochemistry of foods and nutrients with consideration of physiological effects of specialized diets. Topics include cultural, religious, and economic factors influencing food acceptance and availability, as well as nutrient requirements of various life stages.",
-        topics: ["Biochemistry of foods and nutrients", "Specialized diets and physiological effects", "Cultural and economic factors in nutrition", "Nutrient requirements across life stages"]
-      }
+      id: "hs-discrete", name: "Discrete Mathematics", tier: "CP", weight: 0,
+      gradeLevel: "Grades 11–12", credits: "5",
+      prereqs: [{ course: "Algebra II", minGrade: null, note: "Successful completion" }],
+      description: "Addresses topics not covered in traditional math courses with a step-by-step rather than continuous nature. Stresses the connection between contemporary math and modern society. Effective preparation for applied combinatorics and graph theory at the college level.",
+      topics: [
+        "Election theory and decision-making in a democracy",
+        "Graphs and graph theory (networking)",
+        "Coding information",
+        "Logic and probability",
+        "Game theory",
+        "Mathematical induction"
+      ]
+    }
     ]
   }
 ];
