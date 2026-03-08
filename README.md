@@ -3,6 +3,32 @@
 A curriculum visualizer for MHS students - currently has all subjects, which are accessible via a dropdown menu on the current subject title. I am currently working on the elective subject. [Link.](https://mhscurriculum.vercel.app/)
 
 # Version History 
+Added polish, resolve continuity errors, and improve internal code practices before full release
+
+1. Fixes and Cleanup
+  - Fixed empty amber pos-note box — now only renders when course.note is truthy (BUG-01)
+  - Added empty-state message to ProgramOfStudies when a subject has no catalog data (BUG-02)
+  - Derived CurriculumMapVariableTrackLengths default category/track from data (Object.keys()[0]) instead of hardcoded
+  strings (CLEAN-01)
+  - Confirmed react-app/build/ excluded from git via .gitignore (CLEAN-02)
+
+2. Visual Polish
+  - Created TDD Wave 0 scaffolding: 4 test files (App smoke, CurriculumMap badge, VariableTrackLengths AP detection,
+  WCAG contrast audit) — 109 tests total
+  - Unified AP badge color on trackColorsSubject[effectiveTrack].bg in both CurriculumMap.jsx and
+  CurriculumMapVariableTrackLengths.jsx — badge now shifts with the active track tab (VIS-01)
+  - Fixed AP detection to use course.highlight (not course.tier === "AP") and removed the purple #6366f1 fallback badge
+  from electives (VIS-01)
+  - Added highlight: true to all 6 AP-tier courses in electives.js (data-side fix caught at human checkpoint)
+  - Synced highlight-card glow to use track color — badge and card border now always match (VIS-01)
+  - Fixed Physics Kid track: #12877e/#000 for WCAG AA compliance (4.79:1 ratio), preserving the teal gradient across
+  science tracks (VIS-02)
+  - Fixed 3 additional elective track colors for WCAG AA compliance (VIS-02)
+
+(More information is available in the GSD documentation in the .planning directory)
+
+## Version 1.0:
+1. removed discontinutiy erro 
 
 ### Beta 3.1
 1. Added CurriculumMapVariableTrackLengths.jsx, for elective subjects with variable length tracks.
