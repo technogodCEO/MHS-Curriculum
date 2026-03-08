@@ -70,6 +70,28 @@ jest.mock('../../data/english',  () => ({ englishTracks: {}, englishTrackColors:
 
 // ── Tests ──────────────────────────────────────────────────────────────────────
 
+/**
+ * jsdom/CSSOM normalizes inline styles:
+ *   "#f59e0b22" -> "rgba(245, 158, 11, 0.133...)"
+ *   "#f59e0b"   -> "rgb(245, 158, 11)"
+ *
+ * We extract the r,g,b channels from the computed style and compare
+ * them against the expected track color and the accent sentinel.
+ */
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return { r, g, b };
+}
+
+function extractRgbFromComputedStyle(styleValue) {
+  // Matches both "rgb(r, g, b)" and "rgba(r, g, b, a)"
+  const m = styleValue.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  if (!m) return null;
+  return { r: parseInt(m[1]), g: parseInt(m[2]), b: parseInt(m[3]) };
+}
+
 test('AP badge uses track bg color, not accent prop', () => {
   render(
     <CurriculumMap
@@ -80,14 +102,29 @@ test('AP badge uses track bg color, not accent prop', () => {
   );
 
   const badge = screen.getByText('AP');
-  const bg = badge.style.background;
-  const color = badge.style.color;
+  const bgStyle    = badge.style.background;
+  const colorStyle = badge.style.color;
 
-  // Badge must contain the track bg, not the accent sentinel
-  expect(bg).toContain(TRACK_BG.toLowerCase());
-  expect(color.toLowerCase()).toContain(TRACK_BG.toLowerCase());
+  const trackRgb  = hexToRgb(TRACK_BG);
+  const accentRgb = hexToRgb(ACCENT);
 
-  // Badge must NOT contain the accent sentinel color
-  expect(bg.toLowerCase()).not.toContain(ACCENT.toLowerCase());
-  expect(color.toLowerCase()).not.toContain(ACCENT.toLowerCase());
+  const bgParsed    = extractRgbFromComputedStyle(bgStyle);
+  const colorParsed = extractRgbFromComputedStyle(colorStyle);
+
+  // Both background and color must be parseable as rgb values
+  expect(bgParsed).not.toBeNull();
+  expect(colorParsed).not.toBeNull();
+
+  // Background channels must match the track color, not accent
+  expect(bgParsed.r).toBe(trackRgb.r);
+  expect(bgParsed.g).toBe(trackRgb.g);
+  expect(bgParsed.b).toBe(trackRgb.b);
+
+  // Color channels must match the track color, not accent
+  expect(colorParsed.r).toBe(trackRgb.r);
+  expect(colorParsed.g).toBe(trackRgb.g);
+  expect(colorParsed.b).toBe(trackRgb.b);
+
+  // Sanity: track color is not the accent (ensures the test distinguishes them)
+  expect(trackRgb.r).not.toBe(accentRgb.r);
 });

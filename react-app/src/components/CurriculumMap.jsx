@@ -114,7 +114,11 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
                   </div>
                   {/* AP badge — only shown on highlight courses */}
                   {isHighlight && (
-                    <span className="badge" style={{ background: `${accent}22`, color: accent, border: `1px solid ${accent}44` }}>
+                    <span className="badge" style={{
+                      background: `${trackColorsSubject[effectiveTrack].bg}22`,
+                      color: trackColorsSubject[effectiveTrack].bg,
+                      border: `1px solid ${trackColorsSubject[effectiveTrack].bg}44`
+                    }}>
                       AP
                     </span>
                   )}
