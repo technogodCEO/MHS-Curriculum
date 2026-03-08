@@ -25,14 +25,14 @@ export const electiveTracks = {
       description: "Two-course AP diploma program developing critical thinking, research, and presentation skills. Earn the AP Capstone Diploma with scores of 3+ on Seminar, Research, and four additional AP exams.",
       courses: [
         {
-          id: "el-ap-seminar", name: "AP Seminar", tier: "AP", weight: 5,
+          id: "el-ap-seminar", name: "AP Seminar", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 10–11", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Teacher recommendation and completed application" }],
           description: "Foundational cross-curricular course exploring complex academic and real-world topics through divergent perspectives. Students analyze articles, research studies, philosophical texts, speeches, and artistic works to craft evidence-based arguments.",
           topics: ["Cross-curricular inquiry framework", "Analyzing articles, studies, and philosophical texts", "Synthesizing multiple sources", "Written essays and evidence-based arguments", "Oral and visual presentations (group and individual)", "AP exam preparation"]
         },
         {
-          id: "el-ap-research", name: "AP Research", tier: "AP", weight: 5,
+          id: "el-ap-research", name: "AP Research", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "AP Seminar", minGrade: null, note: "Score of 3+ on AP Seminar Exam Assessment Task" }],
           description: "Yearlong independent investigation of a topic of personal interest. Students develop research questions, employ ethical practices, analyze sources, and produce a 4000–5000 word academic paper with oral defense.",
@@ -78,7 +78,7 @@ export const electiveTracks = {
           topics: ["Algorithm design and code implementation", "Java programming fundamentals", "Graphics and applets", "Individual and group projects", "Real-world case studies"]
         },
         {
-          id: "el-ap-cs", name: "AP Computer Science A", tier: "AP", weight: 5,
+          id: "el-ap-cs", name: "AP Computer Science A", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "Foundations of JAVA", minGrade: null, note: "Successful completion" }],
           description: "Full-year course emphasizing object-oriented programming in Java. Students learn programming methodology with focus on problem solving, algorithm development, and data structures. Follows rigorous College Board curriculum.",
@@ -99,7 +99,7 @@ export const electiveTracks = {
           topics: ["Algorithm design and code implementation", "Java programming fundamentals", "Graphics and applets", "Individual and group projects", "Real-world case studies"]
         },
         {
-          id: "el-ap-cs", name: "AP Computer Science A", tier: "AP", weight: 5,
+          id: "el-ap-cs", name: "AP Computer Science A", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "Foundations of JAVA", minGrade: null, note: "Successful completion" }],
           description: "Full-year course emphasizing object-oriented programming in Java. Students learn programming methodology with focus on problem solving, algorithm development, and data structures. Follows rigorous College Board curriculum.",
@@ -485,7 +485,7 @@ export const electiveTracks = {
           topics: ["College portfolio development", "Advanced technical and conceptual work", "Visual Arts Extravaganza participation", "Independent growth with peer feedback", "Preparation for AP Studio"]
         },
         {
-          id: "el-ap-studio", name: "AP Studio Art or 2D Portfolio", tier: "AP", weight: 5,
+          id: "el-ap-studio", name: "AP Studio Art or 2D Portfolio", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "Honors Portfolio OR both Advanced Digital and Advanced Darkroom Photography", minGrade: null, note: "Interview with art faculty for concentration placement" }],
           description: "Year-long development of a consistent theme-based body of 12 pieces displayed gallery-style at Art Extravaganza. Students produce a portfolio for college applications and optional College Board evaluation. High commitment and self-discipline required.",
@@ -530,7 +530,7 @@ export const electiveTracks = {
           topics: ["Cyanotypes and photo transfers", "Advanced darkroom techniques", "Alternative analog processes", "Conceptual projects and solo exhibit"]
         },
         {
-          id: "el-ap-photo", name: "AP Photo / 2D Portfolio", tier: "AP", weight: 5,
+          id: "el-ap-photo", name: "AP Photo / 2D Portfolio", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "Honors Portfolio OR both Advanced Digital and Advanced Darkroom Photography", minGrade: null, note: "Interview with art faculty for concentration placement" }],
           description: "Intensive guided exploration of photography for art-making. Students experience a variety of concepts, techniques, and approaches, producing a college portfolio and solo exhibit at Art Extravaganza. Optional College Board evaluation.",

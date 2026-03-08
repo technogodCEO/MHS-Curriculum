@@ -106,6 +106,11 @@ export function CurriculumMap({ accent, gridRgb, activeSubject }) {
               {/* Course card — clicking toggles the topic list open/closed */}
               <div
                 className={`grade-card${isExpanded ? " expanded" : ""}${isHighlight ? " highlight-card" : ""}`}
+                style={isHighlight ? {
+                  borderColor: `${trackColorsSubject[effectiveTrack].bg}4d`,
+                  background: `${trackColorsSubject[effectiveTrack].bg}0d`,
+                  boxShadow: `0 0 30px ${trackColorsSubject[effectiveTrack].bg}1a`,
+                } : {}}
                 onClick={() => setExpandedGrade(isExpanded ? null : gradeData.grade)}
               >
                 <div className="card-header">
