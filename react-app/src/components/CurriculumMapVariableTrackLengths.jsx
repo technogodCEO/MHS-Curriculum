@@ -21,8 +21,9 @@ import { electiveCategories, electiveTracks, electiveTrackColors } from "../data
  *   expandedCourse   — course.id of the currently open course card (null = all closed)
  */
 export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubject }) {
-  const [selectedCategory, setSelectedCategory] = useState("AP Capstone");
-  const [selectedTrack, setSelectedTrack] = useState("AP Capstone Program");
+  const firstCategory = Object.keys(electiveCategories)[0];
+  const [selectedCategory, setSelectedCategory] = useState(firstCategory);
+  const [selectedTrack, setSelectedTrack] = useState(electiveCategories[firstCategory].tracks[0]);
   const [expandedCourse, setExpandedCourse] = useState(null);
 
   // Maps a subject ID string to the correct track data and color config for that subject.
