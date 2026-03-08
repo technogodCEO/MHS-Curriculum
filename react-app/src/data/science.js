@@ -349,7 +349,7 @@ export const scienceTrackColors = {
   Honors:            { bg: "#2dd4bf", text: "#000", label: "✨ Honors",                    activeClass: "active-hon"  },
   "AP (Standard)":   { bg: "#14b8a6", text: "#000", label: "🚀 AP (Standard)",             activeClass: "active-ap"   },
   "Bio Kid":         { bg: "#0d9488", text: "#000", label: "🧬 Bio Kid (AP → APES Sr.)",   activeClass: "active-bio"  },
-  "Physics Kid":     { bg: "#0f766e", text: "#fff", label: "⚛️ Physics Kid (AP → Phys C)", activeClass: "active-phys" },
+  "Physics Kid":     { bg: "#12877e", text: "#000", label: "⚛️ Physics Kid (AP → Phys C)", activeClass: "active-phys" },
 };
 
 // ─── Full Program of Studies (course catalog) ────────────────────────

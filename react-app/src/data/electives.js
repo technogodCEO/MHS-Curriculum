@@ -342,7 +342,7 @@ export const electiveTracks = {
     },
 
     "Media & Graphic Communication": {
-      color: "#c2410c",
+      color: "#cc4d1e",
       description: "Two-course graphic communication track with optional senior portfolio.",
       courses: [
         {
@@ -370,7 +370,7 @@ export const electiveTracks = {
     },
 
     "Power, Energy & Transportation": {
-      color: "#b45309",
+      color: "#c26010",
       description: "Standalone semester course on engine technology and transportation.",
       courses: [
         {
@@ -436,7 +436,7 @@ export const electiveTracks = {
     },
 
     "Life Skills": {
-      color: "#e11d48",
+      color: "#f03566",
       description: "Standalone semester course preparing students for self-sufficiency.",
       courses: [
         {
