@@ -107,7 +107,7 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
           {/* Course Cards */}
           {trackSubject.tracks[effectiveTrack].courses.map((course, idx) => {
             const isExpanded = expandedCourse === course.id;
-            const isAP = course.tier === "AP";
+            const isAP = course.highlight;
             const trackColor = trackColorsSubject[effectiveTrack].bg;
             const courses = trackSubject.tracks[effectiveTrack].courses;
             return (
@@ -142,13 +142,13 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
                     <div className="course-name" style={{ color: isAP ? "#fff" : "#f0f0f8" }}>
                       {course.name}
                     </div>
-                    {course.tier !== "CP" && (
+                    {isAP && (
                       <span className="badge" style={{
-                        background: isAP ? `${trackColor}22` : "#6366f122",
-                        color: isAP ? trackColor : "#6366f1",
-                        border: `1px solid ${isAP ? trackColor + "44" : "#6366f144"}`,
+                        background: `${trackColor}22`,
+                        color: trackColor,
+                        border: `1px solid ${trackColor}44`,
                       }}>
-                        {course.tier}
+                        AP
                       </span>
                     )}
                     <span style={{ fontSize:"0.75rem", color:"#9ca3af" }}>
