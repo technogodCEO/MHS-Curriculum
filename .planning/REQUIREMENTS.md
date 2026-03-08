@@ -9,8 +9,8 @@ Requirements for v1 release (pre-release polish and cleanup).
 
 ### Bugs
 
-- [ ] **BUG-01**: `pos-note` styled box does not render when a course has no `note` field
-- [ ] **BUG-02**: `ProgramOfStudies` displays a blank page with no message when a subject has no catalog data
+- [x] **BUG-01**: `pos-note` styled box does not render when a course has no `note` field
+- [x] **BUG-02**: `ProgramOfStudies` displays a blank page with no message when a subject has no catalog data
 
 ### Cleanup
 
@@ -53,8 +53,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BUG-01 | Phase 1 | Pending |
-| BUG-02 | Phase 1 | Pending |
+| BUG-01 | Phase 1 | Complete |
+| BUG-02 | Phase 1 | Complete |
 | CLEAN-01 | Phase 1 | Complete |
 | CLEAN-02 | Phase 1 | Complete |
 | VIS-01 | Phase 2 | Pending |

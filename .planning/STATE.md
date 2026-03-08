@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-03-08T03:47:01.952Z"
+stopped_at: Completed 01-fixes-and-cleanup-01-PLAN.md
+last_updated: "2026-03-08T03:47:47.141Z"
 last_activity: 2026-03-07 — Roadmap created; ready to begin Phase 1 planning
 progress:
   total_phases: 2
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -51,6 +51,7 @@ Progress: [░░░░░░░░░░] 0%
 
 *Updated after each plan completion*
 | Phase 01-fixes-and-cleanup P02 | 5 | 2 tasks | 1 files |
+| Phase 01-fixes-and-cleanup P01 | 2 | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -64,6 +65,8 @@ Recent decisions affecting current work:
 - Duplicate course IDs and `activeClass` dead field: deferred to v2 (DEBT-01, DEBT-02, DEBT-03)
 - [Phase 01-fixes-and-cleanup]: Derive component defaults from imported data objects using Object.keys()[0] — prevents silent breakage if data order changes
 - [Phase 01-fixes-and-cleanup]: react-app/.gitignore /build rule confirmed active — no edit needed for CLEAN-02
+- [Phase 01-fixes-and-cleanup]: Use course.note truthy guard directly (not Object.keys check) to prevent empty-string amber box rendering
+- [Phase 01-fixes-and-cleanup]: posSubject.length === 0 ternary wraps filter bar, legend, and map — style block stays outside the guard
 
 ### Pending Todos
 
@@ -76,6 +79,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-08T03:47:01.949Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-03-08T03:47:47.139Z
+Stopped at: Completed 01-fixes-and-cleanup-01-PLAN.md
 Resume file: None
