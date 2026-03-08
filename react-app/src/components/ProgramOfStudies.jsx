@@ -109,103 +109,117 @@ export function ProgramOfStudies({ activeSubject }) {
         .pos-weight-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
       `}</style>
 
-      {/* ── Tier filter buttons (All / CP / Honors / AP) ── */}
-      <div className="pos-filter-bar">
-        {allTiers.map(t => {
-          const isActive = filterTier === t;
-          const cls = isActive ? (t === "All" ? "f-active-all" : `f-active-${t}`) : "";
-          return (
-            <button key={t} onClick={() => setFilterTier(t)} className={`pos-filter-btn ${cls}`}>
-              {t === "All" ? "All Courses" : t}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* ── Grade weight legend ── */}
-      <div className="pos-weight-legend">
-        {[["CP","Unweighted (0)","#94a3b8"],["Honors","+5 Weight","#c084fc"],["AP","+5 Weight","#60a5fa"]].map(([tier,wt,clr])=>(
-          <div key={tier} className="pos-weight-legend-item">
-            <div className="pos-weight-dot" style={{background:clr}}/>
-            <span style={{color:clr}}>{tier}</span>
-            <span>— {wt}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* ── Course categories (currently just one: High School — Mathematics) ── */}
-      {posSubject.map(cat => {
-        // Filter courses by selected tier; if "All" selected, show everything
-        const visible = filterTier === "All" ? cat.courses : cat.courses.filter(c => c.tier === filterTier);
-        if (!visible.length) return null;
-
-        return (
-          <div key={cat.category} className="pos-category">
-            {/* Category header with color dot, title, and grade range */}
-            <div className="pos-cat-header">
-              <div className="pos-cat-dot" style={{ background: cat.color }} />
-              <div className="pos-cat-title">{cat.category}</div>
-              <div className="pos-cat-grades">{cat.grades}</div>
-            </div>
-
-            {/* ── Individual course cards ── */}
-            {visible.map(course => {
-              const isOpen = expandedCourse === course.id;
-              const ts = course.tier ? tierStyles[course.tier] : { bg:"#94a3b822", color:"#94a3b8", border:"#94a3b844" };
-
+      {posSubject.length === 0 ? (
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          textAlign: "center",
+          color: "#666",
+          fontSize: "0.875rem",
+          marginTop: 60,
+        }}>
+          No course catalog available for this subject.
+        </p>
+      ) : (
+        <>
+          {/* ── Tier filter buttons (All / CP / Honors / AP) ── */}
+          <div className="pos-filter-bar">
+            {allTiers.map(t => {
+              const isActive = filterTier === t;
+              const cls = isActive ? (t === "All" ? "f-active-all" : `f-active-${t}`) : "";
               return (
-                // Clicking the card toggles it open/closed
-                <div key={course.id} className={`pos-card${isOpen ? " open" : ""}`} onClick={() => setExpandedCourse(isOpen ? null : course.id)}>
-                  <div className="pos-card-header">
-                    <div className="pos-card-name">{course.name}</div>
-                    <div className="pos-meta">
-                      <span className="pos-grade-lbl">{course.gradeLevel}</span>
-                      {course.tier && <span className="pos-badge" style={{ background: ts.bg, color: ts.color, borderColor: ts.border }}>{course.tier}</span>}
-                      {course.weight !== undefined && <span className="pos-weight-badge">{course.weight === 0 ? "Unweighted" : `+${course.weight}`}</span>}
-                      <span className="pos-credit">{course.credits} cr</span>
-                      {/* Chevron rotates 90° when card is open */}
-                      <span className="pos-chevron" style={{ transform: isOpen ? "rotate(90deg)" : "none" }}>▶</span>
-                    </div>
-                  </div>
-
-                  {/* ── Expanded body: description, prerequisites, topic chips ── */}
-                  {isOpen && (
-                    <div className="pos-body">
-                      <p className="pos-desc">{course.description}</p>
-                      {course.note && <p className="pos-note">{course.note}</p>}
-
-                      {/* Prerequisites section — uses prereqs array if present, falls back to prereq string */}
-                      <div className="pos-prereq-section">
-                        <div className="pos-lbl">Prerequisites</div>
-                        {course.prereqs ? (
-                          <div className="pos-prereq-list">
-                            {course.prereqs.map((p, i) => (
-                              <div key={i} className="pos-prereq-item">
-                                <span className="pos-prereq-bullet">—</span>
-                                <span className="pos-prereq-course">{p.course}</span>
-                                {p.minGrade && <span className="pos-prereq-grade">min {p.minGrade}</span>}
-                                {p.note && <span className="pos-prereq-note">({p.note})</span>}
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <div style={{fontFamily:"'DM Sans',sans-serif",fontSize:"0.8rem",color:"#777"}}>{course.prereq || "None"}</div>
-                        )}
-                      </div>
-
-                      {/* Topic chips — each topic rendered as a small pill */}
-                      <div className="pos-lbl">Topics Covered</div>
-                      <div className="pos-chips">
-                        {course.topics.map((t, i) => <span key={i} className="pos-chip">{t}</span>)}
-                      </div>
-                    </div>
-                  )}
-                </div>
+                <button key={t} onClick={() => setFilterTier(t)} className={`pos-filter-btn ${cls}`}>
+                  {t === "All" ? "All Courses" : t}
+                </button>
               );
             })}
           </div>
-        );
-      })}
+
+          {/* ── Grade weight legend ── */}
+          <div className="pos-weight-legend">
+            {[["CP","Unweighted (0)","#94a3b8"],["Honors","+5 Weight","#c084fc"],["AP","+5 Weight","#60a5fa"]].map(([tier,wt,clr])=>(
+              <div key={tier} className="pos-weight-legend-item">
+                <div className="pos-weight-dot" style={{background:clr}}/>
+                <span style={{color:clr}}>{tier}</span>
+                <span>— {wt}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Course categories (currently just one: High School — Mathematics) ── */}
+          {posSubject.map(cat => {
+            // Filter courses by selected tier; if "All" selected, show everything
+            const visible = filterTier === "All" ? cat.courses : cat.courses.filter(c => c.tier === filterTier);
+            if (!visible.length) return null;
+
+            return (
+              <div key={cat.category} className="pos-category">
+                {/* Category header with color dot, title, and grade range */}
+                <div className="pos-cat-header">
+                  <div className="pos-cat-dot" style={{ background: cat.color }} />
+                  <div className="pos-cat-title">{cat.category}</div>
+                  <div className="pos-cat-grades">{cat.grades}</div>
+                </div>
+
+                {/* ── Individual course cards ── */}
+                {visible.map(course => {
+                  const isOpen = expandedCourse === course.id;
+                  const ts = course.tier ? tierStyles[course.tier] : { bg:"#94a3b822", color:"#94a3b8", border:"#94a3b844" };
+
+                  return (
+                    // Clicking the card toggles it open/closed
+                    <div key={course.id} className={`pos-card${isOpen ? " open" : ""}`} onClick={() => setExpandedCourse(isOpen ? null : course.id)}>
+                      <div className="pos-card-header">
+                        <div className="pos-card-name">{course.name}</div>
+                        <div className="pos-meta">
+                          <span className="pos-grade-lbl">{course.gradeLevel}</span>
+                          {course.tier && <span className="pos-badge" style={{ background: ts.bg, color: ts.color, borderColor: ts.border }}>{course.tier}</span>}
+                          {course.weight !== undefined && <span className="pos-weight-badge">{course.weight === 0 ? "Unweighted" : `+${course.weight}`}</span>}
+                          <span className="pos-credit">{course.credits} cr</span>
+                          {/* Chevron rotates 90° when card is open */}
+                          <span className="pos-chevron" style={{ transform: isOpen ? "rotate(90deg)" : "none" }}>▶</span>
+                        </div>
+                      </div>
+
+                      {/* ── Expanded body: description, prerequisites, topic chips ── */}
+                      {isOpen && (
+                        <div className="pos-body">
+                          <p className="pos-desc">{course.description}</p>
+                          {course.note && <p className="pos-note">{course.note}</p>}
+
+                          {/* Prerequisites section — uses prereqs array if present, falls back to prereq string */}
+                          <div className="pos-prereq-section">
+                            <div className="pos-lbl">Prerequisites</div>
+                            {course.prereqs ? (
+                              <div className="pos-prereq-list">
+                                {course.prereqs.map((p, i) => (
+                                  <div key={i} className="pos-prereq-item">
+                                    <span className="pos-prereq-bullet">—</span>
+                                    <span className="pos-prereq-course">{p.course}</span>
+                                    {p.minGrade && <span className="pos-prereq-grade">min {p.minGrade}</span>}
+                                    {p.note && <span className="pos-prereq-note">({p.note})</span>}
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <div style={{fontFamily:"'DM Sans',sans-serif",fontSize:"0.8rem",color:"#777"}}>{course.prereq || "None"}</div>
+                            )}
+                          </div>
+
+                          {/* Topic chips — each topic rendered as a small pill */}
+                          <div className="pos-lbl">Topics Covered</div>
+                          <div className="pos-chips">
+                            {course.topics.map((t, i) => <span key={i} className="pos-chip">{t}</span>)}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </>
+      )}
     </div>
   );
 }
