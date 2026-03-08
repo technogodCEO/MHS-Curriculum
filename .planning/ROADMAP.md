@@ -40,11 +40,11 @@ Plans:
   1. AP course highlight styling (badge, card border, or background treatment) is identical in appearance when viewing any subject that has AP courses
   2. Track tab buttons display consistent color contrast, font styling, and active state treatment across all six subject departments
   3. Switching between subjects produces no jarring visual discontinuities in how tracks or AP designations are presented
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: Audit and normalize AP highlight styling across all subjects (VIS-01)
-- [ ] 02-02: Audit and normalize track color and tab styling across all subjects (VIS-02)
+- [ ] 02-01-PLAN.md — Wave 0 test scaffolds + fix CurriculumMap.jsx AP badge to use track color (VIS-01)
+- [ ] 02-02-PLAN.md — Fix CurriculumMapVariableTrackLengths AP detection + Physics Kid WCAG fix + visual checkpoint (VIS-01, VIS-02)
 
 ## Progress
 
