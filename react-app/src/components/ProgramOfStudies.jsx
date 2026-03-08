@@ -172,7 +172,7 @@ export function ProgramOfStudies({ activeSubject }) {
                   {isOpen && (
                     <div className="pos-body">
                       <p className="pos-desc">{course.description}</p>
-                      <p className="pos-note">{Object.keys(course).includes("note") && course.note}</p>
+                      {course.note && <p className="pos-note">{course.note}</p>}
 
                       {/* Prerequisites section — uses prereqs array if present, falls back to prereq string */}
                       <div className="pos-prereq-section">
