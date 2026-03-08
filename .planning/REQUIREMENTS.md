@@ -20,7 +20,7 @@ Requirements for v1 release (pre-release polish and cleanup).
 ### Visual Polish
 
 - [x] **VIS-01**: AP course highlights are visually consistent across all subjects
-- [ ] **VIS-02**: Track colors and styling are visually consistent across all subject departments
+- [x] **VIS-02**: Track colors and styling are visually consistent across all subject departments
 
 ## v2 Requirements
 
@@ -58,7 +58,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CLEAN-01 | Phase 1 | Complete |
 | CLEAN-02 | Phase 1 | Complete |
 | VIS-01 | Phase 2 | Complete |
-| VIS-02 | Phase 2 | Pending |
+| VIS-02 | Phase 2 | Complete |
 
 **Coverage:**
 - v1 requirements: 6 total
