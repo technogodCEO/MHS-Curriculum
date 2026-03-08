@@ -14,8 +14,8 @@ Requirements for v1 release (pre-release polish and cleanup).
 
 ### Cleanup
 
-- [ ] **CLEAN-01**: `CurriculumMapVariableTrackLengths` default category and track are derived from data, not hardcoded strings
-- [ ] **CLEAN-02**: `react-app/build/` directory is removed from git history and added to `.gitignore`
+- [x] **CLEAN-01**: `CurriculumMapVariableTrackLengths` default category and track are derived from data, not hardcoded strings
+- [x] **CLEAN-02**: `react-app/build/` directory is removed from git history and added to `.gitignore`
 
 ### Visual Polish
 
@@ -55,8 +55,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | BUG-01 | Phase 1 | Pending |
 | BUG-02 | Phase 1 | Pending |
-| CLEAN-01 | Phase 1 | Pending |
-| CLEAN-02 | Phase 1 | Pending |
+| CLEAN-01 | Phase 1 | Complete |
+| CLEAN-02 | Phase 1 | Complete |
 | VIS-01 | Phase 2 | Pending |
 | VIS-02 | Phase 2 | Pending |
 
