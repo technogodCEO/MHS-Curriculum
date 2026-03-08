@@ -28,13 +28,18 @@ key-files:
     - react-app/src/components/__tests__/CurriculumMapVariableTrackLengths.test.jsx
     - react-app/src/data/science.js
     - react-app/src/data/electives.js
+    - react-app/src/components/CurriculumMap.jsx
 
 key-decisions:
   - "jest.mock() getter pattern: use Object.defineProperty-style getters in jest.mock factory to allow dynamic mock values without resetModules() — avoids React hook invalidation caused by module registry teardown"
   - "Elective WCAG failures treated as pre-existing bugs: contrast.test.js audited all tracks; Media & Graphic Communication, Power Energy & Transportation, Life Skills were failing at <4.5:1 — fixed as Rule 1 (pre-existing bug) alongside Physics Kid"
+  - "electives.js AP courses needed highlight:true field — component changed from tier to highlight but data file was not updated; all 6 AP-tier track courses now carry highlight:true"
+  - "CurriculumMap.jsx highlight-card inline styles added using trackColorsSubject[effectiveTrack].bg so glow/border match active track color rather than static subject gridRgb"
 
 patterns-established:
   - "Getter-based jest.mock for dynamic data: export getters on the mock return object, mutate a module-level variable before each test to control behavior"
+  - "highlight-card always uses inline styles with track color, not CSS class with subject color — ensures visual consistency when track tabs are switched"
+  - "AP signal in electives data: course.highlight:true must be explicitly set in electives.js; tier:AP alone is not sufficient"
 
 requirements-completed: [VIS-01, VIS-02]
 
@@ -45,22 +50,23 @@ completed: 2026-03-08
 
 # Phase 2 Plan 02: Visual Polish Wave 1 Summary
 
-**AP detection unified on course.highlight in CurriculumMapVariableTrackLengths, Physics Kid and three elective tracks lightened to WCAG AA compliance — all 109 tests green**
+**AP detection unified on course.highlight across all subjects, Physics Kid and three elective tracks WCAG AA compliant, highlight-card glow now tracks active track tab color — all 109 tests green**
 
 ## Performance
 
-- **Duration:** ~20 min
+- **Duration:** ~35 min total (including post-review fixes)
 - **Started:** 2026-03-08T15:20:00Z
-- **Completed:** 2026-03-08T15:40:00Z
-- **Tasks:** 2 of 3 (Task 3 is a human-verify checkpoint)
-- **Files modified:** 4
+- **Completed:** 2026-03-08
+- **Tasks:** 3 complete (Task 3 was human-verify; post-review fixes applied)
+- **Files modified:** 5
 
 ## Accomplishments
 
 - Fixed `CurriculumMapVariableTrackLengths.jsx`: `isAP` now uses `course.highlight` (was `course.tier === "AP"`); purple fallback badge removed; only AP courses show a badge
 - Fixed `science.js`: Physics Kid bg `#0f766e`/text `#fff` → `#12877e`/`#000` (contrast 4.79:1, passes WCAG AA)
-- Fixed `electives.js`: 3 pre-existing WCAG failures also corrected (Media & Graphic Communication, Power Energy & Transportation, Life Skills)
+- Fixed `electives.js`: 3 pre-existing WCAG failures corrected (Media & Graphic Communication, Power Energy & Transportation, Life Skills); 6 AP-tier courses now carry `highlight: true`
 - Fixed test scoping bug in `CurriculumMapVariableTrackLengths.test.jsx`: rewritten with getter-based jest.mock pattern
+- Fixed `CurriculumMap.jsx`: highlight-card div now has inline styles using `trackColorsSubject[effectiveTrack].bg` so glow/border/background match the active track tab, not the static subject color
 - Full test suite: 109 tests, 4 suites, all green
 
 ## Task Commits
@@ -69,20 +75,22 @@ Each task was committed atomically:
 
 1. **Task 1: Fix CurriculumMapVariableTrackLengths.jsx AP detection (VIS-01)** - `bab056a` (fix)
 2. **Task 2: Fix Physics Kid WCAG failure + elective WCAG fixes (VIS-02)** - `818be7a` (fix)
-
-_Note: Task 3 (visual checkpoint) awaits human review_
+3. **Task 3 post-review: Fix AP elective highlight field + CurriculumMap track color** - `d12c82a` (fix)
 
 ## Files Created/Modified
 
 - `react-app/src/components/CurriculumMapVariableTrackLengths.jsx` - AP detection uses course.highlight; badge block uses `{isAP && ...}` with no purple fallback
 - `react-app/src/components/__tests__/CurriculumMapVariableTrackLengths.test.jsx` - Rewritten with getter-based mock to fix jest.mock factory scoping error
 - `react-app/src/data/science.js` - Physics Kid: bg `#0f766e`/text `#fff` → `#12877e`/`#000`
-- `react-app/src/data/electives.js` - Three track colors lightened for WCAG compliance
+- `react-app/src/data/electives.js` - Three track colors lightened for WCAG compliance; 6 AP courses given `highlight: true`
+- `react-app/src/components/CurriculumMap.jsx` - highlight-card div gets inline styles using active track color
 
 ## Decisions Made
 
 - **Getter-based jest.mock pattern**: `jest.resetModules()` inside tests invalidates the React module, causing `useState` to be null. Using a module-level variable mutated in `beforeEach`/test body, with the mock returning an object containing getters that read the variable, allows dynamic test data without module resets.
 - **Elective colors as pre-existing bugs**: The plan stated "all other 21 already pass per audit" but the contrast audit found 3 additional elective failures. These were fixed under Rule 1 (pre-existing bug) since the test explicitly audits them and full-suite green is the success criterion.
+- **electives.js missing highlight field**: Task 1 changed component detection from `tier === "AP"` to `course.highlight`, but the electives data never had a `highlight` field. All 6 AP-tier courses in the `tracks` section now carry `highlight: true`. The `pos-*` section (Programs of Study data) was left unchanged — it is not rendered by CurriculumMapVariableTrackLengths.
+- **CurriculumMap.jsx inline styles for highlight-card**: The CSS `.highlight-card` class uses `gridRgb` (subject-level color) which does not change when switching track tabs. Added inline styles using `trackColorsSubject[effectiveTrack].bg` so highlight glow matches the badge color and the active track tab — consistent with how CurriculumMapVariableTrackLengths already worked.
 
 ## Deviations from Plan
 
@@ -106,13 +114,14 @@ _Note: Task 3 (visual checkpoint) awaits human review_
 
 ---
 
-**Total deviations:** 2 auto-fixed (Rule 1 - pre-existing bugs)
-**Impact on plan:** Both fixes necessary for test suite green and WCAG compliance. No scope creep.
+**Total deviations:** 4 auto-fixed (all Rule 1 - pre-existing bugs)
+**Impact on plan:** All fixes necessary for correctness. Data gap in electives.js was a direct consequence of the detection-signal change in Task 1. Highlight-card color mismatch was a pre-existing inconsistency between the two CurriculumMap components. No scope creep.
 
 ## Issues Encountered
 
 - jest.mock scoping: Jest's babel-jest transform hoists `jest.mock()` factories before module scope is initialized, preventing references to locally-defined functions. Resolved with getter-based dynamic mock pattern — no module reset needed.
 - contrast.test.js revealed more failing colors than the plan anticipated. All fixed under Rule 1.
+- Human review correctly caught that the electives AP badge/highlight was still absent after Task 1 — the data file had no `highlight` field. Key lesson: when changing AP detection signal in component, all consuming data files must also be updated.
 
 ## User Setup Required
 
@@ -120,10 +129,21 @@ None - no external service configuration required.
 
 ## Next Phase Readiness
 
-- Task 3 (human visual review) is the final gate before Phase 2 is declared complete
-- All automated tests are green; visual consistency review across 6 subjects is pending
-- Phase 2 plan 02 automation complete — awaiting human sign-off on checkpoint
+- Phase 2 (Visual Polish) is complete. Human review confirmed all six subjects show consistent AP badges and track-color highlight effects after post-review fixes.
+- All 109 tests green.
+- Deferred to v2: inline `<style>` re-injection on render (candidate for CSS custom properties), duplicate course IDs (DEBT-01, DEBT-02, DEBT-03).
+
+## Self-Check: PASSED
+
+- react-app/src/components/CurriculumMapVariableTrackLengths.jsx — FOUND
+- react-app/src/data/science.js — FOUND
+- react-app/src/data/electives.js — FOUND
+- react-app/src/components/CurriculumMap.jsx — FOUND
+- .planning/phases/02-visual-polish/02-02-SUMMARY.md — FOUND
+- Commit bab056a — FOUND
+- Commit 818be7a — FOUND
+- Commit d12c82a — FOUND
 
 ---
 *Phase: 02-visual-polish*
-*Completed: 2026-03-08 (pending Task 3 human verify)*
+*Completed: 2026-03-08*

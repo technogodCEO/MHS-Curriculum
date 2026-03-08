@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 02-visual-polish 02-02-PLAN.md (awaiting Task 3 human-verify checkpoint)
-last_updated: "2026-03-08T15:20:47.573Z"
+stopped_at: Completed 02-visual-polish 02-02-PLAN.md — Phase 2 complete
+last_updated: "2026-03-08T15:41:12.617Z"
 last_activity: 2026-03-07 — Roadmap created; ready to begin Phase 1 planning
 progress:
   total_phases: 2
@@ -70,6 +70,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-fixes-and-cleanup P01 | 2 | 2 tasks | 1 files |
 | Phase 02-visual-polish P01 | 15 | 2 tasks | 5 files |
 | Phase 02-visual-polish P02 | 20 | 2 tasks | 4 files |
+| Phase 02-visual-polish P02 | 35 | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -89,6 +90,8 @@ Recent decisions affecting current work:
 - [Phase 02-visual-polish]: AP badge uses effectiveTrack (not selectedTrack) to guard against stale track names when switching subjects
 - [Phase 02-visual-polish]: jest.mock getter pattern: use object getters in factory to allow dynamic mock values without resetModules — avoids React hook invalidation
 - [Phase 02-visual-polish]: Elective WCAG failures were pre-existing bugs: contrast.test.js found 3 elective track colors below 4.5:1 threshold — fixed as Rule 1 alongside Physics Kid
+- [Phase 02-visual-polish]: electives.js AP courses need highlight:true field — course.highlight is the AP signal; tier:AP alone not checked by component
+- [Phase 02-visual-polish]: highlight-card always uses inline styles with trackColorsSubject[effectiveTrack].bg so glow matches active track tab, not static subject gridRgb
 
 ### Pending Todos
 
@@ -101,6 +104,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-08T15:20:47.570Z
-Stopped at: Completed 02-visual-polish 02-02-PLAN.md (awaiting Task 3 human-verify checkpoint)
+Last session: 2026-03-08T15:40:53.232Z
+Stopped at: Completed 02-visual-polish 02-02-PLAN.md — Phase 2 complete
 Resume file: None
