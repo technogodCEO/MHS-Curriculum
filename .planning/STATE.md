@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 02-visual-polish 02-01-PLAN.md
-last_updated: "2026-03-08T15:16:00.718Z"
+stopped_at: Completed 02-visual-polish 02-02-PLAN.md (awaiting Task 3 human-verify checkpoint)
+last_updated: "2026-03-08T15:20:47.573Z"
 last_activity: 2026-03-07 — Roadmap created; ready to begin Phase 1 planning
 progress:
   total_phases: 2
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 4
-  completed_plans: 3
+  completed_plans: 4
   percent: 75
 ---
 
@@ -69,6 +69,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-fixes-and-cleanup P02 | 5 | 2 tasks | 1 files |
 | Phase 01-fixes-and-cleanup P01 | 2 | 2 tasks | 1 files |
 | Phase 02-visual-polish P01 | 15 | 2 tasks | 5 files |
+| Phase 02-visual-polish P02 | 20 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -86,6 +87,8 @@ Recent decisions affecting current work:
 - [Phase 01-fixes-and-cleanup]: posSubject.length === 0 ternary wraps filter bar, legend, and map — style block stays outside the guard
 - [Phase 02-visual-polish]: jsdom rgba normalization: test assertions must compare rgb channel integers, not hex strings, for inline style verification
 - [Phase 02-visual-polish]: AP badge uses effectiveTrack (not selectedTrack) to guard against stale track names when switching subjects
+- [Phase 02-visual-polish]: jest.mock getter pattern: use object getters in factory to allow dynamic mock values without resetModules — avoids React hook invalidation
+- [Phase 02-visual-polish]: Elective WCAG failures were pre-existing bugs: contrast.test.js found 3 elective track colors below 4.5:1 threshold — fixed as Rule 1 alongside Physics Kid
 
 ### Pending Todos
 
@@ -98,6 +101,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-08T15:16:00.716Z
-Stopped at: Completed 02-visual-polish 02-01-PLAN.md
+Last session: 2026-03-08T15:20:47.570Z
+Stopped at: Completed 02-visual-polish 02-02-PLAN.md (awaiting Task 3 human-verify checkpoint)
 Resume file: None
