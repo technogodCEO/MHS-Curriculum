@@ -3,7 +3,7 @@
 ## Milestones
 
 - ✅ **v1.0 MVP** — Phases 1–2 (shipped 2026-03-08)
-- ✅ **Phase 3: Vite Migration** — (shipped 2026-03-08, `vite-migration` branch)
+- ✅ **Phase 3: Vite Migration** — (shipped 2026-03-09, `vite-migration` branch)
 - 🚧 **v1.1 Student Tools** — Phases 4–7 (in progress)
 
 ## Phases
