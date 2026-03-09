@@ -40,7 +40,7 @@ const mockSubject = { id: 'math', label: 'Math' };
 
 // ── Mock the data imports so CurriculumMap uses our inline mock data ───────────
 
-jest.mock('../../data/math', () => ({
+vi.mock('../../data/math', () => ({
   mathTracks: {
     tracks: ['Accelerated'],
     grades: [
@@ -63,10 +63,10 @@ jest.mock('../../data/math', () => ({
   },
 }));
 
-jest.mock('../../data/science',  () => ({ scienceTracks: {}, scienceTrackColors: {} }));
-jest.mock('../../data/language', () => ({ languageTracks: {}, languageTrackColors: {} }));
-jest.mock('../../data/history',  () => ({ historyTracks: {}, historyTrackColors: {} }));
-jest.mock('../../data/english',  () => ({ englishTracks: {}, englishTrackColors: {} }));
+vi.mock('../../data/science',  () => ({ scienceTracks: {}, scienceTrackColors: {} }));
+vi.mock('../../data/language', () => ({ languageTracks: {}, languageTrackColors: {} }));
+vi.mock('../../data/history',  () => ({ historyTracks: {}, historyTrackColors: {} }));
+vi.mock('../../data/english',  () => ({ englishTracks: {}, englishTrackColors: {} }));
 
 // ── Tests ──────────────────────────────────────────────────────────────────────
 
