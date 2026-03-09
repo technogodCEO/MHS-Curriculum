@@ -1,48 +1,72 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: MVP
-status: complete
-stopped_at: v1.0 milestone archived — all phases complete
-last_updated: "2026-03-08"
-last_activity: 2026-03-08 — v1.0 milestone complete and archived
+milestone: v1.1
+milestone_name: Student Tools
+status: ready_to_plan
+stopped_at: Roadmap created for v1.1 — ready to plan Phase 4
+last_updated: "2026-03-09"
+last_activity: 2026-03-09 — v1.1 roadmap created (Phases 4–7)
 progress:
-  total_phases: 2
-  completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
-  percent: 100
+  total_phases: 4
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-08 after v1.0 milestone)
+See: .planning/PROJECT.md (updated 2026-03-09 after v1.1 milestone start)
 
 **Core value:** Any MHS stakeholder can quickly find and understand the courses available to them — tracks, prerequisites, and course details — in a clean, trustworthy interface.
-**Current focus:** Planning next milestone
+**Current focus:** Phase 4 — Tech Debt Cleanup (ready to plan)
 
 ## Current Position
 
-**v1.0 MVP shipped 2026-03-08.**
+Phase: 4 of 7 (Tech Debt Cleanup)
+Plan: — (not started)
+Status: Ready to plan
+Last activity: 2026-03-09 — v1.1 roadmap created (Phases 4–7)
 
-All 2 phases complete. All 4 plans complete. 109 tests green.
+Progress: [░░░░░░░░░░] 0%
 
-Next step: `/gsd:new-milestone` to define v1.1 scope.
+## Performance Metrics
 
-## Key Decisions (v1.0)
+**Velocity:**
+- Total plans completed: 0 (v1.1)
+- Average duration: — min
+- Total execution time: 0 hours
 
-- Inline `<style>` for dynamic theming: causes re-injection on every render — v2 candidate for CSS custom properties
-- CRA toolchain: effectively unmaintained — migrate to Vite post-v1
+**By Phase:**
+
+| Phase | Plans | Total | Avg/Plan |
+|-------|-------|-------|----------|
+| - | - | - | - |
+
+*Updated after each plan completion*
+
+## Accumulated Context
+
+### Decisions (from v1.0 + Phase 3)
+
 - `course.highlight` is the canonical AP signal (not `course.tier === "AP"`)
-- `effectiveTrack` (not `selectedTrack`) guards AP badge against stale track names when switching subjects
-- highlight-card glow always uses `trackColorsSubject[effectiveTrack].bg` to match active track tab
+- `effectiveTrack` guards AP badge against stale track names when switching subjects
+- Inline `<style>` for dynamic theming causes re-injection on every render — CSS custom properties is a v2 candidate
+- Vite migration complete on `vite-migration` branch — `react-scripts` fully removed, `vercel.json` at repo root
+- jsdom normalizes hex inline styles to rgba() — test assertions use channel integers
 
-## Known Tech Debt (v2)
+### Pending Todos
 
-- DEBT-01: Duplicate course IDs in electives.js (React key collisions)
-- DEBT-02: Dead `activeClass` field on all track color objects + unused CSS rules
-- DEBT-03: Duplicate full course objects across elective tracks
-- INFRA-01: Migrate from CRA to Vite
-- TEST: `CurriculumMapVariableTrackLengths.test.jsx` imports wrong component — doesn't actually exercise the fixed file
+None.
+
+### Blockers/Concerns
+
+- DEBT-03: Duplicate course objects in electives.js need careful deduplication — same course appears under multiple tracks; normalization strategy to be decided in Phase 4 planning
+
+## Session Continuity
+
+Last session: 2026-03-09
+Stopped at: Roadmap written for v1.1 — Phases 4–7 defined, coverage 14/14 requirements
+Resume file: None
