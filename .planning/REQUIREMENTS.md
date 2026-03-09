@@ -74,10 +74,10 @@
 | PLAN-06 | Phase 6 | Pending |
 
 **Coverage:**
-- v1.1 requirements: 12 total
-- Mapped to phases: 12
+- v1.1 requirements: 14 total
+- Mapped to phases: 14
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-09 after initial definition*
+*Last updated: 2026-03-09 after roadmap creation (v1.1)*
