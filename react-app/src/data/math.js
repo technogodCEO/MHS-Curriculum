@@ -19,7 +19,6 @@
  *       .bg          — button background color when the tab is active
  *       .text        — button text color when active
  *       .label       — full label shown on the tab button (includes emoji)
- *       .activeClass — CSS class name (legacy class-based styling, see math_curriculum_MHS.jsx)
  *
  *   mathProgramOfStudies  — full course catalog for the Program of Studies tab.
  *     Array of category objects, each with:
@@ -289,10 +288,10 @@ export const mathTracks = {
 };
 
 export const mathTrackColors = {
-  Accelerated: { bg: "#f59e0b", text: "#000", label: "🚀 Pathway A (Accelerated)", activeClass: "active-accel" },
-  Advanced:    { bg: "#60a5fa", text: "#000", label: "⭐ Pathway B (Advanced)",    activeClass: "active-adv"   },
-  Enriched:    { bg: "#c084fc", text: "#000", label: "✨ Pathway C (Enriched)",    activeClass: "active-enr"   },
-  Standard:    { bg: "#94a3b8", text: "#000", label: "📘 Pathway D (Standard)",    activeClass: "active-std"   },
+  Accelerated: { bg: "#f59e0b", text: "#000", label: "🚀 Pathway A (Accelerated)"},
+  Advanced:    { bg: "#60a5fa", text: "#000", label: "⭐ Pathway B (Advanced)"},
+  Enriched:    { bg: "#c084fc", text: "#000", label: "✨ Pathway C (Enriched)"},
+  Standard:    { bg: "#94a3b8", text: "#000", label: "📘 Pathway D (Standard)"},
 };
 
 export const mathProgramOfStudies = [

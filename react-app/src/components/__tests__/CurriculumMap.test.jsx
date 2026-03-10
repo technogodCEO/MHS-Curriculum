@@ -15,7 +15,7 @@ const TRACK_BG = '#f59e0b';   // the track color — badge MUST use this
 const ACCENT   = '#ff0000';   // a sentinel accent — badge must NOT use this
 
 const mockTrackColors = {
-  Accelerated: { bg: TRACK_BG, text: '#000', label: 'Pathway A', activeClass: 'active-accel' },
+  Accelerated: { bg: TRACK_BG, text: '#000', label: 'Pathway A' },
 };
 
 const mockTracks = {
@@ -59,7 +59,7 @@ vi.mock('../../data/math', () => ({
     ],
   },
   mathTrackColors: {
-    Accelerated: { bg: '#f59e0b', text: '#000', label: 'Pathway A', activeClass: 'active-accel' },
+    Accelerated: { bg: '#f59e0b', text: '#000', label: 'Pathway A' },
   },
 }));
 

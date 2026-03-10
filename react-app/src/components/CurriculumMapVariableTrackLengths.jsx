@@ -18,7 +18,7 @@ import { electiveCategories, electiveTracks, electiveTrackColors } from "../data
  * State (local):
  *   selectedCategory — which category tab is active (controls the sidebar track list)
  *   selectedTrack    — which track within the category is active
- *   expandedCourse   — course.id of the currently open course card (null = all closed)
+ *   expandedCourse   — course.name of the currently open course card (null = all closed)
  */
 export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubject }) {
   const firstCategory = Object.keys(electiveCategories)[0];
@@ -106,12 +106,12 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
 
           {/* Course Cards */}
           {trackSubject.tracks[effectiveTrack].courses.map((course, idx) => {
-            const isExpanded = expandedCourse === course.id;
+            const isExpanded = expandedCourse === course.name;
             const isAP = course.highlight;
             const trackColor = trackColorsSubject[effectiveTrack].bg;
             const courses = trackSubject.tracks[effectiveTrack].courses;
             return (
-              <div key={course.id} className="grade-row">
+              <div key={course.name} className="grade-row">
 
                 {/* Timeline dot + connector line */}
                 <div className="dot-col">
@@ -136,7 +136,7 @@ export function CurriculumMapVariableTrackLengths({ accent, gridRgb, activeSubje
                     background: `${trackColor}0d`,
                     boxShadow: `0 0 30px ${trackColor}1a`,
                   } : {}}
-                  onClick={() => setExpandedCourse(isExpanded ? null : course.id)}
+                  onClick={() => setExpandedCourse(isExpanded ? null : course.name)}
                 >
                   <div className="card-header">
                     <div className="course-name" style={{ color: isAP ? "#fff" : "#f0f0f8" }}>
