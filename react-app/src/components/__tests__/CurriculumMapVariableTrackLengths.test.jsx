@@ -1,102 +1,152 @@
 /**
  * CurriculumMapVariableTrackLengths.test.jsx
  *
- * Unit test: AP badge visibility is driven by course.highlight === true.
- *
- * Tests CurriculumMap.jsx to confirm the canonical AP signal (course.highlight)
- * correctly controls badge visibility.
- *
- * Jest hoists jest.mock() calls above imports, so factory functions cannot
- * reference out-of-scope variables. Variables prefixed with "mock" (case
- * insensitive) ARE allowed per Jest's babel-jest transform rules.
+ * Tests the electives curriculum map component:
+ *   - Category tabs render correctly
+ *   - First category is selected by default
+ *   - Switching tracks shows the correct courses
+ *   - Course cards render name and tier badge
+ *   - Clicking a card expands it to show description and topics
  */
 import { render, screen } from '@testing-library/react';
-import { CurriculumMap } from '../CurriculumMap';
+import userEvent from '@testing-library/user-event';
+import { CurriculumMapVariableTrackLengths } from '../CurriculumMapVariableTrackLengths';
 
-const mockSubject = { id: 'math', label: 'Math' };
+const mockActiveSubject = { id: 'electives', label: 'Electives' };
 
-// mock-prefixed variables are allowed in jest.mock() factory closures.
-// We set these before each test to control which variant gets rendered.
-let mockHighlight = false;
-
-vi.mock('../../data/math', () => ({
-  get mathTracks() {
-    return {
-      tracks: ['Accelerated'],
-      grades: [
-        {
-          grade: 9,
-          courses: {
-            Accelerated: {
-              name: mockHighlight ? 'AP Calculus BC' : 'Pre-Calculus',
-              highlight: mockHighlight,
-              color: '#f59e0b',
-              topics: ['Topic A'],
-              tier: mockHighlight ? 'AP' : 'CP',
-            },
-          },
-        },
-      ],
-    };
+vi.mock('../../data/electives', () => ({
+  electiveCategories: {
+    "Computer Science": {
+      color: "#60a5fa",
+      tracks: ["CS Track", "Digital Track"],
+    },
   },
-  get mathTrackColors() {
-    return {
-      Accelerated: { bg: '#f59e0b', text: '#000', label: 'Pathway A', activeClass: 'active-accel' },
-    };
+  electiveTracks: {
+    tracks: {
+      "CS Track": {
+        color: "#60a5fa",
+        description: "Core CS courses",
+        courses: [
+          {
+            name: "Intro to CS", tier: "CP", weight: 0,
+            gradeLevel: "Grades 9–12", credits: "2.5",
+            prereqs: [],
+            description: "An intro course.",
+            topics: ["Scratch", "Python"],
+          },
+          {
+            name: "AP Computer Science A", tier: "AP", weight: 5, highlight: true,
+            gradeLevel: "Grades 10–12", credits: "5",
+            prereqs: [{ course: "Intro to CS", minGrade: null, note: null }],
+            description: "Advanced Java course.",
+            topics: ["Java", "OOP"],
+          },
+        ],
+      },
+      "Digital Track": {
+        color: "#60a5fa",
+        description: "Digital design courses",
+        courses: [
+          {
+            name: "Digital Creativity", tier: "CP", weight: 0,
+            gradeLevel: "Grades 9–12", credits: "2.5",
+            prereqs: [],
+            description: "Creative digital arts.",
+            topics: ["Photoshop", "Illustrator"],
+          },
+          {
+            name: "Game Design", tier: "CP", weight: 0,
+            gradeLevel: "Grades 9–12", credits: "2.5",
+            prereqs: [],
+            description: "Game development basics.",
+            topics: ["Unity", "Level design"],
+          },
+        ],
+      },
+    },
+  },
+  electiveTrackColors: {
+    "CS Track":      { bg: "#60a5fa", text: "#000", label: "CS Track" },
+    "Digital Track": { bg: "#60a5fa", text: "#000", label: "Digital Track" },
   },
 }));
 
+vi.mock('../../data/math',     () => ({ mathTracks: {}, mathTrackColors: {} }));
 vi.mock('../../data/science',  () => ({ scienceTracks: {}, scienceTrackColors: {} }));
 vi.mock('../../data/language', () => ({ languageTracks: {}, languageTrackColors: {} }));
 vi.mock('../../data/history',  () => ({ historyTracks: {}, historyTrackColors: {} }));
 vi.mock('../../data/english',  () => ({ englishTracks: {}, englishTrackColors: {} }));
 
+function renderComponent() {
+  return render(
+    <CurriculumMapVariableTrackLengths
+      accent="#60a5fa"
+      gridRgb="96, 165, 250"
+      activeSubject={mockActiveSubject}
+    />
+  );
+}
+
 // ── Tests ──────────────────────────────────────────────────────────────────────
 
-describe('AP badge visibility driven by course.highlight', () => {
-  afterEach(() => {
-    mockHighlight = false;
+describe('CurriculumMapVariableTrackLengths', () => {
+  test('renders the category tab', () => {
+    renderComponent();
+    expect(screen.getByText('Computer Science')).toBeInTheDocument();
   });
 
-  test('renders AP badge when course.highlight is true', () => {
-    mockHighlight = true;
+  test('renders the track sidebar buttons for the default category', () => {
+    renderComponent();
+    // CS Track appears in both the sidebar button and the track title h2
+    expect(screen.getAllByText('CS Track').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByRole('button', { name: 'Digital Track' })).toBeInTheDocument();
+  });
 
-    render(
-      <CurriculumMap
-        accent="#f59e0b"
-        gridRgb="245, 158, 11"
-        activeSubject={mockSubject}
-      />
-    );
+  test('renders courses for the default track on mount', () => {
+    renderComponent();
+    expect(screen.getByText('Intro to CS')).toBeInTheDocument();
+    expect(screen.getByText('AP Computer Science A')).toBeInTheDocument();
+  });
 
+  test('renders AP badge for highlighted courses', () => {
+    renderComponent();
+    // AP Computer Science A has highlight: true — should show the AP badge
     expect(screen.getByText('AP')).toBeInTheDocument();
   });
 
-  test('does NOT render AP badge when course.highlight is false', () => {
-    mockHighlight = false;
+  test('switches to Digital Track courses when that track is clicked', async () => {
+    const user = userEvent.setup();
+    renderComponent();
 
-    render(
-      <CurriculumMap
-        accent="#f59e0b"
-        gridRgb="245, 158, 11"
-        activeSubject={mockSubject}
-      />
-    );
+    await user.click(screen.getByText('Digital Track'));
 
-    expect(screen.queryByText('AP')).not.toBeInTheDocument();
+    expect(screen.getByText('Digital Creativity')).toBeInTheDocument();
+    expect(screen.getByText('Game Design')).toBeInTheDocument();
+    expect(screen.queryByText('Intro to CS')).not.toBeInTheDocument();
   });
 
-  test('does NOT render AP badge when course.highlight is undefined', () => {
-    mockHighlight = undefined;
+  test('clicking a course card expands it to show description and topics', async () => {
+    const user = userEvent.setup();
+    renderComponent();
 
-    render(
-      <CurriculumMap
-        accent="#f59e0b"
-        gridRgb="245, 158, 11"
-        activeSubject={mockSubject}
-      />
-    );
+    // Description and topics are not visible before expansion
+    expect(screen.queryByText('An intro course.')).not.toBeInTheDocument();
 
-    expect(screen.queryByText('AP')).not.toBeInTheDocument();
+    await user.click(screen.getByText('Intro to CS'));
+
+    expect(screen.getByText('An intro course.')).toBeInTheDocument();
+    expect(screen.getByText('Scratch')).toBeInTheDocument();
+    expect(screen.getByText('Python')).toBeInTheDocument();
+  });
+
+  test('clicking an expanded course card collapses it', async () => {
+    const user = userEvent.setup();
+    renderComponent();
+
+    await user.click(screen.getByText('Intro to CS'));
+    expect(screen.getByText('An intro course.')).toBeInTheDocument();
+
+    await user.click(screen.getByText('Intro to CS'));
+    expect(screen.queryByText('An intro course.')).not.toBeInTheDocument();
   });
 });

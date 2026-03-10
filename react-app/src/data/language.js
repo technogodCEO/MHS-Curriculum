@@ -365,13 +365,13 @@ export const languageTracks = {
 
 // ─── Track Colors ────────────────────────────────────────────────────
 export const languageTrackColors = {
-  Spanish:            { bg: "#94a3b8", text: "#000", label: "🇪🇸 Spanish (CP)",          activeClass: "active-sp"    },
-  "Spanish (Honors)": { bg: "#86efac", text: "#000", label: "🇪🇸 Spanish (Honors/AP)",   activeClass: "active-sp-h"  },
-  French:             { bg: "#94a3b8", text: "#000", label: "🇫🇷 French (CP)",            activeClass: "active-fr"    },
-  "French (Honors)":  { bg: "#86efac", text: "#000", label: "🇫🇷 French (Honors/AP)",    activeClass: "active-fr-h"  },
-  German:             { bg: "#94a3b8", text: "#000", label: "🇩🇪 German (CP)",            activeClass: "active-de"    },
-  "German (Honors)":  { bg: "#86efac", text: "#000", label: "🇩🇪 German (Honors/AP)",    activeClass: "active-de-h"  },
-  Latin:              { bg: "#d4d4d8", text: "#000", label: "🏛️ Latin",                   activeClass: "active-la"    },
+  Spanish:            { bg: "#94a3b8", text: "#000", label: "🇪🇸 Spanish (CP)"},
+  "Spanish (Honors)": { bg: "#86efac", text: "#000", label: "🇪🇸 Spanish (Honors/AP)"},
+  French:             { bg: "#94a3b8", text: "#000", label: "🇫🇷 French (CP)"},
+  "French (Honors)":  { bg: "#86efac", text: "#000", label: "🇫🇷 French (Honors/AP)"},
+  German:             { bg: "#94a3b8", text: "#000", label: "🇩🇪 German (CP)"},
+  "German (Honors)":  { bg: "#86efac", text: "#000", label: "🇩🇪 German (Honors/AP)"},
+  Latin:              { bg: "#d4d4d8", text: "#000", label: "🏛️ Latin"},
 };
 
 // ─── Full Program of Studies (course catalog) ────────────────────────

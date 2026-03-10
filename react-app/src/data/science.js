@@ -344,12 +344,12 @@ export const scienceTracks = {
 
 // ─── Track Colors ────────────────────────────────────────────────────
 export const scienceTrackColors = {
-  "General Science": { bg: "#94a3b8", text: "#000", label: "📘 General Science",          activeClass: "active-gen"  },
-  CP:                { bg: "#6ee7b7", text: "#000", label: "📗 College Prep (CP)",         activeClass: "active-cp"   },
-  Honors:            { bg: "#2dd4bf", text: "#000", label: "✨ Honors",                    activeClass: "active-hon"  },
-  "AP (Standard)":   { bg: "#14b8a6", text: "#000", label: "🚀 AP (Standard)",             activeClass: "active-ap"   },
-  "Bio Kid":         { bg: "#0d9488", text: "#000", label: "🧬 Bio Kid (AP → APES Sr.)",   activeClass: "active-bio"  },
-  "Physics Kid":     { bg: "#12877e", text: "#000", label: "⚛️ Physics Kid (AP → Phys C)", activeClass: "active-phys" },
+  "General Science": { bg: "#94a3b8", text: "#000", label: "📘 General Science"},
+  CP:                { bg: "#6ee7b7", text: "#000", label: "📗 College Prep (CP)"},
+  Honors:            { bg: "#2dd4bf", text: "#000", label: "✨ Honors"},
+  "AP (Standard)":   { bg: "#14b8a6", text: "#000", label: "🚀 AP (Standard)"},
+  "Bio Kid":         { bg: "#0d9488", text: "#000", label: "🧬 Bio Kid (AP → APES Sr.)"},
+  "Physics Kid":     { bg: "#12877e", text: "#000", label: "⚛️ Physics Kid (AP → Phys C)"},
 };
 
 // ─── Full Program of Studies (course catalog) ────────────────────────

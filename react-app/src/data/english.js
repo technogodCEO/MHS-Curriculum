@@ -204,9 +204,9 @@ export const englishTracks = {
 
 // ─── Track Colors ────────────────────────────────────────────────────
 export const englishTrackColors = {
-  CP:             { bg: "#94a3b8", text: "#000", label: "📘 College Prep (CP)",        activeClass: "active-cp"  },
-  Honors:         { bg: "#e8d5a3", text: "#000", label: "✨ Honors",                   activeClass: "active-hon" },
-  "Honors + AP":  { bg: "#f59e0b", text: "#000", label: "🚀 Honors + AP",              activeClass: "active-ap"  },
+  CP:             { bg: "#94a3b8", text: "#000", label: "📘 College Prep (CP)"},
+  Honors:         { bg: "#e8d5a3", text: "#000", label: "✨ Honors"},
+  "Honors + AP":  { bg: "#f59e0b", text: "#000", label: "🚀 Honors + AP"},
 };
 
 // ─── Full Program of Studies (course catalog) ────────────────────────

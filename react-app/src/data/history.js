@@ -145,8 +145,8 @@ export const historyTracks = {
 
 // ─── Track Colors ────────────────────────────────────────────────────
 export const historyTrackColors = {
-  CP:           { bg: "#94a3b8", text: "#000", label: "📘 College Prep (CP)",     activeClass: "active-cp"  },
-  "AP/Honors":  { bg: "#f97316", text: "#000", label: "🚀 AP / Honors",           activeClass: "active-ap"  },
+  CP:           { bg: "#94a3b8", text: "#000", label: "📘 College Prep (CP)"},
+  "AP/Honors":  { bg: "#f97316", text: "#000", label: "🚀 AP / Honors"},
 };
 
 // ─── Full Program of Studies (course catalog) ────────────────────────

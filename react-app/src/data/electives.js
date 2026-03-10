@@ -25,14 +25,14 @@ export const electiveTracks = {
       description: "Two-course AP diploma program developing critical thinking, research, and presentation skills. Earn the AP Capstone Diploma with scores of 3+ on Seminar, Research, and four additional AP exams.",
       courses: [
         {
-          id: "el-ap-seminar", name: "AP Seminar", tier: "AP", weight: 5, highlight: true,
+          name: "AP Seminar", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 10–11", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Teacher recommendation and completed application" }],
           description: "Foundational cross-curricular course exploring complex academic and real-world topics through divergent perspectives. Students analyze articles, research studies, philosophical texts, speeches, and artistic works to craft evidence-based arguments.",
           topics: ["Cross-curricular inquiry framework", "Analyzing articles, studies, and philosophical texts", "Synthesizing multiple sources", "Written essays and evidence-based arguments", "Oral and visual presentations (group and individual)", "AP exam preparation"]
         },
         {
-          id: "el-ap-research", name: "AP Research", tier: "AP", weight: 5, highlight: true,
+          name: "AP Research", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "AP Seminar", minGrade: null, note: "Score of 3+ on AP Seminar Exam Assessment Task" }],
           description: "Yearlong independent investigation of a topic of personal interest. Students develop research questions, employ ethical practices, analyze sources, and produce a 4000–5000 word academic paper with oral defense.",
@@ -49,7 +49,7 @@ export const electiveTracks = {
       description: "Computer science and digital technology courses ranging from introductory programming to AP-level Java. Courses may be taken independently or as a progression.",
       courses: [
         {
-          id: "el-intro-comp-lang", name: "Introduction to Computer Languages", tier: "CP", weight: 0,
+          name: "Introduction to Computer Languages", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           note: "Not running in 2026-2027",
@@ -57,28 +57,28 @@ export const electiveTracks = {
           topics: ["Scratch programming", "Visual Basic.Net", "C++ fundamentals", "Problem solving with real-world applications"]
         },
         {
-          id: "el-webdev", name: "Webpage Design & Development", tier: "CP", weight: 0,
+          name: "Webpage Design & Development", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Introduction to the design, creation, and maintenance of web pages and websites. Students create professional-looking sites using Adobe Creative Suite with Dreamweaver and Flash, plus a review of HTML code.",
           topics: ["Web page design and creation", "Adobe Creative Suite", "HTML fundamentals", "Project-based environment"]
         },
         {
-          id: "el-game-design", name: "Game Design & Application Development", tier: "CP", weight: 0,
+          name: "Game Design & Application Development", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [{ course: null, minGrade: null, note: "Prior programming experience recommended" }],
           description: "Project-based curriculum teaching the game design and application development process. Students create action, adventure, and puzzle games using game design and creation software.",
           topics: ["Game design process", "Application development", "Action, adventure, and puzzle game creation", "Game creation software"]
         },
         {
-          id: "el-java", name: "Foundations of JAVA", tier: "CP", weight: 0,
+          name: "Foundations of JAVA", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Fundamental concepts of programming with algorithm design and code implementation in Java. Students write efficient programs including graphics, applets, and graphical shapes. Satisfies prerequisite for AP Computer Science A.",
           topics: ["Algorithm design and code implementation", "Java programming fundamentals", "Graphics and applets", "Individual and group projects", "Real-world case studies"]
         },
         {
-          id: "el-ap-cs", name: "AP Computer Science A", tier: "AP", weight: 5, highlight: true,
+          name: "AP Computer Science A", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "Foundations of JAVA", minGrade: null, note: "Successful completion" }],
           description: "Full-year course emphasizing object-oriented programming in Java. Students learn programming methodology with focus on problem solving, algorithm development, and data structures. Follows rigorous College Board curriculum.",
@@ -92,14 +92,14 @@ export const electiveTracks = {
       description: "Streamlined two-course path for students ready to jump straight into Java. Skip the intro courses and move directly from Java fundamentals to AP-level object-oriented programming.",
       courses: [
         {
-          id: "el-java", name: "Foundations of JAVA", tier: "CP", weight: 0,
+          name: "Foundations of JAVA", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Fundamental concepts of programming with algorithm design and code implementation in Java. Students write efficient programs including graphics, applets, and graphical shapes. Satisfies prerequisite for AP Computer Science A.",
           topics: ["Algorithm design and code implementation", "Java programming fundamentals", "Graphics and applets", "Individual and group projects", "Real-world case studies"]
         },
         {
-          id: "el-ap-cs", name: "AP Computer Science A", tier: "AP", weight: 5, highlight: true,
+          name: "AP Computer Science A", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "Foundations of JAVA", minGrade: null, note: "Successful completion" }],
           description: "Full-year course emphasizing object-oriented programming in Java. Students learn programming methodology with focus on problem solving, algorithm development, and data structures. Follows rigorous College Board curriculum.",
@@ -113,14 +113,14 @@ export const electiveTracks = {
       description: "Applied technology track for students interested in the creative side of computing. Build websites and design games without the full programming sequence.",
       courses: [
         {
-          id: "el-webdev", name: "Webpage Design & Development", tier: "CP", weight: 0,
+          name: "Webpage Design & Development", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Introduction to the design, creation, and maintenance of web pages and websites. Students create professional-looking sites using Adobe Creative Suite with Dreamweaver and Flash, plus a review of HTML code.",
           topics: ["Web page design and creation", "Adobe Creative Suite", "HTML fundamentals", "Project-based environment"]
         },
         {
-          id: "el-game-design", name: "Game Design & Application Development", tier: "CP", weight: 0,
+          name: "Game Design & Application Development", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [{ course: null, minGrade: null, note: "Prior programming experience recommended" }],
           description: "Project-based curriculum teaching the game design and application development process. Students create action, adventure, and puzzle games using game design and creation software.",
@@ -137,7 +137,7 @@ export const electiveTracks = {
       description: "Required financial literacy course via Budget Challenge simulation.",
       courses: [
         {
-          id: "el-fin-lit", name: "Online Financial Literacy (Budget Challenge)", tier: "CP", weight: 0,
+          name: "Online Financial Literacy (Budget Challenge)", tier: "CP", weight: 0,
           gradeLevel: "Grade 10 (required); Grades 11–12 if not yet completed", credits: "2.5 (semester)",
           prereqs: [],
           description: "Self-guided financial simulation where students manage budgets, make financial decisions, receive income, and pay bills. Covers emergency funds, retirement savings, and debt management. Fulfills NJ Financial Literacy graduation requirement.",
@@ -151,7 +151,7 @@ export const electiveTracks = {
       description: "Standalone semester course in legal fundamentals.",
       courses: [
         {
-          id: "el-biz-law", name: "Business and Personal Law", tier: "CP", weight: 0,
+          name: "Business and Personal Law", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Basic issues of the legal system relating to everyday living. Covers fundamental principles of law, history of laws, criminal/civil procedures, torts, and crimes through case studies and collaboration.",
@@ -165,7 +165,7 @@ export const electiveTracks = {
       description: "Standalone semester course in entrepreneurship and business fundamentals.",
       courses: [
         {
-          id: "el-entrepreneur", name: "Introduction to Entrepreneurship", tier: "CP", weight: 0,
+          name: "Introduction to Entrepreneurship", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Students learn about e-commerce, market analysis, sales strategies, capital, management, and personnel. Includes guest speakers and computer simulations. Fulfills NJ Financial Literacy graduation requirement.",
@@ -179,7 +179,7 @@ export const electiveTracks = {
       description: "Standalone semester course in sports/entertainment marketing.",
       courses: [
         {
-          id: "el-sports-mktg", name: "Sports and Entertainment Marketing", tier: "CP", weight: 0,
+          name: "Sports and Entertainment Marketing", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Core marketing concepts as they apply to the sports and entertainment industries. Covers market research, sponsorship, endorsements, and target marketing through real-world applications, guest speakers, and venue visits.",
@@ -196,28 +196,28 @@ export const electiveTracks = {
       description: "Broadcast media track spanning TV production from intro to executive producer level, plus internet radio broadcasting.",
       courses: [
         {
-          id: "el-tv1", name: "Television Production I", tier: "CP", weight: 0,
+          name: "Television Production I", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Introduction to television techniques and mass communication. Students write, direct, and produce videos as part of a production team. Covers studio practice, camera direction, lighting, and editing with special effects.",
           topics: ["Television production techniques", "Writing, directing, and producing videos", "Camera direction and lighting", "Editing and special effects"]
         },
         {
-          id: "el-tv2", name: "Television Production II", tier: "CP", weight: 0,
+          name: "Television Production II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "TV Production I", minGrade: null, note: "Successful completion" }],
           description: "Advanced course building on TV Production I. Students act as producers and directors of the cable TV show, develop morning announcements, and manage various projects throughout the year.",
           topics: ["Producer and director roles", "Cable TV show management", "Morning announcements", "Advanced production projects"]
         },
         {
-          id: "el-tv3", name: "Television Production III", tier: "CP", weight: 0,
+          name: "Television Production III", tier: "CP", weight: 0,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "TV Production II", minGrade: null, note: "Successful completion" }],
           description: "Independent study for producing various video products. Students serve as executive producers and produce special segments, applying knowledge from TV Production I and II.",
           topics: ["Executive producer role", "Independent video production", "Special segments", "Applied production skills"]
         },
         {
-          id: "el-radio", name: "Radio Broadcasting", tier: "CP", weight: 0,
+          name: "Radio Broadcasting", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Experience in internet-based radio broadcasting using live and pre-recorded formats. Students develop skills as on-air talent, producers, PR/marketing, and studio engineers. Includes music programming and live broadcast of MHS sports and events.",
@@ -231,21 +231,21 @@ export const electiveTracks = {
       description: "Three-course television production track without Radio Broadcasting. Focuses solely on TV production from intro techniques through executive producer level.",
       courses: [
         {
-          id: "el-tv1", name: "Television Production I", tier: "CP", weight: 0,
+          name: "Television Production I", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Introduction to television techniques and mass communication. Students write, direct, and produce videos as part of a production team. Covers studio practice, camera direction, lighting, and editing with special effects.",
           topics: ["Television production techniques", "Writing, directing, and producing videos", "Camera direction and lighting", "Editing and special effects"]
         },
         {
-          id: "el-tv2", name: "Television Production II", tier: "CP", weight: 0,
+          name: "Television Production II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "TV Production I", minGrade: null, note: "Successful completion" }],
           description: "Advanced course building on TV Production I. Students act as producers and directors of the cable TV show, develop morning announcements, and manage various projects throughout the year.",
           topics: ["Producer and director roles", "Cable TV show management", "Morning announcements", "Advanced production projects"]
         },
         {
-          id: "el-tv3", name: "Television Production III", tier: "CP", weight: 0,
+          name: "Television Production III", tier: "CP", weight: 0,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "TV Production II", minGrade: null, note: "Successful completion" }],
           description: "Independent study for producing various video products. Students serve as executive producers and produce special segments, applying knowledge from TV Production I and II.",
@@ -262,21 +262,21 @@ export const electiveTracks = {
       description: "Three-course engineering design track with CAD, 3D printing, and a senior portfolio capstone.",
       courses: [
         {
-          id: "el-eng1", name: "Engineering I", tier: "CP", weight: 0,
+          name: "Engineering I", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Engineering design fundamentals. Students learn isometric sketching, 2D and 3D CAD/CADD, and precision measurement through reverse engineering and design projects. For students interested in pursuing engineering in college.",
           topics: ["Isometric sketching", "2D and 3D CAD/CADD", "Precision measuring equipment", "Reverse engineering and design projects"]
         },
         {
-          id: "el-eng2", name: "Engineering II", tier: "CP", weight: 0,
+          name: "Engineering II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "Engineering I", minGrade: null, note: "Successful completion" }],
           description: "Continues from Engineering I with 3D CAD assemblies using materials, bearings, bushings, and gears. Covers advanced engineering drawing, material science, and the design process. Students learn to use a 3D printer.",
           topics: ["3D CAD assemblies", "Advanced engineering drawing", "Basic material science", "3D printing", "Engineering career exploration"]
         },
         {
-          id: "el-cad-portfolio", name: "Portfolio Project — Computer Aided Drafting & Design", tier: "CP", weight: 0,
+          name: "Portfolio Project — Computer Aided Drafting & Design", tier: "CP", weight: 0,
           gradeLevel: "Grade 12", credits: "5",
           prereqs: [{ course: "Level I + Level II Technology Education course", minGrade: null, note: "Senior year only" }],
           description: "Professional portfolio development with concentration in CAD, robotic systems, power & energy, or graphic information systems. Can be used to investigate careers or prepare for college.",
@@ -290,21 +290,21 @@ export const electiveTracks = {
       description: "Two-course architecture track with optional senior portfolio project.",
       courses: [
         {
-          id: "el-arch1", name: "Architectural Design I", tier: "CP", weight: 0,
+          name: "Architectural Design I", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Fundamentals of architectural design principles and techniques. Students learn hand sketching and CAD for architectural design. Emphasis on residential and commercial systems design, planning, and construction.",
           topics: ["Hand sketching plans", "Computer Aided Design (CAD)", "Residential design: houses, kitchens, bathrooms", "Commercial systems overview"]
         },
         {
-          id: "el-arch2", name: "Architectural Design II", tier: "CP", weight: 0,
+          name: "Architectural Design II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "Architectural Design I", minGrade: null, note: "Successful completion" }],
           description: "Advanced architectural design with extensive CAD use. Covers detailed design of residential and commercial buildings including planning a commercial project, managing home construction, and remodeling projects.",
           topics: ["Advanced CAD for architecture", "Commercial project planning", "Home construction management", "Remodeling projects"]
         },
         {
-          id: "el-arch-portfolio", name: "Portfolio Project — Architecture", tier: "CP", weight: 0,
+          name: "Portfolio Project — Architecture", tier: "CP", weight: 0,
           gradeLevel: "Grade 12", credits: "5",
           prereqs: [{ course: "Level I + Level II Technology Education course", minGrade: null, note: "Senior year only" }],
           description: "Professional portfolio development in architectural design. Investigate a potential career or prepare for a college course of study.",
@@ -318,21 +318,21 @@ export const electiveTracks = {
       description: "Three-course material fabrication track from intro skills to a senior portfolio project.",
       courses: [
         {
-          id: "el-fab1", name: "Engineering Design & Material Fabrication I", tier: "CP", weight: 0,
+          name: "Engineering Design & Material Fabrication I", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Fundamentals of material processing techniques with emphasis on safety. Project-oriented, teaching hand, power, and machine tool skills. Explores manual operations and automated equipment.",
           topics: ["Material processing techniques", "Safety fundamentals", "Hand, power, and machine tool skills", "Manual and automated operations"]
         },
         {
-          id: "el-fab2", name: "Engineering Design & Material Fabrication II", tier: "CP", weight: 0,
+          name: "Engineering Design & Material Fabrication II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "Engineering Design & Material Fabrication I", minGrade: null, note: "Successful completion" }],
           description: "Continues materials processing exploration. Students design and develop a full-year approved project. Reemphasizes safety with real-world design activities.",
           topics: ["Advanced materials processing", "Full-year approved project", "Design and development", "Real-world design impact"]
         },
         {
-          id: "el-fab-portfolio", name: "Engineering Design & Material Fabrication: Portfolio Project", tier: "CP", weight: 0,
+          name: "Engineering Design & Material Fabrication: Portfolio Project", tier: "CP", weight: 0,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "Engineering Design & Material Fabrication II", minGrade: null, note: "Successful completion" }],
           description: "Professional portfolio development. Students choose from existing plans or create unique designs. May create refined woodworking projects. Covers cost analysis, budgeting, deadlines, and production output.",
@@ -346,21 +346,21 @@ export const electiveTracks = {
       description: "Two-course graphic communication track with optional senior portfolio.",
       courses: [
         {
-          id: "el-media1", name: "Media & Graphic Communication I", tier: "CP", weight: 0,
+          name: "Media & Graphic Communication I", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Foundations of modern printing, photography, computer graphics, and graphic reproduction. Includes lithographic technology, screen making, and sketching/typography.",
           topics: ["Printing and graphic reproduction", "Computer graphics", "Lithographic technology", "Screen making and typography"]
         },
         {
-          id: "el-media2", name: "Media & Graphic Communication II", tier: "CP", weight: 0,
+          name: "Media & Graphic Communication II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: "Media & Graphic Communication I", minGrade: null, note: "Successful completion" }],
           description: "Advanced printing, computer graphics, and graphic reproduction techniques. Students master screen making and printing and participate in career opportunities in communication technology.",
           topics: ["Advanced printing techniques", "Advanced computer graphics", "Screen making and printing mastery", "Career opportunities in communication tech"]
         },
         {
-          id: "el-media-portfolio", name: "Portfolio Project — Media & Graphics Communication", tier: "CP", weight: 0,
+          name: "Portfolio Project — Media & Graphics Communication", tier: "CP", weight: 0,
           gradeLevel: "Grade 12", credits: "5",
           prereqs: [{ course: "Level I + Level II Technology Education course", minGrade: null, note: "Senior year only" }],
           description: "Professional portfolio development in media and graphics communication.",
@@ -374,7 +374,7 @@ export const electiveTracks = {
       description: "Standalone semester course on engine technology and transportation.",
       courses: [
         {
-          id: "el-power-energy", name: "Power, Energy & Transportation Technology", tier: "CP", weight: 0,
+          name: "Power, Energy & Transportation Technology", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "History and development of the internal combustion engine. Students learn theory of operation for 2-stroke and 4-stroke engines, perform full disassembly/reassembly, test engine parts, and paint and test engines.",
@@ -391,21 +391,21 @@ export const electiveTracks = {
       description: "Culinary track covering food preparation, international cuisine, and baking.",
       courses: [
         {
-          id: "el-culinary1", name: "Introduction to Culinary Arts", tier: "CP", weight: 0,
+          name: "Introduction to Culinary Arts", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Basic techniques of food preparation. Students prepare appetizers, entrees, side dishes, desserts, and snacks across all food groups. Covers nutrition, meal preparation, sanitation, and food service careers.",
           topics: ["Basic food preparation techniques", "Appetizers, entrees, desserts, and snacks", "Nutrition and food selection", "Sanitation and food service"]
         },
         {
-          id: "el-culinary2", name: "Culinary Arts II", tier: "CP", weight: 0,
+          name: "Culinary Arts II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Introduction to Culinary Arts", minGrade: null, note: "Successful completion" }],
           description: "International and ethnic cuisine as cultural identity. Students analyze the interrelationship between cuisine and culture for countries such as France, Japan, Italy, China, and Mexico. Covers garnishing and plate presentation.",
           topics: ["International and ethnic cuisine", "Cuisine and culture interrelationship", "Garnishing and plate presentation", "Nutrition, safety, and food-borne illness"]
         },
         {
-          id: "el-baking", name: "The Art of Baking", tier: "CP", weight: 0,
+          name: "The Art of Baking", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Baking and cake decorating experience. Students research, bake to industry standard, and decorate various types of cakes. Project-based, student-driven curriculum.",
@@ -419,14 +419,14 @@ export const electiveTracks = {
       description: "Two-course path for students with a passion for baking and pastry. Begin with culinary fundamentals, then specialize in cakes, decorating, and baking to industry standards.",
       courses: [
         {
-          id: "el-culinary1", name: "Introduction to Culinary Arts", tier: "CP", weight: 0,
+          name: "Introduction to Culinary Arts", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Basic techniques of food preparation. Students prepare appetizers, entrees, side dishes, desserts, and snacks across all food groups. Covers nutrition, meal preparation, sanitation, and food service careers.",
           topics: ["Basic food preparation techniques", "Appetizers, entrees, desserts, and snacks", "Nutrition and food selection", "Sanitation and food service"]
         },
         {
-          id: "el-baking", name: "The Art of Baking", tier: "CP", weight: 0,
+          name: "The Art of Baking", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Baking and cake decorating experience. Students research, bake to industry standard, and decorate various types of cakes. Project-based, student-driven curriculum.",
@@ -440,7 +440,7 @@ export const electiveTracks = {
       description: "Standalone semester course preparing students for self-sufficiency.",
       courses: [
         {
-          id: "el-life-skills", name: "Life Skills", tier: "CP", weight: 0,
+          name: "Life Skills", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Prepares students for self-sufficiency and independence. Covers career selection, resumes, job acquisition, consumer skills, housing, insurance, resources, and ethical decision-making.",
@@ -457,35 +457,35 @@ export const electiveTracks = {
       description: "Progressive five-course visual arts track from foundations through honors portfolio to AP Studio Art.",
       courses: [
         {
-          id: "el-intro-art", name: "Introduction to Studio Art", tier: "CP", weight: 0,
+          name: "Introduction to Studio Art", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Foundation in visual arts and design. Students explore painting, drawing, sculpture, and other media. Grades based on willingness to experiment and explore creativity.",
           topics: ["Painting and drawing", "Sculpture and mixed media", "Basic art concepts", "Creative exploration"]
         },
         {
-          id: "el-studio1", name: "Studio I", tier: "CP", weight: 0,
+          name: "Studio I", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Introduction to Studio Art", minGrade: null, note: "Successful completion (or UMS art teacher recommendation)" }],
           description: "New materials and techniques through guided concepts. Students explore concepts through their own individual voice and develop visual literacy. Prepares for Studio II.",
           topics: ["New materials and techniques", "Guided concepts and assignments", "Individual voice development", "Visual literacy"]
         },
         {
-          id: "el-studio2", name: "Studio II", tier: "CP", weight: 0,
+          name: "Studio II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Studio I", minGrade: null, note: "Successful completion" }],
           description: "Students polish technical skills and explore personal themes. Includes advanced media, art history, contemporary trends, and career opportunities. Portfolio guidance provided.",
           topics: ["Advanced media and techniques", "Personal themes and inspiration", "Art history and contemporary trends", "Portfolio guidance and career exploration"]
         },
         {
-          id: "el-honors-portfolio", name: "Honors Portfolio", tier: "Honors", weight: 5,
+          name: "Honors Portfolio", tier: "Honors", weight: 5,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "Studio II", minGrade: null, note: "Successful completion" }],
           description: "Year-long course developing a college portfolio showcasing technical and conceptual achievements at levels synonymous with college art majors. Students participate in the Visual Arts Extravaganza. Prepares for AP Studio.",
           topics: ["College portfolio development", "Advanced technical and conceptual work", "Visual Arts Extravaganza participation", "Independent growth with peer feedback", "Preparation for AP Studio"]
         },
         {
-          id: "el-ap-studio", name: "AP Studio Art or 2D Portfolio", tier: "AP", weight: 5, highlight: true,
+          name: "AP Studio Art or 2D Portfolio", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "Honors Portfolio OR both Advanced Digital and Advanced Darkroom Photography", minGrade: null, note: "Interview with art faculty for concentration placement" }],
           description: "Year-long development of a consistent theme-based body of 12 pieces displayed gallery-style at Art Extravaganza. Students produce a portfolio for college applications and optional College Board evaluation. High commitment and self-discipline required.",
@@ -502,35 +502,35 @@ export const electiveTracks = {
       description: "Progressive photography track from analog foundations to advanced techniques and AP Photo / 2D Portfolio.",
       courses: [
         {
-          id: "el-photo1", name: "Photography I", tier: "CP", weight: 0,
+          name: "Photography I", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Foundation in 35mm black and white analog photography with a strong visual arts base. Introduces the four areas of fine arts study: Themes and Forms, Core Concepts, Techniques and Tools, Culture and History. 35mm manual camera recommended.",
           topics: ["35mm black and white analog photography", "Darkroom fundamentals", "Themes, forms, and core art concepts", "Culture and history of photography"]
         },
         {
-          id: "el-photo2", name: "Photography II", tier: "CP", weight: 0,
+          name: "Photography II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Photography I", minGrade: null, note: "Successful completion" }],
           description: "Foundation in digital photography and post-processing with Adobe Lightroom. Independent problem solving for conceptual artworks. Digital camera recommended.",
           topics: ["Digital photography", "Adobe Lightroom post-processing", "Conceptual artwork development", "Independent problem solving"]
         },
         {
-          id: "el-adv-digital-photo", name: "Advanced Digital Photography", tier: "CP", weight: 0,
+          name: "Advanced Digital Photography", tier: "CP", weight: 0,
           gradeLevel: "Grades 11–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Photography I and II", minGrade: null, note: "Successful completion" }],
           description: "Advanced student-centered conceptual projects with studio lighting and Adobe Photoshop. Students use DSLR cameras, create visual narratives with symbolism, and showcase work in a solo exhibit at Art Extravaganza. Sets up for AP Studio 2D.",
           topics: ["Advanced studio lighting", "Adobe Photoshop techniques", "DSLR photography", "Visual narrative and symbolism", "Solo exhibit at Art Extravaganza"]
         },
         {
-          id: "el-adv-darkroom", name: "Advanced Darkroom Photography", tier: "CP", weight: 0,
+          name: "Advanced Darkroom Photography", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Photography I", minGrade: null, note: "Successful completion; Photo II and Adv Digital recommended" }],
           description: "Advanced analog alternative processes including cyanotypes, photo transfers, and advanced darkroom techniques. Student-centered conceptual projects with solo exhibit at Art Extravaganza. Sets up for AP Studio 2D.",
           topics: ["Cyanotypes and photo transfers", "Advanced darkroom techniques", "Alternative analog processes", "Conceptual projects and solo exhibit"]
         },
         {
-          id: "el-ap-photo", name: "AP Photo / 2D Portfolio", tier: "AP", weight: 5, highlight: true,
+          name: "AP Photo / 2D Portfolio", tier: "AP", weight: 5, highlight: true,
           gradeLevel: "Grades 11–12", credits: "5",
           prereqs: [{ course: "Honors Portfolio OR both Advanced Digital and Advanced Darkroom Photography", minGrade: null, note: "Interview with art faculty for concentration placement" }],
           description: "Intensive guided exploration of photography for art-making. Students experience a variety of concepts, techniques, and approaches, producing a college portfolio and solo exhibit at Art Extravaganza. Optional College Board evaluation.",
@@ -544,14 +544,14 @@ export const electiveTracks = {
       description: "Self-contained two-course path covering analog foundations and digital technique. Ideal for students who want to explore photography without committing to the advanced or AP sequence.",
       courses: [
         {
-          id: "el-photo1", name: "Photography I", tier: "CP", weight: 0,
+          name: "Photography I", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Foundation in 35mm black and white analog photography with a strong visual arts base. Introduces the four areas of fine arts study: Themes and Forms, Core Concepts, Techniques and Tools, Culture and History. 35mm manual camera recommended.",
           topics: ["35mm black and white analog photography", "Darkroom fundamentals", "Themes, forms, and core art concepts", "Culture and history of photography"]
         },
         {
-          id: "el-photo2", name: "Photography II", tier: "CP", weight: 0,
+          name: "Photography II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Photography I", minGrade: null, note: "Successful completion" }],
           description: "Foundation in digital photography and post-processing with Adobe Lightroom. Independent problem solving for conceptual artworks. Digital camera recommended.",
@@ -568,21 +568,21 @@ export const electiveTracks = {
       description: "Three-course ceramics progression from fundamentals to advanced artistic voice.",
       courses: [
         {
-          id: "el-ceramics1", name: "Ceramics", tier: "CP", weight: 0,
+          name: "Ceramics", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Explores hand-built and wheel-thrown ceramics. Students develop awareness of Elements and Principles of Design in sculptural form, bas relief, and pottery through additive, subtractive, wheel-thrown, and glazing methods.",
           topics: ["Hand-built ceramics", "Wheel-thrown pottery", "Additive and subtractive methods", "Glazing techniques", "Elements and Principles of Design"]
         },
         {
-          id: "el-ceramics2", name: "Ceramics II", tier: "CP", weight: 0,
+          name: "Ceramics II", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Ceramics", minGrade: null, note: "Successful completion" }],
           description: "Advanced ceramic arts with sculptural forms and experimental techniques. Students further develop wheel skills, personal artistic style, and begin developing their artist voice in clay.",
           topics: ["Sculptural forms", "Experimental techniques", "Advanced wheel throwing", "Personal artistic style development"]
         },
         {
-          id: "el-ceramics-adv", name: "Advanced Ceramics", tier: "CP", weight: 0,
+          name: "Advanced Ceramics", tier: "CP", weight: 0,
           gradeLevel: "Grades 11–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Ceramics II", minGrade: null, note: "Successful completion" }],
           description: "Development of individual style in wheel-thrown and hand-built forms with surface treatment explorations. Students investigate contemporary concepts through development of a unique series. Eligible for Seton Hall concurrent enrollment.",
@@ -599,28 +599,28 @@ export const electiveTracks = {
       description: "Three-tier band program plus senior Honors option. Placement by audition.",
       courses: [
         {
-          id: "el-symph-band", name: "Symphonic Band", tier: "CP", weight: 0,
+          name: "Symphonic Band", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Completion of band in previous year or successful audition with director permission" }],
           description: "Concert band for grades 9–12. Develops instrumental proficiency, ensemble skills, musical knowledge, and self-discipline. Performs Grade III–IV repertoire at a minimum of three concerts per year.",
           topics: ["Instrumental proficiency development", "Concert band ensemble skills", "Grade III–IV repertoire", "Minimum three performances per year"]
         },
         {
-          id: "el-symph-winds", name: "Symphonic Winds", tier: "CP", weight: 0,
+          name: "Symphonic Winds", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Completion of band in previous year + successful audition with director permission" }],
           description: "Select auditioned ensemble primarily for grades 10–12 (9th graders may audition in spring of 8th grade). Performs Grade III–V repertoire at a minimum of three concerts per year.",
           topics: ["Auditioned select ensemble", "Grade III–V repertoire", "Advanced instrumental skills", "Minimum three performances per year"]
         },
         {
-          id: "el-wind-ensemble", name: "Wind Ensemble", tier: "CP", weight: 0,
+          name: "Wind Ensemble", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Completion of curricular band + successful audition with director" }],
           description: "Highest skill-level curricular band. Rigorous study of advanced repertoire normally performed at the collegiate or professional level. Grade IV–VI repertoire. Four+ performances per year, possible weekend rehearsals.",
           topics: ["Collegiate/professional level repertoire", "Grade IV–VI repertoire", "Advanced instrumental pedagogy", "Four+ performances per year"]
         },
         {
-          id: "el-wind-ensemble-h", name: "Wind Ensemble Honors", tier: "Honors", weight: 5,
+          name: "Wind Ensemble Honors", tier: "Honors", weight: 5,
           gradeLevel: "Grade 12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Senior year only; successful audition with band director" }],
           description: "Senior Honors option meeting at the same time as Wind Ensemble. Additional requirements include preparing for and participating in at least one chamber music performance and researching repertoire with historical concert notes.",
@@ -637,28 +637,28 @@ export const electiveTracks = {
       description: "Three-tier orchestra program plus senior Honors option. Placement by audition.",
       courses: [
         {
-          id: "el-concert-orch", name: "Concert Orchestra", tier: "CP", weight: 0,
+          name: "Concert Orchestra", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Completion of orchestra in previous year or successful audition with director permission" }],
           description: "String orchestra for grades 9–12. Develops individual instrumental proficiency, string ensemble skills, and musical knowledge. Performs Grade III–IV repertoire at a minimum of three concerts per year.",
           topics: ["String instrumental proficiency", "String orchestra ensemble skills", "Grade III–IV repertoire", "Minimum three performances per year"]
         },
         {
-          id: "el-symph-orch", name: "Symphonic Orchestra", tier: "CP", weight: 0,
+          name: "Symphonic Orchestra", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Completion of curricular orchestra + successful audition with director permission" }],
           description: "Select auditioned ensemble primarily for grades 10–12. Performs Grade III–V repertoire at a minimum of three concerts per year. Instrumentation and balance are rigidly governed.",
           topics: ["Auditioned select ensemble", "Grade III–V repertoire", "Orchestral ensemble skills", "Minimum three performances per year"]
         },
         {
-          id: "el-chamber-orch", name: "Chamber Orchestra", tier: "CP", weight: 0,
+          name: "Chamber Orchestra", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Completion of curricular orchestra + successful audition with director" }],
           description: "Highest skill-level curricular orchestra. Rigorous study of advanced string and full orchestra repertoire at collegiate/professional level. Grade IV–VI repertoire. Four+ performances per year, possible weekend rehearsals.",
           topics: ["Collegiate/professional level repertoire", "Grade IV–VI repertoire", "Advanced string pedagogy", "Four+ performances per year"]
         },
         {
-          id: "el-chamber-orch-h", name: "Chamber Orchestra Honors", tier: "Honors", weight: 5,
+          name: "Chamber Orchestra Honors", tier: "Honors", weight: 5,
           gradeLevel: "Grade 12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Senior year only; successful audition with orchestra director" }],
           description: "Senior Honors option meeting at the same time as Chamber Orchestra. Additional requirements include chamber music performance and repertoire research with historical concert notes.",
@@ -675,28 +675,28 @@ export const electiveTracks = {
       description: "Three-tier vocal program plus senior Honors option. Placement by audition for upper tiers.",
       courses: [
         {
-          id: "el-concert-choir", name: "Concert Choir", tier: "CP", weight: 0,
+          name: "Concert Choir", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "5",
           prereqs: [],
           description: "Dynamic and challenging musical environment through a variety of vocal music genres. Develops vocal skills, ensemble singing appreciation, musicianship, and self-confidence. Concert performances required.",
           topics: ["Vocal skill development", "Ensemble singing across genres", "Musicianship fundamentals", "Concert performances required"]
         },
         {
-          id: "el-chorale", name: "Chorale", tier: "CP", weight: 0,
+          name: "Chorale", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Completion of choir in previous year + audition and director permission" }],
           description: "Full-year ensemble focusing on challenging soprano and alto voicing. Advanced vocal technique, sight-reading, musicianship through literature from various styles, genres, cultures, and eras.",
           topics: ["Soprano and alto repertoire", "Advanced vocal technique", "Sight-reading and musicianship", "Literature across styles and cultures"]
         },
         {
-          id: "el-chamber-choir", name: "Chamber Choir", tier: "CP", weight: 0,
+          name: "Chamber Choir", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Successful audition and recommendation of director" }],
           description: "Smaller advanced-level vocal group for students with outstanding vocal skills and musicianship. Performs advanced high school, collegiate, and professional level repertoire. Active participation in concerts and festivals required.",
           topics: ["Advanced vocal ensemble", "Collegiate/professional level repertoire", "Concerts, festivals, and performance venues", "Wide variety of rigorous literature"]
         },
         {
-          id: "el-chamber-choir-h", name: "Chamber Choir Honors", tier: "Honors", weight: 5,
+          name: "Chamber Choir Honors", tier: "Honors", weight: 5,
           gradeLevel: "Grade 12", credits: "5",
           prereqs: [{ course: null, minGrade: null, note: "Senior year only; successful audition with choir director" }],
           description: "Senior Honors option meeting at the same time as Chamber Choir. Additional requirements include chamber/solo music performance and repertoire research with historical concert notes.",
@@ -713,7 +713,7 @@ export const electiveTracks = {
       description: "Standalone semester course for learning guitar.",
       courses: [
         {
-          id: "el-guitar", name: "Introduction to Guitar", tier: "CP", weight: 0,
+          name: "Introduction to Guitar", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [{ course: null, minGrade: null, note: "None — experienced players should discuss placement with teacher" }],
           description: "Learn, play, and perform on the guitar. Covers melodic and chordal playing as well as music theory concepts applicable to guitar performance. Perfect for beginners.",
@@ -730,14 +730,14 @@ export const electiveTracks = {
       description: "Two-course dance track from introductory movement to advanced choreography.",
       courses: [
         {
-          id: "el-dance", name: "Dance", tier: "CP", weight: 0,
+          name: "Dance", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Semester-long exploration of dance styles including hip-hop, African, Latinx, Bollywood, ballet, jazz, contemporary, and more. Students develop coordination, flexibility, strength, musicality, and body awareness. Culminates in creating original choreography and an evening performance.",
           topics: ["Hip-hop, African, Latinx, Bollywood, ballet, jazz, contemporary", "Coordination, flexibility, and strength", "Original choreography creation", "Evening performance"]
         },
         {
-          id: "el-dance-tech", name: "Dance Techniques and Choreography", tier: "CP", weight: 0,
+          name: "Dance Techniques and Choreography", tier: "CP", weight: 0,
           gradeLevel: "Grades 10–12", credits: "2.5 (semester)",
           prereqs: [{ course: null, minGrade: null, note: "Permission of teacher or completion of a previous dance class at UMS or MHS" }],
           description: "Performance-based course for students ready for the next level. Deeper technical development and creative exploration. Students learn choreographic devices, create longer original works, develop leadership, and explore teaching methods. Includes evening performance.",
@@ -754,28 +754,28 @@ export const electiveTracks = {
       description: "Theater courses covering performance, production, public speaking, and technical theater — any may be taken independently.",
       courses: [
         {
-          id: "el-theater-arts", name: "Theater Arts", tier: "CP", weight: 0,
+          name: "Theater Arts", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Fundamentals of theater through improv games, monologues, and scene study. Students learn theater history, voice and movement, improvisation, character development, and script analysis across time periods and cultures.",
           topics: ["Improv games and monologues", "Scene study and script analysis", "Theater history", "Voice, movement, and character development"]
         },
         {
-          id: "el-children-theater", name: "Children's Theater Play Production", tier: "CP", weight: 0,
+          name: "Children's Theater Play Production", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Full process of play production — choosing, casting, rehearsing, building, and performing a children's theater show. Students tour the school district performing for younger audiences.",
           topics: ["Play production from start to finish", "Casting, rehearsing, and building", "Performing for younger audiences", "School district tour"]
         },
         {
-          id: "el-speech", name: "The Art of Speech and Presentation", tier: "CP", weight: 0,
+          name: "The Art of Speech and Presentation", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Teaches effective presentation delivery using theater techniques — pacing, inflection, body language, annunciation, and audience awareness. Includes storytelling, interpretive reading, and persuasive performance.",
           topics: ["Presentation preparation and delivery", "Pacing, inflection, and body language", "Storytelling and interpretive reading", "Persuasive performance"]
         },
         {
-          id: "el-theater-design", name: "Theater Design, Technology and Stage Management", tier: "CP", weight: 0,
+          name: "Theater Design, Technology and Stage Management", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Non-performance aspects of theatrical production including set design, lighting, properties, sound, costumes, hair/makeup, stage management, and production management. Hands-on experience in the MHS Performing Arts Center.",
@@ -789,14 +789,14 @@ export const electiveTracks = {
       description: "Behind-the-scenes theater track paired with public speaking skills. Ideal for students interested in production, design, and professional communication rather than on-stage performance.",
       courses: [
         {
-          id: "el-theater-design", name: "Theater Design, Technology and Stage Management", tier: "CP", weight: 0,
+          name: "Theater Design, Technology and Stage Management", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Non-performance aspects of theatrical production including set design, lighting, properties, sound, costumes, hair/makeup, stage management, and production management. Hands-on experience in the MHS Performing Arts Center.",
           topics: ["Set design and lighting", "Sound, costumes, and properties", "Stage management and production management", "MHS Performing Arts Center experience"]
         },
         {
-          id: "el-speech", name: "The Art of Speech and Presentation", tier: "CP", weight: 0,
+          name: "The Art of Speech and Presentation", tier: "CP", weight: 0,
           gradeLevel: "Grades 9–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Teaches effective presentation delivery using theater techniques — pacing, inflection, body language, annunciation, and audience awareness. Includes storytelling, interpretive reading, and persuasive performance.",
@@ -813,14 +813,14 @@ export const electiveTracks = {
       description: "Two-part education program for juniors and seniors with Rider University credit opportunity.",
       courses: [
         {
-          id: "el-teachers1", name: "Tomorrow's Teachers Part 1: Learning/Educational Theory", tier: "CP", weight: 0,
+          name: "Tomorrow's Teachers Part 1: Learning/Educational Theory", tier: "CP", weight: 0,
           gradeLevel: "Grades 11–12", credits: "2.5 (semester)",
           prereqs: [],
           description: "Study of the history, development, organization, and practices of education. Explores learning styles, special needs, growth and development, ethics, and professionalism. Includes NJFEA membership.",
           topics: ["History and development of education", "Learning styles and special needs", "Growth, development, and ethics", "NJFEA membership and service projects"]
         },
         {
-          id: "el-teachers2", name: "Tomorrow's Teachers Part 2: Practical Applications/Internship", tier: "CP", weight: 0,
+          name: "Tomorrow's Teachers Part 2: Practical Applications/Internship", tier: "CP", weight: 0,
           gradeLevel: "Grades 11–12", credits: "2.5 (semester)",
           prereqs: [{ course: "Tomorrow's Teachers Part 1", minGrade: null, note: "Successful completion" }],
           description: "Practical application through internship. Students work with a cooperating teacher to observe classes, create lesson plans, and co-teach lessons. Rider University college credit opportunity available.",
@@ -836,7 +836,7 @@ export const electiveTracks = {
 export const electiveTrackColors = Object.fromEntries(
   Object.entries(electiveTracks.tracks).map(([name, track]) => [
     name,
-    { bg: track.color, text: "#000", label: name, activeClass: `active-${name.toLowerCase().replace(/[^a-z0-9]/g, "-")}` }
+    { bg: track.color, text: "#000", label: name }
   ])
 );
 
