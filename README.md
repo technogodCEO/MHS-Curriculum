@@ -3,7 +3,9 @@
 A curriculum visualizer for MHS students - currently has all subjects, which are accessible via a dropdown menu on the current subject title. I am currently working on the elective subject. [Link.](https://mhscurriculum.vercel.app/)
 
 # Version History 
-Added polish, resolve continuity errors, and improve internal code practices before full release
+
+## Version 1.0:
+Added polish, resolved continuity errors, and improved internal code practices before full release
 
 1. Fixes and Cleanup
   - Fixed empty amber pos-note box — now only renders when course.note is truthy (BUG-01)
@@ -26,9 +28,6 @@ Added polish, resolve continuity errors, and improve internal code practices bef
   - Fixed 3 additional elective track colors for WCAG AA compliance (VIS-02)
 
 (More information is available in the GSD documentation in the .planning directory)
-
-## Version 1.0:
-1. removed discontinutiy erro 
 
 ### Beta 3.1
 1. Added CurriculumMapVariableTrackLengths.jsx, for elective subjects with variable length tracks.
